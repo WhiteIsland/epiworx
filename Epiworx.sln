@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epiworx", "business\Epiworx.csproj", "{FEF23146-EF0F-43B7-8AB8-F210FD9BDAF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epiworx.Tests", "tests\Epiworx.Tests.csproj", "{E122D4AC-B87A-4011-837E-379E9AAF1FD6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{16E8943C-54E9-4559-A627-43E235208FAC}"
+	ProjectSection(SolutionItems) = preProject
+		Epiworx.vsmdi = Epiworx.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epiworx.WebMvc", "webmvc\Epiworx.WebMvc.csproj", "{29850C69-AE36-4F04-ABD7-D27FB0674BCF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Snippets", "Snippets", "{FC8A35B6-E9A1-4299-83A8-2DC558DB2FF6}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Epiworx.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEF23146-EF0F-43B7-8AB8-F210FD9BDAF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEF23146-EF0F-43B7-8AB8-F210FD9BDAF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEF23146-EF0F-43B7-8AB8-F210FD9BDAF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEF23146-EF0F-43B7-8AB8-F210FD9BDAF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E122D4AC-B87A-4011-837E-379E9AAF1FD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E122D4AC-B87A-4011-837E-379E9AAF1FD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E122D4AC-B87A-4011-837E-379E9AAF1FD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E122D4AC-B87A-4011-837E-379E9AAF1FD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29850C69-AE36-4F04-ABD7-D27FB0674BCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29850C69-AE36-4F04-ABD7-D27FB0674BCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29850C69-AE36-4F04-ABD7-D27FB0674BCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29850C69-AE36-4F04-ABD7-D27FB0674BCF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FEF23146-EF0F-43B7-8AB8-F210FD9BDAF9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Epiworx</RootNamespace>
+    <AssemblyName>Epiworx</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Csla">
+      <HintPath>..\assemblies\Csla.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Linq.Dynamic">
+      <HintPath>..\assemblies\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Business\Category\CategoryCriteria\CategoryCriteria.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\CategoryCriteria\CategoryCriteria.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\CategoryExistsCommand\CategoryExistsCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\CategoryInfoList\CategoryInfoList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\CategoryInfoList\CategoryInfoList.Data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\CategoryInfoList\CategoryInfoList.Methods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\CategoryInfoList\CategoryInfoList.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\CategoryInfoList\CategoryInfoList.Rules.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\CategoryInfo\CategoryInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\CategoryInfo\CategoryInfo.Data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\CategoryInfo\CategoryInfo.Methods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\CategoryInfo\CategoryInfo.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\CategoryInfo\CategoryInfo.Rules.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\CategoryValueCommand\CategoryValueCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\Category\Category.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\Category\Category.Data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\Category\Category.Methods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\Category\Category.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\Category\Category.Rules.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\ICategory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Category\CategoryDuplicateNameCheck.cs" />
+    <Compile Include="Business\Hour\HourCriteria\HourCriteria.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Hour\HourCriteria\HourCriteria.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Hour\HourExistsCommand\HourExistsCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Hour\HourInfoList\HourInfoList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Hour\HourInfoList\HourInfoList.Data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Hour\HourInfoList\HourInfoList.Methods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Hour\HourInfoList\HourInfoList.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Hour\HourInfoList\HourInfoList.Rules.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Hour\HourInfo\HourInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Hour\HourInfo\HourInfo.Data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Hour\HourInfo\HourInfo.Methods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Hour\HourInfo\HourInfo.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Hour\HourInfo\HourInfo.Rules.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Hour\HourValueCommand\HourValueCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Hour\Hour\Hour.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Hour\Hour\Hour.Data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Hour\Hour\Hour.Methods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Hour\Hour\Hour.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Hour\Hour\Hour.Rules.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Hour\IHour.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\ProjectDuplicateNameCheck.cs" />
+    <Compile Include="Business\Project\IProject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\ProjectCriteria\ProjectCriteria.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\ProjectCriteria\ProjectCriteria.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\ProjectExistsCommand\ProjectExistsCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\ProjectInfoList\ProjectInfoList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\ProjectInfoList\ProjectInfoList.Data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\ProjectInfoList\ProjectInfoList.Methods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\ProjectInfoList\ProjectInfoList.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\ProjectInfoList\ProjectInfoList.Rules.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\ProjectInfo\ProjectInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\ProjectInfo\ProjectInfo.Data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\ProjectInfo\ProjectInfo.Methods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\ProjectInfo\ProjectInfo.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\ProjectInfo\ProjectInfo.Rules.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\ProjectValueCommand\ProjectValueCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\Project\Project.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\Project\Project.Data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\Project\Project.Methods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\Project\Project.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Project\Project\Project.Rules.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Role\Role.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\StatusDuplicateNameCheck.cs" />
+    <Compile Include="Business\Status\IStatus.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\StatusCriteria\StatusCriteria.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\StatusCriteria\StatusCriteria.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\StatusExistsCommand\StatusExistsCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\StatusInfoList\StatusInfoList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\StatusInfoList\StatusInfoList.Data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\StatusInfoList\StatusInfoList.Methods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\StatusInfoList\StatusInfoList.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\StatusInfoList\StatusInfoList.Rules.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\StatusInfo\StatusInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\StatusInfo\StatusInfo.Data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\StatusInfo\StatusInfo.Methods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\StatusInfo\StatusInfo.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\StatusInfo\StatusInfo.Rules.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\StatusValueCommand\StatusValueCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\Status\Status.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\Status\Status.Data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\Status\Status.Methods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\Status\Status.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Status\Status\Status.Rules.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\ITask.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\TaskCriteria\TaskCriteria.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\TaskCriteria\TaskCriteria.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\TaskExistsCommand\TaskExistsCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\TaskInfoList\TaskInfoList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\TaskInfoList\TaskInfoList.Data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\TaskInfoList\TaskInfoList.Methods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\TaskInfoList\TaskInfoList.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\TaskInfoList\TaskInfoList.Rules.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\TaskInfo\TaskInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\TaskInfo\TaskInfo.Data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\TaskInfo\TaskInfo.Methods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\TaskInfo\TaskInfo.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\TaskInfo\TaskInfo.Rules.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\TaskValueCommand\TaskValueCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\Task\Task.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\Task\Task.Data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\Task\Task.Methods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\Task\Task.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Task\Task\Task.Rules.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\UserPassword\UserPasswordCriteria\UserPasswordCriteria.cs" />
+    <Compile Include="Business\UserPassword\UserPasswordCriteria\UserPasswordCriteria.Properties.cs" />
+    <Compile Include="Business\UserPassword\UserPassword\UserPassword.cs" />
+    <Compile Include="Business\UserPassword\UserPassword\UserPassword.Data.cs" />
+    <Compile Include="Business\UserPassword\UserPassword\UserPassword.Methods.cs" />
+    <Compile Include="Business\UserPassword\UserPassword\UserPassword.Properties.cs" />
+    <Compile Include="Business\UserPassword\UserPassword\UserPassword.Rules.cs" />
+    <Compile Include="Business\Role\RoleRequired.cs" />
+    <Compile Include="Business\User\IUser.cs" />
+    <Compile Include="Business\User\UserCriteria\UserCriteria.cs" />
+    <Compile Include="Business\User\UserCriteria\UserCriteria.Properties.cs" />
+    <Compile Include="Business\User\UserDuplicateEmailCheck.cs" />
+    <Compile Include="Business\User\UserDuplicateNameCheck.cs" />
+    <Compile Include="Business\User\UserExistsCommand\UserExistsCommand.cs" />
+    <Compile Include="Business\User\UserInfoList\UserInfoList.cs" />
+    <Compile Include="Business\User\UserInfoList\UserInfoList.Data.cs" />
+    <Compile Include="Business\User\UserInfoList\UserInfoList.Methods.cs" />
+    <Compile Include="Business\User\UserInfoList\UserInfoList.Properties.cs" />
+    <Compile Include="Business\User\UserInfoList\UserInfoList.Rules.cs" />
+    <Compile Include="Business\User\UserInfo\UserInfo.cs" />
+    <Compile Include="Business\User\UserInfo\UserInfo.Data.cs" />
+    <Compile Include="Business\User\UserInfo\UserInfo.Methods.cs" />
+    <Compile Include="Business\User\UserInfo\UserInfo.Properties.cs" />
+    <Compile Include="Business\User\UserInfo\UserInfo.Rules.cs" />
+    <Compile Include="Business\User\UserValueCommand\UserValueCommand.cs" />
+    <Compile Include="Business\User\User\User.cs" />
+    <Compile Include="Business\User\User\User.Data.cs" />
+    <Compile Include="Business\User\User\User.Methods.cs" />
+    <Compile Include="Business\User\User\User.Properties.cs" />
+    <Compile Include="Business\User\User\User.Rules.cs" />
+    <Compile Include="Business\DateRangeCriteria.cs" />
+    <Compile Include="Core\DateTimeExtensions.cs" />
+    <Compile Include="Core\Helpers\FormatHelper.cs" />
+    <Compile Include="Core\NameValueItem.cs" />
+    <Compile Include="Core\NameValueItemCollection.cs" />
+    <Compile Include="Core\Messenger\EmailMessenger.cs" />
+    <Compile Include="Core\Messenger\IEmailMessenger.cs" />
+    <Compile Include="Core\Messenger\IMessenger.cs" />
+    <Compile Include="Core\Helpers\MessageParameter.cs" />
+    <Compile Include="Data\Application.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Application.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Validation\DateRequired.cs" />
+    <Compile Include="Core\Helpers\MessageHelper.cs" />
+    <Compile Include="Security\Helpers\PasswordHelper.cs" />
+    <Compile Include="Data\Validation\DateTimeRequired.cs" />
+    <Compile Include="Data\Validation\DecimalRequired.cs" />
+    <Compile Include="Data\Validation\GuidRequired.cs" />
+    <Compile Include="Data\Validation\IntegerRequired.cs" />
+    <Compile Include="Data\Database.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\BusinessIdentity\BusinessIdentity.cs" />
+    <Compile Include="Security\BusinessIdentity\BusinessIdentity.Data.cs" />
+    <Compile Include="Security\BusinessIdentity\BusinessIdentity.Methods.cs" />
+    <Compile Include="Security\BusinessIdentity\BusinessIdentity.Properties.cs" />
+    <Compile Include="Security\BusinessPrincipal\BusinessPrincipal.cs" />
+    <Compile Include="Security\BusinessPrincipal\BusinessPrincipal.Methods.cs" />
+    <Compile Include="Security\LoginCriteria\LoginCriteria.cs" />
+    <Compile Include="Security\LoginCriteria\LoginCriteria.Properties.cs" />
+    <Compile Include="Service\CategoryService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Service\HourService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Service\MyService.cs" />
+    <Compile Include="Service\ProjectService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Service\StatusService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Service\TaskService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Service\UserPasswordService.cs" />
+    <Compile Include="Service\UserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Data\Application.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

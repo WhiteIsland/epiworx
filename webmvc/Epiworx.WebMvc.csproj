@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{29850C69-AE36-4F04-ABD7-D27FB0674BCF}</ProjectGuid>
+    <ProjectTypeGuids>{F85E285D-A4E0-4152-9332-AB1D724D3325};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Epiworx.WebMvc</RootNamespace>
+    <AssemblyName>Epiworx.WebMvc</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Csla">
+      <HintPath>..\assemblies\Csla.dll</HintPath>
+    </Reference>
+    <Reference Include="Csla.Web.Mvc">
+      <HintPath>..\assemblies\Csla.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\assemblies\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HourController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\StatusController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\DataHelper.cs" />
+    <Compile Include="Helpers\HtmlHelperExtensions.cs" />
+    <Compile Include="Helpers\RequestHelper.cs" />
+    <Compile Include="Helpers\UrlHelperExtensions.cs" />
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CategoryModels.cs" />
+    <Compile Include="Models\UserModels.cs" />
+    <Compile Include="Models\HourModels.cs" />
+    <Compile Include="Models\TaskModels.cs" />
+    <Compile Include="Models\ProjectModels.cs" />
+    <Compile Include="Models\StatusModels.cs" />
+    <Compile Include="Models\HomeModels.cs" />
+    <Compile Include="Models\BaseModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Find.png" />
+    <Content Include="Content\Profile.png" />
+    <Content Include="Content\Reset.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\Epiworx.Form.js" />
+    <Content Include="Scripts\Epiworx.js" />
+    <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Views\Account\ForgotPassword.aspx" />
+    <Content Include="Views\Account\ForgotPasswordSuccess.aspx" />
+    <Content Include="Views\Category\CategoryForm.ascx" />
+    <Content Include="Views\Category\CategoryFormCommands.ascx" />
+    <Content Include="Views\Category\Create.aspx" />
+    <Content Include="Views\Category\Edit.aspx" />
+    <Content Include="Views\Home\Settings.aspx" />
+    <Content Include="Views\Hour\Create.aspx" />
+    <Content Include="Views\Hour\Edit.aspx" />
+    <Content Include="Views\Hour\HourFilter.ascx" />
+    <Content Include="Views\Hour\Index.aspx" />
+    <Content Include="Views\Hour\HourForm.ascx" />
+    <Content Include="Views\Hour\HourFormCommands.ascx" />
+    <Content Include="Views\Project\Create.aspx" />
+    <Content Include="Views\Project\Delete.aspx" />
+    <Content Include="Views\Project\DeleteSuccess.aspx" />
+    <Content Include="Views\Project\ProjectForm.ascx" />
+    <Content Include="Views\Project\ProjectFormCommands.ascx" />
+    <Content Include="Views\Project\Edit.aspx" />
+    <Content Include="Views\Project\Index.aspx" />
+    <Content Include="Views\Shared\CategoriesUserControl.ascx" />
+    <Content Include="Views\Shared\UserListUserControl.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\Integer.ascx" />
+    <Content Include="Views\Shared\FindUserControl.ascx" />
+    <Content Include="Views\Shared\HourListUserControl.ascx" />
+    <Content Include="Views\Shared\HoursUserControl.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\Decimal.ascx" />
+    <Content Include="Views\Shared\ProfileUserControl.ascx" />
+    <Content Include="Views\Shared\ProjectListUserControl.ascx" />
+    <Content Include="Views\Shared\ProjectsUserControl.ascx" />
+    <Content Include="Views\Shared\StatusesUserControl.ascx" />
+    <Content Include="Views\Shared\NavigationUserControl.ascx" />
+    <Content Include="Views\Shared\TaskListUserControl.ascx" />
+    <Content Include="Views\Status\StatusForm.ascx" />
+    <Content Include="Views\Status\StatusFormCommands.ascx" />
+    <Content Include="Views\Status\Create.aspx" />
+    <Content Include="Views\Status\Edit.aspx" />
+    <Content Include="Views\Task\Create.aspx" />
+    <Content Include="Views\Task\Delete.aspx" />
+    <Content Include="Views\Task\DeleteSuccess.aspx" />
+    <Content Include="Views\Task\Edit.aspx" />
+    <Content Include="Views\Task\Index.aspx" />
+    <Content Include="Views\Task\TaskFilter.ascx" />
+    <Content Include="Views\Task\TaskForm.ascx" />
+    <Content Include="Views\Task\TaskFormCommands.ascx" />
+    <Content Include="Views\User\Create.aspx" />
+    <Content Include="Views\User\Edit.aspx" />
+    <Content Include="Views\User\Index.aspx" />
+    <Content Include="Views\User\UserForm.ascx" />
+    <Content Include="Views\User\UserFormCommands.ascx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Views\Account\ChangePassword.aspx" />
+    <Content Include="Views\Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Views\Account\LogOn.aspx" />
+    <Content Include="Views\Account\Register.aspx" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\Shared\MenuUserControl.ascx" />
+    <Content Include="Views\Shared\Site.Master" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\business\Epiworx.csproj">
+      <Project>{FEF23146-EF0F-43B7-8AB8-F210FD9BDAF9}</Project>
+      <Name>Epiworx</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54167</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/EpiworxWebMvc</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
