@@ -1,0 +1,18 @@
+# common Visual Studio stuff
+/**/*.suo
+/*.suo
+/**/[Bb]in
+/**/obj
+/**/[Dd]ebug
+/**/[Rr]elease
+/**/*.user
+/**/*.aps
+/**/*.eto
+TestResults/
+/**/*.Publish.xml
+*ReSharper*
+/**/*.Debug.config
+/**/*.Release.config
+
+# who needs this?
+.svn/
