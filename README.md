@@ -4,4 +4,6 @@ This is my first foray into open source, so if you I am doing something wrong, o
 
 I can always be reached at mattruma@gmail.com or on twitter at http://www.twitter.com.
 
+![Preview](https://github.com/mattruma/Epiworx/raw/master/Preview.png)
+
 Thanks and looking forward to seeing other developers contributions soon!
