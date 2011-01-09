@@ -1,13 +1,7 @@
-﻿function deleteRecord(action) {
-    if (confirm("Are you sure you want to delete this item?")) {
-        location.href = action;
-    }
-}
-
-$(function () {
+﻿$(function () {
     $("#sidebar .part li").each(function () {
         $(this).bind("click", function () {
-            var link = $(this).find("span > a");
+            var link = $(this).find("a");
             if (link != undefined) {
                 window.location = link.attr("href");
             }

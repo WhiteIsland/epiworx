@@ -178,9 +178,42 @@ namespace Epiworx.WebMvc.Controllers
         [Authorize]
         public ActionResult Delete(int id)
         {
-            HourService.HourDelete(id);
+            var model = new HourFormModel();
 
-            return this.RedirectToAction("Index", "Hour");
+            try
+            {
+                var hour = HourService.HourFetch(id);
+
+                this.Map(hour, model, true);
+            }
+            catch (Exception ex)
+            {
+                this.ModelState.AddModelError(string.Empty, ex.Message);
+            }
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult Delete(int id, HourFormModel model)
+        {
+            try
+            {
+                var hour = HourService.HourFetch(id);
+
+                this.Map(hour, model, true);
+
+                HourService.HourDelete(id);
+
+                return this.View("DeleteSuccess", model);
+            }
+            catch (Exception ex)
+            {
+                this.ModelState.AddModelError(string.Empty, ex.Message);
+            }
+
+            return this.View(model);
         }
 
         public HourFormModel Map(Hour hour, HourFormModel model, bool ignoreBrokenRules)

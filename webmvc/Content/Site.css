@@ -597,7 +597,6 @@ table.list tbody tr:hover td a
 {
     margin: 0px 60px 10px 60px;
     padding: 20px;
-    min-height: 600px;
 }
 
 #main .pretty-box
@@ -674,6 +673,11 @@ table.list tbody tr:hover td a
 #sidebar .part .total span
 {
     float: right;
+}
+
+#sidebar .part .no-records
+{
+    padding: 0px 20px 0px 20px;
 }
 
 #footer

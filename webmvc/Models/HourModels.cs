@@ -35,6 +35,9 @@ namespace Epiworx.WebMvc.Models
         [IntegerRequired(ErrorMessage = "User is required")]
         public int UserId { get; set; }
 
+        [DisplayName("User:")]
+        public string UserName { get; set; }
+
         [DisplayName("Date:")]
         public DateTime Date { get; set; }
 

@@ -116,6 +116,8 @@
     <Content Include="Views\Category\Edit.aspx" />
     <Content Include="Views\Home\Settings.aspx" />
     <Content Include="Views\Hour\Create.aspx" />
+    <Content Include="Views\Hour\Delete.aspx" />
+    <Content Include="Views\Hour\DeleteSuccess.aspx" />
     <Content Include="Views\Hour\Edit.aspx" />
     <Content Include="Views\Hour\HourFilter.ascx" />
     <Content Include="Views\Hour\Index.aspx" />
