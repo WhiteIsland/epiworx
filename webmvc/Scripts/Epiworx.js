@@ -39,13 +39,13 @@ $(function () {
     $("#filter select").hide();
 
     $("#filter strong").html(function () {
-        return $(this).next().find(":selected").text(); 
+        return $(this).next().find(":selected").text();
     })
 
     $("#filter strong").each(function () {
-        $(this).bind("click", function () {
-            $(this).css("display", "none");
-            $(this).siblings("select:first").css("display", "");
+        $(this).click(function () {
+            $(this).hide();
+            $(this).siblings("select:first").show();
         });
     });
 });
