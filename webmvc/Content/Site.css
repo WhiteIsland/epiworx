@@ -321,6 +321,7 @@ table.list tbody tr:hover td a
     text-transform: lowercase;
     display: inline;
     font-size: 12px;
+    font-weight: bold;
     padding: 2px 7px 2px 7px;
     white-space: nowrap;
 }
@@ -628,6 +629,18 @@ table.list tbody tr:hover td a
 #sidebar .part
 {
     border: solid 1px #E2E2E2;
+}
+
+#sidebar .part a.action
+{
+    clear: both;
+    display: block;
+    margin: 10px 0px 0px 20px;
+}
+
+#sidebar .part a.action:hover
+{
+   text-decoration: underline;
 }
 
 #sidebar .part h4

@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="changePasswordSuccessContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Forgot Password</h2>
+    <h2>Forgot<span>Password</span></h2>
     <p>
         Your password has been reset successfully.
     </p>

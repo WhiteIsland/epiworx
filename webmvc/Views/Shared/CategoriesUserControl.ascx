@@ -12,5 +12,5 @@
         </li>
         <% } %>
     </ul>
-    <%: this.Html.ActionLink("Add a category", "Create", "Category") %>
+    <%: this.Html.ActionLink("Add a new category", "Create", "Category", null, new { @class = "action" })%>
 </div>
