@@ -31,6 +31,26 @@ namespace Epiworx.WebMvc.Helpers
             return null;
         }
 
+        public static bool? ToBoolean(int? value, bool defaultValue)
+        {
+            if (!value.HasValue)
+            {
+                return defaultValue;
+            }
+
+            if (value.Value == 1)
+            {
+                return false;
+            }
+
+            if (value.Value == -1)
+            {
+                return true;
+            }
+
+            return null;
+        }
+
         public static int ToInteger(bool? value)
         {
             if (!value.HasValue)

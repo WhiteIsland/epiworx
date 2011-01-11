@@ -43,7 +43,7 @@ namespace Epiworx.WebMvc.Controllers
                     CategoryId = categoryId,
                     StatusId = statusId,
                     AssignedTo = assignedTo,
-                    IsArchived = DataHelper.ToBoolean(isArchived),
+                    IsArchived = DataHelper.ToBoolean(isArchived, false),
                     Text = text
                 };
 
