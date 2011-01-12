@@ -9,6 +9,18 @@ using Epiworx.Core;
 
 namespace Epiworx.WebMvc.Models
 {
+    public class TaskByCategoryListModel : ModelListBase
+    {
+        public IEnumerable<ITask> Tasks { get; set; }
+        public IEnumerable<ICategory> Categories { get; set; }
+    }
+
+    public class TaskByStatusListModel : ModelListBase
+    {
+        public IEnumerable<ITask> Tasks { get; set; }
+        public IEnumerable<IStatus> Statuses { get; set; }
+    }
+
     public class TaskIndexModel : TaskListModel
     {
         public int ProjectId { get; set; }

@@ -131,6 +131,8 @@
     <Content Include="Views\Project\Edit.aspx" />
     <Content Include="Views\Project\Index.aspx" />
     <Content Include="Views\Shared\CategoriesUserControl.ascx" />
+    <Content Include="Views\Shared\TaskByStatusListUserControl.ascx" />
+    <Content Include="Views\Shared\TaskByCategoryListUserControl.ascx" />
     <Content Include="Views\Shared\UserListUserControl.ascx" />
     <Content Include="Views\Shared\EditorTemplates\Integer.ascx" />
     <Content Include="Views\Shared\FindUserControl.ascx" />

@@ -6,6 +6,7 @@ using System.Linq.Dynamic;
 using System.Web;
 using System.Web.Mvc;
 using Epiworx.Business;
+using Epiworx.Core;
 using Epiworx.Service;
 using Epiworx.WebMvc.Helpers;
 using Epiworx.WebMvc.Models;
@@ -49,6 +50,7 @@ namespace Epiworx.WebMvc.Controllers
 
             var tasks = TaskService.TaskFetchInfoList(criteria)
                 .AsQueryable();
+
 
             tasks = tasks.OrderBy(string.Format("{0} {1}", model.SortBy, model.SortOrder));
 

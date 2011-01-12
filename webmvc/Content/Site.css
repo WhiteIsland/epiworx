@@ -374,6 +374,11 @@ table.list tbody tr:hover td a
     margin-bottom: 10px;
 }
 
+.instructions a:hover
+{
+    color: #000;
+}
+
 .part
 {
     margin-bottom: 40px;
@@ -594,6 +599,11 @@ table.list tbody tr:hover td a
     color: #fff;
 }
 
+#page
+{
+    min-width: 1400px;
+}
+
 #main
 {
     margin: 0px 60px 10px 60px;
@@ -658,11 +668,12 @@ table.list tbody tr:hover td a
     padding-top: 0px;
 }
 
-#sidebar .part .name-value a
+#sidebar .part .name-value a, #sidebar .part .name-value em
 {
     color: #666666;
     float: right;
     font-size: 12px;
+    font-style: normal;
 }
 
 #sidebar .part .name-value li:hover
@@ -670,7 +681,7 @@ table.list tbody tr:hover td a
     color: #fff;
 }
 
-#sidebar .part .name-value li:hover a
+#sidebar .part .name-value li:hover a, #sidebar .part .name-value li:hover em
 {
     color: #fff;
 }
@@ -696,7 +707,7 @@ table.list tbody tr:hover td a
 #footer
 {
     margin-top: 10px;
-    padding: 10px 80px 10px 80px;
+    padding: 10px 80px 0px 80px;
     color: #999999;
     text-align: left;
 }
@@ -732,4 +743,11 @@ table.list tbody tr:hover td a
     font-weight: normal;
     letter-spacing: 1px;
     float: right;
+}
+
+#footer .pretty-box
+{
+    margin-top: 20px;
+    height: 15px;
+    width: 340px;
 }

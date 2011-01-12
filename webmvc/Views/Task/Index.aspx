@@ -1,14 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Epiworx.WebMvc.Models.TaskIndexModel>" %>
 
 <%@ Import Namespace="Epiworx.WebMvc.Helpers" %>
+<%@ Import Namespace="Epiworx.WebMvc.Models" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Epiworx - Tasks
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
         <span>Tasks</span></h2>
-     <%this.Html.RenderPartial("TaskFilter", this.Model);%>
-     <%this.Html.RenderPartial("TaskListUserControl", this.Model.Tasks);%>
+    <%this.Html.RenderPartial("TaskFilter", this.Model);%>
+    <%this.Html.RenderPartial("TaskListUserControl", this.Model.Tasks);%>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="SideBarContent" runat="server">
     <div class="part">
@@ -21,5 +22,7 @@
                 <%: this.Html.ActionLink("Add a Project", "Create", "Project") %></li>
         </ul>
     </div>
+    <% this.Html.RenderPartial("TaskByCategoryListUserControl", new TaskByCategoryListModel { Tasks = this.Model.Tasks, Categories = this.Model.Categories }); %>
+    <% this.Html.RenderPartial("TaskByStatusListUserControl", new TaskByStatusListModel { Tasks = this.Model.Tasks, Statuses = this.Model.Statuses }); %>
     <% this.Html.RenderPartial("ProjectsUserControl", this.Model.Projects); %>
 </asp:Content>

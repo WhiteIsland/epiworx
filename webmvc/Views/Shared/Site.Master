@@ -14,7 +14,7 @@
     <script type="text/javascript" src="<%= this.Url.Content("~/Scripts/Epiworx.Form.js") %>"></script>
 </head>
 <body>
-    <div class="page">
+    <div id="page">
         <div id="header">
             <div id="title">
                 <h1>
@@ -59,6 +59,7 @@
                 <li><a href="http://www.opensource.org/licenses/gpl-3.0">Licensing</a></li>
             </ul>
             <strong>No copyright. No rights reserved.</strong>
+            <div class="pretty-box"></div>
         </div>
     </div>
 </body>
