@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using Epiworx.Security;
+using Epiworx.WebMvc.Helpers;
 
 namespace Epiworx.WebMvc.Models
 {
     public class ModelBase
     {
-        public string SelectedTab { get; set; }
+        public string Tab { get; set; }
     }
 
     public class ModelListBase : ModelBase

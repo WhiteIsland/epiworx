@@ -20,7 +20,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             var model = new TaskIndexModel();
 
-            model.SelectedTab = "Task";
+            model.Tab = "Task";
             model.Projects = DataHelper.GetProjectList();
             model.ProjectId = projectId ?? 0;
             model.Categories = DataHelper.GetCategoryList();
@@ -84,7 +84,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             var task = TaskService.TaskNew();
 
-            Csla.Data.DataMapper.Map(model, task, true, "CompletedDate", "AssignedDate", "StartDate");
+            Csla.Data.DataMapper.Map(model, task, true, "EstimatedCompletedDate", "CompletedDate", "AssignedDate", "StartDate");
 
             task = TaskService.TaskSave(task);
 
@@ -123,7 +123,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             var task = TaskService.TaskFetch(id);
 
-            Csla.Data.DataMapper.Map(model, task, true, "CompletedDate", "AssignedDate", "StartDate");
+            Csla.Data.DataMapper.Map(model, task, true, "EstimatedCompletedDate", "CompletedDate", "AssignedDate", "StartDate");
 
             task = TaskService.TaskSave(task);
 
@@ -177,7 +177,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             Csla.Data.DataMapper.Map(task, model, true);
 
-            model.SelectedTab = "Project";
+            model.Tab = "Project";
             model.Statuses = DataHelper.GetStatusList();
             model.Categories = DataHelper.GetCategoryList();
             model.Projects = DataHelper.GetProjectList();

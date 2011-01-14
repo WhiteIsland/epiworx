@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Epiworx.WebMvc.Models.ProjectIndexModel>" %>
 
 <%@ Import Namespace="Epiworx.WebMvc.Helpers" %>
+<%@ Import Namespace="Epiworx.WebMvc.Models" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Epiworx - Projects
 </asp:Content>
@@ -19,7 +20,7 @@
         { 
     %>
     <%
-            this.Html.RenderPartial("ProjectListUserControl", this.Model.Projects);%>
+        this.Html.RenderPartial("ProjectListUserControl", new ProjectListModel { Projects = this.Model.Projects });%>
     <%
         }             
     %>

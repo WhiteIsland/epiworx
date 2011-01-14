@@ -19,7 +19,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             var model = new HomeIndexModel();
 
-            model.SelectedTab = "Home";
+            model.Tab = "Home";
 
             model.Tasks = MyService.TaskFetchInfoList();
             model.Hours = MyService.HourFetchInfoList(DateTime.Today.ToStartOfWeek(), DateTime.Today.ToEndOfWeek());
@@ -32,7 +32,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             var model = new HomeSettingsModel();
 
-            model.SelectedTab = "Home";
+            model.Tab = "Home";
             model.Categories = DataHelper.GetCategoryList();
             model.Statuses = DataHelper.GetStatusList();
 

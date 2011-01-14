@@ -102,6 +102,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Find.png" />
+    <Content Include="Content\Metro-Page.png" />
+    <Content Include="Content\Metro-Footer.png" />
+    <Content Include="Content\Metro-Header.png" />
     <Content Include="Content\Profile.png" />
     <Content Include="Content\Reset.css" />
     <Content Include="Global.asax" />
@@ -163,8 +166,10 @@
     <Content Include="Views\User\Index.aspx" />
     <Content Include="Views\User\UserForm.ascx" />
     <Content Include="Views\User\UserFormCommands.ascx" />
-    <None Include="Web.config" />
-    <Content Include="Content\Site.css" />
+    <None Include="Web.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Content\Metro.css" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />

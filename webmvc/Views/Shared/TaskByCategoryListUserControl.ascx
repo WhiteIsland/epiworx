@@ -8,7 +8,10 @@
             {
         %>
         <li><em>
-            <%: this.Model.Tasks.Count(row => row.CategoryId == category.CategoryId)%></em>
+            <%: string.Format(
+                "{0} at {1:N0} points", 
+                this.Model.Tasks.Count(row => row.CategoryId == category.CategoryId),
+                this.Model.Tasks.Where(row => row.CategoryId == category.CategoryId).Sum(row => row.EstimatedDuration))%></em>
             <span>
                 <%: category.Name%></span></li>
         <%

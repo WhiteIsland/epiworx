@@ -97,7 +97,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             Csla.Data.DataMapper.Map(category, model, true);
 
-            model.SelectedTab = "Home";
+            model.Tab = "Home";
             model.IsNew = category.IsNew;
             model.IsValid = category.IsValid;
 

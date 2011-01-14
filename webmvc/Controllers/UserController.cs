@@ -16,7 +16,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             var model = new UserIndexModel();
 
-            model.SelectedTab = "User";
+            model.Tab = "User";
             model.Users = DataHelper.GetUserList();
 
             return this.View(model);
@@ -121,7 +121,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             Csla.Data.DataMapper.Map(user, model, true);
 
-            model.SelectedTab = "User";
+            model.Tab = "User";
             model.Roles = DataHelper.GetRoleList();
             model.IsNew = user.IsNew;
             model.IsValid = user.IsValid;

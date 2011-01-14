@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage<Epiworx.WebMvc.Models.ModelBase>" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -7,7 +7,7 @@
         <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
     </title>
     <link href="../../Content/Reset.css" rel="stylesheet" type="text/css" />
-    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Metro.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="<%= this.Url.Content("~/Scripts/jquery-1.4.1.min.js") %>"></script>
     <script type="text/javascript" src="<%= this.Url.Content("~/Scripts/jquery.form.js") %>"></script>
     <script type="text/javascript" src="<%= this.Url.Content("~/Scripts/Epiworx.js") %>"></script>
@@ -15,17 +15,17 @@
 </head>
 <body>
     <div id="page">
-        <div id="header">
-            <div id="title">
-                <h1>
-                    <a href="<%= this.Url.Action("Index", "Home") %>">Epiworx</a></h1>
-                <p>
-                    The simple to setup and use open source task management software</p>
+        <div id="header-container">
+            <div id="header">
+                <div id="title">
+                    <h1>
+                        <a href="<%= this.Url.Action("Index", "Home") %>">Epiworx</a></h1>
+                    <p>
+                        The simple to setup and use open source task management software</p>
+                </div>
+                <% Html.RenderPartial("ProfileUserControl"); %>
+                <% Html.RenderPartial("MenuUserControl"); %>
             </div>
-            <div class="pretty-box">
-            </div>
-            <% Html.RenderPartial("ProfileUserControl"); %>
-            <% Html.RenderPartial("MenuUserControl"); %>
         </div>
         <% Html.RenderPartial("NavigationUserControl"); %>
         <div id="main">
@@ -59,7 +59,8 @@
                 <li><a href="http://www.opensource.org/licenses/gpl-3.0">Licensing</a></li>
             </ul>
             <strong>No copyright. No rights reserved.</strong>
-            <div class="pretty-box"></div>
+            <div class="pretty-box">
+            </div>
         </div>
     </div>
 </body>

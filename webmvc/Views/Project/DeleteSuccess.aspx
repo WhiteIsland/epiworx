@@ -5,10 +5,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        Delete Success</h2>
+        Delete Project Success</h2>
     <fieldset>
         <p>
-            The project <strong>
+            The product <strong>
                 <%:this.Model.Name%></strong> was successfully deleted.</p>
     </fieldset>
 </asp:Content>

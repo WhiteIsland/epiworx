@@ -9,11 +9,11 @@
         {
     %>
     <h2>
-        Delete Confirmation</h2>
+        Delete Project Confirmation</h2>
     <%: this.Html.ValidationSummary(true, "Whoops! Looks like some errors were encountered, please correct and try again.") %>
     <fieldset>
         <p>
-            You are attempting to delete the project <strong>
+            You are attempting to delete the product <strong>
                 <%:this.Model.Name%></strong>. Click the <strong>Continue</strong> button to
             delete to continue.</p>
     </fieldset>

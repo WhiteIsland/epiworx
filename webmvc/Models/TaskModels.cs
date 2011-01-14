@@ -32,11 +32,17 @@ namespace Epiworx.WebMvc.Models
 
     public class TaskListModel : ModelListBase
     {
-        public IQueryable<ICategory> Categories { get; set; }
-        public IQueryable<IProject> Projects { get; set; }
-        public IQueryable<IStatus> Statuses { get; set; }
-        public IQueryable<ITask> Tasks { get; set; }
-        public IQueryable<IUser> AssignedToUsers { get; set; }
+        public bool HideUserColumn { get; set; }
+        public IEnumerable<ICategory> Categories { get; set; }
+        public IEnumerable<IProject> Projects { get; set; }
+        public IEnumerable<IStatus> Statuses { get; set; }
+        public IEnumerable<ITask> Tasks { get; set; }
+        public IEnumerable<IUser> AssignedToUsers { get; set; }
+
+        public TaskListModel()
+        {
+            this.HideUserColumn = false;
+        }
     }
 
     public class TaskFormModel : ModelBusinessBase
@@ -80,7 +86,7 @@ namespace Epiworx.WebMvc.Models
         [DisplayName("Estimated duration:")]
         public decimal EstimatedDuration { get; set; }
 
-        [DisplayName("Add tags to the task:")]
+        [DisplayName("Points:")]
         public string Labels { get; set; }
 
         [DisplayName("Enter some notes that provide more detail about the task:")]
@@ -93,6 +99,6 @@ namespace Epiworx.WebMvc.Models
         public IEnumerable<ICategory> Categories { get; set; }
         public IEnumerable<IProject> Projects { get; set; }
         public IEnumerable<IUser> Users { get; set; }
-        public IQueryable<IHour> Hours { get; set; }
+        public IEnumerable<IHour> Hours { get; set; }
     }
 }

@@ -155,7 +155,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             var model = new ChangePasswordModel();
 
-            model.SelectedTab = "Home";
+            model.Tab = "Home";
 
             return this.View(model);
         }
@@ -171,7 +171,7 @@ namespace Epiworx.WebMvc.Controllers
                 return this.RedirectToAction("LogOff");
             }
 
-            model.SelectedTab = "Home";
+            model.Tab = "Home";
 
             return this.View(model);
         }

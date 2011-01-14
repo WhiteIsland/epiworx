@@ -18,9 +18,10 @@ namespace Epiworx.WebMvc.Models
 
     public class HourListModel : ModelListBase
     {
-        public IQueryable<IHour> Hours { get; set; }
-        public IQueryable<IUser> Users { get; set; }
-        public IQueryable<IProject> Projects { get; set; }
+        public bool HideUserColumn { get; set; }
+        public IEnumerable<IHour> Hours { get; set; }
+        public IEnumerable<IUser> Users { get; set; }
+        public IEnumerable<IProject> Projects { get; set; }
     }
 
     public class HourFormModel : ModelBusinessBase

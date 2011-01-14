@@ -18,7 +18,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             var model = new HourIndexModel();
 
-            model.SelectedTab = "Hour";
+            model.Tab = "Hour";
             model.Projects = DataHelper.GetProjectList();
             model.ProjectId = projectId ?? 0;
             model.Users = DataHelper.GetUserList();
@@ -220,7 +220,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             Csla.Data.DataMapper.Map(hour, model, true);
 
-            model.SelectedTab = "Hour";
+            model.Tab = "Hour";
             model.Users = DataHelper.GetUserList();
             model.Statuses = DataHelper.GetStatusList();
             model.Categories = DataHelper.GetCategoryList();

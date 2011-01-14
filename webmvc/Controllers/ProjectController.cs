@@ -17,7 +17,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             var model = new ProjectIndexModel();
 
-            model.SelectedTab = "Project";
+            model.Tab = "Project";
             model.Projects = DataHelper.GetProjectList();
 
             return this.View(model);
@@ -141,7 +141,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             Csla.Data.DataMapper.Map(project, model, true);
 
-            model.SelectedTab = "Project";
+            model.Tab = "Project";
             model.IsNew = project.IsNew;
             model.IsValid = project.IsValid;
 

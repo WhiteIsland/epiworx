@@ -33,20 +33,8 @@
     </p>
     <p class="span1">
         <%: this.Html.LabelFor(m => m.EstimatedDuration) %>
-        <%: this.Html.EditorFor(m => m.EstimatedDuration)%>
+        <%: this.Html.EstimatedDurationDropDownListFor(m => m.EstimatedDuration, this.Model.EstimatedDuration)%>
         <%: this.Html.ValidationMessageFor(m => m.EstimatedDuration)%>
-    </p>
-    <p class="span1 last">
-        <%: this.Html.LabelFor(m => m.EstimatedCompletedDate) %>
-        <%: this.Html.EditorFor(m => m.EstimatedCompletedDate)%>
-        <%: this.Html.ValidationMessageFor(m => m.EstimatedCompletedDate)%>
-    </p>
-    <div class="clear">
-    </div>
-    <p class="span3">
-        <%: this.Html.LabelFor(m => m.Labels) %>
-        <%: this.Html.TextBoxFor(m => m.Labels)%>
-        <%: this.Html.ValidationMessageFor(m => m.Labels)%>
     </p>
     <div class="clear">
     </div>

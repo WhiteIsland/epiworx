@@ -9,11 +9,11 @@
         {
     %>
     <h2>
-        Delete Confirmation</h2>
+        Delete Story Confirmation</h2>
     <%: this.Html.ValidationSummary(true, "Whoops! Looks like some errors were encountered, please correct and try again.") %>
     <fieldset>
         <p>
-            You are attempting to delete the task <strong>
+            You are attempting to delete the story <strong>
                 <%:this.Model.TaskId %></strong>. Click the <strong>Continue</strong> button to
             delete to continue.</p>
     </fieldset>

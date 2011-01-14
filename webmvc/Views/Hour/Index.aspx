@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Epiworx.WebMvc.Models.HourIndexModel>" %>
 
 <%@ Import Namespace="Epiworx.WebMvc.Helpers" %>
+
+<%@ Import Namespace="Epiworx.WebMvc.Models" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Epiworx - Hours
 </asp:Content>
@@ -8,7 +10,7 @@
     <h2>
         <span>Hours</span></h2>
     <% this.Html.RenderPartial("HourFilter", this.Model);%>
-    <% this.Html.RenderPartial("HourListUserControl", this.Model.Hours.OrderByDescending(row => row.Date));%>
+    <% this.Html.RenderPartial("HourListUserControl", new HourListModel { Hours = this.Model.Hours });%>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="SideBarContent" runat="server">
     <div class="part">

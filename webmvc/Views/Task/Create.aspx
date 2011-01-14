@@ -9,7 +9,7 @@
         {
     %>
     <h2>
-        Add<span>Task</span></h2>
+        Add<span>Story</span></h2>
     <% this.Html.RenderPartial("TaskForm"); %>
     <% this.Html.RenderPartial("TaskFormCommands"); %>
     <% 

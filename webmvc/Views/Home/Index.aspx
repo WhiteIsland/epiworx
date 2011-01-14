@@ -7,13 +7,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="part">
         <h2>
-            My<span>Tasks</span></h2>
-        <% this.Html.RenderPartial("TaskListUserControl", this.Model.Tasks);%>
+            My<span>Stories</span></h2>
+        <% this.Html.RenderPartial("TaskListUserControl", new TaskListModel { Tasks = this.Model.Tasks, HideUserColumn = true });%>
     </div>
     <div class="part">
         <h2>
             My<span>Hours</span></h2>
-        <% this.Html.RenderPartial("HourListUserControl", this.Model.Hours); %>
+        <% this.Html.RenderPartial("HourListUserControl", new HourListModel { Hours = this.Model.Hours, HideUserColumn = true }); %>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="SideBarContent" runat="server">
@@ -24,7 +24,7 @@
             <li class="first">
                 <%: this.Html.ActionLink("Add a New Hour", "Create", "Hour") %></li>
             <li>
-                <%: this.Html.ActionLink("Add a New Task", "Create", "Task")%></li>
+                <%: this.Html.ActionLink("Add a New Story", "Create", "Task")%></li>
             <li class="last">
                 <%: this.Html.ActionLink("Add a New Project", "Create", "Project")%></li>
         </ul>

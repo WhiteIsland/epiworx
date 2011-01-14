@@ -7,9 +7,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        <span>Tasks</span></h2>
+        <span>Stories</span></h2>
     <%this.Html.RenderPartial("TaskFilter", this.Model);%>
-    <%this.Html.RenderPartial("TaskListUserControl", this.Model.Tasks);%>
+    <%this.Html.RenderPartial("TaskListUserControl", this.Model);%>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="SideBarContent" runat="server">
     <div class="part">
@@ -17,9 +17,9 @@
             Things To Do</h4>
         <ul>
             <li class="first">
-                <%: this.Html.ActionLink("Add a Task", "Create", "Task") %></li>
+                <%: this.Html.ActionLink("Add a New Story", "Create", "Task") %></li>
             <li class="last">
-                <%: this.Html.ActionLink("Add a Project", "Create", "Project") %></li>
+                <%: this.Html.ActionLink("Add a New Project", "Create", "Project")%></li>
         </ul>
     </div>
     <% this.Html.RenderPartial("TaskByCategoryListUserControl", new TaskByCategoryListModel { Tasks = this.Model.Tasks, Categories = this.Model.Categories }); %>

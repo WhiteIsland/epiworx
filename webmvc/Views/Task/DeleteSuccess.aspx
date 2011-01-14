@@ -5,10 +5,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        Delete Success</h2>
+        Delete Story Success</h2>
     <fieldset>
         <p>
-            The task <strong>
+            The story <strong>
                 <%:this.Model.TaskId%></strong> was successfully deleted.</p>
     </fieldset>
 </asp:Content>

@@ -1,7 +1,7 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<Epiworx.Business.IProject>>" %>
+﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<Epiworx.WebMvc.Models.ProjectListModel>" %>
 <%@ Import Namespace="Epiworx.WebMvc.Helpers" %>
 <ul class="list">
-    <% foreach (var project in this.Model.OrderBy(row => row.Name))
+    <% foreach (var project in this.Model.Projects.OrderBy(row => row.Name))
        {
     %>
     <li>
