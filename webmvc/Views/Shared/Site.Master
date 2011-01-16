@@ -29,8 +29,6 @@
         </div>
         <% Html.RenderPartial("NavigationUserControl"); %>
         <div id="main">
-            <div class="pretty-box">
-            </div>
             <table style="width: 100%;">
                 <tr>
                     <td id="body">
@@ -59,8 +57,6 @@
                 <li><a href="http://www.opensource.org/licenses/gpl-3.0">Licensing</a></li>
             </ul>
             <strong>No copyright. No rights reserved.</strong>
-            <div class="pretty-box">
-            </div>
         </div>
     </div>
 </body>

@@ -299,7 +299,7 @@ namespace Epiworx.Tests.Helpers
 
             user.SetPassword(password);
 
-            user = UserService.UserSave(user, null);
+            user = UserService.UserSave(user, new EmptyMessenger());
 
             BusinessPrincipal.Logout();
 
@@ -320,7 +320,7 @@ namespace Epiworx.Tests.Helpers
 
             user.SetPassword(password);
 
-            user = UserService.UserSave(user, null);
+            user = UserService.UserSave(user, new EmptyMessenger());
 
             BusinessPrincipal.Logout();
 
@@ -341,7 +341,7 @@ namespace Epiworx.Tests.Helpers
 
             user.SetPassword(password);
 
-            user = UserService.UserSave(user, null);
+            user = UserService.UserSave(user, new EmptyMessenger());
 
             BusinessPrincipal.Logout();
 

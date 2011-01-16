@@ -13,6 +13,7 @@ namespace Epiworx.WebMvc.Models
     {
         public int ProjectId { get; set; }
         public int UserId { get; set; }
+        public string Date { get; set; }
         public int IsArchived { get; set; }
     }
 

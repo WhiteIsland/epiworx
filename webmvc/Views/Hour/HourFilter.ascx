@@ -9,6 +9,8 @@
     recorded by <span><strong></strong>
         <%: this.Html.UserDropDownListFor(m => m.UserId, this.Model.Users, this.Model.UserId, "any user", "0")%></span>
     and <span><strong></strong>
+        <%: this.Html.DateRangeDropDownListFor(m => m.Date, "Date", this.Model.Date)%></span>
+    and <span><strong></strong>
         <%: this.Html.IsArchivedDropDownListFor(m => m.IsArchived, this.Model.IsArchived)%></span>
     <div class="separator">
     </div>
@@ -21,12 +23,17 @@
         $(document).ready(function () {
             $("#SortBy").change(onFilterValueChanged);
             $("#SortOrder").change(onFilterValueChanged);
-            $("#UserId").change(onAssignedToChanged);
+            $("#UserId").change(onUserIdChanged);
+            $("#Date").change(onDateChanged);
             $("#ProjectId").change(onFilterValueChanged);
             $("#IsArchived").change(onFilterValueChanged);
         });
 
-        function onAssignedToChanged()  {
+        function onUserIdChanged()  {
+            onFilterValueChanged();
+        }
+
+        function onDateChanged()  {
             onFilterValueChanged();
         }
 
@@ -52,6 +59,13 @@
             {
                 query = query + "\&";
                 query = query + "userId=" + userId.val();
+            }
+
+            var date = $("#Date option:selected");
+            if (date.val() != 0)
+            {
+                query = query + "\&";
+                query = query + "date=" + date.val();
             }
 
             var isArchived = $("#IsArchived option:selected");

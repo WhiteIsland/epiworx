@@ -26,13 +26,20 @@ namespace Epiworx.Core.Messenger
 
         public EmailMessenger()
         {
-            this.SmtpServer = ConfigurationManager.AppSettings["MailSmtpServer"];
-            this.SmtpServerPort = int.Parse(ConfigurationManager.AppSettings["MailSmtpServerPort"]);
-            this.Sender = ConfigurationManager.AppSettings["MailFrom"];
-            this.UserName = ConfigurationManager.AppSettings["MailUserName"];
-            this.Password = ConfigurationManager.AppSettings["MailPassword"];
-            this.EnableSsl = bool.Parse(ConfigurationManager.AppSettings["MailSslEnabled"]);
-            this.IsBodyHtml = true;
+            try
+            {
+                this.SmtpServer = ConfigurationManager.AppSettings["MailSmtpServer"];
+                this.SmtpServerPort = int.Parse(ConfigurationManager.AppSettings["MailSmtpServerPort"]);
+                this.Sender = ConfigurationManager.AppSettings["MailFrom"];
+                this.UserName = ConfigurationManager.AppSettings["MailUserName"];
+                this.Password = ConfigurationManager.AppSettings["MailPassword"];
+                this.EnableSsl = bool.Parse(ConfigurationManager.AppSettings["MailSslEnabled"]);
+                this.IsBodyHtml = true;
+            }
+            catch
+            {
+                // don't do anything    
+            }
 
             this.Recipients = new List<string>();
             this.CcRecipients = new List<string>();
