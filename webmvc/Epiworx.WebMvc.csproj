@@ -102,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Close.png" />
+    <Content Include="Content\Plain.css" />
     <Content Include="Content\Find.png" />
     <Content Include="Content\Metro-Page.png" />
     <Content Include="Content\Metro-Footer.png" />

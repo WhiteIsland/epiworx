@@ -4,9 +4,6 @@
     Epiworx - Edit Hour
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <%@ page title="" language="C#" inherits="System.Web.Mvc.ViewPage<Epiworx.WebMvc.Models.HourFormModel>" %>
-
     <%
         using (this.Html.BeginForm("Edit", "Hour", new { id = this.Model.HourId }, FormMethod.Post, new { id = "edit-form" }))
         {

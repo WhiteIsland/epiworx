@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<Epiworx.Business.ICategory>>" %>
 <div class="part">
-    <h3>
-        Categories</h3>
+    <h4>
+        Categories</h4>
     <ul>
         <%           
             foreach (var category in this.Model)
@@ -11,6 +11,7 @@
             <%= this.Html.ActionLink(category.Name, "Edit", "Category", new { id = category.CategoryId, title = category.Description}, null)%>
         </li>
         <% } %>
+        <li>
+            <%: this.Html.ActionLink("Add a New Category...", "Create", "Category")%></li>
     </ul>
-    <%: this.Html.ActionLink("Add a new category", "Create", "Category", null, new { @class = "action" })%>
 </div>

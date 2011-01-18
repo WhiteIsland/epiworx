@@ -629,18 +629,6 @@ table.list tbody tr:hover td a
     border: solid 1px #E2E2E2;
 }
 
-#sidebar .part a.action
-{
-    clear: both;
-    display: block;
-    margin: 10px 0px 0px 20px;
-}
-
-#sidebar .part a.action:hover
-{
-    text-decoration: underline;
-}
-
 #sidebar .part h4
 {
     padding: 10px 20px 0px 20px;
