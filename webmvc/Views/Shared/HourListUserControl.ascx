@@ -44,7 +44,7 @@
         %>
         <tr>
             <td>
-                <%: this.Html.ActionLink(hour.Date.ToString("MM.dd.yyyy"), "Edit", "Hour", new { id = hour.HourId }) %>
+                <%: this.Html.ActionLink(hour.Date.ToString("MM.dd.yyyy"), "Edit", "Hour", new { id = hour.HourId }, null) %>
             </td>
             <% if (!this.Model.HideUserColumn)
                {
