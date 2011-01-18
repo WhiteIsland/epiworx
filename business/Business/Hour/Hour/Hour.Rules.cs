@@ -13,7 +13,7 @@ namespace Epiworx.Business
     {
         protected override void AddBusinessRules()
         {
-            this.BusinessRules.AddRule(new IntegerRequired(TaskIdProperty, 0));
+            this.BusinessRules.AddRule(new IntegerRequired(ProjectIdProperty, 0));
             this.BusinessRules.AddRule(new IntegerRequired(UserIdProperty, 0));
             this.BusinessRules.AddRule(new DateTimeRequired(DateProperty));
             this.BusinessRules.AddRule(new DecimalRequired(DurationProperty, 0));

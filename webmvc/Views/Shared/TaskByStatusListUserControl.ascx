@@ -7,7 +7,8 @@
             foreach (var status in this.Model.Statuses.OrderBy(row => row.Ordinal))
             {
         %>
-        <li><em>
+        <li><div class="box" style="color: <%= status.ForeColor %>; background-color: <%= status.BackColor %>;">
+                    </div><em>
             <%: string.Format(
                 "{0} at {1:N0} points",
                 this.Model.Tasks.Count(row => row.StatusId == status.StatusId),

@@ -24,7 +24,7 @@ namespace Epiworx.Business
         public int ProjectId
         {
             get { return this.GetProperty(ProjectIdProperty); }
-            internal set { this.SetProperty(ProjectIdProperty, value); }
+            set { this.SetProperty(ProjectIdProperty, value); }
         }
 
         private static Csla.PropertyInfo<string> ProjectNameProperty =

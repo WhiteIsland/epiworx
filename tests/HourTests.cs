@@ -74,14 +74,14 @@ namespace Epiworx.Tests
             hour.UserId = 0;
             hour.Date = DateTime.MaxValue.Date;
 
-            Assert.IsTrue(ValidationHelper.ContainsRule(hour, DbType.Int32, "TaskId"),
-                "TaskId should be required");
+            Assert.IsTrue(ValidationHelper.ContainsRule(hour, DbType.Int32, "ProjectId"),
+                "ProjectId should be required");
             Assert.IsTrue(ValidationHelper.ContainsRule(hour, DbType.Int32, "UserId"),
                 "UserId should be required");
             Assert.IsTrue(ValidationHelper.ContainsRule(hour, DbType.DateTime, "Date"),
                 "Date should be required");
             Assert.IsTrue(ValidationHelper.ContainsRule(hour, DbType.Decimal, "Duration"),
-             "Duration should be required");
+                "Duration should be required");
         }
 
         [TestMethod]
@@ -91,6 +91,7 @@ namespace Epiworx.Tests
 
             var task = BusinessHelper.CreateTask();
 
+            hour.ProjectId = task.ProjectId;
             hour.TaskId = task.TaskId;
             hour.Date = DateTime.Now.Date;
             hour.Duration = 8;
@@ -109,6 +110,7 @@ namespace Epiworx.Tests
 
             var task = BusinessHelper.CreateTask();
 
+            hour.ProjectId = task.ProjectId;
             hour.TaskId = task.TaskId;
             hour.Date = DateTime.Now.Date;
             hour.Duration = 8;
@@ -136,6 +138,7 @@ namespace Epiworx.Tests
 
             var task = BusinessHelper.CreateTask();
 
+            hour.ProjectId = task.ProjectId;
             hour.TaskId = task.TaskId;
             hour.Date = DateTime.Now.Date;
             hour.Duration = 8;
@@ -164,6 +167,7 @@ namespace Epiworx.Tests
 
             var task = BusinessHelper.CreateTask();
 
+            hour.ProjectId = task.ProjectId;
             hour.TaskId = task.TaskId;
             hour.Date = DateTime.Now.Date;
             hour.Duration = 8;
@@ -183,6 +187,7 @@ namespace Epiworx.Tests
 
             var task = BusinessHelper.CreateTask();
 
+            hour.ProjectId = task.ProjectId;
             hour.TaskId = task.TaskId;
             hour.Date = DateTime.Now.Date;
             hour.Duration = 8;
@@ -192,6 +197,7 @@ namespace Epiworx.Tests
 
             hour = HourService.HourNew();
 
+            hour.ProjectId = task.ProjectId;
             hour.TaskId = task.TaskId;
             hour.Date = DateTime.Now.Date;
             hour.Duration = 8;

@@ -101,6 +101,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Close.png" />
     <Content Include="Content\Find.png" />
     <Content Include="Content\Metro-Page.png" />
     <Content Include="Content\Metro-Footer.png" />
@@ -111,6 +112,7 @@
     <Content Include="Scripts\Epiworx.Form.js" />
     <Content Include="Scripts\Epiworx.js" />
     <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Scripts\jquery.simplemodal.1.4.1.min.js" />
     <Content Include="Views\Account\ForgotPassword.aspx" />
     <Content Include="Views\Account\ForgotPasswordSuccess.aspx" />
     <Content Include="Views\Category\CategoryForm.ascx" />

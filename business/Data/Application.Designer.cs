@@ -34,6 +34,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Task_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.User), "Task", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.Task), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Task_UserModifiedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.User), "Task", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.Task), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Task_UserAssignedTo", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.User), "Task", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.Task), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Hour_Project", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.Project), "Hour", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.Hour), true)]
 
 #endregion
 
@@ -685,7 +686,8 @@ namespace Epiworx.Data
         /// <param name="modifiedDate">Initial value of the ModifiedDate property.</param>
         /// <param name="createdBy">Initial value of the CreatedBy property.</param>
         /// <param name="createdDate">Initial value of the CreatedDate property.</param>
-        public static Hour CreateHour(global::System.Int32 hourId, global::System.Int32 taskId, global::System.Int32 userId, global::System.DateTime date, global::System.Decimal duration, global::System.String labels, global::System.Boolean isArchived, global::System.String notes, global::System.Int32 modifiedBy, global::System.DateTime modifiedDate, global::System.Int32 createdBy, global::System.DateTime createdDate)
+        /// <param name="projectId">Initial value of the ProjectId property.</param>
+        public static Hour CreateHour(global::System.Int32 hourId, global::System.Int32 taskId, global::System.Int32 userId, global::System.DateTime date, global::System.Decimal duration, global::System.String labels, global::System.Boolean isArchived, global::System.String notes, global::System.Int32 modifiedBy, global::System.DateTime modifiedDate, global::System.Int32 createdBy, global::System.DateTime createdDate, global::System.Int32 projectId)
         {
             Hour hour = new Hour();
             hour.HourId = hourId;
@@ -700,6 +702,7 @@ namespace Epiworx.Data
             hour.ModifiedDate = modifiedDate;
             hour.CreatedBy = createdBy;
             hour.CreatedDate = createdDate;
+            hour.ProjectId = projectId;
             return hour;
         }
 
@@ -996,6 +999,30 @@ namespace Epiworx.Data
         private global::System.DateTime _CreatedDate;
         partial void OnCreatedDateChanging(global::System.DateTime value);
         partial void OnCreatedDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ProjectId
+        {
+            get
+            {
+                return _ProjectId;
+            }
+            set
+            {
+                OnProjectIdChanging(value);
+                ReportPropertyChanging("ProjectId");
+                _ProjectId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ProjectId");
+                OnProjectIdChanged();
+            }
+        }
+        private global::System.Int32 _ProjectId;
+        partial void OnProjectIdChanging(global::System.Int32 value);
+        partial void OnProjectIdChanged();
 
         #endregion
     
@@ -1149,6 +1176,44 @@ namespace Epiworx.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_Hour_UserModifiedBy", "User", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Hour_Project", "Project")]
+        public Project Project
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("ApplicationModel.FK_Hour_Project", "Project").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("ApplicationModel.FK_Hour_Project", "Project").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Project> ProjectReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("ApplicationModel.FK_Hour_Project", "Project");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Project>("ApplicationModel.FK_Hour_Project", "Project", value);
                 }
             }
         }
@@ -1539,6 +1604,28 @@ namespace Epiworx.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Task>("ApplicationModel.FK_Task_Project", "Task", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Hour_Project", "Hour")]
+        public EntityCollection<Hour> Hours
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Hour>("ApplicationModel.FK_Hour_Project", "Hour");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Hour>("ApplicationModel.FK_Hour_Project", "Hour", value);
                 }
             }
         }

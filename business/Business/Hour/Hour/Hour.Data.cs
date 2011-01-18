@@ -24,8 +24,8 @@ namespace Epiworx.Business
                         .GetManager(Database.ApplicationConnection, false))
             {
                 var data = ctx.ObjectContext.Hours
+                    .Include("Project")
                     .Include("Task")
-                    .Include("Task.Project")
                     .Include("User")
                     .Single(row => row.HourId == criteria.HourId);
 
@@ -38,10 +38,10 @@ namespace Epiworx.Business
         protected void Fetch(Data.Hour data)
         {
             this.LoadProperty(HourIdProperty, data.HourId);
-            this.LoadProperty(ProjectIdProperty, data.Task.ProjectId);
-            this.LoadProperty(ProjectNameProperty, data.Task.Project.Name);
+            this.LoadProperty(ProjectIdProperty, data.ProjectId);
+            this.LoadProperty(ProjectNameProperty, data.Project.Name);
             this.LoadProperty(TaskIdProperty, data.TaskId);
-            this.LoadProperty(TaskNameProperty, data.Task.Description);
+            this.LoadProperty(TaskNameProperty, data.TaskName);
             this.LoadProperty(UserIdProperty, data.UserId);
             this.LoadProperty(UserNameProperty, data.User.Name);
             this.LoadProperty(DateProperty, data.Date);
@@ -112,6 +112,7 @@ namespace Epiworx.Business
         {
             if (this.IsSelfDirty)
             {
+                data.ProjectId = this.ReadProperty(ProjectIdProperty);
                 data.TaskId = this.ReadProperty(TaskIdProperty);
                 data.UserId = this.ReadProperty(UserIdProperty);
                 data.Date = this.ReadProperty(DateProperty);

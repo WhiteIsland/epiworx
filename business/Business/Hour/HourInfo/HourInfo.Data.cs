@@ -10,10 +10,10 @@ namespace Epiworx.Business
         private void Fetch(Data.Hour data)
         {
             this.LoadProperty(HourIdProperty, data.HourId);
+            this.LoadProperty(ProjectIdProperty, data.ProjectId);
+            this.LoadProperty(ProjectNameProperty, data.Project.Name);
             this.LoadProperty(TaskIdProperty, data.TaskId);
-            this.LoadProperty(TaskNameProperty, data.Task.Description);
-            this.LoadProperty(ProjectIdProperty, data.Task.ProjectId);
-            this.LoadProperty(ProjectNameProperty, data.Task.Project.Name);
+            this.LoadProperty(TaskNameProperty, data.TaskName);
             this.LoadProperty(UserIdProperty, data.UserId);
             this.LoadProperty(UserNameProperty, data.User.Name);
             this.LoadProperty(DateProperty, data.Date);

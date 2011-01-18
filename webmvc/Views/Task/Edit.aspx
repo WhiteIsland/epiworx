@@ -22,7 +22,7 @@
             Things To Do</h4>
         <ul>
             <li class="last">
-                <%: this.Html.ActionLink("Add a New Hour", "Create", "Hour", new { taskId = this.Model.TaskId }, null)%></li>
+                <%: this.Html.ActionLink("Add a New Hour", "Create", "Hour", new { projectId = this.Model.ProjectId, taskId = this.Model.TaskId }, null)%></li>
         </ul>
     </div>
     <div class="clear">

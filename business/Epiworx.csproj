@@ -401,6 +401,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Application.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Data\Task.cs" />
     <Compile Include="Data\Validation\DateRequired.cs" />
     <Compile Include="Core\Helpers\MessageHelper.cs" />
     <Compile Include="Security\Helpers\PasswordHelper.cs" />

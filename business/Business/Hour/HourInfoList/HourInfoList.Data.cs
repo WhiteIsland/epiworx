@@ -19,8 +19,8 @@ namespace Epiworx.Business
                 this.IsReadOnly = false;
 
                 IQueryable<Data.Hour> query = ctx.ObjectContext.Hours
+                    .Include("Project")
                     .Include("Task")
-                    .Include("Task.Project")
                     .Include("User");
                 ;
 
@@ -36,7 +36,7 @@ namespace Epiworx.Business
 
                 if (criteria.ProjectId != null)
                 {
-                    query = query.Where(row => row.Task.ProjectId == criteria.ProjectId);
+                    query = query.Where(row => row.ProjectId == criteria.ProjectId);
                 }
 
                 if (criteria.UserId != null)

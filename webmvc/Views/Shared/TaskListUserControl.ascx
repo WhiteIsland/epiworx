@@ -16,7 +16,7 @@
             <th>
                 No.
             </th>
-            <th>
+            <th style="width:100px;">Status
             </th>
             <th style="width: 200px;">
                 Project
@@ -49,7 +49,7 @@
             </td>
             <td>
                 <div class="box" style="color: <%= task.Status.ForeColor %>; background-color: <%= task.Status.BackColor %>;">
-                    <%: task.StatusName %></div>
+                    </div><%: task.StatusName %>
             </td>
             <td>
                 <%: task.ProjectName %>

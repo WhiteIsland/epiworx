@@ -50,13 +50,19 @@ namespace Epiworx.WebMvc.Controllers
         }
 
         [Authorize]
-        public ActionResult Create(int? taskId)
+        public ActionResult Create(int? projectId, int? taskId)
         {
             var model = new HourFormModel();
 
             try
             {
                 var hour = HourService.HourNew();
+
+                if (projectId.HasValue
+                    && projectId.Value != 0)
+                {
+                    hour.ProjectId = projectId.Value;
+                }
 
                 if (taskId.HasValue
                     && taskId.Value != 0)
@@ -76,66 +82,17 @@ namespace Epiworx.WebMvc.Controllers
 
         [HttpPost]
         [Authorize]
-        public ActionResult Create(int? taskId, HourFormModel model)
+        public ActionResult Create(int? projectId, int? taskId, HourFormModel model)
         {
             var hour = HourService.HourNew();
 
             Csla.Data.DataMapper.Map(model, hour, true);
-
-            if (taskId.HasValue
-                && taskId.Value != 0)
-            {
-                hour.TaskId = taskId.Value;
-            }
-            else
-            {
-                // don't like that this is in the controller, should really be in the business logic
-                // will come back an refactor as unit of work to save both a task and an hour in the
-                // business logic ... or maybe a separate object to handle this use case, just need
-                // some help
-
-                var task = TaskService.TaskNew();
-
-                task.AssignedTo = hour.UserId;
-                task.EstimatedDuration = hour.Duration;
-
-                Csla.Data.DataMapper.Map(model, task, true);
-
-                if (string.IsNullOrEmpty(task.Description))
-                {
-                    task.Description = hour.Notes;
-                }
-
-                if (task.IsValid)
-                {
-                    task = TaskService.TaskSave(task);
-
-                    hour.TaskId = task.TaskId;
-
-                    model.Task = task;
-                }
-                else
-                {
-                    foreach (var brokenRule in task.BrokenRulesCollection)
-                    {
-                        this.ModelState.AddModelError(string.Empty, brokenRule.Description);
-                        this.ModelState.AddModelError(brokenRule.Property, brokenRule.Description);
-                    }
-                }
-            }
 
             hour = HourService.HourSave(hour);
 
             if (hour.IsValid)
             {
                 return new JsonResult { Data = this.Url.Action("Edit", new { id = hour.HourId }) };
-            }
-
-            if (model.Task != null)
-            {
-                TaskService.TaskDelete(hour.TaskId);
-
-                hour.TaskId = 0;
             }
 
             this.Map(hour, model, false);
@@ -224,8 +181,6 @@ namespace Epiworx.WebMvc.Controllers
 
             model.Tab = "Hour";
             model.Users = DataHelper.GetUserList();
-            model.Statuses = DataHelper.GetStatusList();
-            model.Categories = DataHelper.GetCategoryList();
             model.Projects = DataHelper.GetProjectList();
             model.IsNew = hour.IsNew;
             model.IsValid = hour.IsValid;

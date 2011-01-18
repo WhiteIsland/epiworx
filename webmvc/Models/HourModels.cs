@@ -29,8 +29,11 @@ namespace Epiworx.WebMvc.Models
     {
         public int HourId { get; set; }
 
+        [DisplayName("Project:")]
+        [IntegerRequired(ErrorMessage = "Project is required")]
+        public int ProjectId { get; set; }
+
         [DisplayName("Task:")]
-        [IntegerRequired(ErrorMessage = "Task is required")]
         public int TaskId { get; set; }
 
         [DisplayName("User:")]
@@ -53,23 +56,9 @@ namespace Epiworx.WebMvc.Models
         [DisplayName("This hour is archived")]
         public bool IsArchived { get; set; }
 
-        [DisplayName("Project:")]
-        public int ProjectId { get; set; }
-
-        [DisplayName("Category:")]
-        public int CategoryId { get; set; }
-
-        [DisplayName("Status:")]
-        public int StatusId { get; set; }
-
-        [DisplayName("Describe the work that needs to be performed:")]
-        public string Description { get; set; }
-
         public ITask Task { get; set; }
 
         public IEnumerable<IUser> Users { get; set; }
-        public IEnumerable<IStatus> Statuses { get; set; }
-        public IEnumerable<ICategory> Categories { get; set; }
         public IEnumerable<IProject> Projects { get; set; }
     }
 }

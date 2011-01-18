@@ -6,7 +6,7 @@
 <p class="no-records">
     No records were found.</p>
 <%
-    return;
+        return;
     }
 %>
 <table class="list">
@@ -22,7 +22,7 @@
                 User
             </th>
             <%
-                }
+               }
             %>
             <th style="width: 200px;">
                 Project
@@ -44,7 +44,7 @@
         %>
         <tr>
             <td>
-                <%: this.Html.ActionLink(hour.Date.ToString("MM.dd.yyyy"), "Edit", "Hour", new { id = hour.HourId }, null) %>
+                <%: this.Html.ActionLink(hour.Date.ToString("MM.dd.yyyy"), "Edit", "Hour", new { id = hour.HourId }) %>
             </td>
             <% if (!this.Model.HideUserColumn)
                {
@@ -53,13 +53,25 @@
                 <%: hour.UserName %>
             </td>
             <%
-                }
+               }
             %>
             <td>
                 <%: hour.ProjectName %>
             </td>
             <td>
-                <%: hour.TaskId %>
+                <% if (hour.TaskId != 0)
+                   {
+                %>
+                <%: hour.TaskId.ToString() %>
+                <%
+                   }
+                   else
+                   { 
+                %>
+                &nbsp;
+                <%
+                   }
+                %>
             </td>
             <td>
                 <p>
@@ -70,7 +82,7 @@
             </td>
         </tr>
         <%
-            }
+           }
         %>
     </tbody>
 </table>

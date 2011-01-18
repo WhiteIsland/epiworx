@@ -2,67 +2,56 @@
 {
     background-color: #FFF;
     font-size: 14px;
-    font-family: 'Segoe UI' , Arial, Helvetica, sans-serif;
+    font-family: 'Times New Roman' , Times, serif;
 }
 
 a
 {
-    color: #558ed5;
+    color: #000;
+    font-weight: bold;
     text-decoration: none;
 }
 
 a:hover
 {
-    color: #558ed5;
+    background-color: #CC0000;
+    color: #FFF;
 }
 
 h2
 {
-    font-weight: normal;
-    font-size: 48px;
+    font-size: 42px;
     display: block;
     margin-bottom: 20px;
-    text-transform: lowercase;
-    color: #BBBBBB;
-    letter-spacing: 3px;
 }
 
 h2 span
 {
-    color: #558ed5;
+    margin-left: 9px;
 }
 
 h3
 {
-    font-weight: normal;
     font-size: 32px;
     margin-bottom: 10px;
-    text-transform: lowercase;
     color: #BBBBBB;
-    letter-spacing: 2px;
 }
 
 h3 span
 {
-    color: #558ed5;
+    margin-left: 9px;
 }
 
 h4
 {
-    color: #558ed5;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 12px;
-    font-weight: normal;
+    font-size: 18px;
+    font-weight: bold;
     margin-bottom: 20px;
 }
 
 h5
 {
     font-size: 14px;
-    font-weight: normal;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 fieldset
@@ -73,11 +62,10 @@ fieldset
 fieldset label
 {
     display: block;
-    text-transform: uppercase;
     font-size: 12px;
+    font-weight: bold;
     margin-bottom: 5px;
     color: #000;
-    letter-spacing: 1px;
 }
 
 fieldset p
@@ -137,7 +125,6 @@ fieldset .separator
 input
 {
     font-size: 14px;
-    font-family: 'Segoe UI' , Arial, Helvetica, sans-serif;
 }
 
 input[type="text"], input[type="password"]
@@ -181,7 +168,6 @@ select
 textarea
 {
     font-size: 14px;
-    font-family: 'Segoe UI' , Arial, Helvetica, sans-serif;
     padding: 5px;
     width: 680px;
     height: 100px;
@@ -193,7 +179,11 @@ ul.list
 
 ul.list a
 {
-    text-transform: uppercase;
+    color: #CC0000;
+}
+
+ul.list a:hover
+{
 }
 
 ul.list li
@@ -211,19 +201,14 @@ ul.list li p
 
 ul.list li:hover
 {
-    color: #fff;
-    background-color: #558ed5;
+    background-color: #E2E2E2;
 }
 
 ul.list li:hover a
 {
-    color: #fff;
+    color: #CC0000;
+    background-color: #E2E2E2;
     text-decoration: underline;
-}
-
-ul.list li:hover p
-{
-    color: #fff;
 }
 
 p
@@ -238,8 +223,8 @@ table.list
 
 table.list a
 {
+    color: #CC0000;
     text-transform: uppercase;
-    letter-spacing: 1px;
     font-weight: bold;
 }
 
@@ -274,13 +259,13 @@ table.list tbody tr
 
 table.list tbody tr:hover td
 {
-    color: #fff;
-    background-color: #558ed5;
+    background-color: #E2E2E2;
 }
 
 table.list tbody tr:hover td a
 {
-    color: #fff;
+    background-color: #E2E2E2;
+    color: #CC0000;
     text-decoration: underline;
 }
 
@@ -333,7 +318,7 @@ table.list tbody tr:hover td a
 
 .validation-summary-errors
 {
-    color: #DB4F5C;
+    color: #CC0000;
     margin-bottom: 10px;
 }
 
@@ -356,7 +341,7 @@ table.list tbody tr:hover td a
 
 .field-validation-error
 {
-    color: #DB4F5C;
+    color: #CC0000;
     margin-left: 5px;
     font-size: 12px;
 }
@@ -394,12 +379,12 @@ table.list tbody tr:hover td a
 
 .part li:hover
 {
-    background-color: #558ed5;
+    background-color: #E2E2E2;
 }
 
 .part li:hover a
 {
-    color: #FFF;
+    background-color: #E2E2E2;
 }
 
 #header-container
@@ -409,11 +394,7 @@ table.list tbody tr:hover td a
 
 #header
 {
-    background-position: right top;
     height: 110px;
-    background-color: #fff;
-    background-image: url('Metro-Header.png');
-    background-repeat: no-repeat;
 }
 
 #title
@@ -441,17 +422,18 @@ table.list tbody tr:hover td a
 
 #title p
 {
-    font-size: 12px;
-    text-transform: uppercase;
-    color: #B2B2B2;
-    letter-spacing: 1px;
+    font-size: 16px;
+    color: #666666;
 }
 
 #profile
 {
     float: right;
     margin-left: 20px;
-    margin-right: 320px;
+}
+
+#profile a
+{
 }
 
 #profile img
@@ -473,17 +455,18 @@ table.list tbody tr:hover td a
 
 #menu
 {
-    color: #7E7E7E;
+    color: #666666;
     float: right;
     padding-top: 10px;
-    letter-spacing: 1px;
 }
 
 #menu a
 {
-    color: #646464;
-    font-size: 12px;
-    text-transform: uppercase;
+    padding: 2px 5px 2px 5px;
+}
+
+#menu a:hover
+{
 }
 
 #menu li
@@ -524,7 +507,7 @@ table.list tbody tr:hover td a
 
 #filter h5
 {
-    color: #558ed5;
+    color: #CC0000;
     font-size: 16px;
     margin-bottom: 20px;
     letter-spacing: 1px;
@@ -538,6 +521,7 @@ table.list tbody tr:hover td a
 
 #filter strong
 {
+    color: #CC0000;
     cursor: pointer;
     text-decoration: underline;
 }
@@ -553,9 +537,7 @@ table.list tbody tr:hover td a
 
 #navigation a
 {
-    font-family: 'Segoe UI Light' , Arial, Helvetica, sans-serif;
     float: left;
-    color: #666666;
     height: 33px;
     font-size: 19px;
     font-weight: bold;
@@ -567,7 +549,7 @@ table.list tbody tr:hover td a
 
 #navigation a:hover
 {
-    background-color: #558ed5;
+    background-color: #CC0000;
     color: #FFF;
 }
 
@@ -584,20 +566,17 @@ table.list tbody tr:hover td a
 
 #navigation li.selected a
 {
-    color: #000;
+    background-color: #CC0000;
+    color: #FFF;
 }
 
 #navigation li.selected a:hover
 {
-    color: #fff;
 }
 
 #page
 {
-    background-position: left 200px;
     min-width: 1200px;
-    background-image: url('Metro-Page.png');
-    background-repeat: no-repeat;
 }
 
 #main
@@ -619,9 +598,19 @@ table.list tbody tr:hover td a
     vertical-align: top;
 }
 
+#sidebar a
+{
+    color: #CC0000;
+}
+
 #sidebar li .value
 {
     float: right;
+}
+
+#sidebar li:hover a
+{
+    text-decoration: underline;
 }
 
 #sidebar .part
@@ -658,7 +647,6 @@ table.list tbody tr:hover td a
 
 #sidebar .part .name-value a, #sidebar .part .name-value em
 {
-    color: #666666;
     float: right;
     font-size: 12px;
     font-style: normal;
@@ -666,12 +654,10 @@ table.list tbody tr:hover td a
 
 #sidebar .part .name-value li:hover
 {
-    color: #fff;
 }
 
 #sidebar .part .name-value li:hover a, #sidebar .part .name-value li:hover em
 {
-    color: #fff;
 }
 
 #sidebar .part .total
@@ -694,19 +680,17 @@ table.list tbody tr:hover td a
 
 #footer
 {
-    background-position: 80px bottom;
-    background-image: url('Metro-Footer.png');
     margin-top: 10px;
     padding: 10px 80px 0px 80px;
-    color: #999999;
+    color: #666666;
     text-align: left;
     height: 80px;
-    background-repeat: no-repeat;
 }
 
 #footer ul
 {
     margin-bottom: 10px;
+    margin-left: -5px;
 }
 
 #footer li
@@ -720,16 +704,16 @@ table.list tbody tr:hover td a
 
 #footer a
 {
+    padding: 2px 5px 2px 5px;
 }
 
 #footer a:hover
 {
-    color: #000;
 }
 
 #footer h5
 {
-    color: #558ed5;
+    color: #CC0000;
     text-transform: lowercase;
     font-size: 32px;
     font-weight: normal;

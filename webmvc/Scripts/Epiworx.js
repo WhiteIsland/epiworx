@@ -1,6 +1,6 @@
 ﻿$(function () {
     $("#sidebar .part li").each(function () {
-        $(this).bind("click", function () {
+        $(this).click(function () {
             var link = $(this).find("a");
             if (link != undefined) {
                 window.location = link.attr("href");
@@ -9,7 +9,7 @@
     });
 
     $("#main .list tr").each(function () {
-        $(this).bind("click", function () {
+        $(this).click(function () {
             var link = $(this).find("a");
             if (link != undefined) {
                 window.location = link.attr("href");
@@ -18,7 +18,7 @@
     });
 
     $("#main .list li").each(function () {
-        $(this).bind("click", function () {
+        $(this).click(function () {
             var link = $(this).find("a");
             if (link != undefined) {
                 window.location = link.attr("href");
@@ -49,3 +49,4 @@ $(function () {
         });
     });
 });
+
