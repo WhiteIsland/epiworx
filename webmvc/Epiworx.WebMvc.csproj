@@ -107,13 +107,14 @@
     <Content Include="Content\Metro-Page.png" />
     <Content Include="Content\Metro-Footer.png" />
     <Content Include="Content\Metro-Header.png" />
+    <Content Include="Content\Plain.Jquery.css" />
     <Content Include="Content\Profile.png" />
     <Content Include="Content\Reset.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Epiworx.Form.js" />
     <Content Include="Scripts\Epiworx.js" />
+    <Content Include="Scripts\jquery-ui-1.8.8.custom.min.js" />
     <Content Include="Scripts\jquery.form.js" />
-    <Content Include="Scripts\jquery.simplemodal.1.4.1.min.js" />
     <Content Include="Views\Account\ForgotPassword.aspx" />
     <Content Include="Views\Account\ForgotPasswordSuccess.aspx" />
     <Content Include="Views\Category\CategoryForm.ascx" />
@@ -160,6 +161,7 @@
     <Content Include="Views\Task\Delete.aspx" />
     <Content Include="Views\Task\DeleteSuccess.aspx" />
     <Content Include="Views\Task\Edit.aspx" />
+    <Content Include="Views\Task\Find.aspx" />
     <Content Include="Views\Task\Index.aspx" />
     <Content Include="Views\Task\TaskFilter.ascx" />
     <Content Include="Views\Task\TaskForm.ascx" />
@@ -173,9 +175,6 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Content\Metro.css" />
-    <Content Include="Scripts\jquery-1.4.1.js" />
-    <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />

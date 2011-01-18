@@ -7,7 +7,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        <span>Stories</span></h2>
+        Stories</h2>
     <%this.Html.RenderPartial("TaskFilter", this.Model);%>
     <%this.Html.RenderPartial("TaskListUserControl", this.Model);%>
 </asp:Content>

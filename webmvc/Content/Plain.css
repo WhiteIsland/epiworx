@@ -20,7 +20,7 @@ a:hover
 
 h2
 {
-    font-size: 42px;
+    font-size: 32px;
     display: block;
     margin-bottom: 20px;
 }
@@ -28,6 +28,7 @@ h2
 h2 span
 {
     margin-left: 9px;
+    text-transform: lowercase;
 }
 
 h3
@@ -709,4 +710,11 @@ table.list tbody tr:hover td a
     font-weight: normal;
     letter-spacing: 1px;
     float: right;
+}
+
+.list-box
+{
+    position: absolute;
+    z-index: 10;
+    background-color: #fff;
 }

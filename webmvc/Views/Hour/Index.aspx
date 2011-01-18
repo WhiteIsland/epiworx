@@ -8,7 +8,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        <span>Hours</span></h2>
+        Hours</h2>
     <% this.Html.RenderPartial("HourFilter", this.Model);%>
     <% this.Html.RenderPartial("HourListUserControl", new HourListModel { Hours = this.Model.Hours });%>
 </asp:Content>

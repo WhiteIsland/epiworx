@@ -28,6 +28,11 @@
 });
 
 $(function () {
+    $(".date").datepicker({
+        showButtonPanel: true,
+        prevText: "<<",
+        nextText: ">>"
+    });
     $("ul li:first").css("class", "first");
     $("ul li:last").css("class", "last");
     $("#main .list li a").parent("li").css("cursor", "pointer");
@@ -36,16 +41,16 @@ $(function () {
 });
 
 $(function () {
-    $("#filter select").hide();
+    $("#filter .list-box").hide();
 
-    $("#filter strong").html(function () {
-        return $(this).next().find(":selected").text();
-    })
+//    $("#filter strong").html(function () {
+//        return $(this).next().find(":selected").text();
+//    })
 
     $("#filter strong").each(function () {
         $(this).click(function () {
-            $(this).hide();
-            $(this).siblings("select:first").show();
+            // $(this).hide();
+            $(this).siblings(".list-box:first").show();
         });
     });
 });

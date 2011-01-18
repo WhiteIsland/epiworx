@@ -7,12 +7,17 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="part">
         <h2>
-            My<span>Stories</span></h2>
-        <% this.Html.RenderPartial("TaskListUserControl", new TaskListModel { Tasks = this.Model.Tasks, HideUserColumn = true });%>
+            My<span>Open Stories</span></h2>
+        <% this.Html.RenderPartial("TaskListUserControl", new TaskListModel { Tasks = this.Model.Tasks.Where(row => row.CompletedDate.Date == DateTime.MaxValue.Date), HideUserColumn = true });%>
     </div>
     <div class="part">
         <h2>
-            My<span>Hours</span></h2>
+            My<span>Completed Stories</span></h2>
+        <% this.Html.RenderPartial("TaskListUserControl", new TaskListModel { Tasks = this.Model.Tasks.Where(row => row.CompletedDate.Date != DateTime.MaxValue.Date), HideUserColumn = true });%>
+    </div>
+    <div class="part">
+        <h2>
+            My<span>Hours for This Week</span></h2>
         <% this.Html.RenderPartial("HourListUserControl", new HourListModel { Hours = this.Model.Hours, HideUserColumn = true }); %>
     </div>
 </asp:Content>

@@ -23,11 +23,17 @@ namespace Epiworx.WebMvc.Models
 
     public class TaskIndexModel : TaskListModel
     {
-        public int ProjectId { get; set; }
+        public int[] ProjectId { get; set; }
         public int CategoryId { get; set; }
         public int StatusId { get; set; }
         public int AssignedTo { get; set; }
         public int IsArchived { get; set; }
+    }
+
+    public class TaskFindModel : ModelListBase
+    {
+        public int[] ProjectId { get; set; }
+        public IEnumerable<IProject> Projects { get; set; }
     }
 
     public class TaskListModel : ModelListBase

@@ -7,7 +7,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        <span>Projects</span></h2>
+        Projects</h2>
     <%
         if (this.Model.Projects.Count() == 0)
         {

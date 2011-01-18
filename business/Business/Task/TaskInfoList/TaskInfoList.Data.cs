@@ -30,9 +30,9 @@ namespace Epiworx.Business
                     query = query.Where(row => row.TaskId == criteria.TaskId);
                 }
 
-                if (criteria.ProjectId != null)
+                if (criteria.ProjectId != null && criteria.ProjectId.Count() != 0)
                 {
-                    query = query.Where(row => row.ProjectId == criteria.ProjectId);
+                    query = query.Where(row => criteria.ProjectId.Contains(row.ProjectId));
                 }
 
                 if (criteria.CategoryId != null)

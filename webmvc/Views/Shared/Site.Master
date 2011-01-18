@@ -8,8 +8,10 @@
     </title>
     <link href="../../Content/Reset.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Plain.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="<%= this.Url.Content("~/Scripts/jquery-1.4.1.min.js") %>"></script>
+    <link href="../../Content/Plain.Jquery.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="<%= this.Url.Content("~/Scripts/jquery-1.4.4.min.js") %>"></script>
     <script type="text/javascript" src="<%= this.Url.Content("~/Scripts/jquery.form.js") %>"></script>
+    <script type="text/javascript" src="<%= this.Url.Content("~/Scripts/jquery-ui-1.8.8.custom.min.js") %>"></script>
     <script type="text/javascript" src="<%= this.Url.Content("~/Scripts/Epiworx.js") %>"></script>
     <script type="text/javascript" src="<%= this.Url.Content("~/Scripts/Epiworx.Form.js") %>"></script>
 </head>
@@ -59,5 +61,5 @@
             <strong>No copyright. No rights reserved.</strong>
         </div>
     </div>
-</body>
+ </body>
 </html>

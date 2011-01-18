@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        <span>Users</span></h2>
+        Users</h2>
     <% this.Html.RenderPartial("UserListUserControl", this.Model.Users);%>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="SideBarContent" runat="server">
