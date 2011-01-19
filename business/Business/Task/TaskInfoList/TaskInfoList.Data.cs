@@ -35,14 +35,14 @@ namespace Epiworx.Business
                     query = query.Where(row => criteria.ProjectId.Contains(row.ProjectId));
                 }
 
-                if (criteria.CategoryId != null)
+                if (criteria.CategoryId != null && criteria.CategoryId.Count() != 0)
                 {
-                    query = query.Where(row => row.CategoryId == criteria.CategoryId);
+                    query = query.Where(row => criteria.CategoryId.Contains(row.CategoryId));
                 }
 
-                if (criteria.StatusId != null)
+                if (criteria.StatusId != null && criteria.StatusId.Count() != 0)
                 {
-                    query = query.Where(row => row.StatusId == criteria.StatusId);
+                    query = query.Where(row => criteria.StatusId.Contains(row.StatusId));
                 }
 
                 if (criteria.Description != null)
@@ -50,9 +50,9 @@ namespace Epiworx.Business
                     query = query.Where(row => row.Description == criteria.Description);
                 }
 
-                if (criteria.AssignedTo != null)
+                if (criteria.AssignedTo != null && criteria.AssignedTo.Count() != 0)
                 {
-                    query = query.Where(row => row.AssignedTo == criteria.AssignedTo);
+                    query = query.Where(row => criteria.AssignedTo.Contains(row.AssignedTo));
                 }
 
                 if (criteria.AssignedDate.DateFrom.Date != DateTime.MinValue.Date)

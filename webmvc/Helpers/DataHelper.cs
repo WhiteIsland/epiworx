@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using Epiworx.Business;
@@ -11,6 +12,116 @@ namespace Epiworx.WebMvc.Helpers
 {
     public class DataHelper
     {
+        public static string Clip(string text, int maxLength)
+        {
+            if (text.Length <= maxLength)
+            {
+                return text;
+            }
+
+            return text.Substring(0, maxLength) + "...";
+        }
+
+        public static string ToString(IEnumerable<ICategory> categories, int[] categoryIds, string defaultText)
+        {
+            var sb = new StringBuilder();
+
+            foreach (var categoryId in categoryIds)
+            {
+                if (categoryId != 0)
+                {
+                    if (sb.Length != 0)
+                    {
+                        sb = sb.Append(" or ");
+                    }
+
+                    sb = sb.Append(categories.Where(row => row.CategoryId == categoryId).SingleOrDefault().Name);
+                }
+            }
+
+            if (sb.Length == 0)
+            {
+                sb = sb.Append(defaultText);
+            }
+
+            return sb.ToString();
+        }
+
+        public static string ToString(IEnumerable<IProject> projects, int[] projectIds, string defaultText)
+        {
+            var sb = new StringBuilder();
+
+            foreach (var projectId in projectIds)
+            {
+                if (projectId != 0)
+                {
+                    if (sb.Length != 0)
+                    {
+                        sb = sb.Append(" or ");
+                    }
+
+                    sb = sb.Append(projects.Where(row => row.ProjectId == projectId).SingleOrDefault().Name);
+                }
+            }
+
+            if (sb.Length == 0)
+            {
+                sb = sb.Append(defaultText);
+            }
+
+            return sb.ToString();
+        }
+
+        public static string ToString(IEnumerable<IStatus> statuses, int[] statusIds, string defaultText)
+        {
+            var sb = new StringBuilder();
+
+            foreach (var statusId in statusIds)
+            {
+                if (statusId != 0)
+                {
+                    if (sb.Length != 0)
+                    {
+                        sb = sb.Append(" or ");
+                    }
+
+                    sb = sb.Append(statuses.Where(row => row.StatusId == statusId).SingleOrDefault().Name);
+                }
+            }
+
+            if (sb.Length == 0)
+            {
+                sb = sb.Append(defaultText);
+            }
+
+            return sb.ToString();
+        }
+
+        public static string ToString(IEnumerable<IUser> users, int[] userIds, string defaultText)
+        {
+            var sb = new StringBuilder();
+
+            foreach (var userId in userIds)
+            {
+                if (userId != 0)
+                {
+                    if (sb.Length != 0)
+                    {
+                        sb = sb.Append(" or ");
+                    }
+
+                    sb = sb.Append(users.Where(row => row.UserId == userId).SingleOrDefault().Name);
+                }
+            }
+
+            if (sb.Length == 0)
+            {
+                sb = sb.Append(defaultText);
+            }
+
+            return sb.ToString();
+        }
+
         public static bool? ToBoolean(int? value)
         {
             if (!value.HasValue)

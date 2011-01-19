@@ -7,11 +7,20 @@
     <Schema Namespace="ApplicationModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="ApplicationModelStoreContainer">
           <EntitySet Name="Category" EntityType="ApplicationModel.Store.Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Filter" EntityType="ApplicationModel.Store.Filter" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Hour" EntityType="ApplicationModel.Store.Hour" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Project" EntityType="ApplicationModel.Store.Project" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Status" EntityType="ApplicationModel.Store.Status" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Task" EntityType="ApplicationModel.Store.Task" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="User" EntityType="ApplicationModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Filter_UserCreatedBy" Association="ApplicationModel.Store.FK_Filter_UserCreatedBy">
+            <End Role="User" EntitySet="User" />
+            <End Role="Filter" EntitySet="Filter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Filter_UserModifiedBy" Association="ApplicationModel.Store.FK_Filter_UserModifiedBy">
+            <End Role="User" EntitySet="User" />
+            <End Role="Filter" EntitySet="Filter" />
+          </AssociationSet>
           <AssociationSet Name="FK_Hour_Project" Association="ApplicationModel.Store.FK_Hour_Project">
             <End Role="Project" EntitySet="Project" />
             <End Role="Hour" EntitySet="Hour" />
@@ -53,6 +62,20 @@
           <Property Name="BackColor" Type="nvarchar" Nullable="false" MaxLength="7" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="IsArchived" Type="bit" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Filter">
+          <Key>
+            <PropertyRef Name="FilterId" />
+          </Key>
+          <Property Name="FilterId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Target" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="Query" Type="nvarchar" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="ModifiedBy" Type="int" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
@@ -154,6 +177,30 @@
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Filter_UserCreatedBy">
+          <End Role="User" Type="ApplicationModel.Store.User" Multiplicity="1" />
+          <End Role="Filter" Type="ApplicationModel.Store.Filter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Filter">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Filter_UserModifiedBy">
+          <End Role="User" Type="ApplicationModel.Store.User" Multiplicity="1" />
+          <End Role="Filter" Type="ApplicationModel.Store.Filter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Filter">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Hour_Project">
           <End Role="Project" Type="ApplicationModel.Store.Project" Multiplicity="1" />
           <End Role="Hour" Type="ApplicationModel.Store.Hour" Multiplicity="*" />
@@ -317,6 +364,15 @@
             <End Role="Project" EntitySet="Projects" />
             <End Role="Hour" EntitySet="Hours" />
           </AssociationSet>
+          <EntitySet Name="Filters" EntityType="ApplicationModel.Filter" />
+          <AssociationSet Name="FK_Filter_UserCreatedBy" Association="ApplicationModel.FK_Filter_UserCreatedBy">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Filter" EntitySet="Filters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Filter_UserModifiedBy" Association="ApplicationModel.FK_Filter_UserModifiedBy">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Filter" EntitySet="Filters" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Category">
           <Key>
@@ -451,6 +507,8 @@
           <Property Name="CreatedBy" Type="Int32" Nullable="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="Tasks" Relationship="ApplicationModel.FK_Task_UserAssignedTo" FromRole="User" ToRole="Task" />
+          <NavigationProperty Name="Filters" Relationship="ApplicationModel.FK_Filter_UserCreatedBy" FromRole="User" ToRole="Filter" />
+          <NavigationProperty Name="Filters1" Relationship="ApplicationModel.FK_Filter_UserModifiedBy" FromRole="User" ToRole="Filter" />
           </EntityType>
         <Association Name="FK_Category_UserCreatedBy">
           <End Role="User" Type="ApplicationModel.User" Multiplicity="1" />
@@ -656,7 +714,47 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="Filter">
+          <Key>
+            <PropertyRef Name="FilterId" />
+          </Key>
+          <Property Type="Int32" Name="FilterId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Target" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Query" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Int32" Name="ModifiedBy" Nullable="false" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <NavigationProperty Name="CreatedByUser" Relationship="ApplicationModel.FK_Filter_UserCreatedBy" FromRole="Filter" ToRole="User" />
+          <NavigationProperty Name="ModifiedByUser" Relationship="ApplicationModel.FK_Filter_UserModifiedBy" FromRole="Filter" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Filter_UserCreatedBy">
+          <End Type="ApplicationModel.User" Role="User" Multiplicity="1" />
+          <End Type="ApplicationModel.Filter" Role="Filter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Filter">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Filter_UserModifiedBy">
+          <End Type="ApplicationModel.User" Role="User" Multiplicity="1" />
+          <End Type="ApplicationModel.Filter" Role="Filter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Filter">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -761,6 +859,21 @@
             <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
             <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Filters">
+            <EntityTypeMapping TypeName="ApplicationModel.Filter">
+              <MappingFragment StoreEntitySet="Filter">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Query" ColumnName="Query" />
+                <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FilterId" ColumnName="FilterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -789,18 +902,20 @@
         <EntityTypeShape EntityType="ApplicationModel.Task" Width="1.5" PointX="8.25" PointY="5.375" Height="6.0186165364583317" IsExpanded="true" />
         <EntityTypeShape EntityType="ApplicationModel.User" Width="1.5" PointX="3.75" PointY="1.5" Height="4.0956022135416656" IsExpanded="true" />
         <AssociationConnector Association="ApplicationModel.FK_Category_UserCreatedBy" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="5.5956022135416656" />
-          <ConnectorPoint PointX="4.5" PointY="10.231635305989583" />
-          <ConnectorPoint PointX="5.0260454166666664" PointY="10.231635305989583" />
-          <ConnectorPoint PointX="5.1927120833333325" PointY="10.231635305989583" />
-          <ConnectorPoint PointX="6" PointY="10.231635305989583" />
+          <ConnectorPoint PointX="4.3886356189727787" PointY="5.980205078125" />
+          <ConnectorPoint PointX="4.3886356189727787" PointY="10.494658271461724" />
+          <ConnectorPoint PointX="4.5004402120081588" PointY="10.494658271461724" />
+          <ConnectorPoint PointX="4.6671068786748249" PointY="10.494658271461724" />
+          <ConnectorPoint PointX="4.9623749025217689" PointY="10.494658271461724" />
+          <ConnectorPoint PointX="5.129041569188435" PointY="10.494658271461724" />
+          <ConnectorPoint PointX="6" PointY="10.494658271461724" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Category_UserModifiedBy" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.9062525" PointY="5.5956022135416656" />
-          <ConnectorPoint PointX="4.9062525" PointY="9.0845651529947915" />
-          <ConnectorPoint PointX="5.0260454166666664" PointY="9.0845651529947915" />
-          <ConnectorPoint PointX="5.1927120833333325" PointY="9.0845651529947915" />
-          <ConnectorPoint PointX="6" PointY="9.0845651529947915" />
+          <ConnectorPoint PointX="4.778911471710205" PointY="5.980205078125" />
+          <ConnectorPoint PointX="4.778911471710205" PointY="9.216076635730861" />
+          <ConnectorPoint PointX="4.9623749025217689" PointY="9.216076635730861" />
+          <ConnectorPoint PointX="5.129041569188435" PointY="9.216076635730861" />
+          <ConnectorPoint PointX="6" PointY="9.216076635730861" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Task_Category" ManuallyRouted="false">
           <ConnectorPoint PointX="7.5" PointY="9.5670475260416659" />
@@ -813,37 +928,27 @@
           <ConnectorPoint PointX="11.625" PointY="7.5526025390625" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Hour_User" ManuallyRouted="false">
-          <ConnectorPoint PointX="5.25" PointY="1.5390624999999998" />
-          <ConnectorPoint PointX="11.166666666666666" PointY="1.5390624999999987" />
-          <ConnectorPoint PointX="11.458333333333334" PointY="1.5390624999999998" />
-          <ConnectorPoint PointX="12.375" PointY="1.5390624999999998" />
-          <ConnectorPoint PointX="12.375" PointY="5.25" />
+          <ConnectorPoint PointX="5.25" PointY="1.53125" />
+          <ConnectorPoint PointX="12.55590931640625" PointY="1.53125" />
+          <ConnectorPoint PointX="12.55590931640625" PointY="5.25" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Hour_UserCreatedBy" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="1.5" />
-          <ConnectorPoint PointX="4.5" PointY="1.2499999999999996" />
-          <ConnectorPoint PointX="4.8229186666666672" PointY="1.2499999999999989" />
-          <ConnectorPoint PointX="4.9895853333333333" PointY="1.2499999999999996" />
-          <ConnectorPoint PointX="11.25" PointY="1.2499999999999996" />
-          <ConnectorPoint PointX="11.25" PointY="6.3700492695312487" />
-          <ConnectorPoint PointX="11.291666666666666" PointY="6.3700492695312478" />
-          <ConnectorPoint PointX="11.458333333333334" PointY="6.3700492695312487" />
-          <ConnectorPoint PointX="11.625" PointY="6.3700492695312487" />
+          <ConnectorPoint PointX="5.25" PointY="1.546875" />
+          <ConnectorPoint PointX="12.236937626953125" PointY="1.546875" />
+          <ConnectorPoint PointX="12.236937626953125" PointY="5.25" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Hour_UserModifiedBy" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.906252" PointY="1.5" />
-          <ConnectorPoint PointX="4.906252" PointY="0.99999999999999956" />
-          <ConnectorPoint PointX="11.375" PointY="0.99999999999999956" />
-          <ConnectorPoint PointX="11.375" PointY="8.67265580859375" />
-          <ConnectorPoint PointX="11.625" PointY="8.67265580859375" />
+          <ConnectorPoint PointX="5.25" PointY="1.515625" />
+          <ConnectorPoint PointX="12.871707158203126" PointY="1.515625" />
+          <ConnectorPoint PointX="12.871707158203126" PointY="5.25" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Project_UserCreatedBy" ManuallyRouted="false">
-          <ConnectorPoint PointX="5.25" PointY="4.1159838596979768" />
-          <ConnectorPoint PointX="6" PointY="4.1159838596979768" />
+          <ConnectorPoint PointX="5.25" PointY="4.1303304928964319" />
+          <ConnectorPoint PointX="6" PointY="4.1303304928964319" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Project_UserModifiedBy" ManuallyRouted="false">
-          <ConnectorPoint PointX="5.25" PointY="2.8079919298489884" />
-          <ConnectorPoint PointX="6" PointY="2.8079919298489884" />
+          <ConnectorPoint PointX="5.25" PointY="2.815165246448216" />
+          <ConnectorPoint PointX="6" PointY="2.815165246448216" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Task_Project" ManuallyRouted="false">
           <ConnectorPoint PointX="7.5" PointY="3.375" />
@@ -853,14 +958,16 @@
           <ConnectorPoint PointX="9.20312625" PointY="5.375" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Status_UserCreatedBy" ManuallyRouted="false">
-          <ConnectorPoint PointX="3.992184375" PointY="5.5956022135416656" />
-          <ConnectorPoint PointX="3.992184375" PointY="14.347012096354167" />
-          <ConnectorPoint PointX="6" PointY="14.347012096354167" />
+          <ConnectorPoint PointX="4.038240508117676" PointY="5.980205078125" />
+          <ConnectorPoint PointX="4.038240508117676" PointY="14.624873453170658" />
+          <ConnectorPoint PointX="4.5004402120081588" PointY="14.624873453170658" />
+          <ConnectorPoint PointX="4.6671068786748249" PointY="14.624873453170658" />
+          <ConnectorPoint PointX="6" PointY="14.624873453170658" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Status_UserModifiedBy" ManuallyRouted="false">
-          <ConnectorPoint PointX="5.1093787499999994" PointY="5.5956022135416656" />
-          <ConnectorPoint PointX="5.1093787499999994" PointY="13.079753548177083" />
-          <ConnectorPoint PointX="6" PointY="13.079753548177083" />
+          <ConnectorPoint PointX="5.045708235855102" PointY="5.980205078125" />
+          <ConnectorPoint PointX="5.045708235855102" PointY="13.218684226585328" />
+          <ConnectorPoint PointX="6" PointY="13.218684226585328" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Task_Status" ManuallyRouted="false">
           <ConnectorPoint PointX="7.5" PointY="13.634348958333334" />
@@ -868,31 +975,16 @@
           <ConnectorPoint PointX="9" PointY="11.393616536458332" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Task_UserCreatedBy" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.70312625" PointY="5.5956022135416656" />
-          <ConnectorPoint PointX="4.70312625" PointY="6.7978036067708336" />
-          <ConnectorPoint PointX="4.8229191666666669" PointY="6.7978036067708327" />
-          <ConnectorPoint PointX="4.9895858333333329" PointY="6.7978036067708336" />
-          <ConnectorPoint PointX="5.0260454166666664" PointY="6.7978036067708327" />
-          <ConnectorPoint PointX="5.1927120833333325" PointY="6.7978036067708336" />
-          <ConnectorPoint PointX="8.25" PointY="6.7978036067708336" />
+          <ConnectorPoint PointX="5.25" PointY="5.6776025390625" />
+          <ConnectorPoint PointX="8.25" PointY="5.6776025390625" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Task_UserModifiedBy" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.2460921875" PointY="5.5956022135416656" />
-          <ConnectorPoint PointX="4.2460921875" PointY="6.1967029101562492" />
-          <ConnectorPoint PointX="4.416666666666667" PointY="6.1967029101562483" />
-          <ConnectorPoint PointX="4.583333333333333" PointY="6.1967029101562492" />
-          <ConnectorPoint PointX="4.6197929166666674" PointY="6.1967029101562483" />
-          <ConnectorPoint PointX="4.7864595833333334" PointY="6.1967029101562492" />
-          <ConnectorPoint PointX="4.8229191666666669" PointY="6.1967029101562483" />
-          <ConnectorPoint PointX="4.9895858333333329" PointY="6.1967029101562492" />
-          <ConnectorPoint PointX="5.0260454166666664" PointY="6.1967029101562483" />
-          <ConnectorPoint PointX="5.1927120833333325" PointY="6.1967029101562492" />
-          <ConnectorPoint PointX="8.25" PointY="6.1967029101562492" />
+          <ConnectorPoint PointX="5.25" PointY="5.46380126953125" />
+          <ConnectorPoint PointX="8.25" PointY="5.46380126953125" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Task_UserAssignedTo" >
-          <ConnectorPoint PointX="5.25" PointY="1.5156249999999996" />
-          <ConnectorPoint PointX="8.5937475" PointY="1.5156249999999996" />
-          <ConnectorPoint PointX="8.5937475" PointY="5.375" />
+          <ConnectorPoint PointX="5.25" PointY="5.89140380859375" />
+          <ConnectorPoint PointX="8.25" PointY="5.89140380859375" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Hour_Project" >
           <ConnectorPoint PointX="7.5" PointY="4.3125" />
@@ -904,6 +996,19 @@
           <ConnectorPoint PointX="11.458333333333334" PointY="4.3125" />
           <ConnectorPoint PointX="11.9687475" PointY="4.3125" />
           <ConnectorPoint PointX="11.9687475" PointY="5.25" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="ApplicationModel.Filter" Width="1.5" PointX="6" PointY="17.125" Height="3.1340950520833317" />
+        <AssociationConnector Association="ApplicationModel.FK_Filter_UserCreatedBy" >
+          <ConnectorPoint PointX="4.5837735453414918" PointY="5.980205078125" />
+          <ConnectorPoint PointX="4.5837735453414918" PointY="18.692047526041666" />
+          <ConnectorPoint PointX="6" PointY="18.692047526041666" />
+        </AssociationConnector>
+        <AssociationConnector Association="ApplicationModel.FK_Filter_UserModifiedBy" >
+          <ConnectorPoint PointX="3.8628677540588381" PointY="5.980205078125" />
+          <ConnectorPoint PointX="3.8628677540588381" PointY="17.87727126302083" />
+          <ConnectorPoint PointX="4.5004402120081588" PointY="17.87727126302083" />
+          <ConnectorPoint PointX="4.6671068786748249" PointY="17.87727126302083" />
+          <ConnectorPoint PointX="6" PointY="17.87727126302083" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

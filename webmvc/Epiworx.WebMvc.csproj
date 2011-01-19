@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\FilterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HourController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Helpers\UrlHelperExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CategoryModels.cs" />
+    <Compile Include="Models\FilterModels.cs" />
     <Compile Include="Models\UserModels.cs" />
     <Compile Include="Models\HourModels.cs" />
     <Compile Include="Models\TaskModels.cs" />
@@ -121,6 +123,10 @@
     <Content Include="Views\Category\CategoryFormCommands.ascx" />
     <Content Include="Views\Category\Create.aspx" />
     <Content Include="Views\Category\Edit.aspx" />
+    <Content Include="Views\Filter\FilterForm.ascx" />
+    <Content Include="Views\Filter\FilterFormCommands.ascx" />
+    <Content Include="Views\Filter\Create.aspx" />
+    <Content Include="Views\Filter\Edit.aspx" />
     <Content Include="Views\Home\Settings.aspx" />
     <Content Include="Views\Hour\Create.aspx" />
     <Content Include="Views\Hour\Delete.aspx" />
@@ -130,6 +136,8 @@
     <Content Include="Views\Hour\Index.aspx" />
     <Content Include="Views\Hour\HourForm.ascx" />
     <Content Include="Views\Hour\HourFormCommands.ascx" />
+    <Content Include="Views\Hour\HourFilterByProject.ascx" />
+    <Content Include="Views\Hour\HourFilterByUser.ascx" />
     <Content Include="Views\Project\Create.aspx" />
     <Content Include="Views\Project\Delete.aspx" />
     <Content Include="Views\Project\DeleteSuccess.aspx" />
@@ -138,6 +146,7 @@
     <Content Include="Views\Project\Edit.aspx" />
     <Content Include="Views\Project\Index.aspx" />
     <Content Include="Views\Shared\CategoriesUserControl.ascx" />
+    <Content Include="Views\Shared\FiltersUserControl.ascx" />
     <Content Include="Views\Shared\TaskByStatusListUserControl.ascx" />
     <Content Include="Views\Shared\TaskByCategoryListUserControl.ascx" />
     <Content Include="Views\Shared\UserListUserControl.ascx" />
@@ -157,6 +166,9 @@
     <Content Include="Views\Status\StatusFormCommands.ascx" />
     <Content Include="Views\Status\Create.aspx" />
     <Content Include="Views\Status\Edit.aspx" />
+    <Content Include="Views\Task\TaskFilterByCategory.ascx" />
+    <Content Include="Views\Task\TaskFilterByStatus.ascx" />
+    <Content Include="Views\Task\TaskFilterByUser.ascx" />
     <Content Include="Views\Task\Create.aspx" />
     <Content Include="Views\Task\Delete.aspx" />
     <Content Include="Views\Task\DeleteSuccess.aspx" />
@@ -164,6 +176,7 @@
     <Content Include="Views\Task\Find.aspx" />
     <Content Include="Views\Task\Index.aspx" />
     <Content Include="Views\Task\TaskFilter.ascx" />
+    <Content Include="Views\Task\TaskFilterByProject.ascx" />
     <Content Include="Views\Task\TaskForm.ascx" />
     <Content Include="Views\Task\TaskFormCommands.ascx" />
     <Content Include="Views\User\Create.aspx" />

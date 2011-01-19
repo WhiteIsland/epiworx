@@ -15,9 +15,24 @@ namespace Epiworx.Service
             return TaskService.TaskFetchInfoList(
                 new TaskCriteria
                     {
-                        AssignedTo = BusinessPrincipal.GetCurrentIdentity().UserId,
+                        AssignedTo = new[] { BusinessPrincipal.GetCurrentIdentity().UserId },
                         IsArchived = false
                     });
+        }
+
+        public static FilterInfoList FilterFetchInfoList()
+        {
+            return MyService.FilterFetchInfoList(null);
+        }
+
+        public static FilterInfoList FilterFetchInfoList(string target)
+        {
+            return FilterService.FilterFetchInfoList(
+                new FilterCriteria
+                {
+                    Target = target,
+                    CreatedBy = BusinessPrincipal.GetCurrentIdentity().UserId
+                });
         }
 
         public static HourInfoList HourFetchInfoList(DateTime startDate, DateTime endDate)
@@ -25,7 +40,7 @@ namespace Epiworx.Service
             return HourService.HourFetchInfoList(
                 new HourCriteria
                 {
-                    UserId = BusinessPrincipal.GetCurrentIdentity().UserId,
+                    UserId = new[] { BusinessPrincipal.GetCurrentIdentity().UserId },
                     Date = new DateRangeCriteria(startDate, endDate)
                 });
         }

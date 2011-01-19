@@ -57,6 +57,8 @@
     <Compile Include="CategoryTests.cs" />
     <Compile Include="CategoryTestsWithRoleContribute.cs" />
     <Compile Include="CategoryTestsWithRoleReview.cs" />
+    <Compile Include="FilterTestsWithRoleContribute.cs" />
+    <Compile Include="FilterTests.cs" />
     <Compile Include="Helpers\EmptyMessenger.cs" />
     <Compile Include="HourTestsWithRoleContribute.cs" />
     <Compile Include="HourTestsWithRoleReview.cs" />

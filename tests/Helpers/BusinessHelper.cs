@@ -43,6 +43,69 @@ namespace Epiworx.Tests.Helpers
             return category;
         }
 
+        public static Filter CreateFilter()
+        {
+            var filter = FilterService.FilterNew();
+
+            filter.Name = DataHelper.RandomString(20);
+            filter.Target = DataHelper.RandomString(20);
+            filter.Query = DataHelper.RandomString(20);
+
+            filter = FilterService.FilterSave(filter);
+
+            return filter;
+        }
+
+        public static Filter CreateFilterAndLogon(string userName, string userPassword)
+        {
+            var name = DataHelper.RandomString(20);
+            var password = DataHelper.RandomString(20);
+
+            BusinessHelper.CreateUserWithFullControl(name, password);
+
+            BusinessPrincipal.Login(name, password);
+
+            var filter = FilterService.FilterNew();
+
+            filter.Name = DataHelper.RandomString(20);
+            filter.Target = DataHelper.RandomString(20);
+            filter.Query = DataHelper.RandomString(20);
+
+            filter = FilterService.FilterSave(filter);
+
+            BusinessPrincipal.Logout();
+
+            BusinessPrincipal.Login(userName, userPassword);
+
+            return filter;
+        }
+
+        public static Filter CreateFilterForUserAndLogon(string userName, string userPassword, int userId)
+        {
+            var name = DataHelper.RandomString(20);
+            var password = DataHelper.RandomString(20);
+
+            BusinessHelper.CreateUserWithFullControl(name, password);
+
+            BusinessPrincipal.Login(name, password);
+
+            var filter = FilterService.FilterNew();
+
+            var task = BusinessHelper.CreateTask();
+
+            filter.Name = DataHelper.RandomString(20);
+            filter.Target = DataHelper.RandomString(20);
+            filter.Query = DataHelper.RandomString(20);
+
+            filter = FilterService.FilterSave(filter);
+
+            BusinessPrincipal.Logout();
+
+            BusinessPrincipal.Login(userName, userPassword);
+
+            return filter;
+        }
+
         public static Hour CreateHour()
         {
             var hour = HourService.HourNew();

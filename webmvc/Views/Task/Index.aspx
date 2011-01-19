@@ -22,6 +22,7 @@
                 <%: this.Html.ActionLink("Add a New Project", "Create", "Project")%></li>
         </ul>
     </div>
+    <% this.Html.RenderPartial("FiltersUserControl", new FilterListModel { Target = "Task", Filters = this.Model.Filters });%>
     <% this.Html.RenderPartial("TaskByCategoryListUserControl", new TaskByCategoryListModel { Tasks = this.Model.Tasks, Categories = this.Model.Categories }); %>
     <% this.Html.RenderPartial("TaskByStatusListUserControl", new TaskByStatusListModel { Tasks = this.Model.Tasks, Statuses = this.Model.Statuses }); %>
     <% this.Html.RenderPartial("ProjectsUserControl", this.Model.Projects); %>

@@ -11,8 +11,12 @@ namespace Epiworx.WebMvc.Models
 {
     public class HourIndexModel : HourListModel
     {
-        public int ProjectId { get; set; }
-        public int UserId { get; set; }
+        public int[] ProjectId { get; set; }
+        public string ProjectName { get; set; }
+        public string ProjectDisplayName { get; set; }
+        public int[] UserId { get; set; }
+        public string UserName { get; set; }
+        public string UserDisplayName { get; set; }
         public string Date { get; set; }
         public int IsArchived { get; set; }
     }
@@ -23,6 +27,7 @@ namespace Epiworx.WebMvc.Models
         public IEnumerable<IHour> Hours { get; set; }
         public IEnumerable<IUser> Users { get; set; }
         public IEnumerable<IProject> Projects { get; set; }
+        public IEnumerable<IFilter> Filters { get; set; }
     }
 
     public class HourFormModel : ModelBusinessBase

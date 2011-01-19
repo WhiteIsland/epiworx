@@ -10,8 +10,8 @@ namespace Epiworx.Business
     {
         public int? HourId { get; set; }
         public int? TaskId { get; set; }
-        public int? ProjectId { get; set; }
-        public int? UserId { get; set; }
+        public int[] ProjectId { get; set; }
+        public int[] UserId { get; set; }
         public DateRangeCriteria Date { get; set; }
         public decimal? Duration { get; set; }
         public string Labels { get; set; }

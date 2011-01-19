@@ -24,9 +24,17 @@ namespace Epiworx.WebMvc.Models
     public class TaskIndexModel : TaskListModel
     {
         public int[] ProjectId { get; set; }
-        public int CategoryId { get; set; }
-        public int StatusId { get; set; }
-        public int AssignedTo { get; set; }
+        public string ProjectName { get; set; }
+        public string ProjectDisplayName { get; set; }
+        public int[] CategoryId { get; set; }
+        public string CategoryName { get; set; }
+        public string CategoryDisplayName { get; set; }
+        public int[] StatusId { get; set; }
+        public string StatusName { get; set; }
+        public string StatusDisplayName { get; set; }
+        public int[] AssignedTo { get; set; }
+        public string AssignedToName { get; set; }
+        public string AssignedToDisplayName { get; set; }
         public int IsArchived { get; set; }
     }
 
@@ -44,6 +52,7 @@ namespace Epiworx.WebMvc.Models
         public IEnumerable<IStatus> Statuses { get; set; }
         public IEnumerable<ITask> Tasks { get; set; }
         public IEnumerable<IUser> AssignedToUsers { get; set; }
+        public IEnumerable<IFilter> Filters { get; set; }
 
         public TaskListModel()
         {

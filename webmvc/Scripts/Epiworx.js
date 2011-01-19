@@ -41,17 +41,29 @@ $(function () {
 });
 
 $(function () {
-    $("#filter .list-box").hide();
 
-//    $("#filter strong").html(function () {
-//        return $(this).next().find(":selected").text();
-//    })
+    $("#filter .filter-value-multiple .filter-value-multiple-container").hide();
 
-    $("#filter strong").each(function () {
-        $(this).click(function () {
-            // $(this).hide();
-            $(this).siblings(".list-box:first").show();
-        });
+    $("#filter .filter-value-multiple .filter-value-multiple-container a").click(function () {
+        $(this).parent().parent().parent().parent().hide();
+    });
+
+    $("#filter .filter-value-multiple strong").click(function () {
+        $("#filter .filter-value-multiple-container").hide();
+        $(this).siblings(".filter-value-multiple-container:first").show();
+    });
+
+    $("#filter .filter-value-single select").hide();
+
+    $("#filter .filter-value-single strong").html(function () {
+        return $(this).next().find(":selected").text();
+    })
+
+    $("#filter .filter-value-single strong").click(function () {
+        $("#filter select").hide();
+        $("#filter .filter-value-multiple-container").hide();
+        $(this).hide();
+        $(this).siblings("select:first").show();
     });
 });
 

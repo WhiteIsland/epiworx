@@ -14,17 +14,27 @@ namespace Epiworx.WebMvc.Controllers
     public class HourController : Controller
     {
         [Authorize]
-        public ActionResult Index(int? projectId, int? userId, string date, int? isArchived, string sortBy, string sortOrder)
+        public ActionResult Index(int[] projectId, int[] userId, string date, int? isArchived, string sortBy, string sortOrder)
         {
             var model = new HourIndexModel();
 
             model.Tab = "Hour";
+
             model.Projects = DataHelper.GetProjectList();
-            model.ProjectId = projectId ?? 0;
+            model.ProjectId = projectId ?? new int[0];
+            model.ProjectName = DataHelper.ToString(model.Projects, model.ProjectId, "any project");
+            model.ProjectDisplayName = DataHelper.Clip(model.ProjectName, 40);
+
             model.Users = DataHelper.GetUserList();
-            model.UserId = userId ?? 0;
+            model.UserId = userId ?? new int[0];
+            model.UserName = DataHelper.ToString(model.Users, model.UserId, "any user");
+            model.UserDisplayName = DataHelper.Clip(model.UserName, 20);
+
             model.Date = date ?? string.Empty;
             model.IsArchived = isArchived ?? 1;
+
+            model.Filters = MyService.FilterFetchInfoList("Hour");
+
             model.SortBy = sortBy ?? "Date";
             model.SortOrder = sortOrder ?? "DESC";
             model.SortableColumns.Add("Date", "Date");

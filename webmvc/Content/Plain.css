@@ -496,39 +496,6 @@ table.list tbody tr:hover td a
     margin-top: 8px;
 }
 
-#filter
-{
-    background-color: #F0F0F0;
-    margin-bottom: 20px;
-    padding: 20px;
-}
-
-#filter .separator
-{
-    margin-bottom: 20px;
-}
-
-#filter h5
-{
-    color: #CC0000;
-    font-size: 16px;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-}
-
-#filter select
-{
-    width: auto;
-    font-weight: bold;
-}
-
-#filter strong
-{
-    color: #CC0000;
-    cursor: pointer;
-    text-decoration: underline;
-}
-
 #navigation
 {
     background: #FFF;
@@ -712,9 +679,105 @@ table.list tbody tr:hover td a
     float: right;
 }
 
-.list-box
+#filter
 {
+    background-color: #F0F0F0;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+#filter .filter-criteria
+{
+    clear: both;
+}
+
+#filter .filter-sort
+{
+    clear: both;
+    padding-top: 10px;
+}
+
+#filter a.action
+{
+    float: right;
+}
+
+#filter a.action:hover
+{
+    color: #000;
+    text-decoration: underline;
+    background-color: inherit;
+}
+
+#filter h5
+{
+    color: #CC0000;
+    font-size: 16px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+#filter span
+{
+    float: left;
+    margin-right: 5px;
+}
+
+#filter strong
+{
+    margin-right: 5px;
+    color: #CC0000;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#filter span strong
+{
+    margin-right: 0px;
+}
+
+#filter .filter-value
+{
+    float: left;
+}
+
+#filter .filter-value select
+{
+    margin-top: -4px;
+    padding: 3px;
+    font-size: 12px;
+    width: auto;
+}
+
+#filter .filter-value-multiple-container
+{
+    border: 1px solid #AAAAAA;
     position: absolute;
     z-index: 10;
     background-color: #fff;
+    margin-top: 5px;
+    padding: 2px;
+    width: 300px;
+}
+
+#filter .filter-value-multiple-container ul
+{
+    max-height: 305px;
+    overflow: auto;
+}
+
+#filter .filter-value-multiple-container .commands
+{
+}
+
+#filter .filter-value-multiple-container .commands a
+{
+    margin-top: 6px;
+}
+
+#filter .filter-value-multiple-container .commands a:hover
+{
+    background-color: inherit;
+    color: #000;
+    text-decoration: underline;
 }

@@ -10,10 +10,10 @@ namespace Epiworx.Business
     {
         public int? TaskId { get; set; }
         public int[] ProjectId { get; set; }
-        public int? CategoryId { get; set; }
-        public int? StatusId { get; set; }
+        public int[] CategoryId { get; set; }
+        public int[] StatusId { get; set; }
         public string Description { get; set; }
-        public int? AssignedTo { get; set; }
+        public int[] AssignedTo { get; set; }
         public DateRangeCriteria AssignedDate { get; set; }
         public DateRangeCriteria StartDate { get; set; }
         public DateRangeCriteria CompletedDate { get; set; }

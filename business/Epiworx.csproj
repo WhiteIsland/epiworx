@@ -112,6 +112,26 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Business\Category\CategoryDuplicateNameCheck.cs" />
+    <Compile Include="Business\Filter\FilterCriteria\FilterCriteria.cs" />
+    <Compile Include="Business\Filter\FilterCriteria\FilterCriteria.Properties.cs" />
+    <Compile Include="Business\Filter\FilterExistsCommand\FilterExistsCommand.cs" />
+    <Compile Include="Business\Filter\FilterInfoList\FilterInfoList.cs" />
+    <Compile Include="Business\Filter\FilterInfoList\FilterInfoList.Data.cs" />
+    <Compile Include="Business\Filter\FilterInfoList\FilternfoList.Methods.cs" />
+    <Compile Include="Business\Filter\FilterInfoList\FilterInfoList.Properties.cs" />
+    <Compile Include="Business\Filter\FilterInfoList\FilterInfoList.Rules.cs" />
+    <Compile Include="Business\Filter\FilterInfo\FilterInfo.cs" />
+    <Compile Include="Business\Filter\FilterInfo\FilterInfo.Data.cs" />
+    <Compile Include="Business\Filter\FilterInfo\FilterInfo.Methods.cs" />
+    <Compile Include="Business\Filter\FilterInfo\FilterInfo.Properties.cs" />
+    <Compile Include="Business\Filter\FilterInfo\FilterInfo.Rules.cs" />
+    <Compile Include="Business\Filter\FilterValueCommand\FilterValueCommand.cs" />
+    <Compile Include="Business\Filter\Filter\Filter.cs" />
+    <Compile Include="Business\Filter\Filter\Filter.Data.cs" />
+    <Compile Include="Business\Filter\Filter\Filter.Methods.cs" />
+    <Compile Include="Business\Filter\Filter\Filter.Properties.cs" />
+    <Compile Include="Business\Filter\Filter\Filter.Rules.cs" />
+    <Compile Include="Business\Filter\IFilter.cs" />
     <Compile Include="Business\Hour\HourCriteria\HourCriteria.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -422,6 +442,7 @@
     <Compile Include="Service\CategoryService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\FilterService.cs" />
     <Compile Include="Service\HourService.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -34,14 +34,14 @@ namespace Epiworx.Business
                     query = query.Where(row => row.TaskId == criteria.TaskId);
                 }
 
-                if (criteria.ProjectId != null)
+                if (criteria.ProjectId != null && criteria.ProjectId.Count() != 0)
                 {
-                    query = query.Where(row => row.ProjectId == criteria.ProjectId);
+                    query = query.Where(row => criteria.ProjectId.Contains(row.ProjectId));
                 }
 
-                if (criteria.UserId != null)
+                if (criteria.UserId != null && criteria.UserId.Count() != 0)
                 {
-                    query = query.Where(row => row.UserId == criteria.UserId);
+                    query = query.Where(row => criteria.UserId.Contains(row.UserId));
                 }
 
                 if (criteria.Date.DateFrom.Date != DateTime.MinValue.Date)

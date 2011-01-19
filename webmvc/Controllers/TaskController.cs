@@ -16,20 +16,36 @@ namespace Epiworx.WebMvc.Controllers
     public class TaskController : Controller
     {
         [Authorize]
-        public ActionResult Index(int[] projectId, int? categoryId, int? statusId, int? assignedTo, int? isArchived, string text, string sortBy, string sortOrder)
+        public ActionResult Index(int[] projectId, int[] categoryId, int[] statusId, int[] assignedTo, int? isArchived, string text, string sortBy, string sortOrder)
         {
             var model = new TaskIndexModel();
 
             model.Tab = "Task";
+
             model.Projects = DataHelper.GetProjectList();
             model.ProjectId = projectId ?? new int[0];
+            model.ProjectName = DataHelper.ToString(model.Projects, model.ProjectId, "any project");
+            model.ProjectDisplayName = DataHelper.Clip(model.ProjectName, 40);
+
             model.Categories = DataHelper.GetCategoryList();
-            model.CategoryId = categoryId ?? 0;
+            model.CategoryId = categoryId ?? new int[0];
+            model.CategoryName = DataHelper.ToString(model.Categories, model.CategoryId, "any category");
+            model.CategoryDisplayName = DataHelper.Clip(model.CategoryName, 20);
+
             model.Statuses = DataHelper.GetStatusList();
-            model.StatusId = statusId ?? 0;
+            model.StatusId = statusId ?? new int[0];
+            model.StatusName = DataHelper.ToString(model.Statuses, model.StatusId, "any status");
+            model.StatusDisplayName = DataHelper.Clip(model.StatusName, 20);
+
             model.AssignedToUsers = DataHelper.GetUserList();
-            model.AssignedTo = assignedTo ?? 0;
+            model.AssignedTo = assignedTo ?? new int[0];
+            model.AssignedToName = DataHelper.ToString(model.AssignedToUsers, model.AssignedTo, "any user");
+            model.AssignedToDisplayName = DataHelper.Clip(model.AssignedToName, 20);
+
             model.IsArchived = isArchived ?? 1;
+
+            model.Filters = MyService.FilterFetchInfoList("Task");
+
             model.SortBy = sortBy ?? "TaskId";
             model.SortOrder = sortOrder ?? "ASC";
             model.SortableColumns.Add("EstimatedCompletedDate", "Due");

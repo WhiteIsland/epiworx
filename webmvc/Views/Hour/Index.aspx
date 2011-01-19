@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Epiworx.WebMvc.Models.HourIndexModel>" %>
 
-<%@ Import Namespace="Epiworx.WebMvc.Helpers" %>
-
 <%@ Import Namespace="Epiworx.WebMvc.Models" %>
+<%@ Import Namespace="Epiworx.WebMvc.Helpers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Epiworx - Hours
 </asp:Content>
@@ -21,4 +20,5 @@
                 <%: this.Html.ActionLink("Add a New Hour", "Create", "Hour")%></li>
         </ul>
     </div>
+    <% this.Html.RenderPartial("FiltersUserControl", new FilterListModel { Target = "Hour", Filters = this.Model.Filters });%>
 </asp:Content>
