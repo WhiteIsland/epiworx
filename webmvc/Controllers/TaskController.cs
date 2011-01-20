@@ -81,6 +81,9 @@ namespace Epiworx.WebMvc.Controllers
             var model = new TaskFindModel();
 
             model.Projects = DataHelper.GetProjectList();
+            model.Categories = DataHelper.GetCategoryList();
+            model.Statuses = DataHelper.GetStatusList();
+            model.Users = DataHelper.GetUserList();
 
             return this.View(model);
         }

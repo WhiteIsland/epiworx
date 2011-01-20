@@ -40,8 +40,18 @@ namespace Epiworx.WebMvc.Models
 
     public class TaskFindModel : ModelListBase
     {
+        [DisplayName("Select one or more projects:")]
         public int[] ProjectId { get; set; }
         public IEnumerable<IProject> Projects { get; set; }
+        [DisplayName("Select one or more categories:")]
+        public int[] CategoryId { get; set; }
+        public IEnumerable<ICategory> Categories { get; set; }
+        [DisplayName("Select one or more statuses:")]
+        public int[] StatusId { get; set; }
+        public IEnumerable<IStatus> Statuses { get; set; }
+        [DisplayName("Select one or more users:")]
+        public int[] AssignedTo { get; set; }
+        public IEnumerable<IUser> Users { get; set; }
     }
 
     public class TaskListModel : ModelListBase

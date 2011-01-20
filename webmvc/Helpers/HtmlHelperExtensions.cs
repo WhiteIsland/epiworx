@@ -251,6 +251,39 @@ namespace Epiworx.WebMvc.Helpers
             return MvcHtmlString.Create(result.ToString());
         }
 
+        public static MvcHtmlString CategoryDropDownListFor<TModel, TProperty>(
+            this HtmlHelper<TModel> htmlHelper,
+            Expression<Func<TModel, TProperty>> expression,
+            IEnumerable<ICategory> categories,
+            int[] selectedValue)
+        {
+            categories = categories
+                .OrderBy(row => row.Name);
+
+            var result = new StringBuilder();
+
+            result.AppendFormat("<select id=\"{0}\" name=\"{0}\" class=\"multiple\" multiple>", "CategoryId");
+
+            foreach (var category in categories)
+            {
+                result.AppendFormat("<option value=\"{0}\"", category.CategoryId);
+
+                if (selectedValue != null
+                    && selectedValue.Contains(category.CategoryId))
+                {
+                    result.Append(" multiple");
+                }
+
+                result.Append(">");
+                result.Append(category.Name);
+                result.Append("</option>");
+            }
+
+            result.Append("</select>");
+
+            return MvcHtmlString.Create(result.ToString());
+        }
+
         public static MvcHtmlString ProjectDropDownListFor<TModel, TProperty>(
             this HtmlHelper<TModel> htmlHelper,
             Expression<Func<TModel, TProperty>> expression,
@@ -289,8 +322,41 @@ namespace Epiworx.WebMvc.Helpers
                 result.AppendFormat(
                   "<option value=\"{0}\"{1}>{2}</option>",
                   project.ProjectId,
-                  project.ProjectId == selectedValue ? " selected=\"selected\"" : string.Empty,
+                  selectedValue == project.ProjectId ? " selected=\"selected\"" : string.Empty,
                   project.Name);
+            }
+
+            result.Append("</select>");
+
+            return MvcHtmlString.Create(result.ToString());
+        }
+
+        public static MvcHtmlString ProjectDropDownListFor<TModel, TProperty>(
+            this HtmlHelper<TModel> htmlHelper,
+            Expression<Func<TModel, TProperty>> expression,
+            IEnumerable<IProject> projects,
+            int[] selectedValue)
+        {
+            projects = projects
+                .OrderBy(row => row.Name);
+
+            var result = new StringBuilder();
+
+            result.AppendFormat("<select id=\"{0}\" name=\"{0}\" class=\"multiple\" multiple>", "ProjectId");
+
+            foreach (var project in projects)
+            {
+                result.AppendFormat("<option value=\"{0}\"", project.ProjectId);
+
+                if (selectedValue != null
+                    && selectedValue.Contains(project.ProjectId))
+                {
+                    result.Append(" multiple");
+                }
+
+                result.Append(">");
+                result.Append(project.Name);
+                result.Append("</option>");
             }
 
             result.Append("</select>");
@@ -423,6 +489,39 @@ namespace Epiworx.WebMvc.Helpers
             return MvcHtmlString.Create(result.ToString());
         }
 
+        public static MvcHtmlString StatusDropDownListFor<TModel, TProperty>(
+            this HtmlHelper<TModel> htmlHelper,
+            Expression<Func<TModel, TProperty>> expression,
+            IEnumerable<IStatus> statuses,
+            int[] selectedValue)
+        {
+            statuses = statuses
+                .OrderBy(row => row.Name);
+
+            var result = new StringBuilder();
+
+            result.AppendFormat("<select id=\"{0}\" name=\"{0}\" class=\"multiple\" multiple>", "StatusId");
+
+            foreach (var status in statuses)
+            {
+                result.AppendFormat("<option value=\"{0}\"", status.StatusId);
+
+                if (selectedValue != null
+                    && selectedValue.Contains(status.StatusId))
+                {
+                    result.Append(" multiple");
+                }
+
+                result.Append(">");
+                result.Append(status.Name);
+                result.Append("</option>");
+            }
+
+            result.Append("</select>");
+
+            return MvcHtmlString.Create(result.ToString());
+        }
+
         public static MvcHtmlString UserDropDownListFor<TModel, TProperty>(
             this HtmlHelper<TModel> htmlHelper,
             Expression<Func<TModel, TProperty>> expression,
@@ -464,6 +563,39 @@ namespace Epiworx.WebMvc.Helpers
                    user.UserId,
                    user.UserId == selectedValue ? " selected=\"selected\"" : string.Empty,
                    user.Name);
+            }
+
+            result.Append("</select>");
+
+            return MvcHtmlString.Create(result.ToString());
+        }
+
+        public static MvcHtmlString UserDropDownListFor<TModel, TProperty>(
+            this HtmlHelper<TModel> htmlHelper,
+            Expression<Func<TModel, TProperty>> expression,
+            IEnumerable<IUser> users,
+            int[] selectedValue)
+        {
+            users = users
+                .OrderBy(row => row.Name);
+
+            var result = new StringBuilder();
+
+            result.AppendFormat("<select id=\"{0}\" name=\"{0}\" class=\"multiple\" multiple>", "UserId");
+
+            foreach (var user in users)
+            {
+                result.AppendFormat("<option value=\"{0}\"", user.UserId);
+
+                if (selectedValue != null
+                    && selectedValue.Contains(user.UserId))
+                {
+                    result.Append(" multiple");
+                }
+
+                result.Append(">");
+                result.Append(user.Name);
+                result.Append("</option>");
             }
 
             result.Append("</select>");

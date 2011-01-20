@@ -5,7 +5,12 @@
     {
 %>
 <div id="filter">
-    <%: this.Html.ActionLink("Save as New Filter", "Create", "Filter", new { target = "Task", query = Server.UrlEncode(this.Request.QueryString.ToString()) }, new { @class = "action"}) %>
+    <ul class="actions">
+        <li>
+            <%: this.Html.ActionLink("Advanced Find", "Find", "Task") %></li>
+        <li>
+            <%: this.Html.ActionLink("Save as New Filter", "Create", "Filter", new { target = "Task", query = Server.UrlEncode(this.Request.QueryString.ToString()) }, null) %></li>
+    </ul>
     <h5>
         Filter</h5>
     <div class="filter-criteria">

@@ -63,10 +63,15 @@ fieldset
 fieldset label
 {
     display: block;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
     margin-bottom: 5px;
     color: #000;
+}
+
+fieldset select.multiple
+{
+    height: 200px;
 }
 
 fieldset p
@@ -716,12 +721,17 @@ table.list tbody tr:hover td a
     padding-top: 10px;
 }
 
-#filter a.action
+#filter ul.actions li
 {
     float: right;
 }
 
-#filter a.action:hover
+#filter ul.actions li a
+{
+    margin-left: 10px;
+}
+
+#filter ul.actions li a:hover
 {
     color: #000;
     text-decoration: underline;
