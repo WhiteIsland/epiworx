@@ -121,6 +121,11 @@ fieldset p.span3 input[type="text"]
     width: 680px;
 }
 
+fieldset p.span3 input[type="text"].date
+{
+    width: 100px;
+}
+
 fieldset .separator
 {
     border-bottom: dashed 1px #999999;
@@ -801,7 +806,7 @@ table.list tbody tr:hover td a
 
 #filter .filter-value-multiple-container .commands a
 {
-    margin-top: 6px;
+    margin-top: 10px;
 }
 
 #filter .filter-value-multiple-container .commands a:hover

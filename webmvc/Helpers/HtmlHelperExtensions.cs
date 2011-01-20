@@ -129,6 +129,64 @@ namespace Epiworx.WebMvc.Helpers
             return MvcHtmlString.Create(result.ToString());
         }
 
+        public static MvcHtmlString DateRangeDropDownList(
+            this HtmlHelper htmlHelper,
+            string name,
+            string selectedValue)
+        {
+            var result = new StringBuilder();
+
+            result.AppendFormat("<select id=\"{0}\" name=\"{0}\">", name);
+
+            result.AppendFormat(
+               "<option value=\"\"{0}>any date range</option>",
+               "" == selectedValue ? " selected=\"selected\"" : string.Empty);
+
+            result.AppendFormat(
+               "<option value=\"Today\"{0}>Today</option>",
+               "Today" == selectedValue ? " selected=\"selected\"" : string.Empty);
+
+            result.AppendFormat(
+               "<option value=\"Yesterday\"{0}>Yesterday</option>",
+               "Yesterday" == selectedValue ? " selected=\"selected\"" : string.Empty);
+
+            result.AppendFormat(
+               "<option value=\"ThisWeek\"{0}>This Week</option>",
+               "ThisWeek" == selectedValue ? " selected=\"selected\"" : string.Empty);
+
+            result.AppendFormat(
+               "<option value=\"LastWeek\"{0}>Last Week</option>",
+               "LastWeek" == selectedValue ? " selected=\"selected\"" : string.Empty);
+
+            result.AppendFormat(
+               "<option value=\"ThisMonth\"{0}>This Month</option>",
+               "ThisMonth" == selectedValue ? " selected=\"selected\"" : string.Empty);
+
+            result.AppendFormat(
+               "<option value=\"LastMonth\"{0}>Last Month</option>",
+               "LastMonth" == selectedValue ? " selected=\"selected\"" : string.Empty);
+
+            result.AppendFormat(
+               "<option value=\"Last10Days\"{0}>Last 10 Days</option>",
+               "Last10Days" == selectedValue ? " selected=\"selected\"" : string.Empty);
+
+            result.AppendFormat(
+               "<option value=\"Last30Days\"{0}>Last 30 Days</option>",
+               "Last30Days" == selectedValue ? " selected=\"selected\"" : string.Empty);
+
+            result.AppendFormat(
+               "<option value=\"Last60Days\"{0}>Last 60 Days</option>",
+               "Last60Days" == selectedValue ? " selected=\"selected\"" : string.Empty);
+
+            result.AppendFormat(
+               "<option value=\"Last90Days\"{0}>Last 90 Days</option>",
+               "Last90Days" == selectedValue ? " selected=\"selected\"" : string.Empty);
+
+            result.Append("</select>");
+
+            return MvcHtmlString.Create(result.ToString());
+        }
+
         public static MvcHtmlString DateRangeDropDownListFor<TModel, TProperty>(
             this HtmlHelper<TModel> htmlHelper,
             Expression<Func<TModel, TProperty>> expression,
@@ -166,6 +224,22 @@ namespace Epiworx.WebMvc.Helpers
             result.AppendFormat(
                "<option value=\"LastMonth\"{0}>Last Month</option>",
                "LastMonth" == selectedValue ? " selected=\"selected\"" : string.Empty);
+
+            result.AppendFormat(
+               "<option value=\"Last10Days\"{0}>Last 10 Days</option>",
+               "Last10Days" == selectedValue ? " selected=\"selected\"" : string.Empty);
+
+            result.AppendFormat(
+               "<option value=\"Last30Days\"{0}>Last 30 Days</option>",
+               "Last30Days" == selectedValue ? " selected=\"selected\"" : string.Empty);
+
+            result.AppendFormat(
+               "<option value=\"Last60Days\"{0}>Last 60 Days</option>",
+               "Last60Days" == selectedValue ? " selected=\"selected\"" : string.Empty);
+
+            result.AppendFormat(
+               "<option value=\"Last90Days\"{0}>Last 90 Days</option>",
+               "Last90Days" == selectedValue ? " selected=\"selected\"" : string.Empty);
 
             result.Append("</select>");
 
@@ -413,6 +487,30 @@ namespace Epiworx.WebMvc.Helpers
             return MvcHtmlString.Create(result.ToString());
         }
 
+        public static MvcHtmlString EstimatedDurationDropDownList(
+            this HtmlHelper htmlHelper)
+        {
+            var result = new StringBuilder();
+
+            result.AppendFormat("<select id=\"{0}\" name=\"{0}\" class=\"multiple\" multiple>", "EstimatedDuration");
+
+            result.Append("<option value=\"0\">0</option>");
+            result.Append("<option value=\"1\">1</option>");
+            result.Append("<option value=\"2\">2</option>");
+            result.Append("<option value=\"3\">3</option>");
+            result.Append("<option value=\"5\">5</option>");
+            result.Append("<option value=\"8\">8</option>");
+            result.Append("<option value=\"13\">13</option>");
+            result.Append("<option value=\"21\">21</option>");
+            result.Append("<option value=\"34\">34</option>");
+            result.Append("<option value=\"68\">68</option>");
+            result.Append("<option value=\"100\">100</option>");
+
+            result.Append("</select>");
+
+            return MvcHtmlString.Create(result.ToString());
+        }
+
         public static MvcHtmlString RoleDropDownListFor<TModel, TProperty>(
             this HtmlHelper<TModel> htmlHelper,
             Expression<Func<TModel, TProperty>> expression,
@@ -642,6 +740,39 @@ namespace Epiworx.WebMvc.Helpers
                    user.UserId,
                    user.UserId == selectedValue ? " selected=\"selected\"" : string.Empty,
                    user.Name);
+            }
+
+            result.Append("</select>");
+
+            return MvcHtmlString.Create(result.ToString());
+        }
+
+        public static MvcHtmlString AssignedToDropDownListFor<TModel, TProperty>(
+            this HtmlHelper<TModel> htmlHelper,
+            Expression<Func<TModel, TProperty>> expression,
+            IEnumerable<IUser> users,
+            int[] selectedValue)
+        {
+            users = users
+                .OrderBy(row => row.Name);
+
+            var result = new StringBuilder();
+
+            result.AppendFormat("<select id=\"{0}\" name=\"{0}\" class=\"multiple\" multiple>", "AssignedTo");
+
+            foreach (var user in users)
+            {
+                result.AppendFormat("<option value=\"{0}\"", user.UserId);
+
+                if (selectedValue != null
+                    && selectedValue.Contains(user.UserId))
+                {
+                    result.Append(" multiple");
+                }
+
+                result.Append(">");
+                result.Append(user.Name);
+                result.Append("</option>");
             }
 
             result.Append("</select>");

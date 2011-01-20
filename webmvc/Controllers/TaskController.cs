@@ -16,7 +16,7 @@ namespace Epiworx.WebMvc.Controllers
     public class TaskController : Controller
     {
         [Authorize]
-        public ActionResult Index(int[] projectId, int[] categoryId, int[] statusId, int[] assignedTo, int? isArchived, string text, string sortBy, string sortOrder)
+        public ActionResult Index(int[] projectId, int[] categoryId, int[] statusId, int[] assignedTo, string completedDate, string modifiedDate, string createdDate, int? isArchived, string text, string sortBy, string sortOrder)
         {
             var model = new TaskIndexModel();
 
@@ -60,6 +60,9 @@ namespace Epiworx.WebMvc.Controllers
                     CategoryId = categoryId,
                     StatusId = statusId,
                     AssignedTo = assignedTo,
+                    CompletedDate = new DateRangeCriteria(completedDate ?? string.Empty),
+                    ModifiedDate = new DateRangeCriteria(modifiedDate ?? string.Empty),
+                    CreatedDate = new DateRangeCriteria(createdDate ?? string.Empty),
                     IsArchived = DataHelper.ToBoolean(isArchived, false),
                     Text = text
                 };
@@ -71,19 +74,6 @@ namespace Epiworx.WebMvc.Controllers
             tasks = tasks.OrderBy(string.Format("{0} {1}", model.SortBy, model.SortOrder));
 
             model.Tasks = tasks;
-
-            return this.View(model);
-        }
-
-        [Authorize]
-        public ActionResult Find()
-        {
-            var model = new TaskFindModel();
-
-            model.Projects = DataHelper.GetProjectList();
-            model.Categories = DataHelper.GetCategoryList();
-            model.Statuses = DataHelper.GetStatusList();
-            model.Users = DataHelper.GetUserList();
 
             return this.View(model);
         }

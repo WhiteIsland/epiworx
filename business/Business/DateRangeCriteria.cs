@@ -61,6 +61,22 @@ namespace Epiworx.Business
                     this.DateFrom = DateTime.Today.ToStartOfPreviousWeek();
                     this.DateTo = DateTime.Today.ToEndOfPreviousWeek();
                     break;
+                case "last10days":
+                    this.DateFrom = DateTime.Today.Date.AddDays(-10);
+                    this.DateTo = DateTime.Today.Date;
+                    break;
+                case "last30days":
+                    this.DateFrom = DateTime.Today.Date.AddDays(-30);
+                    this.DateTo = DateTime.Today.Date;
+                    break;
+                case "last60days":
+                    this.DateFrom = DateTime.Today.Date.AddDays(-60);
+                    this.DateTo = DateTime.Today.Date;
+                    break;
+                case "last90days":
+                    this.DateFrom = DateTime.Today.Date.AddDays(-90);
+                    this.DateTo = DateTime.Today.Date;
+                    break;
                 case "thismonth":
                     this.DateFrom = DateTime.Today.ToStartOfMonth();
                     this.DateTo = DateTime.Today.ToEndOfMonth();

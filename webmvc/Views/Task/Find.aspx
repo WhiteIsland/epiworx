@@ -28,34 +28,45 @@
         </div>
         <p class="span1">
             <%: this.Html.LabelFor(m => m.AssignedTo) %>
-            <%: this.Html.UserDropDownListFor(m => m.AssignedTo, this.Model.Users, this.Model.AssignedTo)%>
+            <%: this.Html.AssignedToDropDownListFor(m => m.AssignedTo, this.Model.Users, this.Model.AssignedTo)%>
+        </p>
+        <p class="span1">
+            <label for="EstimatedDuration">
+                Select one or more points:</label>
+            <%: this.Html.EstimatedDurationDropDownList()%>
         </p>
         <div class="clear">
         </div>
-        <p class="span2">
+        <p class="span3">
             <label for="CompletedDateFrom">
                 Select a completed date range:</label>
             <%: this.Html.TextBox("CompletedDateFrom", string.Empty, new { @class = "date"}) %>
             <span>&nbsp;to&nbsp;</span>
             <%: this.Html.TextBox("CompletedDateTo", string.Empty, new { @class = "date"}) %>
+            <span>&nbsp;or&nbsp;</span>
+            <%: this.Html.DateRangeDropDownList("CompletedDate", "")%>
         </p>
         <div class="clear">
         </div>
-        <p class="span2">
+        <p class="span3">
             <label for="ModifiedDateFrom">
                 Select a modified date range:</label>
             <%: this.Html.TextBox("ModifiedDateFrom", string.Empty, new { @class = "date"}) %>
             <span>&nbsp;to&nbsp;</span>
             <%: this.Html.TextBox("ModifiedDateTo", string.Empty, new { @class = "date" })%>
+            <span>&nbsp;or&nbsp;</span>
+            <%: this.Html.DateRangeDropDownList("ModifiedDate", "")%>
         </p>
         <div class="clear">
         </div>
-        <p class="span2">
+        <p class="span3">
             <label for="CreatedDateFrom">
                 Select a created date range:</label>
             <%: this.Html.TextBox("CreatedDateFrom", string.Empty, new { @class = "date" })%>
             <span>&nbsp;to&nbsp;</span>
             <%: this.Html.TextBox("CreatedDateTo", string.Empty, new { @class = "date" })%>
+            <span>&nbsp;or&nbsp;</span>
+            <%: this.Html.DateRangeDropDownList("CreatedDate", "")%>
         </p>
         <div class="clear">
         </div>

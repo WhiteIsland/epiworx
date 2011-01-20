@@ -173,7 +173,6 @@
     <Content Include="Views\Task\Delete.aspx" />
     <Content Include="Views\Task\DeleteSuccess.aspx" />
     <Content Include="Views\Task\Edit.aspx" />
-    <Content Include="Views\Task\Find.aspx" />
     <Content Include="Views\Task\Index.aspx" />
     <Content Include="Views\Task\TaskFilter.ascx" />
     <Content Include="Views\Task\TaskFilterByProject.ascx" />
