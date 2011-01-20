@@ -12,6 +12,10 @@
 <table class="list">
     <thead>
         <tr>
+            <th style="width: 12px;">
+                <div class="box" title="Archived">
+                </div>
+            </th>
             <th style="width: 100px;">
                 Date
             </th>
@@ -43,6 +47,20 @@
            {
         %>
         <tr>
+            <td>
+               <% if (hour.IsArchived)
+                   {
+                %><div class="box archived" title="archived" />
+                <%
+                   }
+                   else
+                   {
+                %>
+                <div class="box not-archived" title="not archived" />
+                <%
+                   }
+                %>
+              </td>
             <td>
                 <%: this.Html.ActionLink(hour.Date.ToString("MM.dd.yyyy"), "Edit", "Hour", new { id = hour.HourId }, null) %>
             </td>

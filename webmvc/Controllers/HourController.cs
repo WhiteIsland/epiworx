@@ -14,7 +14,7 @@ namespace Epiworx.WebMvc.Controllers
     public class HourController : Controller
     {
         [Authorize]
-        public ActionResult Index(int[] projectId, int[] userId, string date, int? isArchived, string sortBy, string sortOrder)
+        public ActionResult Index(int[] projectId, int[] userId, int? taskId, string date, int? isArchived, string sortBy, string sortOrder)
         {
             var model = new HourIndexModel();
 
@@ -45,6 +45,7 @@ namespace Epiworx.WebMvc.Controllers
             {
                 ProjectId = projectId,
                 UserId = userId,
+                TaskId = taskId,
                 Date = new DateRangeCriteria(model.Date),
                 IsArchived = DataHelper.ToBoolean(isArchived)
             };

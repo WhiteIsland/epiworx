@@ -103,6 +103,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App.ico" />
     <Content Include="Content\Close.png" />
     <Content Include="Content\Plain.css" />
     <Content Include="Content\Find.png" />
@@ -115,6 +116,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\Epiworx.Form.js" />
     <Content Include="Scripts\Epiworx.js" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.8.custom.min.js" />
     <Content Include="Scripts\jquery.form.js" />
     <Content Include="Views\Account\ForgotPassword.aspx" />
@@ -199,12 +201,12 @@
     <Content Include="Views\Shared\MenuUserControl.ascx" />
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
-    <Content Include="Web.Debug.config">
+    <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
+    </None>
+    <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

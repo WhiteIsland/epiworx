@@ -43,6 +43,7 @@ namespace Epiworx.Business
             this.LoadProperty(TaskIdProperty, data.TaskId);
             this.LoadProperty(ProjectIdProperty, data.ProjectId);
             this.LoadProperty(ProjectNameProperty, data.Project.Name);
+            this.LoadProperty(CategoryProperty, CategoryInfo.FetchCategoryInfo(data.Category));
             this.LoadProperty(CategoryIdProperty, data.CategoryId);
             this.LoadProperty(CategoryNameProperty, data.Category.Name);
             this.LoadProperty(StatusProperty, StatusInfo.FetchStatusInfo(data.Status));

@@ -10,6 +10,7 @@ namespace Epiworx.Business
         int TaskId { get; }
         int ProjectId { get; }
         string ProjectName { get; }
+        ICategory Category { get; }
         int CategoryId { get; }
         string CategoryName { get; }
         IStatus Status { get; }

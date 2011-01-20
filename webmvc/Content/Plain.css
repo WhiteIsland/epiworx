@@ -248,7 +248,7 @@ table.list th
 {
     text-align: left;
     font-size: 17px;
-    font-weight: normal;
+    font-weight: bold;
 }
 
 table.list p
@@ -325,6 +325,11 @@ table.list tbody tr:hover td a
     height: 16px;
     width: 8px;
     margin-right: 4px;
+}
+
+.box.archived
+{
+    background-color: #000;
 }
 
 .tip

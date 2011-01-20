@@ -30,6 +30,14 @@ namespace Epiworx.Business
             set { this.LoadProperty(ProjectNameProperty, value); }
         }
 
+        private static Csla.PropertyInfo<ICategory> CategoryProperty =
+            RegisterProperty<ICategory>(row => row.Category, "Category");
+        public ICategory Category
+        {
+            get { return this.GetProperty(CategoryProperty); }
+            set { this.LoadProperty(CategoryProperty, value); }
+        }
+
         private static Csla.PropertyInfo<int> CategoryIdProperty =
             RegisterProperty<int>(row => row.CategoryId, "CategoryId");
         public int CategoryId

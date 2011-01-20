@@ -54,7 +54,6 @@ $(function () {
     })
 
     $("#filter .filter-value-single strong").click(function () {
-        $("#filter select").hide();
         $("#filter .filter-value-multiple-container").hide();
         $(this).hide();
         $(this).siblings("select:first").show();

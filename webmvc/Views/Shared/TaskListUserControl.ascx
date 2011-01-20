@@ -7,16 +7,22 @@
 <p class="no-records">
     No records were found.</p>
 <%
-    return;
+        return;
     }
 %>
 <table class="list">
     <thead>
         <tr>
+            <th style="width: 36px;">
+                <div class="box" title="Status">
+                </div>
+                <div class="box" title="Category">
+                </div>
+                <div class="box" title="Archived">
+                </div>
+            </th>
             <th>
                 No.
-            </th>
-            <th style="width:100px;">Status
             </th>
             <th style="width: 200px;">
                 Project
@@ -31,7 +37,7 @@
                 User
             </th>
             <%
-                }
+               }
             %>
             <th style="width: 50px; text-align: right;">
                 Points
@@ -44,12 +50,28 @@
         %>
         <tr>
             <td>
-                <%:this.Html.ActionLink(
-                    task.TaskId.ToString(), "Edit", "Task", new {id = task.TaskId, title = this.Html.ToTitle(task.Description)}, null)%>
+                <div class="box" style="color: <%= task.Status.ForeColor %>; background-color: <%= task.Status.BackColor %>;"
+                    title="<%: task.StatusName %>">
+                </div>
+                <div class="box" style="color: <%= task.Category.ForeColor %>; background-color: <%= task.Category.BackColor %>;"
+                    title="<%: task.CategoryName %>">
+                </div>
+                <% if (task.IsArchived)
+                   {
+                %><div class="box archived" title="archived" />
+                <%
+                   }
+                   else
+                   {
+                %>
+                <div class="box not-archived" title="not archived" />
+                <%
+                   }
+                %>
             </td>
             <td>
-                <div class="box" style="color: <%= task.Status.ForeColor %>; background-color: <%= task.Status.BackColor %>;">
-                    </div><%: task.StatusName %>
+                <%:this.Html.ActionLink(
+                    task.TaskId.ToString(), "Edit", "Task", new {id = task.TaskId, title = this.Html.ToTitle(task.Description)}, null)%>
             </td>
             <td>
                 <%: task.ProjectName %>
@@ -65,14 +87,14 @@
                 <%: task.AssignedToName %>
             </td>
             <%
-                }
+               }
             %>
             <td style="text-align: right;">
                 <%: task.EstimatedDuration.ToString("N0") %>
             </td>
         </tr>
         <%
-            }
+           }
         %>
     </tbody>
 </table>
