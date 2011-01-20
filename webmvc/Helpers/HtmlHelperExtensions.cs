@@ -66,11 +66,12 @@ namespace Epiworx.WebMvc.Helpers
 
             result = result.Replace("&", "and");
             result = result.Replace(" ", "-");
+            result = result.Replace(".", "");
             result = Regex.Replace(result, @"[^\w\-]", "");
 
-            if (result.Length > 40)
+            if (result.Length > 100)
             {
-                result = result.Substring(0, 40);
+                result = result.Substring(0, 100);
             }
 
             result = result.ToLower();

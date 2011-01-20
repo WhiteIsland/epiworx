@@ -8,7 +8,7 @@
             {
         %>
         <li>
-            <%= this.Html.ActionLink(status.Name, "Edit", "Status", new { id = status.StatusId, title = status.Description}, null)%>
+            <%= this.Html.ActionLink(status.Name, "Edit", "Status", new { id = status.StatusId, title = status.Name}, null)%>
         </li>
         <% } %>
         <li>

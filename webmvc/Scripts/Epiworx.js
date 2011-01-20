@@ -1,29 +1,23 @@
 ﻿$(function () {
-    $("#sidebar .part li").each(function () {
-        $(this).click(function () {
-            var link = $(this).find("a");
-            if (link != undefined) {
-                window.location = link.attr("href");
-            }
-        });
+    $("#sidebar .part li").click(function () {
+        var link = $(this).find("a:not(.action)");
+        if (link != undefined) {
+            window.location = link.attr("href");
+        }
     });
 
-    $("#main .list tr").each(function () {
-        $(this).click(function () {
-            var link = $(this).find("a");
-            if (link != undefined) {
-                window.location = link.attr("href");
-            }
-        });
+    $("#main .list tr").click(function () {
+        var link = $(this).find("a");
+        if (link != undefined) {
+            window.location = link.attr("href");
+        }
     });
 
-    $("#main .list li").each(function () {
-        $(this).click(function () {
-            var link = $(this).find("a");
-            if (link != undefined) {
-                window.location = link.attr("href");
-            }
-        });
+    $("#main .list li").click(function () {
+        var link = $(this).find("a");
+        if (link != undefined) {
+            window.location = link.attr("href");
+        }
     });
 });
 
