@@ -108,10 +108,10 @@ namespace Epiworx.WebMvc.Models
         [DisplayName("Duration:")]
         public decimal Duration { get; set; }
 
-        [DisplayName("Estimated duration:")]
+        [DisplayName("Points:")]
         public decimal EstimatedDuration { get; set; }
 
-        [DisplayName("Points:")]
+        [DisplayName("Labels:")]
         public string Labels { get; set; }
 
         [DisplayName("Enter some notes that provide more detail about the task:")]

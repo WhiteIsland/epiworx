@@ -169,6 +169,7 @@
     <Content Include="Views\Status\StatusFormCommands.ascx" />
     <Content Include="Views\Status\Create.aspx" />
     <Content Include="Views\Status\Edit.aspx" />
+    <Content Include="Views\Task\Import.aspx" />
     <Content Include="Views\Task\TaskFilterByCategory.ascx" />
     <Content Include="Views\Task\TaskFilterByStatus.ascx" />
     <Content Include="Views\Task\TaskFilterByUser.ascx" />
