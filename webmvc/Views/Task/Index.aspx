@@ -18,6 +18,8 @@
         <ul>
             <li class="first">
                 <%: this.Html.ActionLink("Add a New Story", "Create", "Task") %></li>
+            <li>
+                <%: this.Html.ActionLink("Import Stories", "Import", "Task")%></li>
             <li class="last">
                 <%: this.Html.ActionLink("Add a New Project", "Create", "Project")%></li>
         </ul>

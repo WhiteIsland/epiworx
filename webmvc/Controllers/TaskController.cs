@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Linq.Dynamic;
 using System.Web;
@@ -112,6 +113,69 @@ namespace Epiworx.WebMvc.Controllers
             }
 
             this.Map(task, model, false);
+
+            return this.View(model);
+        }
+
+        [Authorize]
+        public ActionResult Import()
+        {
+            var model = new ModelBase();
+
+            model.Tab = "Stories";
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult Import(HttpPostedFileBase file)
+        {
+            var model = new ModelBase();
+
+            model.Tab = "Stories";
+
+            if (file == null)
+            {
+                this.ModelState.AddModelError(string.Empty, "File is required");
+                return this.View(model);
+            }
+
+            if (file.ContentLength == 0)
+            {
+                this.ModelState.AddModelError(string.Empty, "File with a size greater than 0 is required");
+                return this.View(model);
+            }
+
+            if (!file.FileName.EndsWith(".csv"))
+            {
+                this.ModelState.AddModelError(string.Empty, "Only comma separate value (.csv) files are allowed");
+                return this.View(model);
+            }
+
+            var tasks = new List<Task>();
+
+            using (var sr = new StreamReader(file.InputStream))
+            {
+                string line;
+                int lineIndex = 0;
+
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (lineIndex != 0)
+                    {
+                        var values = line.Split(',');
+
+                        if (values.Count() != 9)
+                        {
+                            this.ModelState.AddModelError(string.Empty, string.Format("Row number {0} should have 9 values.", lineIndex));
+                            return this.View(model);
+                        }
+
+                        lineIndex++;
+                    }
+                }
+            }
 
             return this.View(model);
         }
