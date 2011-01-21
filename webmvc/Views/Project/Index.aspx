@@ -8,6 +8,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
         Projects</h2>
+    <%this.Html.RenderPartial("ProjectFilter", this.Model);%>
     <%
         if (this.Model.Projects.Count() == 0)
         {
@@ -20,7 +21,7 @@
         { 
     %>
     <%
-        this.Html.RenderPartial("ProjectListUserControl", new ProjectListModel { Projects = this.Model.Projects });%>
+            this.Html.RenderPartial("ProjectListUserControl", new ProjectListModel { Projects = this.Model.Projects });%>
     <%
         }             
     %>

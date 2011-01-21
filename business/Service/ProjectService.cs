@@ -24,7 +24,7 @@ namespace Epiworx.Service
                 new ProjectCriteria());
         }
 
-        internal static ProjectInfoList ProjectFetchInfoList(ProjectCriteria criteria)
+        public static ProjectInfoList ProjectFetchInfoList(ProjectCriteria criteria)
         {
             return ProjectInfoList.FetchProjectInfoList(criteria);
         }

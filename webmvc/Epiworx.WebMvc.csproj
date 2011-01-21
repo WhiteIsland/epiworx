@@ -143,6 +143,7 @@
     <Content Include="Views\Project\Create.aspx" />
     <Content Include="Views\Project\Delete.aspx" />
     <Content Include="Views\Project\DeleteSuccess.aspx" />
+    <Content Include="Views\Project\ProjectFilter.ascx" />
     <Content Include="Views\Project\ProjectForm.ascx" />
     <Content Include="Views\Project\ProjectFormCommands.ascx" />
     <Content Include="Views\Project\Edit.aspx" />

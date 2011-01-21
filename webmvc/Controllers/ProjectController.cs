@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Web;
 using System.Web.Mvc;
 using Epiworx.Business;
@@ -13,12 +14,29 @@ namespace Epiworx.WebMvc.Controllers
     [Authorize]
     public class ProjectController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(int? isArchived, string sortBy, string sortOrder)
         {
             var model = new ProjectIndexModel();
 
             model.Tab = "Project";
-            model.Projects = DataHelper.GetProjectList();
+
+            model.IsArchived = isArchived ?? 1;
+
+            model.SortBy = sortBy ?? "Name";
+            model.SortOrder = sortOrder ?? "ASC";
+            model.SortableColumns.Add("Name", "Name");
+
+            var criteria = new ProjectCriteria()
+            {
+                IsArchived = DataHelper.ToBoolean(isArchived, false)
+            };
+
+            var projects = ProjectService.ProjectFetchInfoList(criteria)
+                .AsQueryable();
+
+            projects = projects.OrderBy(string.Format("{0} {1}", model.SortBy, model.SortOrder));
+
+            model.Projects = projects;
 
             return this.View(model);
         }

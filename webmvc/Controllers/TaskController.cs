@@ -70,7 +70,6 @@ namespace Epiworx.WebMvc.Controllers
             var tasks = TaskService.TaskFetchInfoList(criteria)
                 .AsQueryable();
 
-
             tasks = tasks.OrderBy(string.Format("{0} {1}", model.SortBy, model.SortOrder));
 
             model.Tasks = tasks;

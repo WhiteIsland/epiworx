@@ -18,7 +18,7 @@
            {
         %>
         <li>
-            <%:this.Html.ActionLink(
+             <%:this.Html.ActionLink(
                 project.Name, "Edit", "Project", new {id = project.ProjectId, title = this.Html.ToTitle(project.Name)}, null)%>
         </li>
         <%

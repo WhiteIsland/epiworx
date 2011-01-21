@@ -1,23 +1,14 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<Epiworx.WebMvc.Models.HourIndexModel>" %>
+﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<Epiworx.WebMvc.Models.ProjectIndexModel>" %>
 <%@ Import Namespace="Epiworx.WebMvc.Helpers" %>
 <%
-    using (this.Html.BeginForm("Index", "Hour", FormMethod.Get))
+    using (this.Html.BeginForm("Index", "Project", FormMethod.Get))
     {
 %>
 <div id="filter">
-    <ul class="actions">
-        <li>
-            <%: this.Html.ActionLink("Save as New Filter", "Create", "Filter", new { target = "Hour", query = Server.UrlEncode(this.Request.QueryString.ToString()) }, null) %></li>
-    </ul>
     <h5>
         Filter</h5>
     <div class="filter-criteria">
-        <span>Show all hours for</span>
-        <% this.Html.RenderPartial("HourFilterByProject"); %>
-        <% this.Html.RenderPartial("HourFilterByUser"); %>
-        <span class="filter-value filter-value-single">and&nbsp;<strong></strong>
-            <%: this.Html.DateRangeDropDownListFor(m => m.Date, "Date", this.Model.Date)%></span>
-        <span class="filter-value filter-value-single">and&nbsp;<strong></strong>
+        <span>Show all hours for</span> <span class="filter-value filter-value-single">and&nbsp;<strong></strong>
             <%: this.Html.IsArchivedDropDownListFor(m => m.IsArchived, this.Model.IsArchived)%></span>
     </div>
     <div class="filter-sort">
@@ -34,10 +25,6 @@
 %>
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#Date").change(function () {
-            $("form").submit();
-        });
-
         $("#IsArchived").change(function () {
             $("form").submit();
         });
