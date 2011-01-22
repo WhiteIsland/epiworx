@@ -21,6 +21,11 @@ namespace Epiworx.WebMvc.Models
         public IEnumerable<IStatus> Statuses { get; set; }
     }
 
+    public class TaskImportModel : ModelListBase
+    {
+        public IEnumerable<ITask> Tasks { get; set; }
+    }
+
     public class TaskIndexModel : TaskListModel
     {
         public int[] ProjectId { get; set; }

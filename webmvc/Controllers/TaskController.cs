@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Linq.Dynamic;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Epiworx.Business;
@@ -118,11 +119,71 @@ namespace Epiworx.WebMvc.Controllers
         }
 
         [Authorize]
+        public void Export(int[] projectId, int[] categoryId, int[] statusId, int[] assignedTo, string completedDate, string modifiedDate, string createdDate, int? isArchived, string text, string sortBy, string sortOrder)
+        {
+            var criteria = new TaskCriteria()
+            {
+                ProjectId = projectId,
+                CategoryId = categoryId,
+                StatusId = statusId,
+                AssignedTo = assignedTo,
+                CompletedDate = new DateRangeCriteria(completedDate ?? string.Empty),
+                ModifiedDate = new DateRangeCriteria(modifiedDate ?? string.Empty),
+                CreatedDate = new DateRangeCriteria(createdDate ?? string.Empty),
+                IsArchived = DataHelper.ToBoolean(isArchived, false),
+                Text = text
+            };
+
+            var tasks = TaskService.TaskFetchInfoList(criteria)
+                .AsQueryable();
+
+            tasks = tasks.OrderBy(string.Format("{0} {1}", sortBy ?? "TaskId", sortOrder ?? "ASC"));
+
+            var sw = new StringWriter();
+
+            sw.WriteLine(
+                "TaskId,ProjectName,CategoryName,StatusName,Description,AssignedToName,AssignedDate,StartDate,CompletedDate,EstimatedCompletedDate,Duration,EstimatedDuration,Labels,IsArchived,Notes,ModifiedByName,ModifiedDate,CreatedByName,CreatedByDate");
+
+            foreach (var task in tasks)
+            {
+                var sb = new StringBuilder();
+
+                sb.AppendFormat("{0},", task.TaskId);
+                sb.AppendFormat("\"{0}\",", task.ProjectName);
+                sb.AppendFormat("{0},", task.CategoryName);
+                sb.AppendFormat("{0},", task.StatusName);
+                sb.AppendFormat("\"{0}\",", task.Description.Replace("\"", "'"));
+                sb.AppendFormat("{0},", task.AssignedToName);
+                sb.AppendFormat("{0},", task.AssignedDate);
+                sb.AppendFormat("{0},", task.StartDate);
+                sb.AppendFormat("{0},", task.CompletedDate);
+                sb.AppendFormat("{0},", task.EstimatedCompletedDate);
+                sb.AppendFormat("{0},", task.Duration);
+                sb.AppendFormat("{0},", task.EstimatedDuration);
+                sb.AppendFormat("\"{0}\",", task.Labels);
+                sb.AppendFormat("{0},", task.IsArchived);
+                sb.AppendFormat("\"{0}\",", task.Notes);
+                sb.AppendFormat("{0},", task.ModifiedByName);
+                sb.AppendFormat("{0},", task.ModifiedDate);
+                sb.AppendFormat("{0},", task.CreatedByName);
+                sb.AppendFormat("{0}", task.CreatedDate);
+
+                sw.WriteLine(sb.ToString());
+            }
+
+            this.Response.AddHeader("Content-Disposition", "attachment; filename=Stories.csv");
+            this.Response.ContentType = "application/ms-excel";
+            this.Response.ContentEncoding = System.Text.Encoding.GetEncoding("utf-8");
+            this.Response.Write(sw);
+            this.Response.End();
+        }
+
+        [Authorize]
         public ActionResult Import()
         {
-            var model = new ModelBase();
+            var model = new TaskImportModel();
 
-            model.Tab = "Stories";
+            model.Tab = "Task";
 
             return this.View(model);
         }
@@ -131,50 +192,16 @@ namespace Epiworx.WebMvc.Controllers
         [Authorize]
         public ActionResult Import(HttpPostedFileBase file)
         {
-            var model = new ModelBase();
+            var model = new TaskImportModel();
 
             model.Tab = "Stories";
 
-            if (file == null)
+            model.Tasks = ImportHelper.ImportStories(this, file);
+
+            if (this.ModelState.IsValid)
             {
-                this.ModelState.AddModelError(string.Empty, "File is required");
-                return this.View(model);
-            }
+                return this.View("ImportSuccess", model);
 
-            if (file.ContentLength == 0)
-            {
-                this.ModelState.AddModelError(string.Empty, "File with a size greater than 0 is required");
-                return this.View(model);
-            }
-
-            if (!file.FileName.EndsWith(".csv"))
-            {
-                this.ModelState.AddModelError(string.Empty, "Only comma separate value (.csv) files are allowed");
-                return this.View(model);
-            }
-
-            var tasks = new List<Task>();
-
-            using (var sr = new StreamReader(file.InputStream))
-            {
-                string line;
-                int lineIndex = 0;
-
-                while ((line = sr.ReadLine()) != null)
-                {
-                    if (lineIndex != 0)
-                    {
-                        var values = line.Split(',');
-
-                        if (values.Count() != 9)
-                        {
-                            this.ModelState.AddModelError(string.Empty, string.Format("Row number {0} should have 9 values.", lineIndex));
-                            return this.View(model);
-                        }
-
-                        lineIndex++;
-                    }
-                }
             }
 
             return this.View(model);

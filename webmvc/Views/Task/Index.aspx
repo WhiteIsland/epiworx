@@ -19,9 +19,11 @@
             <li class="first">
                 <%: this.Html.ActionLink("Add a New Story", "Create", "Task") %></li>
             <li>
-                <%: this.Html.ActionLink("Import Stories", "Import", "Task")%></li>
-            <li class="last">
                 <%: this.Html.ActionLink("Add a New Project", "Create", "Project")%></li>
+            <li>
+                <a href="<%: this.Url.Action("Export") %>?<%= this.Request.QueryString %>">Export Stories</a></li>
+            <li class="last">
+                <%: this.Html.ActionLink("Import Stories", "Import", "Task")%></li>
         </ul>
     </div>
     <% this.Html.RenderPartial("FiltersUserControl", new FilterListModel { Target = "Task", Filters = this.Model.Filters });%>
