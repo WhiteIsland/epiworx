@@ -95,6 +95,9 @@ namespace Epiworx.WebMvc.Models
         [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
 
+        [DisplayName("Sprint:")]
+        public int SprintId { get; set; }
+
         [DisplayName("Assigned to:")]
         public int AssignedTo { get; set; }
 
@@ -130,5 +133,6 @@ namespace Epiworx.WebMvc.Models
         public IEnumerable<IProject> Projects { get; set; }
         public IEnumerable<IUser> Users { get; set; }
         public IEnumerable<IHour> Hours { get; set; }
+        public IEnumerable<ISprint> Sprints { get; set; }
     }
 }

@@ -256,6 +256,27 @@
     <Compile Include="Business\Role\Role.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Business\Sprint\ISprint.cs" />
+    <Compile Include="Business\Sprint\SprintDuplicateNameCheck.cs" />
+    <Compile Include="Business\Sprint\SprintCriteria\SprintCriteria.cs" />
+    <Compile Include="Business\Sprint\SprintCriteria\SprintCriteria.Properties.cs" />
+    <Compile Include="Business\Sprint\SprintExistsCommand\SprintExistsCommand.cs" />
+    <Compile Include="Business\Sprint\SprintInfoList\SprintInfoList.cs" />
+    <Compile Include="Business\Sprint\SprintInfoList\SprintInfoList.Data.cs" />
+    <Compile Include="Business\Sprint\SprintInfoList\SprintInfoList.Methods.cs" />
+    <Compile Include="Business\Sprint\SprintInfoList\SprintInfoList.Properties.cs" />
+    <Compile Include="Business\Sprint\SprintInfoList\SprintInfoList.Rules.cs" />
+    <Compile Include="Business\Sprint\SprintInfo\SprintInfo.cs" />
+    <Compile Include="Business\Sprint\SprintInfo\SprintInfo.Data.cs" />
+    <Compile Include="Business\Sprint\SprintInfo\SprintInfo.Methods.cs" />
+    <Compile Include="Business\Sprint\SprintInfo\SprintInfo.Properties.cs" />
+    <Compile Include="Business\Sprint\SprintInfo\SprintInfo.Rules.cs" />
+    <Compile Include="Business\Sprint\SprintValueCommand\SprintValueCommand.cs" />
+    <Compile Include="Business\Sprint\Sprint\Sprint.cs" />
+    <Compile Include="Business\Sprint\Sprint\Sprint.Data.cs" />
+    <Compile Include="Business\Sprint\Sprint\Sprint.Methods.cs" />
+    <Compile Include="Business\Sprint\Sprint\Sprint.Properties.cs" />
+    <Compile Include="Business\Sprint\Sprint\Sprint.Rules.cs" />
     <Compile Include="Business\Status\StatusDuplicateNameCheck.cs" />
     <Compile Include="Business\Status\IStatus.cs">
       <SubType>Code</SubType>
@@ -421,6 +442,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Application.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Data\Hour.cs" />
     <Compile Include="Data\Task.cs" />
     <Compile Include="Data\Validation\DateRequired.cs" />
     <Compile Include="Core\Helpers\MessageHelper.cs" />
@@ -450,6 +472,7 @@
     <Compile Include="Service\ProjectService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\SprintService.cs" />
     <Compile Include="Service\StatusService.cs">
       <SubType>Code</SubType>
     </Compile>

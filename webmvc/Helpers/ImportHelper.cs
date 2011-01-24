@@ -12,26 +12,27 @@ namespace Epiworx.WebMvc.Helpers
 {
     public class ImportHelper
     {
-        public const int TaskColumnCount = 19;
+        public const int TaskColumnCount = 20;
         public const int TaskTaskIdColumn = 0;
         public const int TaskProjectNameColumn = 1;
-        public const int TaskCategoryNameColumn = 2;
-        public const int TaskStatusNameColumn = 3;
-        public const int TaskDescriptionColumn = 4;
-        public const int TaskAssignedToNameColumn = 5;
-        public const int TaskAssignedDateColumn = 6;
-        public const int TaskStartDateColumn = 7;
-        public const int TaskCompletedDateColumn = 8;
-        public const int TaskEstimatedCompletedDateColumn = 9;
-        public const int TaskDurationColumn = 10;
-        public const int TaskEstimatedDurationColumn = 11;
-        public const int TaskLabelsColumn = 12;
-        public const int TaskIsArchivedColumn = 13;
-        public const int TaskNotesColumn = 14;
-        public const int TaskModifiedByNameColumn = 15;
-        public const int TaskModifiedDateColumn = 16;
-        public const int TaskCreatedByNameColumn = 17;
-        public const int TaskCreatedByDateColumn = 18;
+        public const int TaskSprintNameColumn = 2;
+        public const int TaskCategoryNameColumn = 3;
+        public const int TaskStatusNameColumn = 4;
+        public const int TaskDescriptionColumn = 5;
+        public const int TaskAssignedToNameColumn = 6;
+        public const int TaskAssignedDateColumn = 7;
+        public const int TaskStartDateColumn = 8;
+        public const int TaskCompletedDateColumn = 9;
+        public const int TaskEstimatedCompletedDateColumn = 10;
+        public const int TaskDurationColumn = 11;
+        public const int TaskEstimatedDurationColumn = 12;
+        public const int TaskLabelsColumn = 13;
+        public const int TaskIsArchivedColumn = 14;
+        public const int TaskNotesColumn = 15;
+        public const int TaskModifiedByNameColumn = 16;
+        public const int TaskModifiedDateColumn = 17;
+        public const int TaskCreatedByNameColumn = 18;
+        public const int TaskCreatedByDateColumn = 19;
 
         public static IEnumerable<ITask> ImportStories(TaskController controller, HttpPostedFileBase file)
         {
@@ -64,6 +65,7 @@ namespace Epiworx.WebMvc.Helpers
                 int lineIndex = 0;
 
                 var projects = DataHelper.GetProjectList();
+                var sprints = DataHelper.GetSprintList();
                 var users = DataHelper.GetUserList();
                 var statuses = DataHelper.GetStatusList();
                 var categories = DataHelper.GetCategoryList();
@@ -94,6 +96,14 @@ namespace Epiworx.WebMvc.Helpers
 
                         task.ProjectId = projects.Single(row =>
                             row.Name == values[ImportHelper.TaskProjectNameColumn]).ProjectId;
+
+                        if (sprints.Any(row =>
+                            row.Name == values[ImportHelper.TaskSprintNameColumn]))
+                        {
+                            task.SprintId = sprints.Single(row =>
+                                row.Name == values[ImportHelper.TaskSprintNameColumn]).SprintId;
+                        }
+
                         task.CategoryId = categories.Single(row =>
                             row.Name == values[ImportHelper.TaskCategoryNameColumn]).CategoryId;
                         task.StatusId = statuses.Single(row =>

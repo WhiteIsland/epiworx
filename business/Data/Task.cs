@@ -5,11 +5,16 @@ using System.Text;
 
 namespace Epiworx.Data
 {
-    public partial class Hour
+    public partial class Task
     {
-        public string TaskName
+        public string SprintName
         {
-            get { return this.Task == null ? string.Empty : this.Task.Description; }
+            get { return this.Sprint == null ? string.Empty : this.Sprint.Name; }
+        }
+
+        public string AssignedToName
+        {
+            get { return this.AssignedToUser == null ? string.Empty : this.AssignedToUser.Name; }
         }
     }
 }

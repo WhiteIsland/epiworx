@@ -334,6 +334,21 @@ table.list tbody tr:hover td a
     background-color: #000;
 }
 
+.box.completed
+{
+    background-color: #4FA72A;
+}
+
+.left
+{
+    float: left;
+}
+
+.right
+{
+    float: right;
+}
+
 .tip
 {
     margin-top: 5px;

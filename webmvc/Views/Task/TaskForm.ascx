@@ -27,6 +27,11 @@
     <div class="clear">
     </div>
     <p class="span1">
+        <%: this.Html.LabelFor(m => m.SprintId) %>
+        <%: this.Html.SprintDropDownListFor(m => m.SprintId, this.Model.Sprints, this.Model.SprintId)%>
+        <%: this.Html.ValidationMessageFor(m => m.SprintId)%>
+    </p>
+    <p class="span1">
         <%: this.Html.LabelFor(m => m.AssignedTo) %>
         <%: this.Html.AssignedToDropDownListFor(m => m.AssignedTo, this.Model.Users, this.Model.AssignedTo)%>
         <%: this.Html.ValidationMessageFor(m => m.AssignedTo)%>
@@ -39,6 +44,13 @@
     <div class="clear">
     </div>
     <p class="span3">
+        <%: this.Html.LabelFor(m => m.Labels) %>
+        <%: this.Html.TextBoxFor(m => m.Labels)%>
+        <%: this.Html.ValidationMessageFor(m => m.Labels)%>
+    </p>
+    <div class="clear">
+    </div>
+   <p class="span3">
         <%: this.Html.LabelFor(m => m.Notes) %>
         <%: this.Html.TextAreaFor(m => m.Notes) %>
         <%: this.Html.ValidationMessageFor(m => m.Notes)%>

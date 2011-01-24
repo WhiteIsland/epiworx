@@ -8,8 +8,12 @@ namespace Epiworx.Business
     public interface ITask
     {
         int TaskId { get; }
+        IProject Project { get; }
         int ProjectId { get; }
         string ProjectName { get; }
+        ISprint Sprint { get; }
+        int SprintId { get; }
+        string SprintName { get; }
         ICategory Category { get; }
         int CategoryId { get; }
         string CategoryName { get; }

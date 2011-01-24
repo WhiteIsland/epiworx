@@ -160,6 +160,7 @@ namespace Epiworx.WebMvc.Controllers
             Csla.Data.DataMapper.Map(project, model, true);
 
             model.Tab = "Project";
+            model.Sprints = SprintService.SprintFetchInfoList(project.ProjectId);
             model.IsNew = project.IsNew;
             model.IsValid = project.IsValid;
 

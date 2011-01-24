@@ -209,6 +209,24 @@ namespace Epiworx.WebMvc.Helpers
                  .AsQueryable();
         }
 
+        public static IQueryable<ISprint> GetSprintList()
+        {
+            return SprintService.SprintFetchInfoList()
+                 .Cast<ISprint>()
+                 .OrderBy(row => row.ProjectName)
+                 .ThenByDescending(row => row.EstimatedCompletedDate)
+                 .AsQueryable();
+        }
+
+        public static IQueryable<ISprint> GetSprintList(int projectId)
+        {
+            return SprintService.SprintFetchInfoList(projectId)
+                 .Cast<ISprint>()
+                 .OrderBy(row => row.ProjectName)
+                 .ThenByDescending(row => row.EstimatedCompletedDate)
+                 .AsQueryable();
+        }
+
         public static IQueryable<IProject> GetProjectList()
         {
             return ProjectService.ProjectFetchInfoList()

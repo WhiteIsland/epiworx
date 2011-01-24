@@ -78,9 +78,6 @@ namespace Epiworx.Business
                     case "EstimatedDuration":
                         this.Value = data.EstimatedDuration;
                         break;
-                    case "Labels":
-                        this.Value = data.Labels;
-                        break;
                     case "IsArchived":
                         this.Value = data.IsArchived;
                         break;

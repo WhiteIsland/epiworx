@@ -21,7 +21,7 @@
         <li>
             <%= this.Html.ActionLink("Edit", "Edit", "Filter", new { id = filter.FilterId, title = this.Html.ToTitle(filter.Name) }, new { @class = "action" })%>
             <a href="<%: filter.Target %>?<%: Server.UrlDecode(filter.Query) %>">
-                <%: filter.Name %></a> </li>
+                <%: filter.Name %></a></li>
         <% 
             } 
         %>

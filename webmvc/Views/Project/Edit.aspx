@@ -17,4 +17,15 @@
     %>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="SideBarContent" runat="server">
+    <div class="part">
+        <h4>
+            Things To Do</h4>
+        <ul>
+            <li class="last">
+                <%: this.Html.ActionLink("Add a New Sprint", "Create", "Sprint", new { projectId = this.Model.ProjectId}, null)%></li>
+        </ul>
+    </div>
+    <div class="clear">
+    </div>
+    <% this.Html.RenderPartial("SprintsUserControl", this.Model.Sprints); %>
 </asp:Content>

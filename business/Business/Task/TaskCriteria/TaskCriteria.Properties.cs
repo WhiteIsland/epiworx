@@ -10,6 +10,7 @@ namespace Epiworx.Business
     {
         public int? TaskId { get; set; }
         public int[] ProjectId { get; set; }
+        public int? SprintId { get; set; }
         public int[] CategoryId { get; set; }
         public int[] StatusId { get; set; }
         public string Description { get; set; }
@@ -20,7 +21,7 @@ namespace Epiworx.Business
         public DateRangeCriteria EstimatedCompletedDate { get; set; }
         public decimal? Duration { get; set; }
         public decimal? EstimatedDuration { get; set; }
-        public string Labels { get; set; }
+        public string Label { get; set; }
         public bool? IsArchived { get; set; }
         public string Notes { get; set; }
         public int? ModifiedBy { get; set; }

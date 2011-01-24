@@ -57,15 +57,26 @@
     <Compile Include="CategoryTests.cs" />
     <Compile Include="CategoryTestsWithRoleContribute.cs" />
     <Compile Include="CategoryTestsWithRoleReview.cs" />
+    <Compile Include="ProjectTestsWithRoleContribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ProjectTestsWithRoleReview.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SprintTests.cs" />
     <Compile Include="FilterTestsWithRoleContribute.cs" />
     <Compile Include="FilterTests.cs" />
     <Compile Include="Helpers\EmptyMessenger.cs" />
     <Compile Include="HourTestsWithRoleContribute.cs" />
     <Compile Include="HourTestsWithRoleReview.cs" />
+    <Compile Include="SprintTestsWithRoleContribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SprintTestsWithRoleReview.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="TaskTestsWithRoleReview.cs" />
     <Compile Include="TaskTestsWithRoleContribute.cs" />
-    <Compile Include="ProjectTestsWithRoleContribute.cs" />
-    <Compile Include="ProjectTestsWithRoleReview.cs" />
     <Compile Include="StatusTestsWithRoleReview.cs" />
     <Compile Include="StatusTestsWithRoleContribute.cs" />
     <Compile Include="HourTests.cs" />
@@ -88,8 +99,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="App.Debug.config" />
-    <None Include="App.Release.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

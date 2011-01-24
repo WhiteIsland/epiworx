@@ -13,6 +13,7 @@ namespace Epiworx.Business
         {
             this.TaskId = null;
             this.ProjectId = null;
+            this.SprintId = null;
             this.CategoryId = null;
             this.StatusId = null;
             this.Description = null;
@@ -23,7 +24,7 @@ namespace Epiworx.Business
             this.EstimatedCompletedDate = new DateRangeCriteria();
             this.Duration = null;
             this.EstimatedDuration = null;
-            this.Labels = null;
+            this.Label = null;
             this.IsArchived = null;
             this.Notes = null;
             this.ModifiedBy = null;

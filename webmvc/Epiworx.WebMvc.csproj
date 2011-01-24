@@ -77,6 +77,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\SprintController.cs" />
     <Compile Include="Controllers\FilterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HourController.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Helpers\UrlHelperExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CategoryModels.cs" />
+    <Compile Include="Models\SprintModels.cs" />
     <Compile Include="Models\FilterModels.cs" />
     <Compile Include="Models\UserModels.cs" />
     <Compile Include="Models\HourModels.cs" />
@@ -127,6 +129,11 @@
     <Content Include="Views\Category\CategoryFormCommands.ascx" />
     <Content Include="Views\Category\Create.aspx" />
     <Content Include="Views\Category\Edit.aspx" />
+    <Content Include="Views\Shared\SprintsUserControl.ascx" />
+    <Content Include="Views\Sprint\SprintForm.ascx" />
+    <Content Include="Views\Sprint\SprintFormCommands.ascx" />
+    <Content Include="Views\Sprint\Create.aspx" />
+    <Content Include="Views\Sprint\Edit.aspx" />
     <Content Include="Views\Filter\FilterForm.ascx" />
     <Content Include="Views\Filter\FilterFormCommands.ascx" />
     <Content Include="Views\Filter\Create.aspx" />

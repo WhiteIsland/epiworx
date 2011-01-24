@@ -14,6 +14,14 @@ namespace Epiworx.Business
             get { return this.GetProperty(TaskIdProperty); }
         }
 
+        private static Csla.PropertyInfo<IProject> ProjectProperty =
+            RegisterProperty<IProject>(row => row.Project, "Project");
+        public IProject Project
+        {
+            get { return this.GetProperty(ProjectProperty); }
+            set { this.LoadProperty(ProjectProperty, value); }
+        }
+
         private static Csla.PropertyInfo<int> ProjectIdProperty =
             RegisterProperty<int>(row => row.ProjectId, "ProjectId");
         public int ProjectId
@@ -28,6 +36,30 @@ namespace Epiworx.Business
         {
             get { return this.GetProperty(ProjectNameProperty); }
             set { this.LoadProperty(ProjectNameProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<ISprint> SprintProperty =
+            RegisterProperty<ISprint>(row => row.Sprint, "Sprint");
+        public ISprint Sprint
+        {
+            get { return this.GetProperty(SprintProperty); }
+            set { this.LoadProperty(SprintProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<int> SprintIdProperty =
+            RegisterProperty<int>(row => row.SprintId, "SprintId");
+        public int SprintId
+        {
+            get { return this.GetProperty(SprintIdProperty); }
+            set { this.LoadProperty(SprintIdProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<string> SprintNameProperty =
+            RegisterProperty<string>(row => row.SprintName, "SprintName");
+        public string SprintName
+        {
+            get { return this.GetProperty(SprintNameProperty); }
+            set { this.LoadProperty(SprintNameProperty, value); }
         }
 
         private static Csla.PropertyInfo<ICategory> CategoryProperty =

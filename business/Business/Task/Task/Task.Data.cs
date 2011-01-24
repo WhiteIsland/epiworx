@@ -29,6 +29,7 @@ namespace Epiworx.Business
                     .Include("Category")
                     .Include("Status")
                     .Include("Project")
+                    .Include("Sprint")
                     .Include("AssignedToUser")
                     .Single(row => row.TaskId == criteria.TaskId);
 
@@ -41,8 +42,12 @@ namespace Epiworx.Business
         protected void Fetch(Data.Task data)
         {
             this.LoadProperty(TaskIdProperty, data.TaskId);
+            this.LoadProperty(ProjectProperty, ProjectInfo.FetchProjectInfo(data.Project));
             this.LoadProperty(ProjectIdProperty, data.ProjectId);
             this.LoadProperty(ProjectNameProperty, data.Project.Name);
+            this.LoadProperty(SprintProperty, SprintInfo.FetchSprintInfo(data.Sprint));
+            this.LoadProperty(SprintIdProperty, data.SprintId);
+            this.LoadProperty(SprintNameProperty, data.SprintName);
             this.LoadProperty(CategoryProperty, CategoryInfo.FetchCategoryInfo(data.Category));
             this.LoadProperty(CategoryIdProperty, data.CategoryId);
             this.LoadProperty(CategoryNameProperty, data.Category.Name);
@@ -125,6 +130,7 @@ namespace Epiworx.Business
             if (this.IsSelfDirty)
             {
                 data.ProjectId = this.ReadProperty(ProjectIdProperty);
+                data.SprintId = this.ReadProperty(SprintIdProperty);
                 data.CategoryId = this.ReadProperty(CategoryIdProperty);
                 data.StatusId = this.ReadProperty(StatusIdProperty);
                 data.Description = this.ReadProperty(DescriptionProperty);

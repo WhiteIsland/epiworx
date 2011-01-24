@@ -23,6 +23,7 @@ namespace Epiworx.Business
                     .Include("Category")
                     .Include("Status")
                     .Include("Project")
+                    .Include("Sprint")
                     .Include("AssignedToUser");
 
                 if (criteria.TaskId != null)
@@ -33,6 +34,11 @@ namespace Epiworx.Business
                 if (criteria.ProjectId != null && criteria.ProjectId.Count() != 0)
                 {
                     query = query.Where(row => criteria.ProjectId.Contains(row.ProjectId));
+                }
+
+                if (criteria.SprintId != null)
+                {
+                    query = query.Where(row => row.SprintId == criteria.SprintId);
                 }
 
                 if (criteria.CategoryId != null && criteria.CategoryId.Count() != 0)
@@ -105,9 +111,9 @@ namespace Epiworx.Business
                     query = query.Where(row => row.EstimatedDuration == criteria.EstimatedDuration);
                 }
 
-                if (criteria.Labels != null)
+                if (criteria.Label != null)
                 {
-                    query = query.Where(row => row.Labels == criteria.Labels);
+                    query = query.Where(row => row.Notes.Contains(criteria.Label));
                 }
 
                 if (criteria.IsArchived != null)

@@ -17,6 +17,38 @@ namespace Epiworx.WebMvc.Helpers
 {
     public static class HtmlHelperExtensions
     {
+        public static string ArchivedBox(this HtmlHelper helper, bool isArchived)
+        {
+            var result = string.Empty;
+
+            if (isArchived)
+            {
+                result = "<div class=\"box archived\" title=\"archived\" />";
+            }
+            else
+            {
+                result = "<div class=\"box not-archived\" title=\"not archived\" />";
+            }
+
+            return result;
+        }
+
+        public static string CompletedBox(this HtmlHelper helper, bool isCompleted)
+        {
+            var result = string.Empty;
+
+            if (isCompleted)
+            {
+                result = "<div class=\"box complete\" title=\"complete\" />";
+            }
+            else
+            {
+                result = "<div class=\"box not-complete\" title=\"not complete\" />";
+            }
+
+            return result;
+        }
+
         public static string FirstLastCssClass(
             this HtmlHelper helper,
             int index,
@@ -533,6 +565,53 @@ namespace Epiworx.WebMvc.Helpers
                    role.Value,
                    role.Value.Equals(selectedValue) ? " selected=\"selected\"" : string.Empty,
                    role.Name);
+            }
+
+            result.Append("</select>");
+
+            return MvcHtmlString.Create(result.ToString());
+        }
+
+        public static MvcHtmlString SprintDropDownListFor<TModel, TProperty>(
+            this HtmlHelper<TModel> htmlHelper,
+            Expression<Func<TModel, TProperty>> expression,
+            IEnumerable<ISprint> sprints,
+            int selectedValue)
+        {
+            return htmlHelper.SprintDropDownListFor(expression, sprints, selectedValue, "Select a sprint...", "0");
+        }
+
+        public static MvcHtmlString SprintDropDownListFor<TModel, TProperty>(
+            this HtmlHelper<TModel> htmlHelper,
+            Expression<Func<TModel, TProperty>> expression,
+            IEnumerable<ISprint> sprints,
+            int selectedValue,
+            string emptyName,
+            string emptyValue)
+        {
+            sprints = sprints
+                .OrderBy(row => row.Name);
+
+            var result = new StringBuilder();
+
+            result.AppendFormat("<select id=\"{0}\" name=\"{0}\">", "SprintId");
+
+            if (!string.IsNullOrEmpty(emptyName))
+            {
+                result.AppendFormat("<option value=\"{0}\">{1}</option>", emptyValue, emptyName);
+            }
+            else
+            {
+                result.Append("<option value=\"0\">Select a sprint...</option>");
+            }
+
+            foreach (var sprint in sprints)
+            {
+                result.AppendFormat(
+                  "<option value=\"{0}\"{1}>{2}</option>",
+                  sprint.SprintId,
+                  selectedValue == sprint.SprintId ? " selected=\"selected\"" : string.Empty,
+                  sprint.Name);
             }
 
             result.Append("</select>");

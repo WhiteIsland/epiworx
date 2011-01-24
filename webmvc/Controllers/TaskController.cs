@@ -18,7 +18,7 @@ namespace Epiworx.WebMvc.Controllers
     public class TaskController : Controller
     {
         [Authorize]
-        public ActionResult Index(int[] projectId, int[] categoryId, int[] statusId, int[] assignedTo, string completedDate, string modifiedDate, string createdDate, int? isArchived, string text, string sortBy, string sortOrder)
+        public ActionResult Index(int[] projectId, int[] categoryId, int[] statusId, int? sprintId, int[] assignedTo, string completedDate, string modifiedDate, string createdDate, int? isArchived, string text, string sortBy, string sortOrder)
         {
             var model = new TaskIndexModel();
 
@@ -59,6 +59,7 @@ namespace Epiworx.WebMvc.Controllers
             var criteria = new TaskCriteria()
                 {
                     ProjectId = projectId,
+                    SprintId = sprintId,
                     CategoryId = categoryId,
                     StatusId = statusId,
                     AssignedTo = assignedTo,
@@ -119,11 +120,12 @@ namespace Epiworx.WebMvc.Controllers
         }
 
         [Authorize]
-        public void Export(int[] projectId, int[] categoryId, int[] statusId, int[] assignedTo, string completedDate, string modifiedDate, string createdDate, int? isArchived, string text, string sortBy, string sortOrder)
+        public void Export(int[] projectId, int[] categoryId, int[] statusId, int? sprintId, int[] assignedTo, string completedDate, string modifiedDate, string createdDate, int? isArchived, string text, string sortBy, string sortOrder)
         {
             var criteria = new TaskCriteria()
             {
                 ProjectId = projectId,
+                SprintId = sprintId,
                 CategoryId = categoryId,
                 StatusId = statusId,
                 AssignedTo = assignedTo,
@@ -142,7 +144,7 @@ namespace Epiworx.WebMvc.Controllers
             var sw = new StringWriter();
 
             sw.WriteLine(
-                "TaskId,ProjectName,CategoryName,StatusName,Description,AssignedToName,AssignedDate,StartDate,CompletedDate,EstimatedCompletedDate,Duration,EstimatedDuration,Labels,IsArchived,Notes,ModifiedByName,ModifiedDate,CreatedByName,CreatedByDate");
+                "TaskId,ProjectName,SprintName,CategoryName,StatusName,Description,AssignedToName,AssignedDate,StartDate,CompletedDate,EstimatedCompletedDate,Duration,EstimatedDuration,Labels,IsArchived,Notes,ModifiedByName,ModifiedDate,CreatedByName,CreatedByDate");
 
             foreach (var task in tasks)
             {
@@ -150,6 +152,7 @@ namespace Epiworx.WebMvc.Controllers
 
                 sb.AppendFormat("{0},", task.TaskId);
                 sb.AppendFormat("\"{0}\",", task.ProjectName);
+                sb.AppendFormat("\"{0}\",", task.SprintName);
                 sb.AppendFormat("{0},", task.CategoryName);
                 sb.AppendFormat("{0},", task.StatusName);
                 sb.AppendFormat("\"{0}\",", task.Description.Replace("\"", "'"));
@@ -290,6 +293,7 @@ namespace Epiworx.WebMvc.Controllers
             model.Statuses = DataHelper.GetStatusList();
             model.Categories = DataHelper.GetCategoryList();
             model.Projects = DataHelper.GetProjectList();
+            model.Sprints = DataHelper.GetSprintList();
             model.Users = DataHelper.GetUserList();
             model.Hours = HourService.HourFetchInfoList(task)
                     .OrderBy(row => row.Date)

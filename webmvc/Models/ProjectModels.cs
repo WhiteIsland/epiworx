@@ -38,5 +38,7 @@ namespace Epiworx.WebMvc.Models
 
         [DisplayName("This project is archived")]
         public bool IsArchived { get; set; }
+
+        public IEnumerable<ISprint> Sprints { get; set; }
     }
 }
