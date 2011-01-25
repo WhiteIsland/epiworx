@@ -88,6 +88,8 @@ namespace Epiworx.WebMvc
                         this.Response.Redirect(this.Request.Url.PathAndQuery);
                     }
 
+                    FormsAuthentication.SignOut();
+
                     BusinessPrincipal.Logout();
                 }
                 else

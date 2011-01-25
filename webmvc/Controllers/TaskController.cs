@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -77,7 +78,12 @@ namespace Epiworx.WebMvc.Controllers
 
             model.Tasks = tasks;
 
-            return this.View(model);
+            return RespondTo(format =>
+            {
+                format[RequestExtension.Html] = () => this.View(model);
+                format[RequestExtension.Xml] = () => new XmlResult { Data = model.Tasks.ToList(), TableName = "Task" };
+                format[RequestExtension.Json] = () => new JsonResult { Data = model.Tasks, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            });
         }
 
         [Authorize]

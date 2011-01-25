@@ -98,7 +98,7 @@ namespace Epiworx.WebMvc.Controllers
             return this.RedirectToAction("Index", filter.Target, null);
         }
 
-        public FilterFormModel Map(Filter filter, FilterFormModel model, bool ignoreBrokenRules)
+        public FilterFormModel Map(Business.Filter filter, FilterFormModel model, bool ignoreBrokenRules)
         {
             Csla.Data.DataMapper.Map(filter, model, true);
 
