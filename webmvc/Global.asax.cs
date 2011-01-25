@@ -30,6 +30,12 @@ namespace Epiworx.WebMvc
             );
 
             routes.MapRoute(
+                "DefaultWithExtension",
+                "{controller}/{action}.{format}/{id}",
+                new { controller = "Home", action = "Index", id = "" }
+            );
+
+            routes.MapRoute(
                 "DefaultWithTitle", // Route name
                 "{controller}/{action}/{id}/{title}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional, title = UrlParameter.Optional } // Parameter defaults

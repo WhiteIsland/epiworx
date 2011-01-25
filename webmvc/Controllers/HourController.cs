@@ -11,7 +11,7 @@ using Epiworx.WebMvc.Models;
 
 namespace Epiworx.WebMvc.Controllers
 {
-    public class HourController : Controller
+    public class HourController : BaseController
     {
         [Authorize]
         public ActionResult Index(int[] projectId, int[] userId, int? taskId, string date, int? isArchived, string sortBy, string sortOrder)

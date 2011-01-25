@@ -10,7 +10,7 @@ using Epiworx.WebMvc.Models;
 
 namespace Epiworx.WebMvc.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : BaseController
     {
         [Authorize]
         public ActionResult Create()

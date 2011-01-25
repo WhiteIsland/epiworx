@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\SprintController.cs" />
     <Compile Include="Controllers\FilterController.cs" />
@@ -90,7 +91,11 @@
     </Compile>
     <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Helpers\HtmlHelperExtensions.cs" />
+    <Compile Include="Helpers\HttpRequestBaseExtensions.cs" />
     <Compile Include="Helpers\ImportHelper.cs" />
+    <Compile Include="Helpers\RequestExtension.cs" />
+    <Compile Include="Helpers\RequestFormat.cs" />
+    <Compile Include="Helpers\RequestFormatResponder.cs" />
     <Compile Include="Helpers\RequestHelper.cs" />
     <Compile Include="Helpers\UrlHelperExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />

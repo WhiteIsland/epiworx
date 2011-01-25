@@ -10,8 +10,9 @@ using Epiworx.WebMvc.Models;
 
 namespace Epiworx.WebMvc.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
+        [Authorize]
         public ActionResult Index()
         {
             var model = new UserIndexModel();

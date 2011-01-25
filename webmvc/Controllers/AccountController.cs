@@ -18,7 +18,7 @@ using Epiworx.WebMvc.Models;
 namespace Epiworx.WebMvc.Controllers
 {
     [HandleError]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         public IFormsAuthenticationService FormsService { get; set; }
 

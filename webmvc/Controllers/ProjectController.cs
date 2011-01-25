@@ -11,9 +11,9 @@ using Epiworx.WebMvc.Models;
 
 namespace Epiworx.WebMvc.Controllers
 {
-    [Authorize]
-    public class ProjectController : Controller
+    public class ProjectController : BaseController
     {
+        [Authorize]
         public ActionResult Index(int? isArchived, string sortBy, string sortOrder)
         {
             var model = new ProjectIndexModel();

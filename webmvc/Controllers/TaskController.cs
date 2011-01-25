@@ -15,7 +15,7 @@ using Epiworx.WebMvc.Models;
 
 namespace Epiworx.WebMvc.Controllers
 {
-    public class TaskController : Controller
+    public class TaskController : BaseController
     {
         [Authorize]
         public ActionResult Index(int[] projectId, int[] categoryId, int[] statusId, int? sprintId, int[] assignedTo, string completedDate, string modifiedDate, string createdDate, int? isArchived, string text, string sortBy, string sortOrder)
@@ -293,7 +293,7 @@ namespace Epiworx.WebMvc.Controllers
             model.Statuses = DataHelper.GetStatusList();
             model.Categories = DataHelper.GetCategoryList();
             model.Projects = DataHelper.GetProjectList();
-            model.Sprints = DataHelper.GetSprintList();
+            model.Sprints = DataHelper.GetSprintList(task.ProjectId);
             model.Users = DataHelper.GetUserList();
             model.Hours = HourService.HourFetchInfoList(task)
                     .OrderBy(row => row.Date)

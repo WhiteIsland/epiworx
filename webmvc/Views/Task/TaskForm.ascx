@@ -50,7 +50,7 @@
     </p>
     <div class="clear">
     </div>
-   <p class="span3">
+    <p class="span3">
         <%: this.Html.LabelFor(m => m.Notes) %>
         <%: this.Html.TextAreaFor(m => m.Notes) %>
         <%: this.Html.ValidationMessageFor(m => m.Notes)%>
@@ -63,3 +63,20 @@
         <%: this.Html.ValidationMessageFor(m => m.IsArchived)%>
     </p>
 </fieldset>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ProjectId").change(function () {
+            var projectId = $(this)[0].value;
+ 
+            var url = "<%: this.Url.Action("List", "Sprint") %>.json?projectId=" + projectId;
+
+            $.getJSON(url, null, function (data) {
+                $("#SprintId").empty();
+                $("#SprintId").append("<option value=\"0\">Select a sprint...</option>");            
+                $.each(data, function(index, optionData) {                
+                    $("#SprintId").append("<option value=\"" + optionData.SprintId + "\">" + optionData.Name + "</option>");            
+                });
+            });
+        });
+    }); 
+</script>

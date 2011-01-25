@@ -12,7 +12,7 @@ using Epiworx.WebMvc.Models;
 namespace Epiworx.WebMvc.Controllers
 {
     [HandleError]
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         [Authorize]
         public ActionResult Index()

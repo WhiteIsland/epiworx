@@ -10,7 +10,7 @@ using Epiworx.WebMvc.Models;
 
 namespace Epiworx.WebMvc.Controllers
 {
-    public class SprintController : Controller
+    public class SprintController : BaseController
     {
         [Authorize]
         public ActionResult Create(int projectId)
@@ -31,6 +31,17 @@ namespace Epiworx.WebMvc.Controllers
             }
 
             return this.View(model);
+        }
+
+        [Authorize]
+        public ActionResult List(int projectId)
+        {
+            var sprints = DataHelper.GetSprintList(projectId);
+
+            return RespondTo(format =>
+            {
+                format[RequestExtension.Json] = () => new JsonResult { Data = sprints, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            });
         }
 
         [HttpPost]
@@ -90,9 +101,11 @@ namespace Epiworx.WebMvc.Controllers
         [Authorize]
         public ActionResult Delete(int id)
         {
+            var sprint = SprintService.SprintFetch(id);
+
             SprintService.SprintDelete(id);
 
-            return this.RedirectToAction("Settings", "Home", null);
+            return this.RedirectToAction("Edit", "Project", new { id = sprint.ProjectId });
         }
 
         public SprintFormModel Map(Sprint sprint, SprintFormModel model, bool ignoreBrokenRules)

@@ -10,7 +10,7 @@ using Epiworx.WebMvc.Models;
 
 namespace Epiworx.WebMvc.Controllers
 {
-    public class FilterController : Controller
+    public class FilterController : BaseController
     {
         [Authorize]
         public ActionResult Create(string target, string query)

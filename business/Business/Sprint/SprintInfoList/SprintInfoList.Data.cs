@@ -31,6 +31,11 @@ namespace Epiworx.Business
                     query = query.Where(row => row.Name == criteria.Name);
                 }
 
+                if (criteria.ProjectId != null)
+                {
+                    query = query.Where(row => row.ProjectId == criteria.ProjectId);
+                }
+
                 if (criteria.IsCompleted != null)
                 {
                     query = query.Where(row => row.IsCompleted == criteria.IsCompleted);
