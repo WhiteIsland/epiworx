@@ -12,6 +12,7 @@ namespace Epiworx.WebMvc.Models
     public class ModelBase
     {
         public string Tab { get; set; }
+        public string Message { get; set; }
     }
 
     public class ModelListBase : ModelBase

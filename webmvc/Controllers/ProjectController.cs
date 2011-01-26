@@ -8,6 +8,7 @@ using Epiworx.Business;
 using Epiworx.Service;
 using Epiworx.WebMvc.Helpers;
 using Epiworx.WebMvc.Models;
+using Epiworx.WebMvc.Properties;
 
 namespace Epiworx.WebMvc.Controllers
 {
@@ -72,7 +73,7 @@ namespace Epiworx.WebMvc.Controllers
 
             if (project.IsValid)
             {
-                return new JsonResult { Data = this.Url.Action("Edit", new { id = project.ProjectId }) };
+                return new JsonResult { Data = this.Url.Action("Edit", new { id = project.ProjectId, message = Resources.SaveSuccessfulMessage }) };
             }
 
             this.Map(project, model, false);
@@ -81,13 +82,15 @@ namespace Epiworx.WebMvc.Controllers
         }
 
         [Authorize]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, string message)
         {
             var model = new ProjectFormModel();
 
             try
             {
                 var project = ProjectService.ProjectFetch(id);
+
+                model.Message = message;
 
                 this.Map(project, model, true);
             }
@@ -108,6 +111,11 @@ namespace Epiworx.WebMvc.Controllers
             Csla.Data.DataMapper.Map(model, project, true);
 
             project = ProjectService.ProjectSave(project);
+
+            if (project.IsValid)
+            {
+                model.Message = Resources.SaveSuccessfulMessage;
+            }
 
             this.Map(project, model, true);
 

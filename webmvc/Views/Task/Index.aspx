@@ -17,7 +17,7 @@
             Things To Do</h4>
         <ul>
             <li class="first">
-                <%: this.Html.ActionLink("Add a New Story", "Create", "Task") %></li>
+                <%: this.Html.ActionLink("Add a New Story", "Create", "Task", new { returnUrl = this.Server.UrlEncode(this.Request.Url.ToString())}, null) %></li>
             <li>
                 <%: this.Html.ActionLink("Add a New Project", "Create", "Project")%></li>
             <li>

@@ -17,6 +17,20 @@ namespace Epiworx.WebMvc.Helpers
 {
     public static class HtmlHelperExtensions
     {
+        public static MvcHtmlString Message(this HtmlHelper helper, string message)
+        {
+            var result = new StringBuilder();
+
+            if (!string.IsNullOrWhiteSpace(message))
+            {
+                result.Append("<div class=\"message\">");
+                result.AppendFormat("<p>{0}</p>", message);
+                result.Append("</div>");
+            }
+
+            return new MvcHtmlString(result.ToString());
+        }
+
         public static string ArchivedBox(this HtmlHelper helper, bool isArchived)
         {
             var result = string.Empty;

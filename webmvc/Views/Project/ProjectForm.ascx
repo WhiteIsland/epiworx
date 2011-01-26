@@ -1,4 +1,6 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<Epiworx.WebMvc.Models.ProjectFormModel>" %>
+<%@ Import Namespace="Epiworx.WebMvc.Helpers" %>
+<%: this.Html.Message(this.Model.Message) %>
 <%: this.Html.ValidationSummary(true, "Whoops! Looks like some errors were encountered, please correct and try again.") %>
 <fieldset>
     <p class="span3">

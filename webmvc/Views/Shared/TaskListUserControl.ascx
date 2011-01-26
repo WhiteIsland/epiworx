@@ -71,7 +71,7 @@
             </td>
             <td>
                 <%:this.Html.ActionLink(
-                    task.TaskId.ToString(), "Edit", "Task", new {id = task.TaskId, title = this.Html.ToTitle(task.Description)}, null)%>
+                    task.TaskId.ToString(), "Edit", "Task", new {id = task.TaskId, title = this.Html.ToTitle(task.Description), returnUrl = this.Server.UrlEncode(this.Request.Url.ToString())}, null)%>
             </td>
             <td>
                 <%: task.ProjectName %>

@@ -13,6 +13,7 @@ using Epiworx.Core;
 using Epiworx.Service;
 using Epiworx.WebMvc.Helpers;
 using Epiworx.WebMvc.Models;
+using Epiworx.WebMvc.Properties;
 
 namespace Epiworx.WebMvc.Controllers
 {
@@ -117,7 +118,7 @@ namespace Epiworx.WebMvc.Controllers
 
             if (task.IsValid)
             {
-                return new JsonResult { Data = this.Url.Action("Edit", new { id = task.TaskId }) };
+                return new JsonResult { Data = this.Url.Action("Edit", new { id = task.TaskId, message = Resources.SaveSuccessfulMessage }) };
             }
 
             this.Map(task, model, false);
@@ -217,13 +218,15 @@ namespace Epiworx.WebMvc.Controllers
         }
 
         [Authorize]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, string message)
         {
             var model = new TaskFormModel();
 
             try
             {
                 var task = TaskService.TaskFetch(id);
+
+                model.Message = message;
 
                 this.Map(task, model, true);
             }
@@ -244,6 +247,11 @@ namespace Epiworx.WebMvc.Controllers
             Csla.Data.DataMapper.Map(model, task, true, "EstimatedCompletedDate", "CompletedDate", "AssignedDate", "StartDate");
 
             task = TaskService.TaskSave(task);
+
+            if (task.IsValid)
+            {
+                model.Message = Resources.SaveSuccessfulMessage;
+            }
 
             this.Map(task, model, true);
 
@@ -295,7 +303,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             Csla.Data.DataMapper.Map(task, model, true);
 
-            model.Tab = "Project";
+            model.Tab = "Task";
             model.Statuses = DataHelper.GetStatusList();
             model.Categories = DataHelper.GetCategoryList();
             model.Projects = DataHelper.GetProjectList();

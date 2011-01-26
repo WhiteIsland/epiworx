@@ -8,6 +8,7 @@ using Epiworx.Business;
 using Epiworx.Service;
 using Epiworx.WebMvc.Helpers;
 using Epiworx.WebMvc.Models;
+using Epiworx.WebMvc.Properties;
 
 namespace Epiworx.WebMvc.Controllers
 {
@@ -103,7 +104,7 @@ namespace Epiworx.WebMvc.Controllers
 
             if (hour.IsValid)
             {
-                return new JsonResult { Data = this.Url.Action("Edit", new { id = hour.HourId }) };
+                return new JsonResult { Data = this.Url.Action("Edit", new { id = hour.HourId, message = Resources.SaveSuccessfulMessage }) };
             }
 
             this.Map(hour, model, false);
@@ -112,13 +113,15 @@ namespace Epiworx.WebMvc.Controllers
         }
 
         [Authorize]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, string message)
         {
             var model = new HourFormModel();
 
             try
             {
                 var hour = HourService.HourFetch(id);
+
+                model.Message = message;
 
                 this.Map(hour, model, true);
             }
@@ -140,9 +143,14 @@ namespace Epiworx.WebMvc.Controllers
 
             hour = HourService.HourSave(hour);
 
+            if (hour.IsValid)
+            {
+                model.Message = Resources.SaveSuccessfulMessage;
+            }
+
             this.Map(hour, model, true);
 
-            return this.PartialView("HourForm", model);
+            return this.View(model);
         }
 
         [Authorize]

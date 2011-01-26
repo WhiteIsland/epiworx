@@ -17,5 +17,13 @@
             <%
                 }%>
         </li>
+        <%
+            if (!string.IsNullOrEmpty(this.Request.QueryString["returnUrl"]))
+            {
+        %>
+        <li><a href="<%= this.Server.UrlDecode(this.Request.QueryString["returnUrl"]) %>">Back</a></li>
+        <%
+            }
+        %>
     </ul>
 </div>

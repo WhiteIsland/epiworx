@@ -7,6 +7,7 @@ using Epiworx.Business;
 using Epiworx.Service;
 using Epiworx.WebMvc.Helpers;
 using Epiworx.WebMvc.Models;
+using Epiworx.WebMvc.Properties;
 
 namespace Epiworx.WebMvc.Controllers
 {
@@ -58,7 +59,7 @@ namespace Epiworx.WebMvc.Controllers
 
                 if (user.IsValid)
                 {
-                    return new JsonResult { Data = this.Url.Action("Edit", new { id = user.UserId }) };
+                    return new JsonResult { Data = this.Url.Action("Edit", new { id = user.UserId, message = Resources.SaveSuccessfulMessage }) };
                 }
             }
             catch (Exception ex)
@@ -72,13 +73,15 @@ namespace Epiworx.WebMvc.Controllers
         }
 
         [Authorize]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, string message)
         {
             var model = new UserFormModel();
 
             try
             {
                 var user = UserService.UserFetch(id);
+
+                model.Message = message;
 
                 this.Map(user, model, true);
             }
@@ -104,6 +107,11 @@ namespace Epiworx.WebMvc.Controllers
             }
 
             user = UserService.UserSave(user);
+
+            if (user.IsValid)
+            {
+                model.Message = Resources.SaveSuccessfulMessage;
+            }
 
             this.Map(user, model, true);
 

@@ -7,6 +7,7 @@ using Epiworx.Business;
 using Epiworx.Service;
 using Epiworx.WebMvc.Helpers;
 using Epiworx.WebMvc.Models;
+using Epiworx.WebMvc.Properties;
 
 namespace Epiworx.WebMvc.Controllers
 {
@@ -56,7 +57,7 @@ namespace Epiworx.WebMvc.Controllers
 
             if (sprint.IsValid)
             {
-                return new JsonResult { Data = this.Url.Action("Edit", new { id = sprint.SprintId }) };
+                return new JsonResult { Data = this.Url.Action("Edit", new { id = sprint.SprintId, message = Resources.SaveSuccessfulMessage }) };
             }
 
             this.Map(sprint, model, false);
@@ -65,13 +66,15 @@ namespace Epiworx.WebMvc.Controllers
         }
 
         [Authorize]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, string message)
         {
             var model = new SprintFormModel();
 
             try
             {
                 var sprint = SprintService.SprintFetch(id);
+
+                model.Message = message;
 
                 this.Map(sprint, model, true);
             }
@@ -92,6 +95,11 @@ namespace Epiworx.WebMvc.Controllers
             Csla.Data.DataMapper.Map(model, sprint, true);
 
             sprint = SprintService.SprintSave(sprint);
+
+            if (sprint.IsValid)
+            {
+                model.Message = Resources.SaveSuccessfulMessage;
+            }
 
             this.Map(sprint, model, true);
 

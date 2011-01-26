@@ -314,7 +314,7 @@ table.list tbody tr:hover td a
 .commands li span.disabled
 {
     float: left;
-    margin-top: 10px;
+    margin-top: 11px;
     color: #808080;
 }
 
@@ -369,14 +369,28 @@ table.list tbody tr:hover td a
     background-color: inherit;
 }
 
+.message
+{
+    color: #239E0A;
+    margin-bottom: 20px;
+    font-size: 19px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 .validation-summary-errors
 {
     color: #CC0000;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .validation-summary-errors span
 {
+    font-size: 19px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     font-weight: bold;
 }
 
