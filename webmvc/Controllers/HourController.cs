@@ -48,7 +48,7 @@ namespace Epiworx.WebMvc.Controllers
                 UserId = userId,
                 TaskId = taskId,
                 Date = new DateRangeCriteria(model.Date),
-                IsArchived = DataHelper.ToBoolean(isArchived)
+                IsArchived = DataHelper.ToBoolean(isArchived, false)
             };
 
             var hours = HourService.HourFetchInfoList(criteria)
@@ -123,6 +123,11 @@ namespace Epiworx.WebMvc.Controllers
 
                 model.Message = message;
 
+                if (hour.TaskId != 0)
+                {
+                    model.Task = TaskService.TaskFetch(hour.TaskId);
+                }
+
                 this.Map(hour, model, true);
             }
             catch (Exception ex)
@@ -142,6 +147,11 @@ namespace Epiworx.WebMvc.Controllers
             Csla.Data.DataMapper.Map(model, hour, true);
 
             hour = HourService.HourSave(hour);
+
+            if (hour.TaskId != 0)
+            {
+                model.Task = TaskService.TaskFetch(hour.TaskId);
+            }
 
             if (hour.IsValid)
             {

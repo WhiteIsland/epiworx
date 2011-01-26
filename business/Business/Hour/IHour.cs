@@ -12,6 +12,7 @@ namespace Epiworx.Business
         string ProjectName { get; }
         int TaskId { get; }
         string TaskName { get; }
+        IUser User { get; }
         int UserId { get; }
         string UserName { get; }
         DateTime Date { get; }

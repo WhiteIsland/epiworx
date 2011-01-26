@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<Epiworx.Business.IUser>>" %>
+<%@ Import Namespace="Epiworx.WebMvc.Helpers" %>
 <%
     if (this.Model.Count() == 0)
     {
@@ -12,6 +13,10 @@
 <table class="list">
     <thead>
         <tr>
+            <th style="width: 20px;">
+                <div class="box" title="Archived">
+                </div>
+            </th>
             <th style="width: 200px;">
                 Name
             </th>
@@ -28,6 +33,9 @@
            {
         %>
         <tr>
+            <td>
+                <img src="<%: this.Url.Gravatar(user.Email, 16) %>" />
+            </td>
             <td>
                 <%: this.Html.ActionLink(user.Name, "Edit", "User", new { id = user.UserId }, null) %>
             </td>

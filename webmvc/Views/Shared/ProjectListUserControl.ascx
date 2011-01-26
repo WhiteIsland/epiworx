@@ -3,7 +3,7 @@
 <table class="list">
     <thead>
         <tr>
-            <th style="width: 12px;">
+            <th style="width: 20px;">
                 <div class="box" title="Archived">
                 </div>
             </th>
@@ -20,13 +20,13 @@
             <td>
                 <% if (project.IsArchived)
                    {
-                %><div class="box archived" title="archived" />
+                %><div class="box last archived" title="archived" />
                 <%
                }
                    else
                    {
                 %>
-                <div class="box not-archived" title="not archived" />
+                <div class="box last not-archived" title="not archived" />
                 <%
                }
                 %>

@@ -13,12 +13,12 @@
 <table class="list">
     <thead>
         <tr>
-            <th style="width: 36px;">
+            <th style="width: 60px;">
                 <div class="box" title="Status">
                 </div>
                 <div class="box" title="Category">
                 </div>
-                <div class="box" title="Archived">
+                <div class="box last" title="Archived">
                 </div>
             </th>
             <th>
@@ -58,13 +58,13 @@
                 </div>
                 <% if (task.IsArchived)
                    {
-                %><div class="box archived" title="archived" />
+                %><div class="box last archived" title="archived" />
                 <%
                    }
                    else
                    {
                 %>
-                <div class="box not-archived" title="not archived" />
+                <div class="box last not-archived" title="not archived" />
                 <%
                    }
                 %>

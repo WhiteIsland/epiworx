@@ -46,6 +46,14 @@ namespace Epiworx.Business
             set { this.LoadProperty(TaskNameProperty, value); }
         }
 
+        private static Csla.PropertyInfo<IUser> UserProperty =
+            RegisterProperty<IUser>(row => row.User, "User");
+        public IUser User
+        {
+            get { return this.GetProperty(UserProperty); }
+            internal set { this.LoadProperty(UserProperty, value); }
+        }
+
         private static Csla.PropertyInfo<int> UserIdProperty =
             RegisterProperty<int>(row => row.UserId, "UserId");
         public int UserId

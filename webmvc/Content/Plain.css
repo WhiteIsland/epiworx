@@ -324,9 +324,13 @@ table.list tbody tr:hover td a
     background-color: #CCCCCC;
     float: left;
     height: 16px;
-    width: 8px;
-    margin-top: 2px;
-    margin-right: 4px;
+    width: 16px;
+    margin-right: 5px;
+}
+
+.box.last
+{
+    margin-right: 0px;
 }
 
 .box.archived
@@ -645,6 +649,11 @@ table.list tbody tr:hover td a
     font-weight: normal;
 }
 
+#sidebar li .box
+{
+    margin-top: -1px;
+}
+
 #sidebar li .value
 {
     float: right;
@@ -658,6 +667,12 @@ table.list tbody tr:hover td a
 #sidebar li:hover a.action
 {
     display: inherit;
+}
+
+#sidebar li img
+{
+    float: left;
+    margin-right: 5px;
 }
 
 #sidebar .part
