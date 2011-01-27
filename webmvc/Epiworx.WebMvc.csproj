@@ -152,6 +152,7 @@
     <Content Include="Views\Category\CategoryFormCommands.ascx" />
     <Content Include="Views\Category\Create.aspx" />
     <Content Include="Views\Category\Edit.aspx" />
+    <Content Include="Views\Shared\HourByDateListUserControl.ascx" />
     <Content Include="Views\Shared\HourByProjectListUserControl.ascx" />
     <Content Include="Views\Shared\HourByUserListUserControl.ascx" />
     <Content Include="Views\Shared\SprintsUserControl.ascx" />

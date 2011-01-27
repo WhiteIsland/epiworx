@@ -34,4 +34,5 @@
                 <%: this.Html.ActionLink("Add a New Project", "Create", "Project")%></li>
         </ul>
     </div>
+    <% this.Html.RenderPartial("HourByDateListUserControl", new HourByDateListModel() { Hours = this.Model.Hours, StartDate = this.Model.StartDate, EndDate = this.Model.EndDate });%>
 </asp:Content>

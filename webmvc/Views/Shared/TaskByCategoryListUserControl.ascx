@@ -18,4 +18,8 @@
         <%
             }%>
     </ul>
+    <div class="total">
+        Total Points<span>
+            <%: string.Format("{0:N0}", this.Model.Tasks.Sum(row => row.EstimatedDuration))%></span>
+    </div>
 </div>

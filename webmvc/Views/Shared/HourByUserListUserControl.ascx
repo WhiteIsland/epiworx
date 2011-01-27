@@ -19,4 +19,8 @@
             }
         %>
     </ul>
+    <div class="total">
+        Total Hours<span>
+            <%: string.Format("{0}", this.Model.Hours.Sum(row => row.Duration))%></span>
+    </div>
 </div>

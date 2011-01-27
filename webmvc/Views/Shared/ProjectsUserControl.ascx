@@ -26,4 +26,8 @@
     </ul>
     <%
        }%>
+   <div class="total">
+        Total Projects<span>
+            <%: string.Format("{0:N0}", this.Model.Count())%></span>
+    </div>
 </div>

@@ -9,6 +9,19 @@ using Epiworx.Core;
 
 namespace Epiworx.WebMvc.Models
 {
+    public class HourByDateListModel : ModelListBase
+    {
+        public IEnumerable<IHour> Hours { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+
+        public HourByDateListModel()
+        {
+            this.StartDate = DateTime.MinValue.Date;
+            this.EndDate = DateTime.MaxValue.Date;
+        }
+    }
+
     public class HourIndexModel : HourListModel
     {
         public int[] ProjectId { get; set; }

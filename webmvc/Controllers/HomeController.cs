@@ -21,8 +21,10 @@ namespace Epiworx.WebMvc.Controllers
 
             model.Tab = "Home";
 
+            model.StartDate = DateTime.Today.ToStartOfWeek();
+            model.EndDate = DateTime.Today.ToEndOfWeek();
             model.Tasks = MyService.TaskFetchInfoList();
-            model.Hours = MyService.HourFetchInfoList(DateTime.Today.ToStartOfWeek(), DateTime.Today.ToEndOfWeek());
+            model.Hours = MyService.HourFetchInfoList(model.StartDate, model.EndDate);
 
             return this.View(model);
         }
