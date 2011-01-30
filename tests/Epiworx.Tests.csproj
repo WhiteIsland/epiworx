@@ -57,6 +57,7 @@
     <Compile Include="CategoryTests.cs" />
     <Compile Include="CategoryTestsWithRoleContribute.cs" />
     <Compile Include="CategoryTestsWithRoleReview.cs" />
+    <Compile Include="FeedTests.cs" />
     <Compile Include="ProjectTestsWithRoleContribute.cs">
       <SubType>Code</SubType>
     </Compile>

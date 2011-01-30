@@ -112,6 +112,26 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Business\Category\CategoryDuplicateNameCheck.cs" />
+    <Compile Include="Business\Feed\FeedCriteria\FeedCriteria.cs" />
+    <Compile Include="Business\Feed\FeedCriteria\FeedCriteria.Properties.cs" />
+    <Compile Include="Business\Feed\FeedExistsCommand\FeedExistsCommand.cs" />
+    <Compile Include="Business\Feed\FeedInfoList\FeedInfoList.cs" />
+    <Compile Include="Business\Feed\FeedInfoList\FeedInfoList.Data.cs" />
+    <Compile Include="Business\Feed\FeedInfoList\FeedInfoList.Methods.cs" />
+    <Compile Include="Business\Feed\FeedInfoList\FeedInfoList.Properties.cs" />
+    <Compile Include="Business\Feed\FeedInfoList\FeedInfoList.Rules.cs" />
+    <Compile Include="Business\Feed\FeedInfo\FeedInfo.cs" />
+    <Compile Include="Business\Feed\FeedInfo\FeedInfo.Data.cs" />
+    <Compile Include="Business\Feed\FeedInfo\FeedInfo.Methods.cs" />
+    <Compile Include="Business\Feed\FeedInfo\FeedInfo.Properties.cs" />
+    <Compile Include="Business\Feed\FeedInfo\FeedInfo.Rules.cs" />
+    <Compile Include="Business\Feed\FeedValueCommand\FeedValueCommand.cs" />
+    <Compile Include="Business\Feed\Feed\Feed.cs" />
+    <Compile Include="Business\Feed\Feed\Feed.Data.cs" />
+    <Compile Include="Business\Feed\Feed\Feed.Methods.cs" />
+    <Compile Include="Business\Feed\Feed\Feed.Properties.cs" />
+    <Compile Include="Business\Feed\Feed\Feed.Rules.cs" />
+    <Compile Include="Business\Feed\IFeed.cs" />
     <Compile Include="Business\Filter\FilterCriteria\FilterCriteria.cs" />
     <Compile Include="Business\Filter\FilterCriteria\FilterCriteria.Properties.cs" />
     <Compile Include="Business\Filter\FilterExistsCommand\FilterExistsCommand.cs" />
@@ -464,6 +484,7 @@
     <Compile Include="Service\CategoryService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\FeedService.cs" />
     <Compile Include="Service\FilterService.cs" />
     <Compile Include="Service\HourService.cs">
       <SubType>Code</SubType>

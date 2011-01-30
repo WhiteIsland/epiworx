@@ -5,10 +5,10 @@ using System.Linq;
 using System.Security;
 using System.Text;
 using Epiworx.Business;
+using Epiworx.Security;
 using Epiworx.Service;
 using Epiworx.Tests.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Epiworx.Security;
 
 namespace Epiworx.Tests
 {
@@ -188,9 +188,9 @@ namespace Epiworx.Tests
 
             SprintService.SprintSave(sprint);
 
-            var categories = SprintService.SprintFetchInfoList();
+            var sprints = SprintService.SprintFetchInfoList();
 
-            Assert.IsTrue(categories.Count > 1, "Categories should be greater than one");
+            Assert.IsTrue(sprints.Count > 1, "Sprints should be greater than one");
         }
 
     }

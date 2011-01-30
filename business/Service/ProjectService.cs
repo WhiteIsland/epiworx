@@ -52,12 +52,20 @@ namespace Epiworx.Service
 
         public static Project ProjectInsert(Project project)
         {
-            return project.Save();
+            project = project.Save();
+
+            FeedService.FeedAdd("Add", project);
+
+            return project;
         }
 
         public static Project ProjectUpdate(Project project)
         {
-            return project.Save();
+            project = project.Save();
+
+            FeedService.FeedAdd("Update", project);
+
+            return project;
         }
 
         public static Project ProjectNew()
@@ -72,6 +80,8 @@ namespace Epiworx.Service
                     {
                         ProjectId = project.ProjectId
                     });
+
+            FeedService.FeedAdd("Delete", project);
 
             return true;
         }

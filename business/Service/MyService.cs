@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Epiworx.Business;
@@ -10,6 +11,18 @@ namespace Epiworx.Service
     [Serializable]
     public class MyService
     {
+        public static FeedInfoList FeedFetchInfoList(int maximumRecords)
+        {
+            return FeedService.FeedFetchInfoList(
+                new FeedCriteria
+                {
+                    CreatedBy = BusinessPrincipal.GetCurrentIdentity().UserId,
+                    SortBy = "CreatedDate",
+                    SortOrder = ListSortDirection.Ascending,
+                    MaximumRecords = maximumRecords
+                });
+        }
+
         public static TaskInfoList TaskFetchInfoList()
         {
             return TaskService.TaskFetchInfoList(

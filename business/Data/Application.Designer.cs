@@ -41,6 +41,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Sprint_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.User), "Sprint", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.Sprint), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Sprint_UserModifiedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.User), "Sprint", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.Sprint), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Task_Sprint", "Sprint", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.Sprint), "Task", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.Task), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Feed_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.User), "Feed", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.Feed), true)]
 
 #endregion
 
@@ -219,6 +220,22 @@ namespace Epiworx.Data
             }
         }
         private ObjectSet<Sprint> _Sprints;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Feed> Feeds
+        {
+            get
+            {
+                if ((_Feeds == null))
+                {
+                    _Feeds = base.CreateObjectSet<Feed>("Feeds");
+                }
+                return _Feeds;
+            }
+        }
+        private ObjectSet<Feed> _Feeds;
 
         #endregion
         #region AddTo Methods
@@ -285,6 +302,14 @@ namespace Epiworx.Data
         public void AddToSprints(Sprint sprint)
         {
             base.AddObject("Sprints", sprint);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Feeds EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFeeds(Feed feed)
+        {
+            base.AddObject("Feeds", feed);
         }
 
         #endregion
@@ -708,6 +733,206 @@ namespace Epiworx.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_Category_UserModifiedBy", "User", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="ApplicationModel", Name="Feed")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Feed : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Feed object.
+        /// </summary>
+        /// <param name="feedId">Initial value of the FeedId property.</param>
+        /// <param name="type">Initial value of the Type property.</param>
+        /// <param name="data">Initial value of the Data property.</param>
+        /// <param name="createdBy">Initial value of the CreatedBy property.</param>
+        /// <param name="createdDate">Initial value of the CreatedDate property.</param>
+        public static Feed CreateFeed(global::System.Int32 feedId, global::System.String type, global::System.String data, global::System.Int32 createdBy, global::System.DateTime createdDate)
+        {
+            Feed feed = new Feed();
+            feed.FeedId = feedId;
+            feed.Type = type;
+            feed.Data = data;
+            feed.CreatedBy = createdBy;
+            feed.CreatedDate = createdDate;
+            return feed;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 FeedId
+        {
+            get
+            {
+                return _FeedId;
+            }
+            set
+            {
+                if (_FeedId != value)
+                {
+                    OnFeedIdChanging(value);
+                    ReportPropertyChanging("FeedId");
+                    _FeedId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("FeedId");
+                    OnFeedIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _FeedId;
+        partial void OnFeedIdChanging(global::System.Int32 value);
+        partial void OnFeedIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Type
+        {
+            get
+            {
+                return _Type;
+            }
+            set
+            {
+                OnTypeChanging(value);
+                ReportPropertyChanging("Type");
+                _Type = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Type");
+                OnTypeChanged();
+            }
+        }
+        private global::System.String _Type;
+        partial void OnTypeChanging(global::System.String value);
+        partial void OnTypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Data
+        {
+            get
+            {
+                return _Data;
+            }
+            set
+            {
+                OnDataChanging(value);
+                ReportPropertyChanging("Data");
+                _Data = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Data");
+                OnDataChanged();
+            }
+        }
+        private global::System.String _Data;
+        partial void OnDataChanging(global::System.String value);
+        partial void OnDataChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CreatedBy
+        {
+            get
+            {
+                return _CreatedBy;
+            }
+            set
+            {
+                OnCreatedByChanging(value);
+                ReportPropertyChanging("CreatedBy");
+                _CreatedBy = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedBy");
+                OnCreatedByChanged();
+            }
+        }
+        private global::System.Int32 _CreatedBy;
+        partial void OnCreatedByChanging(global::System.Int32 value);
+        partial void OnCreatedByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CreatedDate
+        {
+            get
+            {
+                return _CreatedDate;
+            }
+            set
+            {
+                OnCreatedDateChanging(value);
+                ReportPropertyChanging("CreatedDate");
+                _CreatedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedDate");
+                OnCreatedDateChanged();
+            }
+        }
+        private global::System.DateTime _CreatedDate;
+        partial void OnCreatedDateChanging(global::System.DateTime value);
+        partial void OnCreatedDateChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Feed_UserCreatedBy", "User")]
+        public User CreatedByUser
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Feed_UserCreatedBy", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Feed_UserCreatedBy", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> CreatedByUserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Feed_UserCreatedBy", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_Feed_UserCreatedBy", "User", value);
                 }
             }
         }
@@ -4260,6 +4485,31 @@ namespace Epiworx.Data
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Feed_UserCreatedBy", "Feed")]
+        public EntityCollection<Feed> Feeds
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Feed>("ApplicationModel.FK_Feed_UserCreatedBy", "Feed");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Feed>("ApplicationModel.FK_Feed_UserCreatedBy", "Feed", value);
+                }
+            }
+        }
+
+        #endregion
     }
 
     #endregion
