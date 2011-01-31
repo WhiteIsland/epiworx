@@ -93,13 +93,13 @@
     <Compile Include="UserTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\business\Epiworx.csproj">
       <Project>{FEF23146-EF0F-43B7-8AB8-F210FD9BDAF9}</Project>
       <Name>Epiworx</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

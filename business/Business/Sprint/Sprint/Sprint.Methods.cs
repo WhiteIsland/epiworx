@@ -18,11 +18,14 @@ namespace Epiworx.Business
 
             switch (property.Name)
             {
+                case "CompletedDate":
+                    this.OnCompletedDateChanged();
+                    break;
                 case "IsCompleted":
                     this.OnIsCompletedChanged();
                     break;
-                case "CompletedDate":
-                    this.OnCompletedDateChanged();
+                case "ProjectId":
+                    this.OnProjectIdChanged();
                     break;
                 default:
                     break;
@@ -49,6 +52,12 @@ namespace Epiworx.Business
             {
                 this.EstimatedCompletedDate = this.CompletedDate;
             }
+        }
+
+        private void OnProjectIdChanged()
+        {
+            this.LoadProperty(ProjectProperty, ForeignKeyMapper.FetchProject(this.ProjectId));
+            this.LoadProperty(ProjectNameProperty, this.Project.Name);
         }
 
         internal static Sprint NewSprint()

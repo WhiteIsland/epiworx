@@ -54,7 +54,7 @@ namespace Epiworx.Service
         {
             project = project.Save();
 
-            FeedService.FeedAdd("Add", project);
+            FeedService.FeedAdd("Created", project);
 
             return project;
         }
@@ -63,7 +63,7 @@ namespace Epiworx.Service
         {
             project = project.Save();
 
-            FeedService.FeedAdd("Update", project);
+            FeedService.FeedAdd("Updated", project);
 
             return project;
         }
@@ -81,7 +81,7 @@ namespace Epiworx.Service
                         ProjectId = project.ProjectId
                     });
 
-            FeedService.FeedAdd("Delete", project);
+            FeedService.FeedAdd("Deleted", project);
 
             return true;
         }

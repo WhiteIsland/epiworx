@@ -8,7 +8,7 @@ namespace Epiworx.Business
     [Serializable]
     public partial class StatusInfo : Csla.ReadOnlyBase<StatusInfo>, IStatus
     {
-        private StatusInfo()
+        internal StatusInfo()
         {
         }
     }

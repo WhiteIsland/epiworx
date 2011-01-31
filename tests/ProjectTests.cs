@@ -68,6 +68,9 @@ namespace Epiworx.Tests
 
             Assert.IsTrue(ValidationHelper.ContainsRule(project, DbType.String, "Name"),
                 "Name should be required");
+
+            Assert.IsTrue(ValidationHelper.ContainsRule(project, DbType.String, "Description"),
+                "Description should be required");
         }
 
         [TestMethod]
@@ -76,6 +79,7 @@ namespace Epiworx.Tests
             var project = ProjectService.ProjectNew();
 
             project.Name = DataHelper.RandomString(20);
+            project.Description = DataHelper.RandomString(300);
 
             Assert.IsTrue(project.IsValid, "IsValid should be true");
 
@@ -90,6 +94,7 @@ namespace Epiworx.Tests
             var name = DataHelper.RandomString(20);
 
             project.Name = name;
+            project.Description = DataHelper.RandomString(300);
 
             ProjectService.ProjectSave(project);
 
@@ -108,6 +113,7 @@ namespace Epiworx.Tests
             var name = DataHelper.RandomString(20);
 
             project.Name = name;
+            project.Description = DataHelper.RandomString(300);
 
             project = ProjectService.ProjectSave(project);
 
@@ -128,6 +134,7 @@ namespace Epiworx.Tests
             var project = ProjectService.ProjectNew();
 
             project.Name = DataHelper.RandomString(20);
+            project.Description = DataHelper.RandomString(300);
 
             project = ProjectService.ProjectSave(project);
 
@@ -151,6 +158,7 @@ namespace Epiworx.Tests
             var project = ProjectService.ProjectNew();
 
             project.Name = DataHelper.RandomString(20);
+            project.Description = DataHelper.RandomString(300);
 
             project = ProjectService.ProjectSave(project);
 
@@ -165,6 +173,7 @@ namespace Epiworx.Tests
             var project = ProjectService.ProjectNew();
 
             project.Name = DataHelper.RandomString(20);
+            project.Description = DataHelper.RandomString(300);
 
             project = ProjectService.ProjectSave(project);
 

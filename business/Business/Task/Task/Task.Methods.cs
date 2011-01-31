@@ -19,25 +19,52 @@ namespace Epiworx.Business
 
             switch (property.Name)
             {
-                case "StatusId":
-                    this.OnStatusChanged();
+                case "AssignedTo":
+                    this.OnAssignedToChanged();
+                    break;
+                case "CategoryId":
+                    this.OnCategoryIdChanged();
                     break;
                 case "EstimatedCompletedDate":
                     this.OnEstimatedCompletedDateChanged();
+                    break;
+                case "ProjectId":
+                    this.OnProjectIdChanged();
+                    break;
+                case "StatusId":
+                    this.OnStatusIdChanged();
                     break;
                 default:
                     break;
             }
         }
 
-        private void OnStatusChanged()
+        private void OnAssignedToChanged()
         {
+            this.LoadProperty(AssignedToNameProperty, ForeignKeyMapper.FetchUserName(this.AssignedTo));
+        }
+
+        private void OnCategoryIdChanged()
+        {
+            this.LoadProperty(CategoryProperty, ForeignKeyMapper.FetchCategory(this.CategoryId));
+            this.LoadProperty(CategoryNameProperty, this.Category.Name);
+        }
+
+        private void OnProjectIdChanged()
+        {
+            this.LoadProperty(ProjectProperty, ForeignKeyMapper.FetchProject(this.ProjectId));
+            this.LoadProperty(ProjectNameProperty, this.Project.Name);
+        }
+
+        private void OnStatusIdChanged()
+        {
+            this.LoadProperty(StatusProperty, ForeignKeyMapper.FetchStatus(this.StatusId));
+            this.LoadProperty(StatusNameProperty, this.Status.Name);
+
             if (this.StatusId == 0)
             {
                 return;
             }
-
-            this.Status = Epiworx.Business.Status.FetchStatus(new StatusCriteria { StatusId = this.StatusId });
 
             if (this.Status.IsStarted)
             {

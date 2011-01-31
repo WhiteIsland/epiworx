@@ -38,6 +38,7 @@ namespace Epiworx.Business
         {
             this.LoadProperty(SprintIdProperty, data.SprintId);
             this.LoadProperty(NameProperty, data.Name);
+            this.LoadProperty(ProjectProperty, ProjectInfo.FetchProjectInfo(data.Project));
             this.LoadProperty(ProjectIdProperty, data.ProjectId);
             this.LoadProperty(ProjectNameProperty, data.Project.Name);
             this.LoadProperty(IsCompletedProperty, data.IsCompleted);

@@ -22,6 +22,14 @@ namespace Epiworx.Business
             set { this.LoadProperty(NameProperty, value); }
         }
 
+        private static Csla.PropertyInfo<IProject> ProjectProperty =
+            RegisterProperty<IProject>(row => row.Project, "Project");
+        public IProject Project
+        {
+            get { return this.GetProperty(ProjectProperty); }
+            internal set { this.LoadProperty(ProjectProperty, value); }
+        }
+
         private static Csla.PropertyInfo<int> ProjectIdProperty =
             RegisterProperty<int>(row => row.ProjectId, "ProjectId");
         public int ProjectId

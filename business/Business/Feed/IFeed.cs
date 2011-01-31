@@ -11,6 +11,7 @@ namespace Epiworx.Business
         string Type { get; }
         string Data { get; }
         int CreatedBy { get; }
+        string CreatedByEmail { get; }
         string CreatedByName { get; }
         DateTime CreatedDate { get; }
     }

@@ -19,9 +19,25 @@ namespace Epiworx.Business
 
             switch (property.Name)
             {
+                case "ProjectId":
+                    this.OnProjectIdChanged();
+                    break;
+                case "UserId":
+                    this.OnUserIdChanged();
+                    break;
                 default:
                     break;
             }
+        }
+
+        private void OnUserIdChanged()
+        {
+            this.LoadProperty(UserNameProperty, ForeignKeyMapper.FetchUserName(this.UserId));
+        }
+
+        private void OnProjectIdChanged()
+        {
+            this.LoadProperty(ProjectNameProperty, ForeignKeyMapper.FetchProjectName(this.ProjectId));
         }
 
         internal static Hour NewHour()

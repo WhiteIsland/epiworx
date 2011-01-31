@@ -97,6 +97,28 @@ namespace Epiworx.WebMvc.Helpers
             return sb.ToString();
         }
 
+        public static string ToString(IEnumerable<IUser> users, int? userId, string defaultText)
+        {
+            var sb = new StringBuilder();
+
+            if (userId != 0)
+            {
+                if (sb.Length != 0)
+                {
+                    sb = sb.Append(" or ");
+                }
+
+                sb = sb.Append(users.Where(row => row.UserId == userId).SingleOrDefault().Name);
+            }
+
+            if (sb.Length == 0)
+            {
+                sb = sb.Append(defaultText);
+            }
+
+            return sb.ToString();
+        }
+
         public static string ToString(IEnumerable<IUser> users, int[] userIds, string defaultText)
         {
             var sb = new StringBuilder();

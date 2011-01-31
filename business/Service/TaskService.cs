@@ -52,12 +52,20 @@ namespace Epiworx.Service
 
         public static Task TaskInsert(Task task)
         {
-            return task.Save();
+            task = task.Save();
+
+            FeedService.FeedAdd("Created", task);
+
+            return task;
         }
 
         public static Task TaskUpdate(Task task)
         {
-            return task.Save();
+            task = task.Save();
+
+            FeedService.FeedAdd("Updated", task);
+
+            return task;
         }
 
         public static Task TaskNew()
@@ -72,6 +80,8 @@ namespace Epiworx.Service
                     {
                         TaskId = task.TaskId
                     });
+
+            FeedService.FeedAdd("Deleted", task);
 
             return true;
         }

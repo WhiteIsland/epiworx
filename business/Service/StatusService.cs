@@ -52,12 +52,20 @@ namespace Epiworx.Service
 
         public static Status StatusInsert(Status status)
         {
-            return status.Save();
+            status = status.Save();
+
+            FeedService.FeedAdd("Created", status);
+
+            return status;
         }
 
         public static Status StatusUpdate(Status status)
         {
-            return status.Save();
+            status = status.Save();
+
+            FeedService.FeedAdd("Updated", status);
+
+            return status;
         }
 
         public static Status StatusNew()
@@ -72,6 +80,8 @@ namespace Epiworx.Service
                     {
                         StatusId = status.StatusId
                     });
+
+            FeedService.FeedAdd("Deleted", status);
 
             return true;
         }

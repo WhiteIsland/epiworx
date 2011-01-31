@@ -82,12 +82,20 @@ namespace Epiworx.Service
 
         public static Hour HourInsert(Hour hour)
         {
-            return hour.Save();
+            hour = hour.Save();
+
+            FeedService.FeedAdd("Created", hour);
+
+            return hour;
         }
 
         public static Hour HourUpdate(Hour hour)
         {
-            return hour.Save();
+            hour = hour.Save();
+
+            FeedService.FeedAdd("Updated", hour);
+
+            return hour;
         }
 
         public static Hour HourNew()
@@ -102,6 +110,8 @@ namespace Epiworx.Service
                     {
                         HourId = hour.HourId
                     });
+
+            FeedService.FeedAdd("Deleted", hour);
 
             return true;
         }

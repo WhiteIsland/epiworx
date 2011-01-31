@@ -25,6 +25,7 @@ namespace Epiworx.WebMvc.Controllers
             model.EndDate = DateTime.Today.ToEndOfWeek();
             model.Tasks = MyService.TaskFetchInfoList();
             model.Hours = MyService.HourFetchInfoList(model.StartDate, model.EndDate);
+            model.Feeds = MyService.FeedFetchInfoList(5);
 
             return this.View(model);
         }

@@ -9,6 +9,7 @@ namespace Epiworx.Business
     {
         int SprintId { get; }
         string Name { get; }
+        IProject Project { get; }
         int ProjectId { get; }
         string ProjectName { get; }
         bool IsCompleted { get; }

@@ -210,6 +210,7 @@ namespace Epiworx.Tests.Helpers
             var project = ProjectService.ProjectNew();
 
             project.Name = DataHelper.RandomString(20);
+            project.Description = DataHelper.RandomString(300);
 
             project = ProjectService.ProjectSave(project);
 

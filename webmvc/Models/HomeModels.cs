@@ -10,6 +10,7 @@ namespace Epiworx.WebMvc.Models
     {
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public IEnumerable<IFeed> Feeds { get; set; }
         public IEnumerable<IHour> Hours { get; set; }
         public IEnumerable<IProject> Projects { get; set; }
         public IEnumerable<ITask> Tasks { get; set; }

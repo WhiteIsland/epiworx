@@ -88,6 +88,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Controllers\SprintController.cs" />
     <Compile Include="Controllers\FilterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -100,6 +101,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DataHelper.cs" />
+    <Compile Include="Helpers\FeedHelper.cs" />
     <Compile Include="Helpers\HtmlHelperExtensions.cs" />
     <Compile Include="Helpers\HttpRequestBaseExtensions.cs" />
     <Compile Include="Helpers\ImportHelper.cs" />
@@ -113,6 +115,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\CategoryModels.cs" />
+    <Compile Include="Models\FeedModels.cs" />
     <Compile Include="Models\SprintModels.cs" />
     <Compile Include="Models\FilterModels.cs" />
     <Compile Include="Models\UserModels.cs" />
@@ -152,6 +155,10 @@
     <Content Include="Views\Category\CategoryFormCommands.ascx" />
     <Content Include="Views\Category\Create.aspx" />
     <Content Include="Views\Category\Edit.aspx" />
+    <Content Include="Views\Feed\FeedFilter.ascx" />
+    <Content Include="Views\Feed\Index.aspx" />
+    <Content Include="Views\Feed\FeedListUserControl.ascx" />
+    <Content Include="Views\Shared\FeedsUserControl.ascx" />
     <Content Include="Views\Shared\HourByDateListUserControl.ascx" />
     <Content Include="Views\Shared\HourByProjectListUserControl.ascx" />
     <Content Include="Views\Shared\HourByUserListUserControl.ascx" />

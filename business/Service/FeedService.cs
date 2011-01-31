@@ -8,16 +8,108 @@ namespace Epiworx.Business
     [Serializable]
     public class FeedService
     {
-        public static Feed FeedAdd(string type, Project project)
+        public static Feed FeedAdd(string action, Hour hour)
         {
             var feed = FeedService.FeedNew();
 
-            feed.Type = type;
+            feed.Type = "Hour";
             feed.Data = string.Format(
-                "ProjectId:{0}, ProjectName:{1}, Text:{2}",
+                "Action={0}|HourId={1}|Date={2:d}|TaskId={3}|ProjectId={4}|ProjectName={5}|Text={6}",
+                action,
+                hour.HourId,
+                hour.Date,
+                hour.TaskId,
+                hour.ProjectId,
+                hour.ProjectName,
+                hour.Notes);
+
+            feed = FeedService.FeedSave(feed);
+
+            return feed;
+        }
+
+        public static Feed FeedAdd(string action, Sprint sprint)
+        {
+            var feed = FeedService.FeedNew();
+
+            feed.Type = "Sprint";
+            feed.Data = string.Format(
+                "Action={0}|SprintId={1}|SprintName={2}|ProjectId={3}|ProjectName={4}|Text=Estimated completed date of {5:d}",
+                action,
+                sprint.SprintId,
+                sprint.Name,
+                sprint.ProjectId,
+                sprint.ProjectName,
+                sprint.EstimatedCompletedDate);
+
+            feed = FeedService.FeedSave(feed);
+
+            return feed;
+        }
+
+        public static Feed FeedAdd(string action, Task task)
+        {
+            var feed = FeedService.FeedNew();
+
+            feed.Type = "Task";
+            feed.Data = string.Format(
+                "Action={0}|TaskId={1}|ProjectId={2}|ProjectName={3}|Text={4}",
+                action,
+                task.TaskId,
+                task.ProjectId,
+                task.ProjectName,
+                task.Description);
+
+            feed = FeedService.FeedSave(feed);
+
+            return feed;
+        }
+
+        public static Feed FeedAdd(string action, Project project)
+        {
+            var feed = FeedService.FeedNew();
+
+            feed.Type = "Project";
+            feed.Data = string.Format(
+                "Action={0}|ProjectId={1}|ProjectName={2}|Text={3}",
+                action,
                 project.ProjectId,
                 project.Name,
                 project.Description);
+
+            feed = FeedService.FeedSave(feed);
+
+            return feed;
+        }
+
+        public static Feed FeedAdd(string action, Category category)
+        {
+            var feed = FeedService.FeedNew();
+
+            feed.Type = "Category";
+            feed.Data = string.Format(
+                "Action={0}|CategoryId={1}|CategoryName={2}|Text={3}",
+                action,
+                category.CategoryId,
+                category.Name,
+                category.Description);
+
+            feed = FeedService.FeedSave(feed);
+
+            return feed;
+        }
+
+        public static Feed FeedAdd(string action, Status status)
+        {
+            var feed = FeedService.FeedNew();
+
+            feed.Type = "Status";
+            feed.Data = string.Format(
+                "Action={0}|StatusId={1}|StatusName={2}|Text={3}",
+                action,
+                status.StatusId,
+                status.Name,
+                status.Description);
 
             feed = FeedService.FeedSave(feed);
 

@@ -36,6 +36,7 @@ namespace Epiworx.Business
             this.LoadProperty(TypeProperty, data.Type);
             this.LoadProperty(DataProperty, data.Data);
             this.LoadProperty(CreatedByProperty, data.CreatedBy);
+            this.LoadProperty(CreatedByEmailProperty, data.CreatedByUser.Email);
             this.LoadProperty(CreatedByNameProperty, data.CreatedByUser.Name);
             this.LoadProperty(CreatedDateProperty, data.CreatedDate);
         }

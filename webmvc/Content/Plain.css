@@ -878,3 +878,75 @@ table.list tbody tr:hover td a
     color: #000;
     text-decoration: underline;
 }
+
+.feed
+{
+}
+
+.feed li
+{
+    border-bottom: 1px solid #C0C0C0;
+    padding-top: 10px;
+}
+
+.feed li.first
+{
+    padding-top: 0px;
+}
+
+.feed li.last
+{
+    padding-bottom: 0px;
+}
+
+.feed a
+{
+    color: #CC0000;
+}
+ 
+.feed a:hover
+{
+    background-color: inherit;
+    color: #000000;
+    text-decoration: underline;
+}
+
+.feed blockquote
+{
+    padding-top: 5px;
+    color: #666666;
+}
+
+.feed img
+{
+    border: 1px solid #C0C0C0;
+    padding: 2px;
+    float: left;
+    margin-right: 5px;
+    margin-top: -2px;
+}
+
+.feed p
+{
+    clear: both;
+    padding-top: 7px;
+}
+
+.feed strong
+{
+    text-transform: lowercase;
+}
+
+.part .feed
+{
+}
+
+.part .feed li
+{
+    border-bottom: none;
+}
+
+.part .feed li.last
+{
+    padding-bottom: 10px;
+}

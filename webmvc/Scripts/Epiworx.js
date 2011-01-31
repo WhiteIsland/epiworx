@@ -27,8 +27,8 @@ $(function () {
         prevText: "<<",
         nextText: ">>"
     });
-    $("ul li:first").css("class", "first");
-    $("ul li:last").css("class", "last");
+    $("ul li:first-child").addClass("first");
+    $("ul li:last-child").addClass("last");
     $("#main .list li a").parent("li").css("cursor", "pointer");
     $("#main .list td a").parent("td").parent("tr").css("cursor", "pointer");
     $("#sidebar .part a").parent("li").css("cursor", "pointer");

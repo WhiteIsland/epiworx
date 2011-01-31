@@ -26,13 +26,14 @@
         <h4>
             Things To Do</h4>
         <ul>
-            <li class="first">
+            <li>
                 <%: this.Html.ActionLink("Add a New Hour", "Create", "Hour") %></li>
             <li>
                 <%: this.Html.ActionLink("Add a New Story", "Create", "Task")%></li>
-            <li class="last">
+            <li>
                 <%: this.Html.ActionLink("Add a New Project", "Create", "Project")%></li>
         </ul>
     </div>
+    <% this.Html.RenderPartial("FeedsUserControl", new FeedListModel() { Feeds = this.Model.Feeds });%>
     <% this.Html.RenderPartial("HourByDateListUserControl", new HourByDateListModel() { Hours = this.Model.Hours, StartDate = this.Model.StartDate, EndDate = this.Model.EndDate });%>
 </asp:Content>

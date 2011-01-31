@@ -8,7 +8,7 @@ namespace Epiworx.Business
     [Serializable]
     public partial class ProjectInfo : Csla.ReadOnlyBase<ProjectInfo>, IProject
     {
-        private ProjectInfo()
+        internal ProjectInfo()
         {
         }
     }

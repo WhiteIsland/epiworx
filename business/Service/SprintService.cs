@@ -61,12 +61,20 @@ namespace Epiworx.Service
 
         public static Sprint SprintInsert(Sprint sprint)
         {
-            return sprint.Save();
+            sprint = sprint.Save();
+
+            FeedService.FeedAdd("Created", sprint);
+
+            return sprint;
         }
 
         public static Sprint SprintUpdate(Sprint sprint)
         {
-            return sprint.Save();
+            sprint = sprint.Save();
+
+            FeedService.FeedAdd("Updated", sprint);
+
+            return sprint;
         }
 
         public static Sprint SprintNew()
@@ -81,6 +89,8 @@ namespace Epiworx.Service
                     {
                         SprintId = sprint.SprintId
                     });
+
+            FeedService.FeedAdd("Deleted", sprint);
 
             return true;
         }

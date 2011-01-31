@@ -52,12 +52,20 @@ namespace Epiworx.Service
 
         public static Category CategoryInsert(Category category)
         {
-            return category.Save();
+            category = category.Save();
+
+            FeedService.FeedAdd("Created", category);
+
+            return category;
         }
 
         public static Category CategoryUpdate(Category category)
         {
-            return category.Save();
+            category = category.Save();
+
+            FeedService.FeedAdd("Updated", category);
+
+            return category;
         }
 
         public static Category CategoryNew()
@@ -72,6 +80,8 @@ namespace Epiworx.Service
                     {
                         CategoryId = category.CategoryId
                     });
+
+            FeedService.FeedAdd("Deleted", category);
 
             return true;
         }

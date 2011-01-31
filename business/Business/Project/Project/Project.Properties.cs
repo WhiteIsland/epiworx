@@ -31,6 +31,7 @@ namespace Epiworx.Business
 
         private static Csla.PropertyInfo<string> DescriptionProperty =
             RegisterProperty<string>(row => row.Description, "Description");
+        [Required(ErrorMessage = "Description is required")]
         [StringLength(300, ErrorMessage = "Description must be less than 300 characters")]
         public string Description
         {

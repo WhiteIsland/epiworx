@@ -49,10 +49,10 @@ namespace Epiworx.Business
             set { this.SetProperty(NameProperty, value); }
         }
 
-        [Required(ErrorMessage = "Salt is required")]
-        [StringLength(20, ErrorMessage = "Salt must be less than 20 characters")]
         private static Csla.PropertyInfo<string> SaltProperty =
             RegisterProperty<string>(row => row.Salt, "Salt");
+        [Required(ErrorMessage = "Salt is required")]
+        [StringLength(20, ErrorMessage = "Salt must be less than 20 characters")]
         public string Salt
         {
             get { return this.GetProperty(SaltProperty); }

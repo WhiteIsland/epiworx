@@ -51,7 +51,7 @@ namespace Epiworx.Tests
             Assert.IsTrue(ValidationHelper.ContainsRule(user, DbType.String, "Salt"),
                 "Salt should be required");
             Assert.IsTrue(ValidationHelper.ContainsRule(user, "rule://epiworx.business.rolerequired/Role"),
-               "Role should be required");
+                "Role should be required");
         }
 
         [TestMethod]

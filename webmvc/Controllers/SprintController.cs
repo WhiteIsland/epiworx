@@ -51,7 +51,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             var sprint = SprintService.SprintNew();
 
-            Csla.Data.DataMapper.Map(model, sprint, true);
+            Csla.Data.DataMapper.Map(model, sprint, true, "ProjectName");
 
             sprint = SprintService.SprintSave(sprint);
 
@@ -92,7 +92,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             var sprint = SprintService.SprintFetch(id);
 
-            Csla.Data.DataMapper.Map(model, sprint, true);
+            Csla.Data.DataMapper.Map(model, sprint, true, "ProjectName");
 
             sprint = SprintService.SprintSave(sprint);
 

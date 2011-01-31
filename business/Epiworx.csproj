@@ -152,6 +152,7 @@
     <Compile Include="Business\Filter\Filter\Filter.Properties.cs" />
     <Compile Include="Business\Filter\Filter\Filter.Rules.cs" />
     <Compile Include="Business\Filter\IFilter.cs" />
+    <Compile Include="Business\ForeignKeyMapper.cs" />
     <Compile Include="Business\Hour\HourCriteria\HourCriteria.cs">
       <SubType>Code</SubType>
     </Compile>

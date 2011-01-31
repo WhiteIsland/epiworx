@@ -8,7 +8,7 @@ namespace Epiworx.Business
     [Serializable]
     public partial class CategoryInfo : Csla.ReadOnlyBase<CategoryInfo>, ICategory
     {
-        private CategoryInfo()
+        internal CategoryInfo()
         {
         }
     }
