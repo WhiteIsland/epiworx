@@ -27,7 +27,8 @@ namespace Epiworx.WebMvc.Models
         [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; }
 
-        [DisplayName("Enter a description for the project:")]
+        [DisplayName("Description:")]
+        [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
 
         [DisplayName("Enter some notes about the project:")]
