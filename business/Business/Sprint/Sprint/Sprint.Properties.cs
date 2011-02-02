@@ -33,7 +33,7 @@ namespace Epiworx.Business
             RegisterProperty<IProject>(row => row.Project, "Project");
         public IProject Project
         {
-            get { return this.GetProperty(ProjectProperty); }
+            get { return this.ReadProperty(ProjectProperty); }
             internal set { this.LoadProperty(ProjectProperty, value); }
         }
 
@@ -49,8 +49,8 @@ namespace Epiworx.Business
             RegisterProperty<string>(row => row.ProjectName, "ProjectName");
         public string ProjectName
         {
-            get { return this.GetProperty(ProjectNameProperty); }
-            internal set { this.SetProperty(ProjectNameProperty, value); }
+            get { return this.ReadProperty(ProjectNameProperty); }
+            internal set { this.LoadProperty(ProjectNameProperty, value); }
         }
 
         private static Csla.PropertyInfo<bool> IsCompletedProperty =

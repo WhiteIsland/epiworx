@@ -31,8 +31,8 @@ namespace Epiworx.Business
             RegisterProperty<string>(row => row.ProjectName, "ProjectName");
         public string ProjectName
         {
-            get { return this.GetProperty(ProjectNameProperty); }
-            internal set { this.SetProperty(ProjectNameProperty, value); }
+            get { return this.ReadProperty(ProjectNameProperty); }
+            internal set { this.LoadProperty(ProjectNameProperty, value); }
         }
 
         private static Csla.PropertyInfo<int> TaskIdProperty =
@@ -47,15 +47,15 @@ namespace Epiworx.Business
             RegisterProperty<string>(row => row.TaskName, "Task Description");
         public string TaskName
         {
-            get { return this.GetProperty(TaskNameProperty); }
-            internal set { this.SetProperty(TaskNameProperty, value); }
+            get { return this.ReadProperty(TaskNameProperty); }
+            internal set { this.LoadProperty(TaskNameProperty, value); }
         }
 
         private static Csla.PropertyInfo<IUser> UserProperty =
             RegisterProperty<IUser>(row => row.User, "User");
         public IUser User
         {
-            get { return this.GetProperty(UserProperty); }
+            get { return this.ReadProperty(UserProperty); }
             internal set { this.LoadProperty(UserProperty, value); }
         }
 
@@ -71,8 +71,8 @@ namespace Epiworx.Business
             RegisterProperty<string>(row => row.UserName, "UserName");
         public string UserName
         {
-            get { return this.GetProperty(UserNameProperty); }
-            internal set { this.SetProperty(UserNameProperty, value); }
+            get { return this.ReadProperty(UserNameProperty); }
+            internal set { this.LoadProperty(UserNameProperty, value); }
         }
 
         private static Csla.PropertyInfo<DateTime> DateProperty =

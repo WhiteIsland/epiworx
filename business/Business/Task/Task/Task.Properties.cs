@@ -23,7 +23,7 @@ namespace Epiworx.Business
             RegisterProperty<IProject>(row => row.Project, "Project");
         public IProject Project
         {
-            get { return this.GetProperty(ProjectProperty); }
+            get { return this.ReadProperty(ProjectProperty); }
             internal set { this.LoadProperty(ProjectProperty, value); }
         }
 
@@ -39,15 +39,15 @@ namespace Epiworx.Business
             RegisterProperty<string>(row => row.ProjectName, "ProjectName");
         public string ProjectName
         {
-            get { return this.GetProperty(ProjectNameProperty); }
-            internal set { this.SetProperty(ProjectNameProperty, value); }
+            get { return this.ReadProperty(ProjectNameProperty); }
+            internal set { this.LoadProperty(ProjectNameProperty, value); }
         }
 
         private static Csla.PropertyInfo<ISprint> SprintProperty =
             RegisterProperty<ISprint>(row => row.Sprint, "Sprint");
         public ISprint Sprint
         {
-            get { return this.GetProperty(SprintProperty); }
+            get { return this.ReadProperty(SprintProperty); }
             internal set { this.LoadProperty(SprintProperty, value); }
         }
 
@@ -63,15 +63,15 @@ namespace Epiworx.Business
             RegisterProperty<string>(row => row.SprintName, "SprintName");
         public string SprintName
         {
-            get { return this.GetProperty(SprintNameProperty); }
-            internal set { this.SetProperty(SprintNameProperty, value); }
+            get { return this.ReadProperty(SprintNameProperty); }
+            internal set { this.LoadProperty(SprintNameProperty, value); }
         }
 
         private static Csla.PropertyInfo<ICategory> CategoryProperty =
             RegisterProperty<ICategory>(row => row.Category, "Category");
         public ICategory Category
         {
-            get { return this.GetProperty(CategoryProperty); }
+            get { return this.ReadProperty(CategoryProperty); }
             internal set { this.LoadProperty(CategoryProperty, value); }
         }
 
@@ -87,15 +87,15 @@ namespace Epiworx.Business
             RegisterProperty<string>(row => row.CategoryName, "CategoryName");
         public string CategoryName
         {
-            get { return this.GetProperty(CategoryNameProperty); }
-            internal set { this.SetProperty(CategoryNameProperty, value); }
+            get { return this.ReadProperty(CategoryNameProperty); }
+            internal set { this.LoadProperty(CategoryNameProperty, value); }
         }
 
         private static Csla.PropertyInfo<IStatus> StatusProperty =
             RegisterProperty<IStatus>(row => row.Status, "Status");
         public IStatus Status
         {
-            get { return this.GetProperty(StatusProperty); }
+            get { return this.ReadProperty(StatusProperty); }
             internal set { this.LoadProperty(StatusProperty, value); }
         }
 
@@ -111,8 +111,8 @@ namespace Epiworx.Business
             RegisterProperty<string>(row => row.StatusName, "StatusName");
         public string StatusName
         {
-            get { return this.GetProperty(StatusNameProperty); }
-            internal set { this.SetProperty(StatusNameProperty, value); }
+            get { return this.ReadProperty(StatusNameProperty); }
+            internal set { this.LoadProperty(StatusNameProperty, value); }
         }
 
         private static Csla.PropertyInfo<string> DescriptionProperty =
@@ -137,8 +137,8 @@ namespace Epiworx.Business
             RegisterProperty<string>(row => row.AssignedToName, "AssignedToName");
         public string AssignedToName
         {
-            get { return this.GetProperty(AssignedToNameProperty); }
-            set { this.SetProperty(AssignedToNameProperty, value); }
+            get { return this.ReadProperty(AssignedToNameProperty); }
+            set { this.LoadProperty(AssignedToNameProperty, value); }
         }
 
         private static Csla.PropertyInfo<DateTime> AssignedDateProperty =
