@@ -230,7 +230,7 @@
     <Content Include="Views\User\Index.aspx" />
     <Content Include="Views\User\UserForm.ascx" />
     <Content Include="Views\User\UserFormCommands.ascx" />
-    <None Include="Content\StoryImportTemplate.csv" />
+    <Content Include="Content\StoryImportTemplate.csv" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>

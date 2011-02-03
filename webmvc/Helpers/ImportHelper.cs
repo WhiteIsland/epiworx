@@ -120,14 +120,24 @@ namespace Epiworx.WebMvc.Helpers
                                row.Name == values[ImportHelper.TaskAssignedToNameColumn]).UserId;
                         }
 
-                        task.AssignedDate = DateTime.Parse(values[ImportHelper.TaskAssignedDateColumn]).Date;
-                        task.StartDate = DateTime.Parse(values[ImportHelper.TaskStartDateColumn]).Date;
-                        task.CompletedDate = DateTime.Parse(values[ImportHelper.TaskCompletedDateColumn]).Date;
-                        task.EstimatedCompletedDate = DateTime.Parse(values[ImportHelper.TaskEstimatedCompletedDateColumn]).Date;
-                        task.Duration = decimal.Parse(values[ImportHelper.TaskDurationColumn]);
-                        task.EstimatedDuration = decimal.Parse(values[ImportHelper.TaskEstimatedDurationColumn]);
+                        task.AssignedDate =
+                            ImportHelper.TryParse(values[ImportHelper.TaskAssignedDateColumn], DateTime.MaxValue.Date);
+                        task.StartDate =
+                            ImportHelper.TryParse(values[ImportHelper.TaskStartDateColumn], DateTime.MaxValue.Date);
+                        task.CompletedDate =
+                            ImportHelper.TryParse(values[ImportHelper.TaskCompletedDateColumn], DateTime.MaxValue.Date);
+                        task.EstimatedCompletedDate =
+                            ImportHelper.TryParse(values[ImportHelper.TaskEstimatedCompletedDateColumn], DateTime.MaxValue.Date);
+                        task.EstimatedDuration =
+                           ImportHelper.TryParse(values[ImportHelper.TaskEstimatedDurationColumn], 0);
                         task.Labels = values[ImportHelper.TaskLabelsColumn];
-                        task.IsArchived = bool.Parse(values[ImportHelper.TaskIsArchivedColumn]);
+
+                        if (task.CanWriteProperty("IsArchived"))
+                        {
+                            task.IsArchived =
+                                ImportHelper.TryParse(values[ImportHelper.TaskIsArchivedColumn], false);
+                        }
+
                         task.Notes = values[ImportHelper.TaskNotesColumn];
 
                         tasks.Add(task);
@@ -157,6 +167,42 @@ namespace Epiworx.WebMvc.Helpers
             }
 
             return null;
+        }
+
+        public static bool TryParse(string value, bool defaultValue)
+        {
+            bool result;
+
+            if (!bool.TryParse(value, out result))
+            {
+                result = defaultValue;
+            }
+
+            return result;
+        }
+
+        public static decimal TryParse(string value, decimal defaultValue)
+        {
+            decimal result;
+
+            if (!decimal.TryParse(value, out result))
+            {
+                result = defaultValue;
+            }
+
+            return result;
+        }
+
+        public static DateTime TryParse(string value, DateTime defaultValue)
+        {
+            DateTime result;
+
+            if (!DateTime.TryParse(value, out result))
+            {
+                result = defaultValue;
+            }
+
+            return result;
         }
     }
 }
