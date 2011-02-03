@@ -18,7 +18,7 @@ namespace Epiworx.Service
                 {
                     CreatedBy = BusinessPrincipal.GetCurrentIdentity().UserId,
                     SortBy = "CreatedDate",
-                    SortOrder = ListSortDirection.Ascending,
+                    SortOrder = ListSortDirection.Descending,
                     MaximumRecords = maximumRecords
                 });
         }
