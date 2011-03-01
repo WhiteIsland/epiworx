@@ -184,19 +184,24 @@ namespace Epiworx.WebMvc.Helpers
             return null;
         }
 
-        public static int ToInteger(bool? value)
+        public static int ToInteger(int? value)
         {
             if (!value.HasValue)
             {
                 return 0;
             }
 
-            if (value.Value)
+            return value.Value;
+        }
+
+        public static SourceType? ToSourceType(int? value)
+        {
+            if (!value.HasValue)
             {
-                return -1;
+                return SourceType.None;
             }
 
-            return 1;
+            return (SourceType)value;
         }
 
         public static IQueryable<ICategory> GetCategoryList()

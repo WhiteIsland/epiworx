@@ -33,8 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Csla">
-      <HintPath>..\assemblies\Csla.dll</HintPath>
+    <Reference Include="Csla, Version=4.1.0.0, Culture=neutral, PublicKeyToken=93be5fdc093e4c30, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CSLA-Core.4.1.0.0\Lib\NET4.0\Csla.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -57,6 +58,7 @@
     <Compile Include="CategoryTests.cs" />
     <Compile Include="CategoryTestsWithRoleContribute.cs" />
     <Compile Include="CategoryTestsWithRoleReview.cs" />
+    <Compile Include="NoteTests.cs" />
     <Compile Include="FeedTests.cs" />
     <Compile Include="ProjectTestsWithRoleContribute.cs">
       <SubType>Code</SubType>
@@ -94,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\business\Epiworx.csproj">

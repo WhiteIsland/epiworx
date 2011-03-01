@@ -33,13 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Csla">
-      <HintPath>..\assemblies\Csla.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Csla, Version=4.1.0.0, Culture=neutral, PublicKeyToken=93be5fdc093e4c30, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CSLA-Core.4.1.0.0\Lib\NET4.0\Csla.dll</HintPath>
     </Reference>
-    <Reference Include="Csla.Web.Mvc">
-      <HintPath>..\assemblies\Csla.Web.Mvc.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Csla.Web.Mvc, Version=4.1.0.0, Culture=neutral, PublicKeyToken=93be5fdc093e4c30, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CSLA-ASP.NET-MVC.4.1.0.0\Lib\NET4.0\Csla.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualBasic" />
@@ -88,6 +88,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Controllers\SprintController.cs" />
     <Compile Include="Controllers\FilterController.cs" />
@@ -115,6 +116,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\CategoryModels.cs" />
+    <Compile Include="Models\NoteModels.cs" />
     <Compile Include="Models\FeedModels.cs" />
     <Compile Include="Models\SprintModels.cs" />
     <Compile Include="Models\FilterModels.cs" />
@@ -146,9 +148,12 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\Epiworx.Form.js" />
     <Content Include="Scripts\Epiworx.js" />
-    <Content Include="Scripts\jquery-1.4.4.min.js" />
+    <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.5.1.js" />
+    <Content Include="Scripts\jquery-1.5.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.8.custom.min.js" />
     <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Scripts\jquery.validate.min-vsdoc.js" />
     <Content Include="Views\Account\ForgotPassword.aspx" />
     <Content Include="Views\Account\ForgotPasswordSuccess.aspx" />
     <Content Include="Views\Category\CategoryForm.ascx" />
@@ -158,6 +163,10 @@
     <Content Include="Views\Feed\FeedFilter.ascx" />
     <Content Include="Views\Feed\Index.aspx" />
     <Content Include="Views\Feed\FeedListUserControl.ascx" />
+    <Content Include="Views\Note\NoteForm.ascx" />
+    <Content Include="Views\Note\NoteFormCommands.ascx" />
+    <Content Include="Views\Note\Create.aspx" />
+    <Content Include="Views\Note\Edit.aspx" />
     <Content Include="Views\Shared\FeedsUserControl.ascx" />
     <Content Include="Views\Shared\HourByDateListUserControl.ascx" />
     <Content Include="Views\Shared\HourByProjectListUserControl.ascx" />
@@ -231,6 +240,7 @@
     <Content Include="Views\User\UserForm.ascx" />
     <Content Include="Views\User\UserFormCommands.ascx" />
     <Content Include="Content\StoryImportTemplate.csv" />
+    <Content Include="Packages.config" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>

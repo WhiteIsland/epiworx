@@ -12,9 +12,9 @@ namespace Epiworx.Business
     {
         protected static void AddObjectAuthorizationRules()
         {
-            // BusinessRules.AddRule(typeof(HourInfoList), 
-            //     new IsInRole(AuthorizationActions.GetObject, 
-            //         Roles.Administrators, Permissions.GetHours));
+            BusinessRules.AddRule(typeof(HourInfoList),
+                  new IsInRole(AuthorizationActions.GetObject,
+                      Role.FullControl.ToString(), Role.Contribute.ToString()));
         }
     }
 }

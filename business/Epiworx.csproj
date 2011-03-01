@@ -31,8 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Csla">
-      <HintPath>..\assemblies\Csla.dll</HintPath>
+    <Reference Include="Csla, Version=4.1.0.0, Culture=neutral, PublicKeyToken=93be5fdc093e4c30, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CSLA-Core.4.1.0.0\Lib\NET4.0\Csla.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -112,6 +113,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Business\Category\CategoryDuplicateNameCheck.cs" />
+    <Compile Include="Business\Note\Enumerations.cs" />
     <Compile Include="Business\Feed\FeedCriteria\FeedCriteria.cs" />
     <Compile Include="Business\Feed\FeedCriteria\FeedCriteria.Properties.cs" />
     <Compile Include="Business\Feed\FeedExistsCommand\FeedExistsCommand.cs" />
@@ -213,6 +215,26 @@
     <Compile Include="Business\Hour\IHour.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Business\Note\INote.cs" />
+    <Compile Include="Business\Note\NoteCriteria\NoteCriteria.cs" />
+    <Compile Include="Business\Note\NoteCriteria\NoteCriteria.Properties.cs" />
+    <Compile Include="Business\Note\NoteInfoList\NoteInfoList.cs" />
+    <Compile Include="Business\Note\NoteInfoList\NoteInfoList.Data.cs" />
+    <Compile Include="Business\Note\NoteInfoList\NoteInfoList.Methods.cs" />
+    <Compile Include="Business\Note\NoteInfoList\NoteInfoList.Properties.cs" />
+    <Compile Include="Business\Note\NoteInfoList\NoteInfoList.Rules.cs" />
+    <Compile Include="Business\Note\NoteInfo\NoteInfo.cs" />
+    <Compile Include="Business\Note\NoteInfo\NoteInfo.Data.cs" />
+    <Compile Include="Business\Note\NoteInfo\NoteInfo.Methods.cs" />
+    <Compile Include="Business\Note\NoteInfo\NoteInfo.Properties.cs" />
+    <Compile Include="Business\Note\NoteInfo\NoteInfo.Rules.cs" />
+    <Compile Include="Business\Note\NoteValueCommand\NoteValueCommand.cs" />
+    <Compile Include="Business\Note\Note\Note.cs" />
+    <Compile Include="Business\Note\Note\Note.Data.cs" />
+    <Compile Include="Business\Note\Note\Note.Methods.cs" />
+    <Compile Include="Business\Note\Note\Note.Properties.cs" />
+    <Compile Include="Business\Note\Note\Note.Rules.cs" />
+    <Compile Include="Business\Note\NoteSourceTypeRequired.cs" />
     <Compile Include="Business\Project\ProjectDuplicateNameCheck.cs" />
     <Compile Include="Business\Project\IProject.cs">
       <SubType>Code</SubType>
@@ -463,8 +485,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Application.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Data\Category.cs" />
+    <Compile Include="Data\Feed.cs" />
+    <Compile Include="Data\Filter.cs" />
     <Compile Include="Data\Hour.cs" />
+    <Compile Include="Data\Note.cs" />
+    <Compile Include="Data\Project.cs" />
+    <Compile Include="Data\Sprint.cs" />
+    <Compile Include="Data\Status.cs" />
     <Compile Include="Data\Task.cs" />
+    <Compile Include="Data\User.cs" />
     <Compile Include="Data\Validation\DateRequired.cs" />
     <Compile Include="Core\Helpers\MessageHelper.cs" />
     <Compile Include="Security\Helpers\PasswordHelper.cs" />
@@ -491,6 +521,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Service\MyService.cs" />
+    <Compile Include="Service\NoteService.cs" />
     <Compile Include="Service\ProjectService.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -510,6 +541,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
