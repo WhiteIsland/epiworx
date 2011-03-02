@@ -9,6 +9,13 @@ namespace Epiworx.Service
     [Serializable]
     public class NoteService
     {
+        public static Note NoteAdd(ISource source, string body)
+        {
+            var result = NoteService.NoteAdd(source.SourceType, source.SourceId, body);
+
+            return result;
+        }
+
         public static Note NoteAdd(SourceType sourceType, int sourceId, string body)
         {
             var result = NoteService.NoteNew(sourceType, sourceId);
@@ -33,6 +40,16 @@ namespace Epiworx.Service
         {
             return NoteService.NoteFetchInfoList(
                 new NoteCriteria());
+        }
+
+        public static NoteInfoList NoteFetchInfoList(ISource source)
+        {
+            return NoteService.NoteFetchInfoList(
+                new NoteCriteria
+                {
+                    SourceType = source.SourceType,
+                    SourceId = source.SourceId
+                });
         }
 
         public static NoteInfoList NoteFetchInfoList(SourceType sourceType, int sourceId)

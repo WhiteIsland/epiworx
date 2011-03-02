@@ -6,7 +6,7 @@ using System.Text;
 namespace Epiworx.Business
 {
     [Serializable]
-    public partial class Task : Csla.BusinessBase<Task>, ITask
+    public partial class Task : Csla.BusinessBase<Task>, ITask, ISource
     {
         private Task()
         {

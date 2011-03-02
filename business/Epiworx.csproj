@@ -113,6 +113,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Business\Category\CategoryDuplicateNameCheck.cs" />
+    <Compile Include="Business\ISource.cs" />
     <Compile Include="Business\Note\Enumerations.cs" />
     <Compile Include="Business\Feed\FeedCriteria\FeedCriteria.cs" />
     <Compile Include="Business\Feed\FeedCriteria\FeedCriteria.Properties.cs" />
@@ -541,7 +542,8 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="packages.config" />
+    <Compile Include="Business\Task\Task\Task.ISource.cs" />
+    <None Include="Packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

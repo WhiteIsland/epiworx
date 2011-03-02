@@ -15,7 +15,7 @@ namespace Epiworx.WebMvc.Models
 
     public class NoteListModel : ModelListBase
     {
-        public int IsArchived { get; set; }
+        public ISource Source { get; set; }
         public IQueryable<INote> Notes { get; set; }
     }
 
@@ -28,5 +28,18 @@ namespace Epiworx.WebMvc.Models
         [DisplayName("Body:")]
         [Required(ErrorMessage = "Body is required")]
         public string Body { get; set; }
+
+        public string CreatedByName { get; set; }
+        public string CreatedByEmail { get; set; }
+        public DateTime CreatedDate { get; set; }
+
+        public NoteFormModel()
+        {
+        }
+
+        public NoteFormModel(INote note)
+        {
+            Csla.Data.DataMapper.Map(note, this, true);
+        }
     }
 }

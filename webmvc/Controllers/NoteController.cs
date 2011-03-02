@@ -40,6 +40,32 @@ namespace Epiworx.WebMvc.Controllers
             return this.View(model);
         }
 
+        [HttpPost]
+        [Authorize]
+        public ActionResult Add(int sourceType, int sourceId, NoteFormModel model)
+        {
+            var note = NoteService.NoteNew((SourceType)sourceType, sourceId);
+
+            Csla.Data.DataMapper.Map(model, note, true);
+
+            note = NoteService.NoteSave(note);
+
+            if (note.IsValid)
+            {
+                note = NoteService.NoteFetch(note.NoteId);
+
+                this.Map(note, model, true);
+
+                model.IsNew = true;
+
+                return PartialView("NoteUserControl", model);
+            }
+
+            this.Map(note, model, false);
+
+            return this.View(model);
+        }
+
         [Authorize]
         public ActionResult Create(int sourceType, int sourceId)
         {
@@ -120,12 +146,13 @@ namespace Epiworx.WebMvc.Controllers
             return this.View(model);
         }
 
+        [HttpPost]
         [Authorize]
         public ActionResult Delete(int id)
         {
             NoteService.NoteDelete(id);
 
-            return this.RedirectToAction("Index", "Home", null);
+            return new JsonResult();
         }
 
         public NoteFormModel Map(Note note, NoteFormModel model, bool ignoreBrokenRules)

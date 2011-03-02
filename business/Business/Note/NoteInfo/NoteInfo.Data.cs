@@ -15,9 +15,11 @@ namespace Epiworx.Business
             this.LoadProperty(BodyProperty, data.Body);
             this.LoadProperty(ModifiedByProperty, data.ModifiedBy);
             this.LoadProperty(ModifiedByNameProperty, data.ModifiedByUser.Name);
+            this.LoadProperty(ModifiedByEmailProperty, data.ModifiedByUser.Email);
             this.LoadProperty(ModifiedDateProperty, data.ModifiedDate);
             this.LoadProperty(CreatedByProperty, data.CreatedBy);
             this.LoadProperty(CreatedByNameProperty, data.CreatedByUser.Name);
+            this.LoadProperty(CreatedByEmailProperty, data.CreatedByUser.Email);
             this.LoadProperty(CreatedDateProperty, data.CreatedDate);
         }
     }

@@ -229,6 +229,13 @@ namespace Epiworx.WebMvc.Controllers
                 model.Message = message;
 
                 this.Map(task, model, true);
+
+                model.NoteListModel =
+                    new NoteListModel
+                        {
+                            Source = task,
+                            Notes = NoteService.NoteFetchInfoList(task).AsQueryable()
+                        };
             }
             catch (Exception ex)
             {

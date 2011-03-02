@@ -54,6 +54,14 @@ namespace Epiworx.Business
             internal set { this.LoadProperty(ModifiedByNameProperty, value); }
         }
 
+        private static Csla.PropertyInfo<string> ModifiedByEmailProperty =
+            RegisterProperty<string>(row => row.ModifiedByEmail, "ModifiedByEmail");
+        public string ModifiedByEmail
+        {
+            get { return this.GetProperty(ModifiedByEmailProperty); }
+            internal set { this.LoadProperty(ModifiedByEmailProperty, value); }
+        }
+
         private static Csla.PropertyInfo<DateTime> ModifiedDateProperty =
             RegisterProperty<DateTime>(row => row.ModifiedDate, "ModifiedDate");
         public DateTime ModifiedDate
@@ -76,6 +84,14 @@ namespace Epiworx.Business
         {
             get { return this.GetProperty(CreatedByNameProperty); }
             internal set { this.LoadProperty(CreatedByNameProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<string> CreatedByEmailProperty =
+            RegisterProperty<string>(row => row.CreatedByEmail, "CreatedByEmail");
+        public string CreatedByEmail
+        {
+            get { return this.GetProperty(CreatedByEmailProperty); }
+            internal set { this.LoadProperty(CreatedByEmailProperty, value); }
         }
 
         private static Csla.PropertyInfo<DateTime> CreatedDateProperty =

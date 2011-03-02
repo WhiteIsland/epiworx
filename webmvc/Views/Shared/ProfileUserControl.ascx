@@ -7,7 +7,7 @@
            var user = (BusinessIdentity)Csla.ApplicationContext.User.Identity;
 
     %>
-    <img src="<%: this.Url.Gravatar(user.Email) %>" alt="No Profile" />
+    <img src="<%: this.Url.Gravatar(user.Email) %>" />
     <span><%: user.FirstName %>&nbsp;<%: user.LastName %></span>
     <%
        }

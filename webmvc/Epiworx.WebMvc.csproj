@@ -139,9 +139,6 @@
     <Content Include="Content\Close.png" />
     <Content Include="Content\Plain.css" />
     <Content Include="Content\Find.png" />
-    <Content Include="Content\Metro-Page.png" />
-    <Content Include="Content\Metro-Footer.png" />
-    <Content Include="Content\Metro-Header.png" />
     <Content Include="Content\Plain.Jquery.css" />
     <Content Include="Content\Profile.png" />
     <Content Include="Content\Reset.css" />
@@ -171,6 +168,8 @@
     <Content Include="Views\Shared\HourByDateListUserControl.ascx" />
     <Content Include="Views\Shared\HourByProjectListUserControl.ascx" />
     <Content Include="Views\Shared\HourByUserListUserControl.ascx" />
+    <Content Include="Views\Shared\NotesUserControl.ascx" />
+    <Content Include="Views\Shared\NoteUserControl.ascx" />
     <Content Include="Views\Shared\SprintsUserControl.ascx" />
     <Content Include="Views\Sprint\SprintForm.ascx" />
     <Content Include="Views\Sprint\SprintFormCommands.ascx" />
@@ -244,7 +243,6 @@
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Content\Metro.css" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
