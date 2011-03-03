@@ -8,6 +8,38 @@ namespace Epiworx.Business
     [Serializable]
     internal class ForeignKeyMapper
     {
+        public static string FetchSourceName(ISource source)
+        {
+            var result = string.Empty;
+
+            switch (source.SourceType)
+            {
+                case SourceType.Task:
+                    result = source.SourceId.ToString();
+                    break;
+                default:
+                    break;
+            }
+
+            return result;
+        }
+
+        public static string FetchSourceName(SourceType sourceType, int sourceId)
+        {
+            var result = string.Empty;
+
+            switch (sourceType)
+            {
+                case SourceType.Task:
+                    result = sourceId.ToString();
+                    break;
+                default:
+                    break;
+            }
+
+            return result;
+        }
+
         public static IUser FetchUser(int userId)
         {
             if (userId == 0)

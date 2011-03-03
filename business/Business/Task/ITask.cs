@@ -29,6 +29,8 @@ namespace Epiworx.Business
         DateTime EstimatedCompletedDate { get; }
         decimal Duration { get; }
         decimal EstimatedDuration { get; }
+        int NumberOfNotes { get; }
+        int NumberOfAttachments { get; }
         string Labels { get; }
         bool IsArchived { get; }
         string Notes { get; }

@@ -90,12 +90,20 @@ namespace Epiworx.Service
 
         public static Note NoteInsert(Note note)
         {
-            return note.Save();
+            note = note.Save();
+
+            FeedService.FeedAdd("Created", note);
+
+            return note;
         }
 
         public static Note NoteUpdate(Note note)
         {
-            return note.Save();
+            note = note.Save();
+
+            FeedService.FeedAdd("Updated", note);
+
+            return note;
         }
 
         public static Note NoteNew(SourceType sourceType, int sourceId)
@@ -117,6 +125,8 @@ namespace Epiworx.Service
                     {
                         NoteId = note.NoteId
                     });
+
+            FeedService.FeedAdd("Deleted", note);
 
             return true;
         }

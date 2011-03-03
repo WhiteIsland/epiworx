@@ -22,6 +22,16 @@ namespace Epiworx.WebMvc.Helpers
             return text.Substring(0, maxLength) + "...";
         }
 
+        public static string ToString(string value, int maximumLength)
+        {
+            if (value.Length > maximumLength)
+            {
+                return string.Format("{0}...", value.Substring(0, maximumLength));
+            }
+
+            return value;
+        }
+
         public static string ToString(IEnumerable<ICategory> categories, int[] categoryIds, string defaultText)
         {
             var sb = new StringBuilder();

@@ -178,7 +178,7 @@ namespace Epiworx.Business
         public decimal Duration
         {
             get { return this.GetProperty(DurationProperty); }
-            set { this.SetProperty(DurationProperty, value); }
+            internal set { this.SetProperty(DurationProperty, value); }
         }
 
         private static Csla.PropertyInfo<decimal> EstimatedDurationProperty =
@@ -187,6 +187,22 @@ namespace Epiworx.Business
         {
             get { return this.GetProperty(EstimatedDurationProperty); }
             set { this.SetProperty(EstimatedDurationProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<int> NumberOfNotesProperty =
+            RegisterProperty<int>(row => row.NumberOfNotes, "NumberOfNotes");
+        public int NumberOfNotes
+        {
+            get { return this.GetProperty(NumberOfNotesProperty); }
+            internal set { this.LoadProperty(NumberOfNotesProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<int> NumberOfAttachmentsProperty =
+            RegisterProperty<int>(row => row.NumberOfAttachments, "NumberOfAttachments");
+        public int NumberOfAttachments
+        {
+            get { return this.GetProperty(NumberOfAttachmentsProperty); }
+            internal set { this.LoadProperty(NumberOfAttachmentsProperty, value); }
         }
 
         private static Csla.PropertyInfo<string> LabelsProperty =

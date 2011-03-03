@@ -40,6 +40,9 @@
                }
             %>
             <th style="width: 50px; text-align: right;">
+                Duration
+            </th>
+            <th style="width: 50px; text-align: right;">
                 Points
             </th>
         </tr>
@@ -77,6 +80,11 @@
                 <%: task.ProjectName %>
             </td>
             <td>
+                <% if (task.NumberOfNotes > 0)
+                   {%>
+                <div class="box note" title="has (<%= task.NumberOfNotes %>) notes">
+                    N</div>
+                <%}%>
                 <p title="<%: task.Description %>">
                     <%: task.Description %></p>
             </td>
@@ -89,6 +97,9 @@
             <%
                }
             %>
+            <td style="text-align: right;">
+                <%: task.Duration.ToString("N2") %>
+            </td>
             <td style="text-align: right;">
                 <%: task.EstimatedDuration.ToString("N0") %>
             </td>

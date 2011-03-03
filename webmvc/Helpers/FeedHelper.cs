@@ -111,6 +111,27 @@ namespace Epiworx.WebMvc.Helpers
 
                     break;
 
+                case "Note":
+
+                    sb = sb.AppendFormat(
+                       " the note <a href=\"{0}\">{1}</a> ",
+                       urlHelper.Action("Edit", "Note", new { id = values["NoteId"] }),
+                       DataHelper.ToString(values["Text"], 20));
+
+                    switch ((SourceType)int.Parse(values["SourceType"]))
+                    {
+                        case SourceType.Task:
+                            sb = sb.AppendFormat(
+                               " for the story <a href=\"{0}\">{1}</a> ",
+                               urlHelper.Action("Edit", "Task", new { id = values["SourceId"] }),
+                               values["SourceId"]);
+                            break;
+                        default:
+                            throw new NotImplementedException();
+                    }
+
+                    break;
+
                 default:
                     throw new NotImplementedException();
             }
@@ -141,6 +162,9 @@ namespace Epiworx.WebMvc.Helpers
                             break;
                         case "Task":
                             sb = sb.AppendFormat("{0}'s description", values["TaskId"]);
+                            break;
+                        case "Note":
+                            sb = sb.Append("Notes's description");
                             break;
                         case "Status":
                             sb = sb.AppendFormat("{0}'s description", values["StatusName"]);

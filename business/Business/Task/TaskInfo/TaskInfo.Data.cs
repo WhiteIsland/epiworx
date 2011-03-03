@@ -7,7 +7,7 @@ namespace Epiworx.Business
 {
     public partial class TaskInfo
     {
-        private void Fetch(Data.Task data)
+        private void Fetch(Data.Task data, decimal? duration, int? numberOfNotes)
         {
             this.LoadProperty(TaskIdProperty, data.TaskId);
             this.LoadProperty(ProjectProperty, ProjectInfo.FetchProjectInfo(data.Project));
@@ -29,8 +29,9 @@ namespace Epiworx.Business
             this.LoadProperty(StartDateProperty, data.StartDate);
             this.LoadProperty(CompletedDateProperty, data.CompletedDate);
             this.LoadProperty(EstimatedCompletedDateProperty, data.EstimatedCompletedDate);
-            this.LoadProperty(DurationProperty, data.Duration);
+            this.LoadProperty(DurationProperty, duration ?? 0);
             this.LoadProperty(EstimatedDurationProperty, data.EstimatedDuration);
+            this.LoadProperty(NumberOfNotesProperty, numberOfNotes ?? 0);
             this.LoadProperty(LabelsProperty, data.Labels);
             this.LoadProperty(IsArchivedProperty, data.IsArchived);
             this.LoadProperty(NotesProperty, data.Notes);

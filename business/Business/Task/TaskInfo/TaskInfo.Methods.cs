@@ -20,7 +20,7 @@ namespace Epiworx.Business
         internal static TaskInfo FetchTaskInfo(Data.Task data, decimal? duration, int? numberOfNotes)
         {
             var result = new TaskInfo();
-            result.Fetch(data);
+            result.Fetch(data, duration, numberOfNotes);
             return result;
         }
     }

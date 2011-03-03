@@ -182,6 +182,22 @@ namespace Epiworx.Business
             set { this.LoadProperty(EstimatedDurationProperty, value); }
         }
 
+        private static Csla.PropertyInfo<int> NumberOfNotesProperty =
+            RegisterProperty<int>(row => row.NumberOfNotes, "NumberOfNotes");
+        public int NumberOfNotes
+        {
+            get { return this.GetProperty(NumberOfNotesProperty); }
+            set { this.LoadProperty(NumberOfNotesProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<int> NumberOfAttachmentsProperty =
+            RegisterProperty<int>(row => row.NumberOfAttachments, "NumberOfAttachments");
+        public int NumberOfAttachments
+        {
+            get { return this.GetProperty(NumberOfAttachmentsProperty); }
+            set { this.LoadProperty(NumberOfAttachmentsProperty, value); }
+        }
+
         private static Csla.PropertyInfo<string> LabelsProperty =
             RegisterProperty<string>(row => row.Labels, "Labels");
         public string Labels
