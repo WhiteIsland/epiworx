@@ -18,11 +18,6 @@ namespace Epiworx.Tests
         public static string UserName { get; set; }
         public static string UserPassword { get; set; }
 
-        public NoteTests()
-        {
-
-        }
-
         [ClassInitialize]
         public static void MyClassInitialize(TestContext testContext)
         {

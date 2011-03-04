@@ -58,6 +58,7 @@
     <Compile Include="CategoryTests.cs" />
     <Compile Include="CategoryTestsWithRoleContribute.cs" />
     <Compile Include="CategoryTestsWithRoleReview.cs" />
+    <Compile Include="AttachmentTests.cs" />
     <Compile Include="NoteTests.cs" />
     <Compile Include="FeedTests.cs" />
     <Compile Include="ProjectTestsWithRoleContribute.cs">

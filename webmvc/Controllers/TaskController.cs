@@ -229,13 +229,6 @@ namespace Epiworx.WebMvc.Controllers
                 model.Message = message;
 
                 this.Map(task, model, true);
-
-                model.NoteListModel =
-                    new NoteListModel
-                        {
-                            Source = task,
-                            Notes = NoteService.NoteFetchInfoList(task).AsQueryable()
-                        };
             }
             catch (Exception ex)
             {
@@ -316,9 +309,28 @@ namespace Epiworx.WebMvc.Controllers
             model.Projects = DataHelper.GetProjectList();
             model.Sprints = DataHelper.GetSprintList(task.ProjectId);
             model.Users = DataHelper.GetUserList();
-            model.Hours = HourService.HourFetchInfoList(task)
-                    .OrderBy(row => row.Date)
-                    .AsQueryable();
+
+            if (!task.IsNew)
+            {
+                model.Hours = HourService.HourFetchInfoList(task)
+                        .OrderBy(row => row.Date)
+                        .AsQueryable();
+
+                model.NoteListModel =
+                    new NoteListModel
+                    {
+                        Source = task,
+                        Notes = NoteService.NoteFetchInfoList(task).AsQueryable()
+                    };
+
+                model.AttachmentListModel =
+                    new AttachmentListModel
+                    {
+                        Source = task,
+                        Attachments = AttachmentService.AttachmentFetchInfoList(task).AsQueryable()
+                    };
+            }
+
             model.IsNew = task.IsNew;
             model.IsValid = task.IsValid;
 

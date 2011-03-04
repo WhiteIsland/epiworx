@@ -108,4 +108,15 @@
            }
         %>
     </tbody>
+    <tfoot>
+        <tr>
+           <td colspan="<% if (!this.Model.HideUserColumn) {%>5<%} else {%>4<%}%>">Total</td>
+           <td style="text-align: right;">
+                <%: this.Model.Tasks.Sum(row => row.Duration).ToString("N2") %>
+            </td>
+            <td style="text-align: right;">
+                <%: this.Model.Tasks.Sum(row => row.EstimatedDuration).ToString("N0") %>
+            </td>
+        </tr>
+    </tfoot>
 </table>

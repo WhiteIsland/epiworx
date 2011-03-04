@@ -43,6 +43,9 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.Web.Mvc">
+      <HintPath>..\packages\Mvc2Futures.2.0.50217.0\lib\Microsoft.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -88,6 +91,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\AttachmentController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Controllers\SprintController.cs" />
@@ -116,6 +120,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\CategoryModels.cs" />
+    <Compile Include="Models\AttachmentModels.cs" />
     <Compile Include="Models\NoteModels.cs" />
     <Compile Include="Models\FeedModels.cs" />
     <Compile Include="Models\SprintModels.cs" />
@@ -164,6 +169,8 @@
     <Content Include="Views\Note\NoteFormCommands.ascx" />
     <Content Include="Views\Note\Create.aspx" />
     <Content Include="Views\Note\Edit.aspx" />
+    <Content Include="Views\Shared\AttachmentsUserControl.ascx" />
+    <Content Include="Views\Shared\AttachmentUserControl.ascx" />
     <Content Include="Views\Shared\FeedsUserControl.ascx" />
     <Content Include="Views\Shared\HourByDateListUserControl.ascx" />
     <Content Include="Views\Shared\HourByProjectListUserControl.ascx" />

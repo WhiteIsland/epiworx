@@ -19,7 +19,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             var model = new NoteIndexModel();
 
-            model.Tab = "Note";
+            model.Tab = "Task";
 
             model.SortBy = sortBy ?? "Name";
             model.SortOrder = sortOrder ?? "ASC";
@@ -159,7 +159,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             Csla.Data.DataMapper.Map(note, model, true);
 
-            model.Tab = "Home";
+            model.Tab = "Task";
             model.IsNew = note.IsNew;
             model.IsValid = note.IsValid;
 

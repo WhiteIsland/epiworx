@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using System.Web.Routing;
 using Epiworx.Business;
 using Epiworx.Core;
 
@@ -17,6 +18,23 @@ namespace Epiworx.WebMvc.Helpers
 {
     public static class HtmlHelperExtensions
     {
+        public static string FileUpload(this HtmlHelper helper, string name)
+        {
+            return HtmlHelperExtensions.FileUpload(helper, name, null);
+        }
+
+        public static string FileUpload(this HtmlHelper helper, string name, object htmlAttributes)
+        {
+            var builder = new TagBuilder("input");
+
+            builder.Attributes.Add("type", "file");
+            builder.Attributes.Add("id", name);
+            builder.Attributes.Add("name", name);
+            builder.MergeAttributes(new RouteValueDictionary(htmlAttributes));
+
+            return builder.ToString(TagRenderMode.SelfClosing);
+        }
+
         public static MvcHtmlString Message(this HtmlHelper helper, string message)
         {
             var result = new StringBuilder();

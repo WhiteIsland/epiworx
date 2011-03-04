@@ -280,6 +280,11 @@ table.list tbody tr:hover td a
     text-decoration: underline;
 }
 
+table.list tfoot
+{
+    font-weight: bold;
+}
+
 .clear
 {
     clear: both;
@@ -959,6 +964,11 @@ table.list tbody tr:hover td a
 .part .feed li.last
 {
     padding-bottom: 10px;
+}
+
+.part fieldset
+{
+    padding: 0px 10px 0px 10px;
 }
 
 .notes

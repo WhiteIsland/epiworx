@@ -52,6 +52,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\Attachment\AttachmentCriteria\AttachmentCriteria.cs" />
+    <Compile Include="Business\Attachment\AttachmentCriteria\AttachmentCriteria.Properties.cs" />
+    <Compile Include="Business\Attachment\AttachmentInfoList\AttachmentInfoList.cs" />
+    <Compile Include="Business\Attachment\AttachmentInfoList\AttachmentInfoList.Data.cs" />
+    <Compile Include="Business\Attachment\AttachmentInfoList\AttachmentInfoList.Methods.cs" />
+    <Compile Include="Business\Attachment\AttachmentInfoList\AttachmentInfoList.Properties.cs" />
+    <Compile Include="Business\Attachment\AttachmentInfoList\AttachmentInfoList.Rules.cs" />
+    <Compile Include="Business\Attachment\AttachmentInfo\AttachmentInfo.cs" />
+    <Compile Include="Business\Attachment\AttachmentInfo\AttachmentInfo.Data.cs" />
+    <Compile Include="Business\Attachment\AttachmentInfo\AttachmentInfo.Methods.cs" />
+    <Compile Include="Business\Attachment\AttachmentInfo\AttachmentInfo.Properties.cs" />
+    <Compile Include="Business\Attachment\AttachmentInfo\AttachmentInfo.Rules.cs" />
+    <Compile Include="Business\Attachment\AttachmentValueCommand\AttachmentValueCommand.cs" />
+    <Compile Include="Business\Attachment\Attachment\Attachment.cs" />
+    <Compile Include="Business\Attachment\Attachment\Attachment.Data.cs" />
+    <Compile Include="Business\Attachment\Attachment\Attachment.Methods.cs" />
+    <Compile Include="Business\Attachment\Attachment\Attachment.Properties.cs" />
+    <Compile Include="Business\Attachment\Attachment\Attachment.Rules.cs" />
+    <Compile Include="Business\Attachment\IAttachment.cs" />
+    <Compile Include="Business\Attachment\AttachmentSourceTypeRequired.cs" />
     <Compile Include="Business\Category\CategoryCriteria\CategoryCriteria.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -114,7 +134,7 @@
     </Compile>
     <Compile Include="Business\Category\CategoryDuplicateNameCheck.cs" />
     <Compile Include="Business\ISource.cs" />
-    <Compile Include="Business\Note\Enumerations.cs" />
+    <Compile Include="Business\Enumerations.cs" />
     <Compile Include="Business\Feed\FeedCriteria\FeedCriteria.cs" />
     <Compile Include="Business\Feed\FeedCriteria\FeedCriteria.Properties.cs" />
     <Compile Include="Business\Feed\FeedExistsCommand\FeedExistsCommand.cs" />
@@ -486,6 +506,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Application.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Data\Attachment.cs" />
     <Compile Include="Data\Category.cs" />
     <Compile Include="Data\Feed.cs" />
     <Compile Include="Data\Filter.cs" />
@@ -513,6 +534,7 @@
     <Compile Include="Security\BusinessPrincipal\BusinessPrincipal.Methods.cs" />
     <Compile Include="Security\LoginCriteria\LoginCriteria.cs" />
     <Compile Include="Security\LoginCriteria\LoginCriteria.Properties.cs" />
+    <Compile Include="Service\AttachmentService.cs" />
     <Compile Include="Service\CategoryService.cs">
       <SubType>Code</SubType>
     </Compile>

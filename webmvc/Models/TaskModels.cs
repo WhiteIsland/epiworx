@@ -135,5 +135,6 @@ namespace Epiworx.WebMvc.Models
         public IEnumerable<IHour> Hours { get; set; }
         public IEnumerable<ISprint> Sprints { get; set; }
         public NoteListModel NoteListModel { get; set; }
+        public AttachmentListModel AttachmentListModel { get; set; }
     }
 }
