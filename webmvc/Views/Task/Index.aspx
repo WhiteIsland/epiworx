@@ -15,7 +15,7 @@
     <div class="part">
         <h4>
             Things To Do</h4>
-        <ul>
+        <ul class="list">
             <li class="first">
                 <%: this.Html.ActionLink("Add a New Story", "Create", "Task", new { returnUrl = this.Server.UrlEncode(this.Request.Url.ToString())}, null) %></li>
             <li>

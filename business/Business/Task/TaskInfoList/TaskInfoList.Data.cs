@@ -178,7 +178,8 @@ namespace Epiworx.Business
 
                 var data = query.AsEnumerable().Select(row => TaskInfo.FetchTaskInfo(row,
                     ctx.ObjectContext.Hours.Where(hour => hour.TaskId == row.TaskId).Sum(hour => (decimal?)hour.Duration),
-                    ctx.ObjectContext.Notes.Count(note => note.SourceType == (int)SourceType.Task && note.SourceId == row.TaskId)));
+                    ctx.ObjectContext.Notes.Count(note => note.SourceType == (int)SourceType.Task && note.SourceId == row.TaskId),
+                    ctx.ObjectContext.Attachments.Count(attachment => attachment.SourceType == (int)SourceType.Task && attachment.SourceId == row.TaskId)));
 
                 this.AddRange(data);
 

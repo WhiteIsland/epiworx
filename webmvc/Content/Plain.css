@@ -342,6 +342,12 @@ table.list tfoot
     margin-right: 0px;
 }
 
+.box.attachment
+{
+    background-color: #1D73F1;
+    color: #FFFFFF;
+}
+
 .box.note
 {
     background-color: #9C55D5;
@@ -662,6 +668,12 @@ table.list tfoot
     display: none;
     float: right;
     font-weight: normal;
+}
+
+#sidebar li
+{
+    margin-left: 0px;
+    padding-left: 20px;
 }
 
 #sidebar li .box
@@ -1020,7 +1032,6 @@ table.list tfoot
 .notes li em
 {
     color: #808080;
-    font-style: normal;
     border-left-style: solid;
     border-left-width: 1px;
     border-left-color: #C0C0C0;
@@ -1035,4 +1046,24 @@ table.list tfoot
 .notes .no-records
 {
     padding: 0px 0px 20px 0px;
+}
+
+.attachments
+{
+}
+
+.attachments fieldset
+{
+    padding-top: 10px;
+}
+
+.attachments li .action
+{
+}
+
+.attachments li em
+{
+    color: #808080;
+    display: block;
+    margin-top: 5px;
 }

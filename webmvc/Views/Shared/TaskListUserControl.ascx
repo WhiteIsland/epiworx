@@ -85,6 +85,11 @@
                 <div class="box note" title="has (<%= task.NumberOfNotes %>) notes">
                     N</div>
                 <%}%>
+                <% if (task.NumberOfAttachments > 0)
+                   {%>
+                <div class="box attachment" title="has (<%= task.NumberOfAttachments %>) attachments">
+                    A</div>
+                <%}%>
                 <p title="<%: task.Description %>">
                     <%: task.Description %></p>
             </td>

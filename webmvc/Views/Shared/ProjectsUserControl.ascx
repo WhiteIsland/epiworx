@@ -12,7 +12,7 @@
        }
        else
        {%>
-    <ul>
+    <ul class="list">
         <%
            foreach (var project in this.Model.OrderBy(row => row.Name))
            {

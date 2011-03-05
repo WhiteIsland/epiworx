@@ -43,6 +43,10 @@
             });
         }
     });
+
+    $(".fileUpload").live("change", function (e) {
+        $("#attachment-edit-form").submit();
+    });
 });
 
 function deleteRecord(action) {

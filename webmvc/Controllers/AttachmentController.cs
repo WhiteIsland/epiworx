@@ -53,14 +53,19 @@ namespace Epiworx.WebMvc.Controllers
 
         [HttpPost]
         [Authorize]
-        public ActionResult Add(int sourceType, int sourceId, AttachmentFormModel model, HttpPostedFileBase fileData)
+        public ActionResult Add(int sourceType, int sourceId, AttachmentFormModel model)
         {
             var attachment = AttachmentService.AttachmentNew((SourceType)sourceType, sourceId);
 
             Csla.Data.DataMapper.Map(model, attachment, true);
 
-            attachment.Name = Path.GetFileName(fileData.FileName);
-            attachment.FileType = fileData.ContentType;
+            var fs = model.FileData.InputStream;
+            var fileData = new byte[model.FileData.ContentLength];
+            fs.Read(fileData, 0, model.FileData.ContentLength);
+
+            attachment.FileData = fileData;
+            attachment.Name = Path.GetFileName(model.FileData.FileName);
+            attachment.FileType = model.FileData.ContentType;
 
             attachment = AttachmentService.AttachmentSave(attachment);
 

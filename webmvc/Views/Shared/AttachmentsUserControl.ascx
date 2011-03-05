@@ -19,10 +19,9 @@
             <% using (this.Html.BeginForm("Add", "Attachment", new { sourceType = (int)this.Model.Source.SourceType, sourceId = this.Model.Source.SourceId }, FormMethod.Post, new { id = "attachment-edit-form", enctype = "multipart/form-data" }))
                { 
             %>
-            <%= this.Html.FileUpload("FileData")%>
-            <input type="submit" value="Add Attachment" />
+            <%= this.Html.FileUpload("FileData", new { @class = "fileUpload" })%>
             <% 
-                } 
+           } 
             %>
         </fieldset>
     </div>

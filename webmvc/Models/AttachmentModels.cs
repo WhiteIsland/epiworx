@@ -33,6 +33,10 @@ namespace Epiworx.WebMvc.Models
         [Required(ErrorMessage = "FileType is required")]
         public string FileType { get; set; }
 
+        [DisplayName("File Data:")]
+        [Required(ErrorMessage = "FileData is required")]
+        public HttpPostedFileBase FileData { get; set; }
+
         public string CreatedByName { get; set; }
         public string CreatedByEmail { get; set; }
         public DateTime CreatedDate { get; set; }

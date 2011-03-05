@@ -20,8 +20,8 @@
     <div class="part">
         <h4>
             Things To Do</h4>
-        <ul>
-            <li class="last">
+        <ul class="list">
+            <li class="first last">
                 <%: this.Html.ActionLink("Add a New Sprint", "Create", "Sprint", new { projectId = this.Model.ProjectId}, null)%></li>
         </ul>
     </div>

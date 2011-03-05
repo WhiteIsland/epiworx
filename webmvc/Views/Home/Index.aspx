@@ -25,7 +25,7 @@
     <div class="part">
         <h4>
             Things To Do</h4>
-        <ul>
+        <ul class="list">
             <li>
                 <%: this.Html.ActionLink("Add a New Hour", "Create", "Hour") %></li>
             <li>
