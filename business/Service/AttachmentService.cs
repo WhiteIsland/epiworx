@@ -66,12 +66,20 @@ namespace Epiworx.Service
 
         public static Attachment AttachmentInsert(Attachment attachment)
         {
-            return attachment.Save();
+            attachment = attachment.Save();
+
+            FeedService.FeedAdd("Created", attachment);
+
+            return attachment;
         }
 
         public static Attachment AttachmentUpdate(Attachment attachment)
         {
-            return attachment.Save();
+            attachment = attachment.Save();
+
+            FeedService.FeedAdd("Updated", attachment);
+
+            return attachment;
         }
 
         public static Attachment AttachmentNew(SourceType sourceType, int sourceId)
@@ -93,6 +101,8 @@ namespace Epiworx.Service
                     {
                         AttachmentId = attachment.AttachmentId
                     });
+
+            FeedService.FeedAdd("Deleted", attachment);
 
             return true;
         }

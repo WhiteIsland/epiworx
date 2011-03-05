@@ -34,6 +34,27 @@ namespace Epiworx.WebMvc.Helpers
 
             switch (feed.Type)
             {
+                case "Attachment":
+
+                    sb = sb.AppendFormat(
+                       " the attachment <a href=\"{0}\">{1}</a> ",
+                       urlHelper.Action("Details", "Attachment", new { id = values["AttachmentId"] }),
+                       DataHelper.ToString(values["Text"], 20));
+
+                    switch ((SourceType)int.Parse(values["SourceType"]))
+                    {
+                        case SourceType.Task:
+                            sb = sb.AppendFormat(
+                               " for the story <a href=\"{0}\">{1}</a> ",
+                               urlHelper.Action("Edit", "Task", new { id = values["SourceId"] }),
+                               values["SourceId"]);
+                            break;
+                        default:
+                            throw new NotImplementedException();
+                    }
+
+                    break;
+
                 case "Category":
 
                     sb = sb.AppendFormat(
@@ -153,6 +174,7 @@ namespace Epiworx.WebMvc.Helpers
                         case "Category":
                             sb = sb.AppendFormat("{0}'s description", values["CategoryName"]);
                             break;
+                        case "Attachment":
                         case "Hour":
                         case "Sprint":
                             sb = sb.Append("Additional notes");
@@ -164,7 +186,7 @@ namespace Epiworx.WebMvc.Helpers
                             sb = sb.AppendFormat("{0}'s description", values["TaskId"]);
                             break;
                         case "Note":
-                            sb = sb.Append("Notes's description");
+                            sb = sb.Append("Note's description");
                             break;
                         case "Status":
                             sb = sb.AppendFormat("{0}'s description", values["StatusName"]);

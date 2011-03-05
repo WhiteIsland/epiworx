@@ -8,6 +8,25 @@ namespace Epiworx.Business
     [Serializable]
     public class FeedService
     {
+        public static Feed FeedAdd(string action, Attachment attachment)
+        {
+            var feed = FeedService.FeedNew();
+
+            feed.Type = "Attachment";
+            feed.Data = string.Format(
+                "Action={0}|AttachmentId={1}|SourceType={2}|SourceId={3}|SourceName={4}|Text={5}",
+                action,
+                attachment.AttachmentId,
+                (int)attachment.SourceType,
+                attachment.SourceId,
+                ForeignKeyMapper.FetchSourceName(attachment.SourceType, attachment.SourceId),
+                attachment.Name);
+
+            feed = FeedService.FeedSave(feed);
+
+            return feed;
+        }
+
         public static Feed FeedAdd(string action, Hour hour)
         {
             var feed = FeedService.FeedNew();
