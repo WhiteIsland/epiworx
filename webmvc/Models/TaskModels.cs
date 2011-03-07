@@ -68,6 +68,7 @@ namespace Epiworx.WebMvc.Models
         public IEnumerable<ITask> Tasks { get; set; }
         public IEnumerable<IUser> AssignedToUsers { get; set; }
         public IEnumerable<IFilter> Filters { get; set; }
+        public LabelByCountListModel LabelByCountListModel { get; set; }
 
         public TaskListModel()
         {
@@ -134,6 +135,7 @@ namespace Epiworx.WebMvc.Models
         public IEnumerable<IUser> Users { get; set; }
         public IEnumerable<IHour> Hours { get; set; }
         public IEnumerable<ISprint> Sprints { get; set; }
+        public LabelListModel LabelListModel { get; set; }
         public NoteListModel NoteListModel { get; set; }
         public AttachmentListModel AttachmentListModel { get; set; }
     }

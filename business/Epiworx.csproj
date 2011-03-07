@@ -235,25 +235,64 @@
     <Compile Include="Business\Hour\IHour.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Business\Label\ILabel.cs" />
-    <Compile Include="Business\Label\LabelCriteria\LabelCriteria.cs" />
-    <Compile Include="Business\Label\LabelCriteria\LabelCriteria.Properties.cs" />
-    <Compile Include="Business\Label\LabelInfoList\LabelInfoList.cs" />
-    <Compile Include="Business\Label\LabelInfoList\LabelInfoList.Data.cs" />
-    <Compile Include="Business\Label\LabelInfoList\LabelInfoList.Methods.cs" />
-    <Compile Include="Business\Label\LabelInfoList\LabelInfoList.Properties.cs" />
-    <Compile Include="Business\Label\LabelInfoList\LabelInfoList.Rules.cs" />
-    <Compile Include="Business\Label\LabelInfo\LabelInfo.cs" />
-    <Compile Include="Business\Label\LabelInfo\LabelInfo.Data.cs" />
-    <Compile Include="Business\Label\LabelInfo\LabelInfo.Methods.cs" />
-    <Compile Include="Business\Label\LabelInfo\LabelInfo.Properties.cs" />
-    <Compile Include="Business\Label\LabelInfo\LabelInfo.Rules.cs" />
-    <Compile Include="Business\Label\LabelSourceTypeRequired.cs" />
-    <Compile Include="Business\Label\Label\Label.cs" />
-    <Compile Include="Business\Label\Label\Label.Data.cs" />
-    <Compile Include="Business\Label\Label\Label.Methods.cs" />
-    <Compile Include="Business\Label\Label\Label.Properties.cs" />
-    <Compile Include="Business\Label\Label\Label.Rules.cs" />
+    <Compile Include="Business\Label\ILabel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Label\ILabelByCount.cs" />
+    <Compile Include="Business\Label\LabelCriteria\LabelCriteria.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Label\LabelCriteria\LabelCriteria.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Label\LabelInfoList\LabelInfoList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Label\LabelInfoList\LabelInfoList.Data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Label\LabelInfoList\LabelInfoList.Methods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Label\LabelInfoList\LabelInfoList.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Label\LabelInfoList\LabelInfoList.Rules.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Label\LabelInfo\LabelInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Label\LabelInfo\LabelInfo.Data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Label\LabelInfo\LabelInfo.Methods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Label\LabelInfo\LabelInfo.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Label\LabelInfo\LabelInfo.Rules.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Label\LabelSourceTypeRequired.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Label\Label\Label.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Label\Label\Label.Data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Label\Label\Label.Methods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Label\Label\Label.Properties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Label\Label\Label.Rules.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Business\Note\INote.cs" />
     <Compile Include="Business\Note\NoteCriteria\NoteCriteria.cs" />
     <Compile Include="Business\Note\NoteCriteria\NoteCriteria.Properties.cs" />
@@ -420,6 +459,21 @@
     <Compile Include="Business\Status\Status\Status.Rules.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Business\TaskLabelByCount\ITaskLabelByCount.cs" />
+    <Compile Include="Business\TaskLabelByCount\TaskLabelByCountInfo\TaskLabelByCountInfo.cs" />
+    <Compile Include="Business\TaskLabelByCount\TaskLabelByCountInfo\TaskLabelByCountInfo.Data.cs" />
+    <Compile Include="Business\TaskLabelByCount\TaskLabelByCountInfo\TaskLabelByCountInfo.Methods.cs" />
+    <Compile Include="Business\TaskLabelByCount\TaskLabelByCountInfo\TaskLabelByCountInfo.Properties.cs" />
+    <Compile Include="Business\TaskLabelByCount\TaskLabelByCountInfoList\TaskLabelByCountInfoList.cs" />
+    <Compile Include="Business\TaskLabelByCount\TaskLabelByCountInfoList\TaskLabelByCountInfoList.Data.cs" />
+    <Compile Include="Business\TaskLabelByCount\TaskLabelByCountInfoList\TaskLabelByCountInfoList.Methods.cs" />
+    <Compile Include="Business\TaskLabel\TaskLabels\TaskLabels.Data.cs" />
+    <Compile Include="Business\TaskLabel\TaskLabels\TaskLabels.cs" />
+    <Compile Include="Business\TaskLabel\TaskLabel\TaskLabel.cs" />
+    <Compile Include="Business\TaskLabel\TaskLabel\TaskLabel.Data.cs" />
+    <Compile Include="Business\TaskLabel\TaskLabel\TaskLabel.Methods.cs" />
+    <Compile Include="Business\TaskLabel\TaskLabel\TaskLabel.Properties.cs" />
+    <Compile Include="Business\TaskLabel\TaskLabel\TaskLabel.Rules.cs" />
     <Compile Include="Business\Task\ITask.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -585,6 +639,7 @@
       <LastGenOutput>Application.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Compile Include="Business\Task\Task\Task.ISource.cs" />
+    <Compile Include="Business\TaskLabel\TaskLabels\TaskLabels.Methods.cs" />
     <None Include="Packages.config" />
   </ItemGroup>
   <ItemGroup />

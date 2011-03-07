@@ -278,5 +278,20 @@ namespace Epiworx.Business
             get { return this.GetProperty(CreatedDateProperty); }
             internal set { this.SetProperty(CreatedDateProperty, value); }
         }
+
+        public static Csla.PropertyInfo<TaskLabels> TaskLabelsProperty =
+            RegisterProperty<TaskLabels>(row => row.TaskLabels);
+        public TaskLabels TaskLabels
+        {
+            get
+            {
+                if (!FieldManager.FieldExists(TaskLabelsProperty))
+                {
+                    this.LoadProperty(TaskLabelsProperty, Csla.DataPortal.CreateChild<TaskLabels>());
+                    this.OnPropertyChanged(TaskLabelsProperty);
+                }
+                return this.GetProperty(TaskLabelsProperty);
+            }
+        }
     }
 }

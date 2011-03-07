@@ -264,6 +264,14 @@ namespace Epiworx.WebMvc.Helpers
                  .AsQueryable();
         }
 
+        public static IQueryable<ITaskLabelByCount> GetTaskLabelByCountList()
+        {
+            return TaskService.TaskLabelByCountFetchInfoList()
+                 .Cast<ITaskLabelByCount>()
+                 .OrderBy(row => row.Name)
+                 .AsQueryable();
+        }
+
         public static IQueryable<IProject> GetProjectList()
         {
             return ProjectService.ProjectFetchInfoList()

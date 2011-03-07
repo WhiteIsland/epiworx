@@ -18,6 +18,11 @@ namespace Epiworx.Service
                     });
         }
 
+        public static TaskLabelByCountInfoList TaskLabelByCountFetchInfoList()
+        {
+            return TaskLabelByCountInfoList.FetchTaskLabelByCountInfoList();
+        }
+
         public static TaskInfoList TaskFetchInfoList()
         {
             return TaskService.TaskFetchInfoList(

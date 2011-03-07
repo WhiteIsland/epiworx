@@ -68,6 +68,8 @@ namespace Epiworx.Tests
             Assert.IsTrue(task.StartDate == DateTime.MaxValue.Date, string.Format("StartDate should be '{0:d}'", DateTime.MaxValue.Date));
             Assert.IsTrue(task.CompletedDate == DateTime.MaxValue.Date, string.Format("CompletedDate should be '{0:d}'", DateTime.MaxValue.Date));
             Assert.IsTrue(task.EstimatedCompletedDate == DateTime.MaxValue.Date, string.Format("EstimatedCompletedDate should be '{0:d}'", DateTime.MaxValue.Date));
+            Assert.IsTrue(task.TaskLabels != null, "TaskLabels should not be null");
+            Assert.IsTrue(task.TaskLabels.Count == 0, "TaskLabels should be empty");
 
             Assert.IsTrue(ValidationHelper.ContainsRule(task, DbType.Int32, "ProjectId"),
                 "ProjectId should be required");
@@ -99,6 +101,35 @@ namespace Epiworx.Tests
         }
 
         [TestMethod]
+        public void Task_Add_With_Task_Labels()
+        {
+            var task = TaskService.TaskNew();
+
+            var status = BusinessHelper.CreateStatus();
+            var category = BusinessHelper.CreateCategory();
+            var project = BusinessHelper.CreateProject();
+
+            task.Description = DataHelper.RandomString(1000);
+            task.StatusId = status.StatusId;
+            task.CategoryId = category.CategoryId;
+            task.ProjectId = project.ProjectId;
+
+            task.TaskLabels.Add(DataHelper.RandomString(30));
+            task.TaskLabels.Add(DataHelper.RandomString(30));
+            task.TaskLabels.Add(DataHelper.RandomString(30));
+            task.TaskLabels.Add(DataHelper.RandomString(30));
+            task.TaskLabels.Add(DataHelper.RandomString(30));
+
+            Assert.IsTrue(task.IsValid, "IsValid should be true");
+
+            task = TaskService.TaskSave(task);
+
+            task = TaskService.TaskFetch(task.TaskId);
+
+            Assert.IsTrue(task.TaskLabels.Count == 5, "TaskLabels count should be 5, but is {0}", task.TaskLabels.Count);
+        }
+
+        [TestMethod]
         public void Task_Can_Edit_Where_Is_Archived_Property_Is_True()
         {
             var task = BusinessHelper.CreateTaskThatIsArchivedAndLogon(
@@ -120,7 +151,7 @@ namespace Epiworx.Tests
                 exception = ex;
             }
 
-            Assert.IsTrue(exception == null, "Exception should be null");
+            Assert.IsTrue(exception == null, string.Format("Exception should be null, but is: {0}", exception));
         }
 
         [TestMethod]
@@ -145,7 +176,7 @@ namespace Epiworx.Tests
                 exception = ex;
             }
 
-            Assert.IsTrue(exception == null, "Exception should be null");
+            Assert.IsTrue(exception == null, string.Format("Exception should be null, but is: {0}", exception));
         }
 
         [TestMethod]
@@ -247,6 +278,40 @@ namespace Epiworx.Tests
             task = TaskService.TaskFetch(task.TaskId);
 
             Assert.IsTrue(task.Description != description, "Description should have different value");
+        }
+
+        [TestMethod]
+        public void Task_Edit_With_Task_Labels()
+        {
+            var task = TaskService.TaskNew();
+            var description = DataHelper.RandomString(1000);
+
+            var status = BusinessHelper.CreateStatus();
+            var category = BusinessHelper.CreateCategory();
+            var project = BusinessHelper.CreateProject();
+
+            task.Description = DataHelper.RandomString(1000);
+            task.StatusId = status.StatusId;
+            task.CategoryId = category.CategoryId;
+            task.ProjectId = project.ProjectId;
+
+            task.TaskLabels.Add("AAAAA");
+            task.TaskLabels.Add("BBBBB");
+            task.TaskLabels.Add("CCCCC");
+            task.TaskLabels.Add("DDDDD");
+            task.TaskLabels.Add("EEEEE");
+
+            task = TaskService.TaskSave(task);
+
+            task = TaskService.TaskFetch(task.TaskId);
+
+            task.TaskLabels.Remove("AAAAA");
+
+            task = TaskService.TaskSave(task);
+
+            task = TaskService.TaskFetch(task.TaskId);
+
+            Assert.IsTrue(task.TaskLabels.Count == 4, "TaskLabels count should be 4, but is {0}", task.TaskLabels.Count);
         }
 
         [TestMethod]

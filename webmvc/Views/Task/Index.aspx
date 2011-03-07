@@ -29,5 +29,6 @@
     <% this.Html.RenderPartial("FiltersUserControl", new FilterListModel { Target = "Task", Filters = this.Model.Filters });%>
     <% this.Html.RenderPartial("TaskByCategoryListUserControl", new TaskByCategoryListModel { Tasks = this.Model.Tasks, Categories = this.Model.Categories }); %>
     <% this.Html.RenderPartial("TaskByStatusListUserControl", new TaskByStatusListModel { Tasks = this.Model.Tasks, Statuses = this.Model.Statuses }); %>
+    <% this.Html.RenderPartial("LabelsByCountUserControl", this.Model.LabelByCountListModel); %>
     <% this.Html.RenderPartial("ProjectsUserControl", this.Model.Projects); %>
 </asp:Content>

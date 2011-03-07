@@ -26,7 +26,10 @@
                 <%: this.Html.ActionLink("Add a New Hour", "Create", "Hour", new { projectId = this.Model.ProjectId, taskId = this.Model.TaskId }, null)%></li>
         </ul>
     </div>
-     <div class="clear">
+    <div class="clear">
+    </div>
+    <% this.Html.RenderPartial("LabelsUserControl", this.Model.LabelListModel); %>
+    <div class="clear">
     </div>
     <% this.Html.RenderPartial("AttachmentsUserControl", this.Model.AttachmentListModel); %>
    <div class="clear">

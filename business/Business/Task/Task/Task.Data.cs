@@ -72,6 +72,7 @@ namespace Epiworx.Business
             this.LoadProperty(CreatedByProperty, data.CreatedBy);
             this.LoadProperty(CreatedByNameProperty, data.CreatedByUser.Name);
             this.LoadProperty(CreatedDateProperty, data.CreatedDate);
+            this.LoadProperty(TaskLabelsProperty, TaskLabels.FetchTaskLabels(this));
         }
 
         [Csla.Transactional(Csla.TransactionalTypes.TransactionScope)]
@@ -91,6 +92,8 @@ namespace Epiworx.Business
                 this.LoadProperty(TaskIdProperty, data.TaskId);
                 this.LoadProperty(CreatedByProperty, data.CreatedBy);
                 this.LoadProperty(CreatedDateProperty, data.CreatedDate);
+
+                Csla.DataPortal.UpdateChild(this.ReadProperty(TaskLabelsProperty), this);
             }
         }
 
@@ -122,6 +125,8 @@ namespace Epiworx.Business
 
                 this.LoadProperty(ModifiedByProperty, data.ModifiedBy);
                 this.LoadProperty(ModifiedDateProperty, data.ModifiedDate);
+
+                Csla.DataPortal.UpdateChild(this.ReadProperty(TaskLabelsProperty), this);
             }
         }
 
@@ -141,8 +146,8 @@ namespace Epiworx.Business
                 data.EstimatedCompletedDate = this.ReadProperty(EstimatedCompletedDateProperty);
                 data.Duration = this.ReadProperty(DurationProperty);
                 data.EstimatedDuration = this.ReadProperty(EstimatedDurationProperty);
-                data.Labels = this.ReadProperty(LabelsProperty);
                 data.IsArchived = this.ReadProperty(IsArchivedProperty);
+                data.Labels = this.ReadProperty(LabelsProperty);
                 data.Notes = this.ReadProperty(NotesProperty);
                 data.ModifiedBy = ((BusinessIdentity)Csla.ApplicationContext.User.Identity).UserId;
                 data.ModifiedDate = DateTime.Now;

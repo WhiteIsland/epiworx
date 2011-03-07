@@ -20,7 +20,7 @@ namespace Epiworx.WebMvc.Controllers
     public class TaskController : BaseController
     {
         [Authorize]
-        public ActionResult Index(int[] projectId, int[] categoryId, int[] statusId, int? sprintId, int[] assignedTo, string completedDate, string modifiedDate, string createdDate, int? isArchived, string text, string sortBy, string sortOrder)
+        public ActionResult Index(int[] projectId, int[] categoryId, int[] statusId, int? sprintId, int[] assignedTo, string completedDate, string modifiedDate, string createdDate, int? isArchived, string label, string text, string sortBy, string sortOrder)
         {
             var model = new TaskIndexModel();
 
@@ -46,7 +46,15 @@ namespace Epiworx.WebMvc.Controllers
             model.AssignedToName = DataHelper.ToString(model.AssignedToUsers, model.AssignedTo, "any user");
             model.AssignedToDisplayName = DataHelper.Clip(model.AssignedToName, 20);
 
-            model.IsArchived = isArchived ?? 1;
+            model.LabelByCountListModel =
+                new LabelByCountListModel
+                    {
+                        Action = "Task",
+                        Label = label,
+                        Labels = DataHelper.GetTaskLabelByCountList()
+                    };
+
+            model.IsArchived = isArchived ?? 0;
 
             model.Filters = MyService.FilterFetchInfoList("Task");
 
@@ -68,7 +76,8 @@ namespace Epiworx.WebMvc.Controllers
                     CompletedDate = new DateRangeCriteria(completedDate ?? string.Empty),
                     ModifiedDate = new DateRangeCriteria(modifiedDate ?? string.Empty),
                     CreatedDate = new DateRangeCriteria(createdDate ?? string.Empty),
-                    IsArchived = DataHelper.ToBoolean(isArchived, false),
+                    IsArchived = DataHelper.ToBoolean(isArchived),
+                    TaskLabels = string.IsNullOrEmpty(label) ? null : new[] { label },
                     Text = text
                 };
 
@@ -96,7 +105,7 @@ namespace Epiworx.WebMvc.Controllers
             {
                 var task = TaskService.TaskNew();
 
-                this.Map(task, model, true);
+                this.MapToModel(task, model, true);
             }
             catch (Exception ex)
             {
@@ -112,7 +121,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             var task = TaskService.TaskNew();
 
-            Csla.Data.DataMapper.Map(model, task, true, "EstimatedCompletedDate", "CompletedDate", "AssignedDate", "StartDate");
+            this.MapToObject(model, task);
 
             task = TaskService.TaskSave(task);
 
@@ -121,7 +130,7 @@ namespace Epiworx.WebMvc.Controllers
                 return new JsonResult { Data = this.Url.Action("Edit", new { id = task.TaskId, message = Resources.SaveSuccessfulMessage }) };
             }
 
-            this.Map(task, model, false);
+            this.MapToModel(task, model, false);
 
             return this.View(model);
         }
@@ -204,7 +213,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             var model = new TaskImportModel();
 
-            model.Tab = "Stories";
+            model.Tab = "Task";
 
             model.Tasks = ImportHelper.ImportStories(this, file);
 
@@ -228,7 +237,7 @@ namespace Epiworx.WebMvc.Controllers
 
                 model.Message = message;
 
-                this.Map(task, model, true);
+                this.MapToModel(task, model, true);
             }
             catch (Exception ex)
             {
@@ -244,7 +253,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             var task = TaskService.TaskFetch(id);
 
-            Csla.Data.DataMapper.Map(model, task, true, "EstimatedCompletedDate", "CompletedDate", "AssignedDate", "StartDate");
+            this.MapToObject(model, task);
 
             task = TaskService.TaskSave(task);
 
@@ -253,7 +262,7 @@ namespace Epiworx.WebMvc.Controllers
                 model.Message = Resources.SaveSuccessfulMessage;
             }
 
-            this.Map(task, model, true);
+            this.MapToModel(task, model, true);
 
             return this.View(model);
         }
@@ -267,7 +276,7 @@ namespace Epiworx.WebMvc.Controllers
             {
                 var task = TaskService.TaskFetch(id);
 
-                this.Map(task, model, true);
+                this.MapToModel(task, model, true);
             }
             catch (Exception ex)
             {
@@ -285,7 +294,7 @@ namespace Epiworx.WebMvc.Controllers
             {
                 var task = TaskService.TaskFetch(id);
 
-                this.Map(task, model, true);
+                this.MapToModel(task, model, true);
 
                 TaskService.TaskDelete(id);
 
@@ -299,9 +308,9 @@ namespace Epiworx.WebMvc.Controllers
             return this.View(model);
         }
 
-        public TaskFormModel Map(Task task, TaskFormModel model, bool ignoreBrokenRules)
+        private void MapToModel(Task task, TaskFormModel model, bool ignoreBrokenRules)
         {
-            Csla.Data.DataMapper.Map(task, model, true);
+            Csla.Data.DataMapper.Map(task, model, true, "Labels");
 
             model.Tab = "Task";
             model.Statuses = DataHelper.GetStatusList();
@@ -323,6 +332,13 @@ namespace Epiworx.WebMvc.Controllers
                         Notes = NoteService.NoteFetchInfoList(task).AsQueryable()
                     };
 
+                model.LabelListModel =
+                    new LabelListModel
+                    {
+                        Action = "Task",
+                        Labels = task.TaskLabels.Select(row => row.Name)
+                    };
+
                 model.AttachmentListModel =
                     new AttachmentListModel
                     {
@@ -331,18 +347,70 @@ namespace Epiworx.WebMvc.Controllers
                     };
             }
 
+            switch (ConfigurationHelper.LabelMode)
+            {
+                case ConfigurationMode.Simple:
+                    model.Labels = task.Labels;
+                    break;
+                case ConfigurationMode.Advanced:
+                    model.Labels = task.TaskLabels.ToString();
+                    break;
+                default:
+                    break;
+            }
+
             model.IsNew = task.IsNew;
             model.IsValid = task.IsValid;
 
-            if (!ignoreBrokenRules)
+            if (ignoreBrokenRules)
             {
-                foreach (var brokenRule in task.BrokenRulesCollection)
-                {
-                    this.ModelState.AddModelError(string.Empty, brokenRule.Description);
-                }
+                return;
             }
 
-            return model;
+            foreach (var brokenRule in task.BrokenRulesCollection)
+            {
+                this.ModelState.AddModelError(string.Empty, brokenRule.Description);
+            }
+        }
+
+        private void MapToObject(TaskFormModel model, Task task)
+        {
+            Csla.Data.DataMapper.Map(
+                model, task, true, "EstimatedCompletedDate", "CompletedDate", "AssignedDate", "StartDate", "Labels");
+
+            if (model.Labels == null)
+            {
+                return;
+            }
+
+            switch (ConfigurationHelper.LabelMode)
+            {
+                case ConfigurationMode.Simple:
+                    task.Labels = model.Labels;
+                    break;
+                case ConfigurationMode.Advanced:
+                    var labels = model.Labels.Split(' ');
+
+                    foreach (var label in labels.Where(label => !task.TaskLabels.Contains(label)))
+                    {
+                        task.TaskLabels.Add(label);
+                    }
+
+                    var taskLabelsToRemove = (from taskLabel
+                                                  in task.TaskLabels
+                                              where !labels.Contains(taskLabel.Name)
+                                              select taskLabel.Name)
+                        .ToList();
+
+                    foreach (var taskLabel in taskLabelsToRemove)
+                    {
+                        task.TaskLabels.Remove(taskLabel);
+                    }
+
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

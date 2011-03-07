@@ -130,7 +130,36 @@ namespace Epiworx.WebMvc.Helpers
                             ImportHelper.TryParse(values[ImportHelper.TaskEstimatedCompletedDateColumn], DateTime.MaxValue.Date);
                         task.EstimatedDuration =
                            ImportHelper.TryParse(values[ImportHelper.TaskEstimatedDurationColumn], 0);
-                        task.Labels = values[ImportHelper.TaskLabelsColumn];
+
+
+                        switch (ConfigurationHelper.LabelMode)
+                        {
+                            case ConfigurationMode.Simple:
+                                task.Labels = values[ImportHelper.TaskLabelsColumn];
+                                break;
+                            case ConfigurationMode.Advanced:
+                                var labels = values[ImportHelper.TaskLabelsColumn].Split(' ');
+
+                                foreach (var label in labels.Where(label => !task.TaskLabels.Contains(label)))
+                                {
+                                    task.TaskLabels.Add(label);
+                                }
+
+                                var taskLabelsToRemove = (from taskLabel
+                                                              in task.TaskLabels
+                                                          where !labels.Contains(taskLabel.Name)
+                                                          select taskLabel.Name)
+                                    .ToList();
+
+                                foreach (var taskLabel in taskLabelsToRemove)
+                                {
+                                    task.TaskLabels.Remove(taskLabel);
+                                }
+
+                                break;
+                            default:
+                                break;
+                        }
 
                         if (task.CanWriteProperty("IsArchived"))
                         {

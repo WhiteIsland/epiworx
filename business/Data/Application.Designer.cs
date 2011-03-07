@@ -47,6 +47,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Attachment_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.User), "Attachment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.Attachment), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Attachment_UserModifiedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.User), "Attachment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.Attachment), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Label_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.User), "Label", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.Label), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "TaskTaskLabel", "Task", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.Task), "TaskLabel", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.TaskLabel), true)]
 
 #endregion
 
@@ -289,6 +290,22 @@ namespace Epiworx.Data
             }
         }
         private ObjectSet<Label> _Labels;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<TaskLabel> TaskLabels
+        {
+            get
+            {
+                if ((_TaskLabels == null))
+                {
+                    _TaskLabels = base.CreateObjectSet<TaskLabel>("TaskLabels");
+                }
+                return _TaskLabels;
+            }
+        }
+        private ObjectSet<TaskLabel> _TaskLabels;
 
         #endregion
         #region AddTo Methods
@@ -387,6 +404,14 @@ namespace Epiworx.Data
         public void AddToLabels(Label label)
         {
             base.AddObject("Labels", label);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the TaskLabels EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTaskLabels(TaskLabel taskLabel)
+        {
+            base.AddObject("TaskLabels", taskLabel);
         }
 
         #endregion
@@ -5029,8 +5054,166 @@ namespace Epiworx.Data
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "TaskTaskLabel", "TaskLabel")]
+        public EntityCollection<TaskLabel> TaskLabels
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TaskLabel>("ApplicationModel.TaskTaskLabel", "TaskLabel");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TaskLabel>("ApplicationModel.TaskTaskLabel", "TaskLabel", value);
+                }
+            }
+        }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="ApplicationModel", Name="TaskLabel")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TaskLabel : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new TaskLabel object.
+        /// </summary>
+        /// <param name="taskId">Initial value of the TaskId property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="createdBy">Initial value of the CreatedBy property.</param>
+        /// <param name="createdDate">Initial value of the CreatedDate property.</param>
+        public static TaskLabel CreateTaskLabel(global::System.Int32 taskId, global::System.String name, global::System.Int32 createdBy, global::System.DateTime createdDate)
+        {
+            TaskLabel taskLabel = new TaskLabel();
+            taskLabel.TaskId = taskId;
+            taskLabel.Name = name;
+            taskLabel.CreatedBy = createdBy;
+            taskLabel.CreatedDate = createdDate;
+            return taskLabel;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TaskId
+        {
+            get
+            {
+                return _TaskId;
+            }
+            set
+            {
+                if (_TaskId != value)
+                {
+                    OnTaskIdChanging(value);
+                    ReportPropertyChanging("TaskId");
+                    _TaskId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("TaskId");
+                    OnTaskIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _TaskId;
+        partial void OnTaskIdChanging(global::System.Int32 value);
+        partial void OnTaskIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                if (_Name != value)
+                {
+                    OnNameChanging(value);
+                    ReportPropertyChanging("Name");
+                    _Name = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("Name");
+                    OnNameChanged();
+                }
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CreatedBy
+        {
+            get
+            {
+                return _CreatedBy;
+            }
+            set
+            {
+                OnCreatedByChanging(value);
+                ReportPropertyChanging("CreatedBy");
+                _CreatedBy = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedBy");
+                OnCreatedByChanged();
+            }
+        }
+        private global::System.Int32 _CreatedBy;
+        partial void OnCreatedByChanging(global::System.Int32 value);
+        partial void OnCreatedByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CreatedDate
+        {
+            get
+            {
+                return _CreatedDate;
+            }
+            set
+            {
+                OnCreatedDateChanging(value);
+                ReportPropertyChanging("CreatedDate");
+                _CreatedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedDate");
+                OnCreatedDateChanged();
+            }
+        }
+        private global::System.DateTime _CreatedDate;
+        partial void OnCreatedDateChanging(global::System.DateTime value);
+        partial void OnCreatedDateChanged();
+
+        #endregion
+    
     }
     
     /// <summary>

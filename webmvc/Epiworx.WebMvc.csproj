@@ -105,6 +105,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ConfigurationHelper.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Helpers\FeedHelper.cs" />
     <Compile Include="Helpers\HtmlHelperExtensions.cs" />
@@ -121,6 +122,9 @@
     </Compile>
     <Compile Include="Models\CategoryModels.cs" />
     <Compile Include="Models\AttachmentModels.cs" />
+    <Compile Include="Models\LabelModels.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Models\NoteModels.cs" />
     <Compile Include="Models\FeedModels.cs" />
     <Compile Include="Models\SprintModels.cs" />
@@ -171,6 +175,7 @@
     <Content Include="Views\Note\Edit.aspx" />
     <Content Include="Views\Shared\AttachmentsUserControl.ascx" />
     <Content Include="Views\Shared\AttachmentUserControl.ascx" />
+    <Content Include="Views\Shared\LabelsUserControl.ascx" />
     <Content Include="Views\Shared\FeedsUserControl.ascx" />
     <Content Include="Views\Shared\HourByDateListUserControl.ascx" />
     <Content Include="Views\Shared\HourByProjectListUserControl.ascx" />
@@ -240,6 +245,7 @@
     <Content Include="Views\Task\TaskFilterByProject.ascx" />
     <Content Include="Views\Task\TaskForm.ascx" />
     <Content Include="Views\Task\TaskFormCommands.ascx" />
+    <Content Include="Views\Shared\LabelsByCountUserControl.ascx" />
     <Content Include="Views\User\Create.aspx" />
     <Content Include="Views\User\Edit.aspx" />
     <Content Include="Views\User\Index.aspx" />

@@ -32,5 +32,6 @@ namespace Epiworx.Business
         public int? MaximumRecords { get; set; }
         public string SortBy { get; set; }
         public ListSortDirection SortOrder { get; set; }
+        public string[] TaskLabels { get; set; }
     }
 }

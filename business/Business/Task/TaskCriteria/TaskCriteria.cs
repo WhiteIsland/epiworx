@@ -35,6 +35,7 @@ namespace Epiworx.Business
             this.MaximumRecords = null;
             this.SortBy = "EstimatedCompletedDate";
             this.SortOrder = ListSortDirection.Ascending;
+            this.TaskLabels = null;
         }
     }
 }

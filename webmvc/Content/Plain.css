@@ -1067,3 +1067,48 @@ table.list tfoot
     display: block;
     margin-top: 5px;
 }
+
+#sidebar .labels
+{
+    padding: 0px 20px 0px 20px;
+}
+
+#sidebar .part .labels li
+{
+    float: left;
+    padding: 2px 5px 5px 5px;
+    background-color: #F7D4D4;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+#sidebar .part .labels li.selected
+{
+    font-size: 150%;
+    background-color: #CC0000;
+    color: #fff;
+}
+
+#sidebar .part .labels li.selected a
+{
+    color: #fff;
+}
+
+#sidebar .labels li a
+{
+    display: block;
+    line-height: inherit;
+}
+
+#sidebar .labels li:hover
+{
+    background-color: #CC0000;
+    color: #fff;
+}
+
+#sidebar .labels li:hover a
+{
+    background-color: #CC0000;
+    color: #fff;
+    text-decoration: none;
+}
