@@ -64,7 +64,6 @@
     <Compile Include="Business\Attachment\AttachmentInfo\AttachmentInfo.Methods.cs" />
     <Compile Include="Business\Attachment\AttachmentInfo\AttachmentInfo.Properties.cs" />
     <Compile Include="Business\Attachment\AttachmentInfo\AttachmentInfo.Rules.cs" />
-    <Compile Include="Business\Attachment\AttachmentValueCommand\AttachmentValueCommand.cs" />
     <Compile Include="Business\Attachment\Attachment\Attachment.cs" />
     <Compile Include="Business\Attachment\Attachment\Attachment.Data.cs" />
     <Compile Include="Business\Attachment\Attachment\Attachment.Methods.cs" />
@@ -236,6 +235,25 @@
     <Compile Include="Business\Hour\IHour.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Business\Label\ILabel.cs" />
+    <Compile Include="Business\Label\LabelCriteria\LabelCriteria.cs" />
+    <Compile Include="Business\Label\LabelCriteria\LabelCriteria.Properties.cs" />
+    <Compile Include="Business\Label\LabelInfoList\LabelInfoList.cs" />
+    <Compile Include="Business\Label\LabelInfoList\LabelInfoList.Data.cs" />
+    <Compile Include="Business\Label\LabelInfoList\LabelInfoList.Methods.cs" />
+    <Compile Include="Business\Label\LabelInfoList\LabelInfoList.Properties.cs" />
+    <Compile Include="Business\Label\LabelInfoList\LabelInfoList.Rules.cs" />
+    <Compile Include="Business\Label\LabelInfo\LabelInfo.cs" />
+    <Compile Include="Business\Label\LabelInfo\LabelInfo.Data.cs" />
+    <Compile Include="Business\Label\LabelInfo\LabelInfo.Methods.cs" />
+    <Compile Include="Business\Label\LabelInfo\LabelInfo.Properties.cs" />
+    <Compile Include="Business\Label\LabelInfo\LabelInfo.Rules.cs" />
+    <Compile Include="Business\Label\LabelSourceTypeRequired.cs" />
+    <Compile Include="Business\Label\Label\Label.cs" />
+    <Compile Include="Business\Label\Label\Label.Data.cs" />
+    <Compile Include="Business\Label\Label\Label.Methods.cs" />
+    <Compile Include="Business\Label\Label\Label.Properties.cs" />
+    <Compile Include="Business\Label\Label\Label.Rules.cs" />
     <Compile Include="Business\Note\INote.cs" />
     <Compile Include="Business\Note\NoteCriteria\NoteCriteria.cs" />
     <Compile Include="Business\Note\NoteCriteria\NoteCriteria.Properties.cs" />
@@ -511,6 +529,7 @@
     <Compile Include="Data\Feed.cs" />
     <Compile Include="Data\Filter.cs" />
     <Compile Include="Data\Hour.cs" />
+    <Compile Include="Data\Label.cs" />
     <Compile Include="Data\Note.cs" />
     <Compile Include="Data\Project.cs" />
     <Compile Include="Data\Sprint.cs" />
@@ -543,6 +562,7 @@
     <Compile Include="Service\HourService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\LabelService.cs" />
     <Compile Include="Service\MyService.cs" />
     <Compile Include="Service\NoteService.cs" />
     <Compile Include="Service\ProjectService.cs">

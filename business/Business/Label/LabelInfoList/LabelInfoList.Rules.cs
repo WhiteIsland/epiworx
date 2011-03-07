@@ -7,11 +7,11 @@ using Csla.Rules.CommonRules;
 
 namespace Epiworx.Business
 {
-    public partial class AttachmentInfoList
+    public partial class LabelInfoList
     {
         protected static void AddObjectAuthorizationRules()
         {
-            BusinessRules.AddRule(typeof(AttachmentInfoList),
+            BusinessRules.AddRule(typeof(LabelInfoList),
                 new IsInRole(AuthorizationActions.GetObject,
                     Role.FullControl.ToString(), Role.Contribute.ToString(), Role.Review.ToString()));
         }

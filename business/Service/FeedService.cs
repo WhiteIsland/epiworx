@@ -84,6 +84,24 @@ namespace Epiworx.Business
             return feed;
         }
 
+        public static Feed FeedAdd(string action, Label label)
+        {
+            var feed = FeedService.FeedNew();
+
+            feed.Type = "Label";
+            feed.Data = string.Format(
+                "Action={0}|Name={1}|SourceType={2}|SourceId={3}|SourceName={4}",
+                action,
+                label.Name,
+                (int)label.SourceType,
+                label.SourceId,
+                ForeignKeyMapper.FetchSourceName(label.SourceType, label.SourceId));
+
+            feed = FeedService.FeedSave(feed);
+
+            return feed;
+        }
+
         public static Feed FeedAdd(string action, Note note)
         {
             var feed = FeedService.FeedNew();
