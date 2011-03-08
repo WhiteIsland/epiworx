@@ -29,7 +29,16 @@ namespace Epiworx.Service
             return HourService.HourFetchInfoList(
                 new HourCriteria
                     {
-                        TaskId = task.TaskId
+                        TaskId = new[] { task.TaskId }
+                    });
+        }
+
+        public static HourInfoList HourFetchInfoList(ITask[] task)
+        {
+            return HourService.HourFetchInfoList(
+                new HourCriteria
+                    {
+                        TaskId = task.Select(row => row.TaskId).ToArray()
                     });
         }
 

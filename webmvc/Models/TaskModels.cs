@@ -66,6 +66,7 @@ namespace Epiworx.WebMvc.Models
         public IEnumerable<IProject> Projects { get; set; }
         public IEnumerable<IStatus> Statuses { get; set; }
         public IEnumerable<ITask> Tasks { get; set; }
+        public IEnumerable<IHour> Hours { get; set; }
         public IEnumerable<IUser> AssignedToUsers { get; set; }
         public IEnumerable<IFilter> Filters { get; set; }
         public LabelByCountListModel LabelByCountListModel { get; set; }

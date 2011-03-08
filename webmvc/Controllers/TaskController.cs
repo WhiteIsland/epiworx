@@ -88,6 +88,10 @@ namespace Epiworx.WebMvc.Controllers
 
             model.Tasks = tasks;
 
+            var hours = HourService.HourFetchInfoList(tasks.Cast<ITask>().ToArray());
+
+            model.Hours = hours;
+
             return RespondTo(format =>
             {
                 format[RequestExtension.Html] = () => this.View(model);
