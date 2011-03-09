@@ -20,6 +20,7 @@
         <span class="filter-value filter-value-single">and&nbsp;<strong></strong>
             <%: this.Html.IsArchivedDropDownListFor(m => m.IsArchived, this.Model.IsArchived)%></span>
     </div>
+    <%: this.Html.HiddenFor(m => m.Label, this.Model.Label) %>
     <div class="filter-sort">
         <span class="filter-value filter-value-single">Sort by&nbsp;<strong></strong>
             <%: this.Html.SortedColumnsDropDownListFor(m => m.SortBy, this.Model.SortableColumns, this.Model.SortBy)%></span>

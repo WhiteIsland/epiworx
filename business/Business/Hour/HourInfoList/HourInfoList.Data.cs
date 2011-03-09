@@ -104,6 +104,13 @@ namespace Epiworx.Business
                     query = query.Where(row => row.CreatedDate <= criteria.CreatedDate.DateTo);
                 }
 
+                if (criteria.TaskLabels != null
+                        && criteria.TaskLabels.Count() != 0)
+                {
+                    query = query.Join(ctx.ObjectContext.TaskLabels
+                        .Where(tl => criteria.TaskLabels.Contains(tl.Name)), h => h.TaskId, tl => tl.TaskId, (h, tl) => h);
+                }
+
                 if (criteria.SortBy != null)
                 {
                     query = query.OrderBy(string.Format(

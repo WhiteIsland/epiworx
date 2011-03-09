@@ -46,14 +46,7 @@ namespace Epiworx.WebMvc.Controllers
             model.AssignedToName = DataHelper.ToString(model.AssignedToUsers, model.AssignedTo, "any user");
             model.AssignedToDisplayName = DataHelper.Clip(model.AssignedToName, 20);
 
-            model.LabelByCountListModel =
-                new LabelByCountListModel
-                    {
-                        Action = "Task",
-                        Label = label,
-                        Labels = DataHelper.GetTaskLabelByCountList()
-                    };
-
+            model.Label = label;
             model.IsArchived = isArchived ?? 0;
 
             model.Filters = MyService.FilterFetchInfoList("Task");
@@ -65,6 +58,14 @@ namespace Epiworx.WebMvc.Controllers
             model.SortableColumns.Add("AssignedToName", "User");
             model.SortableColumns.Add("StatusName", "Status");
             model.SortableColumns.Add("TaskId", "No.");
+
+            model.LabelByCountListModel =
+                new LabelByCountListModel
+                {
+                    Action = "Task",
+                    Label = label,
+                    Labels = DataHelper.GetTaskLabelByCountList()
+                };
 
             var criteria = new TaskCriteria()
                 {

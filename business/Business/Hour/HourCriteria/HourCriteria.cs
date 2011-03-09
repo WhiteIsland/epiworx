@@ -18,6 +18,7 @@ namespace Epiworx.Business
             this.Date = new DateRangeCriteria();
             this.Duration = null;
             this.Labels = null;
+            this.TaskLabels = null;
             this.IsArchived = null;
             this.Notes = null;
             this.ModifiedBy = null;

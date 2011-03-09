@@ -40,6 +40,7 @@ namespace Epiworx.WebMvc.Models
         public int[] AssignedTo { get; set; }
         public string AssignedToName { get; set; }
         public string AssignedToDisplayName { get; set; }
+        public string Label { get; set; }
         public int IsArchived { get; set; }
     }
 

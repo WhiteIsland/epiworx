@@ -28,10 +28,10 @@ namespace Epiworx.Business
         public DateRangeCriteria ModifiedDate { get; set; }
         public int? CreatedBy { get; set; }
         public DateRangeCriteria CreatedDate { get; set; }
+        public string[] TaskLabels { get; set; }
         public string Text { get; set; }
         public int? MaximumRecords { get; set; }
         public string SortBy { get; set; }
         public ListSortDirection SortOrder { get; set; }
-        public string[] TaskLabels { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace Epiworx.WebMvc.Controllers
     public class HourController : BaseController
     {
         [Authorize]
-        public ActionResult Index(int[] projectId, int[] userId, int[] taskId, string date, int? isArchived, string sortBy, string sortOrder)
+        public ActionResult Index(int[] projectId, int[] userId, int[] taskId, string date, int? isArchived, string label, string sortBy, string sortOrder)
         {
             var model = new HourIndexModel();
 
@@ -31,6 +31,7 @@ namespace Epiworx.WebMvc.Controllers
             model.UserName = DataHelper.ToString(model.Users, model.UserId, "any user");
             model.UserDisplayName = DataHelper.Clip(model.UserName, 20);
 
+            model.Label = label;
             model.Date = date ?? string.Empty;
             model.IsArchived = isArchived ?? 1;
 
@@ -42,13 +43,22 @@ namespace Epiworx.WebMvc.Controllers
             model.SortableColumns.Add("ProjectName", "Project");
             model.SortableColumns.Add("UserName", "User");
 
+            model.LabelByCountListModel =
+                new LabelByCountListModel
+                {
+                    Action = "Hour",
+                    Label = label,
+                    Labels = DataHelper.GetTaskLabelByCountList()
+                };
+
             var criteria = new HourCriteria()
             {
                 ProjectId = projectId,
                 UserId = userId,
                 TaskId = taskId,
                 Date = new DateRangeCriteria(model.Date),
-                IsArchived = DataHelper.ToBoolean(isArchived, false)
+                IsArchived = DataHelper.ToBoolean(isArchived, false),
+                TaskLabels = string.IsNullOrEmpty(label) ? null : new[] { label }
             };
 
             var hours = HourService.HourFetchInfoList(criteria)

@@ -23,4 +23,5 @@
     <% this.Html.RenderPartial("FiltersUserControl", new FilterListModel { Target = "Hour", Filters = this.Model.Filters });%>
     <% this.Html.RenderPartial("HourByUserListUserControl", new HourListModel { Hours = this.Model.Hours }); %>
     <% this.Html.RenderPartial("HourByProjectListUserControl", new HourListModel { Hours = this.Model.Hours }); %>
+    <% this.Html.RenderPartial("LabelsByCountUserControl", this.Model.LabelByCountListModel); %>
 </asp:Content>

@@ -31,7 +31,9 @@ namespace Epiworx.WebMvc.Models
         public string UserName { get; set; }
         public string UserDisplayName { get; set; }
         public string Date { get; set; }
+        public string Label { get; set; }
         public int IsArchived { get; set; }
+        public LabelByCountListModel LabelByCountListModel { get; set; }
     }
 
     public class HourListModel : ModelListBase
