@@ -28,5 +28,33 @@ namespace Epiworx.WebMvc.Helpers
                 return ConfigurationMode.Simple;
             }
         }
+
+        public static IDictionary<decimal, string> EstimatedDurations
+        {
+            get
+            {
+                var result = new Dictionary<decimal, string>();
+                var values = ConfigurationManager.AppSettings["EstimatedDurations"];
+
+                if (string.IsNullOrEmpty(values))
+                {
+                    values = "1,2,3,4";
+                }
+
+                foreach (var value in values.Split(','))
+                {
+                    if (value.Contains("="))
+                    {
+                        result.Add(decimal.Parse(value.Split('=')[0].Trim()), value.Split('=')[1].Trim());
+                    }
+                    else
+                    {
+                        result.Add(decimal.Parse(value.Trim()), value.Trim());
+                    }
+                }
+
+                return result;
+            }
+        }
     }
 }

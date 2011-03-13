@@ -40,10 +40,10 @@
                }
             %>
             <th style="width: 50px; text-align: right;">
-                Duration
+                Actual
             </th>
             <th style="width: 50px; text-align: right;">
-                Points
+                Estimate
             </th>
         </tr>
     </thead>

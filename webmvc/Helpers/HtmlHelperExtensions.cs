@@ -508,43 +508,21 @@ namespace Epiworx.WebMvc.Helpers
             decimal selectedValue)
         {
             var result = new StringBuilder();
+            var values = ConfigurationHelper.EstimatedDurations;
 
             result.AppendFormat("<select id=\"{0}\" name=\"{0}\">", "EstimatedDuration");
 
-            result.Append("<option value=\"0\">Select points...</option>");
+            result.Append("<option value=\"0\">Select estimated duration...</option>");
 
-            result.AppendFormat("<option value=\"0\"{0}>0</option>",
-                selectedValue == 0 ? " selected=\"selected\"" : string.Empty);
-
-            result.AppendFormat("<option value=\"1\"{0}>1</option>",
-                selectedValue == 1 ? " selected=\"selected\"" : string.Empty);
-
-            result.AppendFormat("<option value=\"2\"{0}>2</option>",
-                selectedValue == 2 ? " selected=\"selected\"" : string.Empty);
-
-            result.AppendFormat("<option value=\"3\"{0}>3</option>",
-                selectedValue == 3 ? " selected=\"selected\"" : string.Empty);
-
-            result.AppendFormat("<option value=\"5\"{0}>5</option>",
-                selectedValue == 5 ? " selected=\"selected\"" : string.Empty);
-
-            result.AppendFormat("<option value=\"8\"{0}>8</option>",
-                selectedValue == 8 ? " selected=\"selected\"" : string.Empty);
-
-            result.AppendFormat("<option value=\"13\"{0}>13</option>",
-                selectedValue == 13 ? " selected=\"selected\"" : string.Empty);
-
-            result.AppendFormat("<option value=\"21\"{0}>21</option>",
-                selectedValue == 21 ? " selected=\"selected\"" : string.Empty);
-
-            result.AppendFormat("<option value=\"34\"{0}>34</option>",
-                selectedValue == 34 ? " selected=\"selected\"" : string.Empty);
-
-            result.AppendFormat("<option value=\"68\"{0}>68</option>",
-                selectedValue == 68 ? " selected=\"selected\"" : string.Empty);
-
-            result.AppendFormat("<option value=\"100\"{0}>100</option>",
-                selectedValue == 100 ? " selected=\"selected\"" : string.Empty);
+            foreach (var value in values)
+            {
+                result.AppendFormat("<option value=\"{0}\"", value.Key);
+                if (selectedValue == value.Key)
+                {
+                    result.Append(" selected=\"selected\"");
+                }
+                result.AppendFormat(">{0}</option>", value.Value);
+            }
 
             result.Append("</select>");
 
@@ -555,20 +533,14 @@ namespace Epiworx.WebMvc.Helpers
             this HtmlHelper htmlHelper)
         {
             var result = new StringBuilder();
+            var values = ConfigurationHelper.EstimatedDurations;
 
             result.AppendFormat("<select id=\"{0}\" name=\"{0}\" class=\"multiple\" multiple>", "EstimatedDuration");
 
-            result.Append("<option value=\"0\">0</option>");
-            result.Append("<option value=\"1\">1</option>");
-            result.Append("<option value=\"2\">2</option>");
-            result.Append("<option value=\"3\">3</option>");
-            result.Append("<option value=\"5\">5</option>");
-            result.Append("<option value=\"8\">8</option>");
-            result.Append("<option value=\"13\">13</option>");
-            result.Append("<option value=\"21\">21</option>");
-            result.Append("<option value=\"34\">34</option>");
-            result.Append("<option value=\"68\">68</option>");
-            result.Append("<option value=\"100\">100</option>");
+            foreach (var value in values)
+            {
+                result.AppendFormat("<option value=\"{0}\">{0}</option>", value);
+            }
 
             result.Append("</select>");
 

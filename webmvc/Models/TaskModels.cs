@@ -119,7 +119,7 @@ namespace Epiworx.WebMvc.Models
         [DisplayName("Duration:")]
         public decimal Duration { get; set; }
 
-        [DisplayName("Points:")]
+        [DisplayName("Estimated duration:")]
         public decimal EstimatedDuration { get; set; }
 
         [DisplayName("Labels:")]
