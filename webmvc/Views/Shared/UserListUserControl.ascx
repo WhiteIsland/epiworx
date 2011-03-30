@@ -10,20 +10,13 @@
         return;
     }
 %>
-<table class="list">
+<table class="list user">
     <thead>
         <tr>
-            <th style="width: 20px;">
-                <div class="box" title="Archived">
-                </div>
-            </th>
-            <th style="width: 200px;">
+            <th style="width: 400px;">
                 Name
             </th>
-            <th style="width: 200px;">
-                Full Name
-            </th>
-            <th>
+             <th>
                 Email
             </th>
         </tr>
@@ -34,12 +27,9 @@
         %>
         <tr>
             <td>
-                <img src="<%: this.Url.Gravatar(user.Email, 16) %>" />
-            </td>
-            <td>
+                <img src="<%: this.Url.Gravatar(user.Email, 64) %>" />
                 <%: this.Html.ActionLink(user.Name, "Edit", "User", new { id = user.UserId }, null) %>
-            </td>
-            <td>
+                <br />
                 <%: user.FirstName %>&nbsp;
                 <%: user.LastName %>
             </td>

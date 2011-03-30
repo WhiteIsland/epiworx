@@ -26,11 +26,11 @@
         <h4>
             Things To Do</h4>
         <ul class="list">
-            <li>
+            <li><div class="flag hour"></div>
                 <%: this.Html.ActionLink("Add a New Hour", "Create", "Hour") %></li>
-            <li>
+            <li><div class="flag story"></div>
                 <%: this.Html.ActionLink("Add a New Story", "Create", "Task")%></li>
-            <li>
+            <li><div class="flag project"></div>
                 <%: this.Html.ActionLink("Add a New Project", "Create", "Project")%></li>
         </ul>
     </div>

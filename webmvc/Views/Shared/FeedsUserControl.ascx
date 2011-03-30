@@ -8,6 +8,7 @@
            {
         %>
         <li class="<%: feed.Type.ToLower() %>">
+            <div class="flag feed"></div>
             <%: FeedHelper.ToString(feed, this.Url, true) %>
             <div class="clear">
             </div>

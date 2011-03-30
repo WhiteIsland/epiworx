@@ -9,7 +9,7 @@
             {
         %>
         <li>
-            <div class="box">
+            <div class="flag hour">
             </div>
             <em>
                 <%: string.Format("{0} hours", this.Model.Hours.Where(row => row.Date == this.Model.StartDate).Sum(row => row.Duration))%></em>

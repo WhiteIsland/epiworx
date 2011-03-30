@@ -62,7 +62,7 @@
             </td>
             <td class="flag">
             <% if (task.IsArchived) {%> 
-                <div class="flag archived">" title="Archived"></div>
+                <div class="flag archived" title="Archived"></div>
             <%} else {%>
                 <div class="flag <%: task.StatusName.ToLower().Replace(" ", "-")%>" title="<%: task.StatusName %>"></div>
             <%}%>

@@ -9,8 +9,6 @@
             {
         %>
         <li>
-            <div class="box">
-            </div>
             <em>
                 <%: string.Format(
                 "{0} hours",

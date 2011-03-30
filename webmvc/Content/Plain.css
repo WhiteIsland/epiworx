@@ -1154,7 +1154,7 @@ table.list tfoot
     background-image: url('FlagRed.png');
 }
 
-.flag.status
+.flag.status, .flag.not-archived
 {
     background-image: url('FlagWhite.png');
 }
@@ -1164,9 +1164,29 @@ table.list tfoot
     background-image: url('FlagEmoticonSmile.png');
 }
 
+.flag.hour
+{
+    background-image: url('FlagCalendar.png');
+}
+
 .flag.feature, .flag.task
 {
     background-image: url('FlagEmoticonGrin.png');
+}
+
+.flag.story
+{
+    background-image: url('FlagTask.png');
+}
+
+.flag.feed
+{
+    background-image: url('FlagFeed.png');
+}
+
+.flag.project
+{
+    background-image: url('FlagProject.png');
 }
 
 th.flag, td.flag
@@ -1174,8 +1194,16 @@ th.flag, td.flag
     padding: 5px !important;
 }
 
-.name-value .flag
+.list .flag, .name-value .flag, .feed .flag
 {
     float: left;
     margin-right: 5px;
+}
+
+.list.user img
+{
+    float: left;
+    margin-right: 5px;
+    height: 32px;
+    width: 32px;
 }

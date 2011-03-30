@@ -3,9 +3,8 @@
 <table class="list">
     <thead>
         <tr>
-            <th style="width: 20px;">
-                <div class="box" title="Archived">
-                </div>
+             <th class="flag">
+                <div class="flag archived" title="Archived"></div>
             </th>
             <th>
                 No.
@@ -17,19 +16,12 @@
            {
         %>
         <tr>
-            <td>
-                <% if (project.IsArchived)
-                   {
-                %><div class="box last archived" title="archived" />
-                <%
-               }
-                   else
-                   {
-                %>
-                <div class="box last not-archived" title="not archived" />
-                <%
-               }
-                %>
+            <td class="flag">
+             <% if (project.IsArchived) {%> 
+                <div class="flag archived" title="Archived"></div>
+            <%} else {%>
+                <div class="flag not-archived" title="Not archived"></div>
+             <%}%>
             </td>
             <td>
                 <%:this.Html.ActionLink(

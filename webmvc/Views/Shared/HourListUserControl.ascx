@@ -12,11 +12,10 @@
 <table class="list">
     <thead>
         <tr>
-            <th style="width: 20px;">
-                <div class="box" title="Archived">
-                </div>
+            <th class="flag">
+                <div class="flag archived" title="Archived"></div>
             </th>
-            <th style="width: 100px;">
+             <th style="width: 100px;">
                 Date
             </th>
             <% if (!this.Model.HideUserColumn)
@@ -47,20 +46,14 @@
            {
         %>
         <tr>
-            <td>
-               <% if (hour.IsArchived)
-                   {
-                %><div class="box last archived" title="archived" />
-                <%
-                   }
-                   else
-                   {
-                %>
-                <div class="box last not-archived" title="not archived" />
-                <%
-                   }
-                %>
-              </td>
+           <td class="flag">
+             <% if (hour.IsArchived) {%> 
+                <div class="flag archived" title="Archived"></div>
+            <%} else {%>
+                <div class="flag not-archived" title="Not archived"></div>
+             <%}%>
+            </td>
+
             <td>
                 <%: this.Html.ActionLink(hour.Date.ToString("MM.dd.yyyy"), "Edit", "Hour", new { id = hour.HourId }, null) %>
             </td>
