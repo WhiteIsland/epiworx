@@ -17,12 +17,16 @@
                 No.
             </th>
             <th class="flag">
+                <div class="flag status" title="Status"></div>
             </th>
             <th class="flag">
+                <div class="flag category" title="Category"></div>
+           </th>
+            <th class="flag">
+                <img src="<%=Url.Content("~/Content/FlagAttachment.png") %>" title="Attachments"/>
             </th>
             <th class="flag">
-            </th>
-            <th class="flag">
+                <img src="<%=Url.Content("~/Content/FlagNote.png") %>" title="Notes"/>
             </th>
             <th style="width: 200px;">
                 Project

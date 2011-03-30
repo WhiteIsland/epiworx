@@ -1154,9 +1154,19 @@ table.list tfoot
     background-image: url('FlagRed.png');
 }
 
-.flag.feature, .flag.task
+.flag.status
+{
+    background-image: url('FlagWhite.png');
+}
+
+.flag.category
 {
     background-image: url('FlagEmoticonSmile.png');
+}
+
+.flag.feature, .flag.task
+{
+    background-image: url('FlagEmoticonGrin.png');
 }
 
 th.flag, td.flag
