@@ -10,19 +10,19 @@
         return;
     }
 %>
-<table class="list">
+<table class="list task">
     <thead>
         <tr>
-            <th style="width: 60px;">
-                <div class="box" title="Status">
-                </div>
-                <div class="box" title="Category">
-                </div>
-                <div class="box last" title="Archived">
-                </div>
-            </th>
             <th>
                 No.
+            </th>
+            <th class="flag">
+            </th>
+            <th class="flag">
+            </th>
+            <th class="flag">
+            </th>
+            <th class="flag">
             </th>
             <th style="width: 200px;">
                 Project
@@ -53,43 +53,29 @@
         %>
         <tr>
             <td>
-                <div class="box" style="color: <%= task.Status.ForeColor %>; background-color: <%= task.Status.BackColor %>;"
-                    title="<%: task.StatusName %>">
-                </div>
-                <div class="box" style="color: <%= task.Category.ForeColor %>; background-color: <%= task.Category.BackColor %>;"
-                    title="<%: task.CategoryName %>">
-                </div>
-                <% if (task.IsArchived)
-                   {
-                %><div class="box last archived" title="archived" />
-                <%
-                   }
-                   else
-                   {
-                %>
-                <div class="box last not-archived" title="not archived" />
-                <%
-                   }
-                %>
-            </td>
-            <td>
                 <%:this.Html.ActionLink(
                     task.TaskId.ToString(), "Edit", "Task", new {id = task.TaskId, title = this.Html.ToTitle(task.Description), returnUrl = this.Server.UrlEncode(this.Request.Url.ToString())}, null)%>
+            </td>
+            <td class="flag">
+            <% if (task.IsArchived) {%> 
+                <div class="flag archived">" title="Archived"></div>
+            <%} else {%>
+                <div class="flag <%: task.StatusName.ToLower().Replace(" ", "-")%>" title="<%: task.StatusName %>"></div>
+            <%}%>
+            </td>
+            <td class="flag">
+                <div class="flag <%: task.CategoryName.ToLower().Replace(" ", "-")%>" title="<%: task.CategoryName %>"></div>
+            </td>
+            <td class="flag">
+                <%if (task.NumberOfNotes != 0) {%><img src="<%=Url.Content("~/Content/FlagNote.png") %>" title="Has notes" class="flag"/> <%}%>
+            </td>
+            <td class="flag">
+                <%if (task.NumberOfAttachments != 0) {%><img src="<%=Url.Content("~/Content/FlagAttachment.png") %>" title="Has attachments" class="flag"/> <%}%>
             </td>
             <td>
                 <%: task.ProjectName %>
             </td>
             <td>
-                <% if (task.NumberOfNotes > 0)
-                   {%>
-                <div class="box note" title="has (<%= task.NumberOfNotes %>) notes">
-                    N</div>
-                <%}%>
-                <% if (task.NumberOfAttachments > 0)
-                   {%>
-                <div class="box attachment" title="has (<%= task.NumberOfAttachments %>) attachments">
-                    A</div>
-                <%}%>
                 <p title="<%: task.Description %>">
                     <%: task.Description %></p>
             </td>
@@ -115,8 +101,10 @@
     </tbody>
     <tfoot>
         <tr>
-           <td colspan="<% if (!this.Model.HideUserColumn) {%>5<%} else {%>4<%}%>">Total</td>
-           <td style="text-align: right;">
+            <td colspan="<% if (!this.Model.HideUserColumn) {%>8<%} else {%>7<%}%>">
+                Total
+            </td>
+            <td style="text-align: right;">
                 <%: this.Model.Tasks.Sum(row => row.Duration).ToString("N2") %>
             </td>
             <td style="text-align: right;">

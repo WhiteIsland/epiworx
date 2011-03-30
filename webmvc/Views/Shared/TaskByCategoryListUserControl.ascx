@@ -7,8 +7,7 @@
             foreach (var category in this.Model.Categories.OrderBy(row => row.Ordinal))
             {
         %>
-        <li><div class="box" style="color: <%= category.ForeColor %>; background-color: <%= category.BackColor %>;">
-                    </div><em>
+        <li><div class="flag <%: category.Name.ToLower().Replace(" ", "-")%>" title="<%: category.Name %>"></div><em>
             <%: string.Format(
                 "{0} at {1:N0} points", 
                 this.Model.Tasks.Count(row => row.CategoryId == category.CategoryId),

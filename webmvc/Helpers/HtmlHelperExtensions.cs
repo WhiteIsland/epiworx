@@ -35,6 +35,45 @@ namespace Epiworx.WebMvc.Helpers
             return builder.ToString(TagRenderMode.SelfClosing);
         }
 
+        public static MvcHtmlString Flag(this HtmlHelper helper, string text)
+        {
+            var result = string.Empty;
+
+            result = string.Format("<div class=\"flag {0}\">{1}</div>", text.ToLower().Replace(" ", "-"), text);
+
+            return new MvcHtmlString(result);
+        }
+
+        public static MvcHtmlString Flag(this HtmlHelper helper, IStatus status)
+        {
+            var result = string.Empty;
+
+            result = string.Format("<div class=\"flag {0}\" style=\"background:{2};color:{3};\">{1}</div>", status.Name.ToLower().Replace(" ", "-"), status.Name, status.BackColor, status.ForeColor);
+
+            return new MvcHtmlString(result);
+        }
+
+        public static MvcHtmlString Flag(this HtmlHelper helper, ICategory category)
+        {
+            var result = string.Empty;
+
+            result = string.Format("<div class=\"flag {0}\" style=\"background:{2};color:{3};\">{1}</div>", category.Name.ToLower().Replace(" ", "-"), category.Name, category.BackColor, category.ForeColor);
+
+            return new MvcHtmlString(result);
+        }
+
+        public static MvcHtmlString Flag(this HtmlHelper helper, string text, bool condition)
+        {
+            var result = string.Empty;
+
+            if (condition)
+            {
+                result = string.Format("<div class=\"flag {0}\">{1}</div>", text.ToLower().Replace(" ", "-"), text);
+            }
+
+            return new MvcHtmlString(result);
+        }
+
         public static MvcHtmlString Message(this HtmlHelper helper, string message)
         {
             var result = new StringBuilder();

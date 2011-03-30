@@ -12,16 +12,6 @@
             <%: this.Html.ActionLink("Settings", "Settings", "Home")%></li>
         <%
             }
-            else
-            {
-        %>
-        <li>
-            <%: this.Html.ActionLink("Sign In", "LogOn", "Account")%></li>
-        <li class="separator">|</li>
-        <li>
-            <%: this.Html.ActionLink("Register", "Register", "Account")%></li>
-        <%
-            }
         %>
     </ul>
 </div>

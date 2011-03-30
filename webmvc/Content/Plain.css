@@ -1112,3 +1112,60 @@ table.list tfoot
     color: #fff;
     text-decoration: none;
 }
+
+.flag
+{
+    width: 16px;
+    height: 16px;
+}
+
+.flag.bug
+{
+    background-image: url('FlagEmoticonSad.png');
+}
+
+.flag.back-log
+{
+    background-image: url('FlagYellow.png');
+}
+
+.flag.archived
+{
+    background-image: url('FlagBlack.png');
+}
+
+.flag.done
+{
+    background-image: url('FlagBlue.png');
+}
+
+.flag.in-progress
+{
+    background-image: url('FlagGreen.png');
+}
+
+.flag.ready
+{
+    background-image: url('FlagBlueLight.png');
+}
+
+.flag.review
+{
+    background-image: url('FlagRed.png');
+}
+
+.flag.feature, .flag.task
+{
+    background-image: url('FlagEmoticonSmile.png');
+}
+
+th.flag, td.flag
+{
+    padding: 5px !important;
+}
+
+.name-value .flag
+{
+    float: left;
+    margin-right: 5px;
+}

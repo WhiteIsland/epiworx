@@ -11,11 +11,5 @@
     <span><%: user.FirstName %>&nbsp;<%: user.LastName %></span>
     <%
        }
-       else
-       {
-    %>
-    <img src="<%: this.Url.Content("~/Content/Profile.png") %>" alt="No Profile" />
-    <%
-       }
     %>
 </div> 
