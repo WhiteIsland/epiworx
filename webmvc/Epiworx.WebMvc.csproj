@@ -144,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.ico" />
+    <Content Include="Content\FlagCalendar.png" />
     <Content Include="Content\FlagEmoticonGrin.png" />
     <Content Include="Content\FlagBlue.png" />
     <Content Include="Content\FlagBlack.png" />
@@ -166,6 +167,10 @@
     <Content Include="Content\Plain.Jquery.css" />
     <Content Include="Content\Profile.png" />
     <Content Include="Content\Reset.css" />
+    <Content Include="Content\FlagProject.png" />
+    <Content Include="Content\FlagTask.png" />
+    <Content Include="Content\FlagUser.png" />
+    <Content Include="Content\FlagFeed.png" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Epiworx.Form.js" />
     <Content Include="Scripts\Epiworx.js" />

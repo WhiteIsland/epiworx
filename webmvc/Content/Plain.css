@@ -1194,7 +1194,13 @@ th.flag, td.flag
     padding: 5px !important;
 }
 
-.list .flag, .name-value .flag, .feed .flag
+.name-value .flag, .feed .flag
+{
+    float: left;
+    margin-right: 5px;
+}
+
+li .flag
 {
     float: left;
     margin-right: 5px;
