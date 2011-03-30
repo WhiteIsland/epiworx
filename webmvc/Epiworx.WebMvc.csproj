@@ -144,7 +144,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.ico" />
+    <Content Include="Content\FlagBlue.png" />
+    <Content Include="Content\FlagBlack.png" />
+    <Content Include="Content\FlagBrown.png" />
+    <Content Include="Content\FlagBlueLight.png" />
+    <Content Include="Content\FlagOrange.png" />
+    <Content Include="Content\FlagPink.png" />
+    <Content Include="Content\FlagPurple.png" />
+    <Content Include="Content\FlagRed.png" />
+    <Content Include="Content\FlagWhite.png" />
+    <Content Include="Content\FlagYellow.png" />
+    <Content Include="Content\FlagGreen.png" />
+    <Content Include="Content\FlagEmoticonSmile.png" />
+    <Content Include="Content\FlagEmoticonSad.png" />
+    <Content Include="Content\FlagAttachment.png" />
     <Content Include="Content\Close.png" />
+    <Content Include="Content\FlagNote.png" />
     <Content Include="Content\Plain.css" />
     <Content Include="Content\Find.png" />
     <Content Include="Content\Plain.Jquery.css" />
