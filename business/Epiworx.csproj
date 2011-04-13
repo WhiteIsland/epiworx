@@ -574,23 +574,6 @@
     <Compile Include="Core\Messenger\IEmailMessenger.cs" />
     <Compile Include="Core\Messenger\IMessenger.cs" />
     <Compile Include="Core\Helpers\MessageParameter.cs" />
-    <Compile Include="Data\Application.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Application.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Attachment.cs" />
-    <Compile Include="Data\Category.cs" />
-    <Compile Include="Data\Feed.cs" />
-    <Compile Include="Data\Filter.cs" />
-    <Compile Include="Data\Hour.cs" />
-    <Compile Include="Data\Label.cs" />
-    <Compile Include="Data\Note.cs" />
-    <Compile Include="Data\Project.cs" />
-    <Compile Include="Data\Sprint.cs" />
-    <Compile Include="Data\Status.cs" />
-    <Compile Include="Data\Task.cs" />
-    <Compile Include="Data\User.cs" />
     <Compile Include="Data\Validation\DateRequired.cs" />
     <Compile Include="Core\Helpers\MessageHelper.cs" />
     <Compile Include="Security\Helpers\PasswordHelper.cs" />
@@ -598,7 +581,6 @@
     <Compile Include="Data\Validation\DecimalRequired.cs" />
     <Compile Include="Data\Validation\GuidRequired.cs" />
     <Compile Include="Data\Validation\IntegerRequired.cs" />
-    <Compile Include="Data\Database.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\BusinessIdentity\BusinessIdentity.cs" />
     <Compile Include="Security\BusinessIdentity\BusinessIdentity.Data.cs" />
@@ -635,15 +617,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="Data\Application.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Application.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <Compile Include="Business\Task\Task\Task.ISource.cs" />
     <Compile Include="Business\TaskLabel\TaskLabels\TaskLabels.Methods.cs" />
     <None Include="Packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\data\Epiworx.Data.csproj">
+      <Project>{70D11762-E830-420F-9515-44EA5DC6165C}</Project>
+      <Name>Epiworx.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

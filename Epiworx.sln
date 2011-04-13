@@ -16,6 +16,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epiworx.WebMvc", "webmvc\Ep
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Snippets", "Snippets", "{FC8A35B6-E9A1-4299-83A8-2DC558DB2FF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epiworx.Data", "data\Epiworx.Data.csproj", "{70D11762-E830-420F-9515-44EA5DC6165C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epiworx.WcfRestService", "wcfrestservice\Epiworx.WcfRestService.csproj", "{5F4C134B-E58A-40A6-A880-F3A19689170E}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Epiworx.vsmdi
@@ -37,6 +41,14 @@ Global
 		{29850C69-AE36-4F04-ABD7-D27FB0674BCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29850C69-AE36-4F04-ABD7-D27FB0674BCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29850C69-AE36-4F04-ABD7-D27FB0674BCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70D11762-E830-420F-9515-44EA5DC6165C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70D11762-E830-420F-9515-44EA5DC6165C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70D11762-E830-420F-9515-44EA5DC6165C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70D11762-E830-420F-9515-44EA5DC6165C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F4C134B-E58A-40A6-A880-F3A19689170E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F4C134B-E58A-40A6-A880-F3A19689170E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F4C134B-E58A-40A6-A880-F3A19689170E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F4C134B-E58A-40A6-A880-F3A19689170E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -62,14 +62,6 @@
             <End Role="User" EntitySet="User" />
             <End Role="Label" EntitySet="Label" />
           </AssociationSet>
-          <AssociationSet Name="FK_Note_UserCreatedBy" Association="ApplicationModel.Store.FK_Note_UserCreatedBy">
-            <End Role="User" EntitySet="User" />
-            <End Role="Note" EntitySet="Note" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Note_UserModifiedBy" Association="ApplicationModel.Store.FK_Note_UserModifiedBy">
-            <End Role="User" EntitySet="User" />
-            <End Role="Note" EntitySet="Note" />
-          </AssociationSet>
           <AssociationSet Name="FK_Sprint_Project" Association="ApplicationModel.Store.FK_Sprint_Project">
             <End Role="Project" EntitySet="Project" />
             <End Role="Sprint" EntitySet="Sprint" />
@@ -299,12 +291,14 @@
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'epiworx_test.dbo.TaskLabel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'epiworx.dbo.TaskLabel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="TaskLabel">
           <Key>
             <PropertyRef Name="TaskId" />
             <PropertyRef Name="Name" />
+            
+            
           </Key>
           <Property Name="TaskId" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="30" />
@@ -416,30 +410,6 @@
             </Principal>
             <Dependent Role="Label">
               <PropertyRef Name="CreatedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Note_UserCreatedBy">
-          <End Role="User" Type="ApplicationModel.Store.User" Multiplicity="1" />
-          <End Role="Note" Type="ApplicationModel.Store.Note" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Note">
-              <PropertyRef Name="CreatedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Note_UserModifiedBy">
-          <End Role="User" Type="ApplicationModel.Store.User" Multiplicity="1" />
-          <End Role="Note" Type="ApplicationModel.Store.Note" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Note">
-              <PropertyRef Name="ModifiedBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
