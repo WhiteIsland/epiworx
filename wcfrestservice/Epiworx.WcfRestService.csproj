@@ -63,8 +63,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\CategoryData.cs" />
     <Compile Include="Data\NoteData.cs" />
     <Compile Include="Data\ProjectData.cs" />
+    <Compile Include="Data\StatusData.cs" />
+    <Compile Include="Data\TaskData.cs" />
     <Compile Include="Data\UserData.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="Global.asax.cs">

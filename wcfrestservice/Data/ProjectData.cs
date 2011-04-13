@@ -14,11 +14,13 @@ namespace Epiworx.WcfRestService
         public string Description { get; set; }
         public UserData CreatedBy { get; set; }
         public DateTime CreateDate { get; set; }
+        public List<TaskData> Tasks { get; set; }
         public List<NoteData> Notes { get; set; }
 
         public ProjectData()
         {
             this.Notes = new List<NoteData>();
+            this.Tasks = new List<TaskData>();
         }
 
         public ProjectData(Project project)

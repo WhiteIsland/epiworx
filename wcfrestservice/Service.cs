@@ -38,6 +38,11 @@ namespace Epiworx.WcfRestService
                 .Where(note => note.SourceType == 2
                                && projects.Select(project => project.ProjectId).Contains(note.SourceId));
 
+            var tasks = ctx.Tasks
+                .Include("Category")
+                .Include("Status")
+                .Where(task => projects.Select(project => project.ProjectId).Contains(task.ProjectId));
+
             foreach (var project in projects)
             {
                 var projectData = new ProjectData(project);
@@ -45,6 +50,11 @@ namespace Epiworx.WcfRestService
                 foreach (var note in notes.Where(note => note.SourceId == project.ProjectId))
                 {
                     projectData.Notes.Add(new NoteData(note));
+                }
+
+                foreach (var task in tasks.Where(task => task.ProjectId == project.ProjectId))
+                {
+                    projectData.Tasks.Add(new TaskData(task));
                 }
 
                 result.Add(projectData);
