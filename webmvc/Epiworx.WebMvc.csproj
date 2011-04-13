@@ -164,6 +164,8 @@
     <Content Include="Content\FlagNote.png" />
     <Content Include="Content\FlagHome.png" />
     <Content Include="Content\Icons\Home.ico" />
+    <Content Include="Content\Icons\Project.ico" />
+    <Content Include="Content\Icons\Task.ico" />
     <Content Include="Content\Plain.css" />
     <Content Include="Content\Find.png" />
     <Content Include="Content\Plain.Jquery.css" />
