@@ -147,6 +147,12 @@ namespace Epiworx.WebMvc.Helpers
                                urlHelper.Action("Edit", "Task", new { id = values["SourceId"] }),
                                values["SourceId"]);
                             break;
+                        case SourceType.Project:
+                            sb = sb.AppendFormat(
+                               " for the project <a href=\"{0}\">{1}</a> ",
+                               urlHelper.Action("Edit", "Task", new { id = values["SourceId"] }),
+                               values["SourceId"]);
+                            break;
                         default:
                             throw new NotImplementedException();
                     }

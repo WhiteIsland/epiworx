@@ -6,6 +6,9 @@
     <title>
         <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
     </title>
+    <meta name="msapplication-task" content="name=Home;action-uri=http://epiworx.epitecgroup.com;" />
+    <meta name="msapplication-task" content="name=Projects;action-uri=http://epiworx.epitecgroup.com/Project" />
+    <meta name="msapplication-task" content="name=Stories;action-uri=http://epiworx.epitecgroup.com/Task" />
     <link href="../../Content/Reset.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Plain.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Plain.Jquery.css" rel="stylesheet" type="text/css" />
@@ -62,5 +65,5 @@
             <strong>No copyright. No rights reserved.</strong>
         </div>
     </div>
- </body>
+</body>
 </html>

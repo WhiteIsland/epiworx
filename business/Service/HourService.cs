@@ -24,6 +24,15 @@ namespace Epiworx.Service
                 new HourCriteria());
         }
 
+        public static HourInfoList HourFetchInfoList(DateTime startDate, DateTime endDate)
+        {
+            return HourService.HourFetchInfoList(
+                new HourCriteria
+                {
+                    Date = new DateRangeCriteria(startDate, endDate)
+                });
+        }
+
         public static HourInfoList HourFetchInfoList(ITask task)
         {
             return HourService.HourFetchInfoList(

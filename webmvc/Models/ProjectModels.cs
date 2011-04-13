@@ -41,5 +41,6 @@ namespace Epiworx.WebMvc.Models
         public bool IsArchived { get; set; }
 
         public IEnumerable<ISprint> Sprints { get; set; }
+        public NoteListModel NoteListModel { get; set; }
     }
 }

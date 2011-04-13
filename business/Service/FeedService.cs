@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -185,6 +186,17 @@ namespace Epiworx.Business
         {
             return FeedService.FeedFetchInfoList(
                 new FeedCriteria());
+        }
+
+        public static FeedInfoList FeedFetchInfoList(int maximumRecords)
+        {
+            return FeedService.FeedFetchInfoList(
+                new FeedCriteria
+                {
+                    SortBy = "CreatedDate",
+                    SortOrder = ListSortDirection.Descending,
+                    MaximumRecords = maximumRecords
+                });
         }
 
         public static FeedInfoList FeedFetchInfoList(FeedCriteria criteria)

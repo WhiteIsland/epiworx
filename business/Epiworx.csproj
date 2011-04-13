@@ -374,6 +374,7 @@
     <Compile Include="Business\Project\Project\Project.Rules.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Business\Project\Project\Project.ISource.cs" />
     <Compile Include="Business\Role\Role.cs">
       <SubType>Code</SubType>
     </Compile>

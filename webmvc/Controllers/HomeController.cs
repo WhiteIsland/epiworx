@@ -15,17 +15,31 @@ namespace Epiworx.WebMvc.Controllers
     public class HomeController : BaseController
     {
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index(string dashboard)
         {
             var model = new HomeIndexModel();
 
             model.Tab = "Home";
-
+            model.Dashboard = dashboard ?? "My";
             model.StartDate = DateTime.Today.ToStartOfWeek();
             model.EndDate = DateTime.Today.ToEndOfWeek();
-            model.Tasks = MyService.TaskFetchInfoList();
-            model.Hours = MyService.HourFetchInfoList(model.StartDate, model.EndDate);
-            model.Feeds = MyService.FeedFetchInfoList(5);
+
+            if (model.Dashboard == "Team")
+            {
+                model.Tasks = TaskService.TaskFetchInfoList(
+                    new TaskCriteria
+                    {
+                        IsArchived = false
+                    });
+                model.Hours = HourService.HourFetchInfoList(model.StartDate, model.EndDate);
+                model.Feeds = FeedService.FeedFetchInfoList(5);
+            }
+            else
+            {
+                model.Tasks = MyService.TaskFetchInfoList();
+                model.Hours = MyService.HourFetchInfoList(model.StartDate, model.EndDate);
+                model.Feeds = MyService.FeedFetchInfoList(5);
+            }
 
             return this.View(model);
         }

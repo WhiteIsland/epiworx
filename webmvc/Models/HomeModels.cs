@@ -8,6 +8,7 @@ namespace Epiworx.WebMvc.Models
 {
     public class HomeIndexModel : ModelBase
     {
+        public string Dashboard { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public IEnumerable<IFeed> Feeds { get; set; }

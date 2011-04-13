@@ -51,7 +51,7 @@ namespace Epiworx.WebMvc.Controllers
             {
                 var project = ProjectService.ProjectNew();
 
-                this.Map(project, model, true);
+                this.MapToModel(project, model, true);
             }
             catch (Exception ex)
             {
@@ -76,7 +76,7 @@ namespace Epiworx.WebMvc.Controllers
                 return new JsonResult { Data = this.Url.Action("Edit", new { id = project.ProjectId, message = Resources.SaveSuccessfulMessage }) };
             }
 
-            this.Map(project, model, false);
+            this.MapToModel(project, model, false);
 
             return this.View(model);
         }
@@ -92,7 +92,7 @@ namespace Epiworx.WebMvc.Controllers
 
                 model.Message = message;
 
-                this.Map(project, model, true);
+                this.MapToModel(project, model, true);
             }
             catch (Exception ex)
             {
@@ -117,7 +117,7 @@ namespace Epiworx.WebMvc.Controllers
                 model.Message = Resources.SaveSuccessfulMessage;
             }
 
-            this.Map(project, model, true);
+            this.MapToModel(project, model, true);
 
             return this.View(model);
         }
@@ -131,7 +131,7 @@ namespace Epiworx.WebMvc.Controllers
             {
                 var project = ProjectService.ProjectFetch(id);
 
-                this.Map(project, model, true);
+                this.MapToModel(project, model, true);
             }
             catch (Exception ex)
             {
@@ -149,7 +149,7 @@ namespace Epiworx.WebMvc.Controllers
             {
                 var project = ProjectService.ProjectFetch(id);
 
-                this.Map(project, model, true);
+                this.MapToModel(project, model, true);
 
                 ProjectService.ProjectDelete(id);
 
@@ -163,7 +163,7 @@ namespace Epiworx.WebMvc.Controllers
             return this.View(model);
         }
 
-        public ProjectFormModel Map(Project project, ProjectFormModel model, bool ignoreBrokenRules)
+        public ProjectFormModel MapToModel(Project project, ProjectFormModel model, bool ignoreBrokenRules)
         {
             Csla.Data.DataMapper.Map(project, model, true);
 
@@ -171,6 +171,16 @@ namespace Epiworx.WebMvc.Controllers
             model.Sprints = SprintService.SprintFetchInfoList(project.ProjectId);
             model.IsNew = project.IsNew;
             model.IsValid = project.IsValid;
+
+            if (!project.IsNew)
+            {
+                model.NoteListModel =
+                   new NoteListModel
+                   {
+                       Source = project,
+                       Notes = NoteService.NoteFetchInfoList(project).AsQueryable()
+                   };
+            }
 
             if (!ignoreBrokenRules)
             {

@@ -645,6 +645,21 @@ table.list tfoot
     padding: 20px;
 }
 
+#main h2
+{
+}
+
+#main h2 ul
+{
+    float: right;
+}
+
+#main h2 li
+{
+    display: inline;
+    font-size: 16px;
+}
+
 #body
 {
     vertical-align: top;
