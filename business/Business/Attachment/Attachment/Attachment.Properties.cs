@@ -38,7 +38,7 @@ namespace Epiworx.Business
         private static Csla.PropertyInfo<string> NameProperty =
             RegisterProperty<string>(row => row.Name, "Name");
         [Required(ErrorMessage = "Name is required")]
-        [StringLength(100, ErrorMessage = "Name must be less than 100 characters")]
+        [StringLength(100, ErrorMessage = "Name must be less than 300 characters")]
         public string Name
         {
             get { return this.GetProperty(NameProperty); }
