@@ -186,6 +186,13 @@ namespace Epiworx.WebMvc.Controllers
                        Source = project,
                        Notes = NoteService.NoteFetchInfoList(project).AsQueryable()
                    };
+
+                model.AttachmentListModel =
+                    new AttachmentListModel
+                    {
+                        Source = project,
+                        Attachments = AttachmentService.AttachmentFetchInfoList(project).AsQueryable()
+                    };
             }
 
             if (!ignoreBrokenRules)

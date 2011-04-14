@@ -29,4 +29,7 @@
     <div class="clear">
     </div>
     <% this.Html.RenderPartial("SprintsUserControl", this.Model.Sprints); %>
+    <div class="clear">
+    </div>
+    <% this.Html.RenderPartial("AttachmentsUserControl", this.Model.AttachmentListModel); %>
 </asp:Content>
