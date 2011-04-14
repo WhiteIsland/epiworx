@@ -15,14 +15,9 @@ namespace Epiworx.WcfRestService
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
     public class Service
     {
-        [WebGet(UriTemplate = "Projects/?token={token}")]
-        public List<ProjectData> GetProjects(string token)
+        [WebGet(UriTemplate = "Projects")]
+        public List<ProjectData> GetProjects()
         {
-            if (ConfigurationManager.AppSettings["Token"] != token)
-            {
-                throw new SecurityException();
-            }
-
             var ctx = new Data.ApplicationEntities(ConfigurationManager.ConnectionStrings["ApplicationConnection"].ToString());
             var result = new List<ProjectData>();
 

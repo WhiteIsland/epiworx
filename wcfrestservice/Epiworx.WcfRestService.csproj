@@ -53,6 +53,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\APIKeys.xml" />
     <Content Include="Global.asax" />
     <None Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -69,15 +70,15 @@
     <Compile Include="Data\StatusData.cs" />
     <Compile Include="Data\TaskData.cs" />
     <Compile Include="Data\UserData.cs" />
+    <Compile Include="APIKeyAuthorization.cs" />
+    <Compile Include="APIKeyRepository.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\data\Epiworx.Data.csproj">
       <Project>{70D11762-E830-420F-9515-44EA5DC6165C}</Project>
