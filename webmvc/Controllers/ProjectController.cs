@@ -39,6 +39,12 @@ namespace Epiworx.WebMvc.Controllers
 
             model.Projects = projects;
 
+            var notes = NoteService.NoteFetchInfoList(
+                SourceType.Project,
+                projects.Select(project => project.ProjectId).ToArray());
+
+            model.Notes = notes.AsQueryable();
+
             return this.View(model);
         }
 

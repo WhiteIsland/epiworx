@@ -32,9 +32,12 @@
     </p>
     <div class="clear">
     </div>
-    <p class="span3">
-        <%: this.Html.LabelFor(m => m.Notes) %>
-        <%: this.Html.TextAreaFor(m => m.Notes) %>
-        <%: this.Html.ValidationMessageFor(m => m.Notes)%>
-    </p>
+    <!-- Switching to a running list notes instead of an individual box, so we'll just hide the notes box for now  -->
+    <div style="display: none;">
+        <p class="span3">
+            <%: this.Html.LabelFor(m => m.Notes) %>
+            <%: this.Html.TextAreaFor(m => m.Notes) %>
+            <%: this.Html.ValidationMessageFor(m => m.Notes)%>
+        </p>
+    </div>
 </fieldset>

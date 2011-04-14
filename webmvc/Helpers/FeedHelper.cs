@@ -151,7 +151,7 @@ namespace Epiworx.WebMvc.Helpers
                             sb = sb.AppendFormat(
                                " for the project <a href=\"{0}\">{1}</a> ",
                                urlHelper.Action("Edit", "Task", new { id = values["SourceId"] }),
-                               values["SourceId"]);
+                               values["SourceName"]);
                             break;
                         default:
                             throw new NotImplementedException();

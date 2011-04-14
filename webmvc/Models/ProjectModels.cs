@@ -16,6 +16,7 @@ namespace Epiworx.WebMvc.Models
     public class ProjectListModel : ModelListBase
     {
         public int IsArchived { get; set; }
+        public IQueryable<INote> Notes { get; set; }
         public IQueryable<IProject> Projects { get; set; }
     }
 

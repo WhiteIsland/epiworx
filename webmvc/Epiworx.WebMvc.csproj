@@ -106,6 +106,7 @@
     </Compile>
     <Compile Include="Helpers\ConfigurationHelper.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
+    <Compile Include="Helpers\DateTimeExtensions.cs" />
     <Compile Include="Helpers\FeedHelper.cs" />
     <Compile Include="Helpers\HtmlHelperExtensions.cs" />
     <Compile Include="Helpers\HttpRequestBaseExtensions.cs" />

@@ -48,7 +48,7 @@ namespace Epiworx.Service
                 new NoteCriteria
                 {
                     SourceType = source.SourceType,
-                    SourceId = source.SourceId
+                    SourceId = new[] { source.SourceId }
                 });
         }
 
@@ -58,8 +58,18 @@ namespace Epiworx.Service
                 new NoteCriteria
                     {
                         SourceType = sourceType,
-                        SourceId = sourceId
+                        SourceId = new[] { sourceId }
                     });
+        }
+
+        public static NoteInfoList NoteFetchInfoList(SourceType sourceType, int[] sourceId)
+        {
+            return NoteService.NoteFetchInfoList(
+                new NoteCriteria
+                {
+                    SourceType = sourceType,
+                    SourceId = sourceId
+                });
         }
 
         public static NoteInfoList NoteFetchInfoList(NoteCriteria criteria)
@@ -112,7 +122,7 @@ namespace Epiworx.Service
                new NoteCriteria
                {
                    SourceType = sourceType,
-                   SourceId = sourceId
+                   SourceId = new[] { sourceId }
                });
 
             return result;

@@ -21,16 +21,16 @@ namespace Epiworx.Business
         protected static void AddObjectAuthorizationRules()
         {
             BusinessRules.AddRule(typeof(Project),
-                  new IsInRole(AuthorizationActions.CreateObject,
-                      Role.FullControl.ToString()));
+                new IsInRole(AuthorizationActions.CreateObject,
+                    Role.Contribute.ToString(), Role.FullControl.ToString()));
 
             BusinessRules.AddRule(typeof(Project),
-                 new IsInRole(AuthorizationActions.DeleteObject,
-                     Role.FullControl.ToString()));
+                new IsInRole(AuthorizationActions.EditObject,
+                    Role.Contribute.ToString(), Role.FullControl.ToString()));
 
             BusinessRules.AddRule(typeof(Project),
-                 new IsInRole(AuthorizationActions.EditObject,
-                     Role.FullControl.ToString()));
+                new IsInRole(AuthorizationActions.DeleteObject,
+                    Role.FullControl.ToString()));
         }
     }
 }

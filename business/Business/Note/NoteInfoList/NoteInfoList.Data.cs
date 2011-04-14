@@ -35,7 +35,7 @@ namespace Epiworx.Business
 
                 if (criteria.SourceId != null)
                 {
-                    query = query.Where(row => row.SourceId == criteria.SourceId);
+                    query = query.Where(row => criteria.SourceId.Contains(row.SourceId));
                 }
 
                 if (criteria.Body != null)

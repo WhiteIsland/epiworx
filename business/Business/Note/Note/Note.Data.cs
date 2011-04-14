@@ -14,7 +14,7 @@ namespace Epiworx.Business
         protected void DataPortal_Create(NoteCriteria criteria)
         {
             this.LoadProperty(SourceTypeProperty, criteria.SourceType);
-            this.LoadProperty(SourceIdProperty, criteria.SourceId);
+            this.LoadProperty(SourceIdProperty, criteria.SourceId.First());
 
             this.BusinessRules.CheckRules();
         }

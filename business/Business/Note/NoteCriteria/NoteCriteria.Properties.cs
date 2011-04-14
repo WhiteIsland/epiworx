@@ -11,7 +11,7 @@ namespace Epiworx.Business
     {
         public int? NoteId { get; set; }
         public SourceType? SourceType { get; set; }
-        public int? SourceId { get; set; }
+        public int[] SourceId { get; set; }
         public string Body { get; set; }
         public int? ModifiedBy { get; set; }
         public DateRangeCriteria ModifiedDate { get; set; }

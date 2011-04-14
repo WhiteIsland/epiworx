@@ -1221,10 +1221,31 @@ li .flag
     margin-right: 5px;
 }
 
-.list.user img
+.list.user span
+{
+    display: block;
+    line-height: 150%;
+}
+
+.list td.note p
+{
+    margin-bottom: 5px;
+}
+
+.list td.note img
 {
     float: left;
     margin-right: 5px;
-    height: 32px;
-    width: 32px;
+    height: 16px;
+    width: 16px;
+}
+
+.list td.note em
+{
+    color: #808080;
+}
+
+.list td.note strong
+{
+    margin-right: 5px;
 }

@@ -33,6 +33,9 @@ namespace Epiworx.Business
                 case SourceType.Task:
                     result = sourceId.ToString();
                     break;
+                case SourceType.Project:
+                    result = ForeignKeyMapper.FetchProjectName(sourceId);
+                    break;
                 default:
                     break;
             }

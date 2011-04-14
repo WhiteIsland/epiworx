@@ -21,7 +21,7 @@
         { 
     %>
     <%
-            this.Html.RenderPartial("ProjectListUserControl", new ProjectListModel { Projects = this.Model.Projects });%>
+            this.Html.RenderPartial("ProjectListUserControl", new ProjectListModel { Projects = Model.Projects, Notes = Model.Notes });%>
     <%
         }             
     %>

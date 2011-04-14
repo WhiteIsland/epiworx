@@ -3,11 +3,15 @@
 <table class="list">
     <thead>
         <tr>
-             <th class="flag">
-                <div class="flag archived" title="Archived"></div>
+            <th class="flag">
+                <div class="flag archived" title="Archived">
+                </div>
+            </th>
+            <th style="width: 400px;">
+                Name
             </th>
             <th>
-                No.
+                Status
             </th>
         </tr>
     </thead>
@@ -17,11 +21,16 @@
         %>
         <tr>
             <td class="flag">
-             <% if (project.IsArchived) {%> 
-                <div class="flag archived" title="Archived"></div>
-            <%} else {%>
-                <div class="flag not-archived" title="Not archived"></div>
-             <%}%>
+                <% if (project.IsArchived)
+                   {%>
+                <div class="flag archived" title="Archived">
+                </div>
+                <%}
+                   else
+                   {%>
+                <div class="flag not-archived" title="Not archived">
+                </div>
+                <%}%>
             </td>
             <td>
                 <%:this.Html.ActionLink(
@@ -34,9 +43,31 @@
                 <% if (!string.IsNullOrEmpty(project.Description))
                    {
                 %>
-                <p>
+                <p title="<%: project.Description %>">
                     <%: project.Description %></p>
                 <%
+                   }
+                %>
+            </td>
+            <td class="note">
+                <%
+               if (Model.Notes.Count() != 0)
+               {
+                   var notes = Model.Notes
+                       .Where(note => note.SourceId == project.ProjectId)
+                       .OrderByDescending(note => note.CreatedDate);
+
+                   if (notes.Count() != 0)
+                   {
+                       var note = notes.First(); 
+                %>
+                <p title="<%: note.Body %>">
+                    <%: note.Body %></p>
+                <img src="<%: this.Url.Gravatar(note.CreatedByEmail, 64) %>" alt="<%: note.CreatedByName %>" />
+                <strong>
+                    <%: note.CreatedByName %></strong><em><%: note.CreatedDate.ToRelativeDate() %></em>
+                <%
+                   }
                }
                 %>
             </td>
