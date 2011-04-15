@@ -309,6 +309,51 @@ namespace Epiworx.Tests.Helpers
             return status;
         }
 
+        public static Invoice CreateInvoice()
+        {
+            var invoice = InvoiceService.InvoiceNew();
+
+            var task = BusinessHelper.CreateTask();
+
+            invoice.Number = DataHelper.RandomString(20);
+            invoice.ProjectId = task.ProjectId;
+            invoice.SourceType = SourceType.Task;
+            invoice.SourceId = task.TaskId;
+            invoice.Description = task.Description;
+
+            invoice = InvoiceService.InvoiceSave(invoice);
+
+            return invoice;
+        }
+
+        public static Invoice CreateInvoiceAndLogon(string userName, string userPassword)
+        {
+            var name = DataHelper.RandomString(20);
+            var password = DataHelper.RandomString(20);
+
+            BusinessHelper.CreateUserWithFullControl(name, password);
+
+            BusinessPrincipal.Login(name, password);
+
+            var invoice = InvoiceService.InvoiceNew();
+
+            var task = BusinessHelper.CreateTask();
+
+            invoice.Number = DataHelper.RandomString(20);
+            invoice.ProjectId = task.ProjectId;
+            invoice.SourceType = SourceType.Task;
+            invoice.SourceId = task.TaskId;
+            invoice.Description = task.Description;
+
+            invoice = InvoiceService.InvoiceSave(invoice);
+
+            BusinessPrincipal.Logout();
+
+            BusinessPrincipal.Login(userName, userPassword);
+
+            return invoice;
+        }
+
         public static Task CreateTask()
         {
             var task = TaskService.TaskNew();

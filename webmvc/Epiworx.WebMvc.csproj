@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="Models\CategoryModels.cs" />
     <Compile Include="Models\AttachmentModels.cs" />
+    <Compile Include="Models\InvoiceModels.cs" />
     <Compile Include="Models\LabelModels.cs">
       <SubType>Code</SubType>
     </Compile>

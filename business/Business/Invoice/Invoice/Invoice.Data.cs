@@ -23,6 +23,9 @@ namespace Epiworx.Business
                         .GetManager(Database.ApplicationConnection, false))
             {
                 var data = ctx.ObjectContext.Invoices
+                    .Include("Project")
+                    .Include("CreatedByUser")
+                    .Include("ModifiedByUser")
                     .Single(row => row.InvoiceId == criteria.InvoiceId);
 
                 this.Fetch(data);
@@ -35,6 +38,8 @@ namespace Epiworx.Business
         {
             this.LoadProperty(InvoiceIdProperty, data.InvoiceId);
             this.LoadProperty(NumberProperty, data.Number);
+            this.LoadProperty(ProjectIdProperty, data.ProjectId);
+            this.LoadProperty(ProjectNameProperty, data.Project.Name);
             this.LoadProperty(DescriptionProperty, data.Description);
             this.LoadProperty(SourceTypeProperty, data.SourceType);
             this.LoadProperty(SourceIdProperty, data.SourceId);
@@ -105,8 +110,9 @@ namespace Epiworx.Business
             if (this.IsSelfDirty)
             {
                 data.Number = this.ReadProperty(NumberProperty);
+                data.ProjectId = this.ReadProperty(ProjectIdProperty);
                 data.Description = this.ReadProperty(DescriptionProperty);
-                data.SourceType = this.ReadProperty(SourceTypeProperty);
+                data.SourceType = (int)this.ReadProperty(SourceTypeProperty);
                 data.SourceId = this.ReadProperty(SourceIdProperty);
                 data.Amount = this.ReadProperty(AmountProperty);
                 data.IsArchived = this.ReadProperty(IsArchivedProperty);

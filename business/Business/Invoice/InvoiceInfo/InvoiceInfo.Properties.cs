@@ -22,6 +22,22 @@ namespace Epiworx.Business
             set { this.LoadProperty(NumberProperty, value); }
         }
 
+        private static Csla.PropertyInfo<int> ProjectIdProperty =
+            RegisterProperty<int>(row => row.ProjectId, "ProjectId");
+        public int ProjectId
+        {
+            get { return this.GetProperty(ProjectIdProperty); }
+            set { this.LoadProperty(ProjectIdProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<string> ProjectNameProperty =
+            RegisterProperty<string>(row => row.ProjectName, "ProjectName");
+        public string ProjectName
+        {
+            get { return this.GetProperty(ProjectNameProperty); }
+            set { this.LoadProperty(ProjectNameProperty, value); }
+        }
+
         private static Csla.PropertyInfo<string> DescriptionProperty =
             RegisterProperty<string>(row => row.Description, "Description");
         public string Description
@@ -30,9 +46,9 @@ namespace Epiworx.Business
             set { this.LoadProperty(DescriptionProperty, value); }
         }
 
-        private static Csla.PropertyInfo<int> SourceTypeProperty =
-            RegisterProperty<int>(row => row.SourceType, "SourceType");
-        public int SourceType
+        private static Csla.PropertyInfo<SourceType> SourceTypeProperty =
+            RegisterProperty<SourceType>(row => row.SourceType, "SourceType");
+        public SourceType SourceType
         {
             get { return this.GetProperty(SourceTypeProperty); }
             set { this.LoadProperty(SourceTypeProperty, value); }

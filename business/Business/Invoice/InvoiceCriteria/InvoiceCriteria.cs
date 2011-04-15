@@ -14,6 +14,7 @@ namespace Epiworx.Business
         {
             this.InvoiceId = null;
             this.Number = null;
+            this.ProjectId = null;
             this.Description = null;
             this.SourceType = null;
             this.SourceId = null;

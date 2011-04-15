@@ -9,8 +9,10 @@ namespace Epiworx.Business
     {
         int InvoiceId { get; }
         string Number { get; }
+        int ProjectId { get; }
+        string ProjectName { get; }
         string Description { get; }
-        int SourceType { get; }
+        SourceType SourceType { get; }
         int SourceId { get; }
         decimal Amount { get; }
         bool IsArchived { get; }

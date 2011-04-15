@@ -132,6 +132,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Business\Category\CategoryDuplicateNameCheck.cs" />
+    <Compile Include="Business\Invoice\InvoiceSourceTypeRequired.cs" />
     <Compile Include="Business\Invoice\IInvoice.cs" />
     <Compile Include="Business\Invoice\InvoiceCriteria\InvoiceCriteria.cs" />
     <Compile Include="Business\Invoice\InvoiceCriteria\InvoiceCriteria.Properties.cs" />
@@ -619,6 +620,7 @@
     <Compile Include="Service\HourService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\InvoiceService.cs" />
     <Compile Include="Service\LabelService.cs" />
     <Compile Include="Service\MyService.cs" />
     <Compile Include="Service\NoteService.cs" />

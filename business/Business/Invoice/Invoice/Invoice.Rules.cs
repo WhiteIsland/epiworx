@@ -15,7 +15,8 @@ namespace Epiworx.Business
         {
             base.AddBusinessRules();
 
-            this.BusinessRules.AddRule(new IntegerRequired(SourceTypeProperty, 0));
+            this.BusinessRules.AddRule(new IntegerRequired(ProjectIdProperty, 0));
+            this.BusinessRules.AddRule(new InvoiceSourceTypeRequired { PrimaryProperty = SourceTypeProperty });
             this.BusinessRules.AddRule(new IntegerRequired(SourceIdProperty, 0));
         }
 

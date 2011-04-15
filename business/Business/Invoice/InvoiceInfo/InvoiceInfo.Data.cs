@@ -11,6 +11,8 @@ namespace Epiworx.Business
         {
             this.LoadProperty(InvoiceIdProperty, data.InvoiceId);
             this.LoadProperty(NumberProperty, data.Number);
+            this.LoadProperty(ProjectIdProperty, data.ProjectId);
+            this.LoadProperty(ProjectNameProperty, data.Project.Name);
             this.LoadProperty(DescriptionProperty, data.Description);
             this.LoadProperty(SourceTypeProperty, data.SourceType);
             this.LoadProperty(SourceIdProperty, data.SourceId);

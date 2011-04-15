@@ -19,11 +19,19 @@ namespace Epiworx.Business
                 this.RaiseListChangedEvents = false;
                 this.IsReadOnly = false;
 
-                IQueryable<Data.Invoice> query = ctx.ObjectContext.Invoices;
+                IQueryable<Data.Invoice> query = ctx.ObjectContext.Invoices
+                    .Include("Project")
+                    .Include("CreatedByUser")
+                    .Include("ModifiedByUser");
 
                 if (criteria.InvoiceId != null)
                 {
                     query = query.Where(row => row.InvoiceId == criteria.InvoiceId);
+                }
+
+                if (criteria.ProjectId != null)
+                {
+                    query = query.Where(row => row.ProjectId == criteria.ProjectId);
                 }
 
                 if (criteria.Number != null)
