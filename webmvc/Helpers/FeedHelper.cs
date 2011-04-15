@@ -49,6 +49,12 @@ namespace Epiworx.WebMvc.Helpers
                                urlHelper.Action("Edit", "Task", new { id = values["SourceId"] }),
                                values["SourceId"]);
                             break;
+                        case SourceType.Project:
+                            sb = sb.AppendFormat(
+                               " for the story <a href=\"{0}\">{1}</a> ",
+                               urlHelper.Action("Edit", "Project", new { id = values["SourceId"] }),
+                               values["SourceName"]);
+                            break;
                         default:
                             throw new NotImplementedException();
                     }
@@ -154,13 +160,13 @@ namespace Epiworx.WebMvc.Helpers
                                values["SourceName"]);
                             break;
                         default:
-                            throw new NotImplementedException();
+                            throw new NotImplementedException(string.Format("The source type '{0}' is not supported", values["SourceType"]));
                     }
 
                     break;
 
                 default:
-                    throw new NotImplementedException();
+                    throw new NotImplementedException(string.Format("The feed type '{0}' is not supported", feed.Type));
             }
 
             sb = sb.AppendFormat("<abbr class=\"date\">{0}</abbr>", feed.CreatedDate.ToRelativeDate());

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -10,59 +11,91 @@ namespace Epiworx.WcfRestService
 {
     public class APIKeyRepository
     {
+        private static string APIKeyFile
+        {
+            get { return HttpContext.Current.Server.MapPath("~/App_Data/APIKeys.xml"); }
+        }
+
         public static bool IsValidAPIKey(string key)
         {
             // TODO: Implement IsValidAPI Key using your repository
-
-            Guid apiKey;
+            APIKeyRepository.CreateFile();
 
             // Convert the string into a Guid and validate it
-            if (Guid.TryParse(key, out apiKey) && APIKeys.Contains(apiKey))
+            if (!string.IsNullOrEmpty(key)
+                && APIKeyRepository.APIKeys.Any(row => row.Value == key))
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
-        private static List<Guid> APIKeys
+        private static IEnumerable<APIKey> APIKeys
         {
             get
             {
                 // Get from the cache
                 // Could also use AppFabric cache for scalability
-                var keys = HttpContext.Current.Cache[APIKEYLIST] as List<Guid>;
+                var keys = HttpContext.Current.Cache[APIKeyRepository.APIKeyList] as IEnumerable<APIKey>;
 
                 if (keys == null)
                 {
-                    keys = PopulateAPIKeys();
+                    keys = APIKeyRepository.PopulateAPIKeys();
                 }
 
                 return keys;
             }
         }
 
-        private static List<Guid> PopulateAPIKeys()
+        private static IEnumerable<APIKey> PopulateAPIKeys()
         {
-            List<Guid> keyList;
-
-            var dcs = new DataContractSerializer(typeof(List<Guid>));
-            var server = HttpContext.Current.Server;
-            using (var fs = new FileStream(server.MapPath("~/App_Data/APIKeys.xml"), FileMode.Open))
-            using (var reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas()))
+            if (File.Exists(APIKeyRepository.APIKeyFile))
             {
-                keyList = (List<Guid>)dcs.ReadObject(reader);
+                APIKeyRepository.CreateFile();
             }
 
-            // Save it in the cache
-            // Could be saved in AppFabric Cache for scalability across a farm
-            HttpContext.Current.Cache[APIKEYLIST] = keyList;
+            var ds = new DataSet();
+
+            ds.ReadXml(APIKeyRepository.APIKeyFile, XmlReadMode.ReadSchema);
+
+            var keyList = new List<APIKey>();
+
+            foreach (DataRow row in ds.Tables["APIKey"].Rows)
+            {
+                keyList.Add(new APIKey(row));
+            }
+
+            HttpContext.Current.Cache[APIKeyRepository.APIKeyList] = keyList;
 
             return keyList;
         }
 
-        const string APIKEYLIST = "APIKeyList";
+        private static void CreateFile()
+        {
+            var ds = new DataSet();
+
+            ds.DataSetName = "APIKeys";
+
+            var dt = new DataTable();
+
+            dt.TableName = "APIKey";
+
+            DataColumn col;
+
+            col = dt.Columns.Add("Key", typeof(string));
+            col.AllowDBNull = false;
+            col.Unique = true;
+
+            col = dt.Columns.Add("Value", typeof(string));
+            col.AllowDBNull = false;
+            col.Unique = true;
+
+            ds.Tables.Add(dt);
+
+            ds.WriteXml(APIKeyRepository.APIKeyFile, XmlWriteMode.WriteSchema);
+        }
+
+        const string APIKeyList = "APIKeyList";
     }
 }

@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<Epiworx.WebMvc.Models.ProjectListModel>" %>
+<%@ Import Namespace="Epiworx.Core" %>
 <%@ Import Namespace="Epiworx.WebMvc.Helpers" %>
 <table class="list">
     <thead>
@@ -59,14 +60,15 @@
 
                    if (notes.Count() != 0)
                    {
-                       var note = notes.First(); 
+                       var note = notes.First();
                 %>
                 <p title="<%: note.Body %>">
                     <%: note.Body %></p>
+                   <%= note.CreatedDate.ToLabel() %>
                 <img src="<%: this.Url.Gravatar(note.CreatedByEmail, 64) %>" alt="<%: note.CreatedByName %>" />
                 <strong>
                     <%: note.CreatedByName %></strong><em><%: note.CreatedDate.ToRelativeDate() %></em>
-                <%
+                 <%
                    }
                }
                 %>

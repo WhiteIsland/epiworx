@@ -18,6 +18,26 @@ namespace Epiworx.WebMvc.Helpers
 {
     public static class HtmlHelperExtensions
     {
+        public static MvcHtmlString ToLabel(this DateTime dateTime)
+        {
+            var result = string.Empty;
+
+            if (dateTime.IsToday())
+            {
+                result = "<span class=\"label today\">today</span>";
+            }
+            else if (dateTime.IsYesterday())
+            {
+                result = "<span class=\"label yesterday\">yesterday</span>";
+            }
+            else if (dateTime.IsThisWeek())
+            {
+                result = "<span class=\"label this-week\">this-week</span>";
+            }
+
+            return new MvcHtmlString(result);
+        }
+
         public static string FileUpload(this HtmlHelper helper, string name)
         {
             return HtmlHelperExtensions.FileUpload(helper, name, null);

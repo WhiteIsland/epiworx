@@ -55,6 +55,7 @@
     <Compile Include="Feed.cs" />
     <Compile Include="Filter.cs" />
     <Compile Include="Hour.cs" />
+    <Compile Include="Invoice.cs" />
     <Compile Include="Label.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="Project.cs" />

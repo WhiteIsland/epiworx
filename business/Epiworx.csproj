@@ -132,6 +132,26 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Business\Category\CategoryDuplicateNameCheck.cs" />
+    <Compile Include="Business\Invoice\IInvoice.cs" />
+    <Compile Include="Business\Invoice\InvoiceCriteria\InvoiceCriteria.cs" />
+    <Compile Include="Business\Invoice\InvoiceCriteria\InvoiceCriteria.Properties.cs" />
+    <Compile Include="Business\Invoice\InvoiceExistsCommand\InvoiceExistsCommand.cs" />
+    <Compile Include="Business\Invoice\InvoiceInfoList\InvoiceInfoList.cs" />
+    <Compile Include="Business\Invoice\InvoiceInfoList\InvoiceInfoList.Data.cs" />
+    <Compile Include="Business\Invoice\InvoiceInfoList\InvoiceInfoList.Methods.cs" />
+    <Compile Include="Business\Invoice\InvoiceInfoList\InvoiceInfoList.Properties.cs" />
+    <Compile Include="Business\Invoice\InvoiceInfoList\InvoiceInfoList.Rules.cs" />
+    <Compile Include="Business\Invoice\InvoiceInfo\InvoiceInfo.cs" />
+    <Compile Include="Business\Invoice\InvoiceInfo\InvoiceInfo.Data.cs" />
+    <Compile Include="Business\Invoice\InvoiceInfo\InvoiceInfo.Methods.cs" />
+    <Compile Include="Business\Invoice\InvoiceInfo\InvoiceInfo.Properties.cs" />
+    <Compile Include="Business\Invoice\InvoiceInfo\InvoiceInfo.Rules.cs" />
+    <Compile Include="Business\Invoice\InvoiceValueCommand\InvoiceValueCommand.cs" />
+    <Compile Include="Business\Invoice\Invoice\Invoice.cs" />
+    <Compile Include="Business\Invoice\Invoice\Invoice.Data.cs" />
+    <Compile Include="Business\Invoice\Invoice\Invoice.Methods.cs" />
+    <Compile Include="Business\Invoice\Invoice\Invoice.Properties.cs" />
+    <Compile Include="Business\Invoice\Invoice\Invoice.Rules.cs" />
     <Compile Include="Business\ISource.cs" />
     <Compile Include="Business\Enumerations.cs" />
     <Compile Include="Business\Feed\FeedCriteria\FeedCriteria.cs" />
@@ -627,6 +647,7 @@
       <Name>Epiworx.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

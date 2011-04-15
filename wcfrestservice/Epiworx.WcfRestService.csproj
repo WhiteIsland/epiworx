@@ -64,6 +64,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIKey.cs" />
     <Compile Include="Data\CategoryData.cs" />
     <Compile Include="Data\NoteData.cs" />
     <Compile Include="Data\ProjectData.cs" />

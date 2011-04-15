@@ -1,3 +1,27 @@
-﻿<ArrayOfguid xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-  <guid>bda11d91-7ade-4da1-855d-24adfe39d174</guid>
-</ArrayOfguid>
+<?xml version="1.0" standalone="yes"?>
+<APIKeys>
+  <xs:schema id="APIKeys" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="APIKeys" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="APIKey">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Key" type="xs:string" />
+                <xs:element name="Value" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1">
+        <xs:selector xpath=".//APIKey" />
+        <xs:field xpath="Key" />
+      </xs:unique>
+      <xs:unique name="Constraint2">
+        <xs:selector xpath=".//APIKey" />
+        <xs:field xpath="Value" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+</APIKeys>
