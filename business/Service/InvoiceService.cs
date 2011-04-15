@@ -18,13 +18,22 @@ namespace Epiworx.Service
                     });
         }
 
+        public static InvoiceInfoList InvoiceFetchInfoList(ITask task)
+        {
+            return InvoiceService.InvoiceFetchInfoList(
+                new InvoiceCriteria
+                    {
+                        TaskId = task.TaskId
+                    });
+        }
+
         public static InvoiceInfoList InvoiceFetchInfoList()
         {
             return InvoiceService.InvoiceFetchInfoList(
                 new InvoiceCriteria());
         }
 
-        internal static InvoiceInfoList InvoiceFetchInfoList(InvoiceCriteria criteria)
+        public static InvoiceInfoList InvoiceFetchInfoList(InvoiceCriteria criteria)
         {
             return InvoiceInfoList.FetchInvoiceInfoList(criteria);
         }
@@ -52,17 +61,34 @@ namespace Epiworx.Service
 
         public static Invoice InvoiceInsert(Invoice invoice)
         {
-            return invoice.Save();
+            invoice = invoice.Save();
+
+            FeedService.FeedAdd("Created", invoice);
+
+            return invoice;
         }
 
         public static Invoice InvoiceUpdate(Invoice invoice)
         {
-            return invoice.Save();
+            invoice = invoice.Save();
+
+            FeedService.FeedAdd("Updated", invoice);
+
+            return invoice;
         }
 
         public static Invoice InvoiceNew()
         {
             return Invoice.NewInvoice();
+        }
+
+        public static Invoice InvoiceNew(int taskId)
+        {
+            var result = Invoice.NewInvoice();
+
+            result.TaskId = taskId;
+
+            return result;
         }
 
         public static bool InvoiceDelete(Invoice invoice)
@@ -72,6 +98,8 @@ namespace Epiworx.Service
                     {
                         InvoiceId = invoice.InvoiceId
                     });
+
+            FeedService.FeedAdd("Deleted", invoice);
 
             return true;
         }

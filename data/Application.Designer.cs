@@ -48,7 +48,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Attachment_UserModifiedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.User), "Attachment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.Attachment), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Label_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.User), "Label", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.Label), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "TaskTaskLabel", "Task", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.Task), "TaskLabel", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.TaskLabel), true)]
-[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Invoice_Project", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.Project), "Invoice", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.Invoice), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Invoice_Task", "Task", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.Task), "Invoice", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.Invoice), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Invoice_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.User), "Invoice", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.Invoice), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Invoice_UserModifiedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.User), "Invoice", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.Invoice), true)]
 
@@ -2352,10 +2352,8 @@ namespace Epiworx.Data
         /// </summary>
         /// <param name="invoiceId">Initial value of the InvoiceId property.</param>
         /// <param name="number">Initial value of the Number property.</param>
-        /// <param name="projectId">Initial value of the ProjectId property.</param>
         /// <param name="description">Initial value of the Description property.</param>
-        /// <param name="sourceType">Initial value of the SourceType property.</param>
-        /// <param name="sourceId">Initial value of the SourceId property.</param>
+        /// <param name="taskId">Initial value of the TaskId property.</param>
         /// <param name="amount">Initial value of the Amount property.</param>
         /// <param name="isArchived">Initial value of the IsArchived property.</param>
         /// <param name="notes">Initial value of the Notes property.</param>
@@ -2363,15 +2361,13 @@ namespace Epiworx.Data
         /// <param name="modifiedDate">Initial value of the ModifiedDate property.</param>
         /// <param name="createdBy">Initial value of the CreatedBy property.</param>
         /// <param name="createdDate">Initial value of the CreatedDate property.</param>
-        public static Invoice CreateInvoice(global::System.Int32 invoiceId, global::System.String number, global::System.Int32 projectId, global::System.String description, global::System.Int32 sourceType, global::System.Int32 sourceId, global::System.Decimal amount, global::System.Boolean isArchived, global::System.String notes, global::System.Int32 modifiedBy, global::System.DateTime modifiedDate, global::System.Int32 createdBy, global::System.DateTime createdDate)
+        public static Invoice CreateInvoice(global::System.Int32 invoiceId, global::System.String number, global::System.String description, global::System.Int32 taskId, global::System.Decimal amount, global::System.Boolean isArchived, global::System.String notes, global::System.Int32 modifiedBy, global::System.DateTime modifiedDate, global::System.Int32 createdBy, global::System.DateTime createdDate)
         {
             Invoice invoice = new Invoice();
             invoice.InvoiceId = invoiceId;
             invoice.Number = number;
-            invoice.ProjectId = projectId;
             invoice.Description = description;
-            invoice.SourceType = sourceType;
-            invoice.SourceId = sourceId;
+            invoice.TaskId = taskId;
             invoice.Amount = amount;
             invoice.IsArchived = isArchived;
             invoice.Notes = notes;
@@ -2441,30 +2437,6 @@ namespace Epiworx.Data
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 ProjectId
-        {
-            get
-            {
-                return _ProjectId;
-            }
-            set
-            {
-                OnProjectIdChanging(value);
-                ReportPropertyChanging("ProjectId");
-                _ProjectId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ProjectId");
-                OnProjectIdChanged();
-            }
-        }
-        private global::System.Int32 _ProjectId;
-        partial void OnProjectIdChanging(global::System.Int32 value);
-        partial void OnProjectIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
         public global::System.String Description
         {
             get
@@ -2489,48 +2461,24 @@ namespace Epiworx.Data
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 SourceType
+        public global::System.Int32 TaskId
         {
             get
             {
-                return _SourceType;
+                return _TaskId;
             }
             set
             {
-                OnSourceTypeChanging(value);
-                ReportPropertyChanging("SourceType");
-                _SourceType = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("SourceType");
-                OnSourceTypeChanged();
+                OnTaskIdChanging(value);
+                ReportPropertyChanging("TaskId");
+                _TaskId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TaskId");
+                OnTaskIdChanged();
             }
         }
-        private global::System.Int32 _SourceType;
-        partial void OnSourceTypeChanging(global::System.Int32 value);
-        partial void OnSourceTypeChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 SourceId
-        {
-            get
-            {
-                return _SourceId;
-            }
-            set
-            {
-                OnSourceIdChanging(value);
-                ReportPropertyChanging("SourceId");
-                _SourceId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("SourceId");
-                OnSourceIdChanged();
-            }
-        }
-        private global::System.Int32 _SourceId;
-        partial void OnSourceIdChanging(global::System.Int32 value);
-        partial void OnSourceIdChanged();
+        private global::System.Int32 _TaskId;
+        partial void OnTaskIdChanging(global::System.Int32 value);
+        partial void OnTaskIdChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2710,16 +2658,16 @@ namespace Epiworx.Data
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Invoice_Project", "Project")]
-        public Project Project
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Invoice_Task", "Task")]
+        public Task Task
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("ApplicationModel.FK_Invoice_Project", "Project").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Task>("ApplicationModel.FK_Invoice_Task", "Task").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("ApplicationModel.FK_Invoice_Project", "Project").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Task>("ApplicationModel.FK_Invoice_Task", "Task").Value = value;
             }
         }
         /// <summary>
@@ -2727,17 +2675,17 @@ namespace Epiworx.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<Project> ProjectReference
+        public EntityReference<Task> TaskReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("ApplicationModel.FK_Invoice_Project", "Project");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Task>("ApplicationModel.FK_Invoice_Task", "Task");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Project>("ApplicationModel.FK_Invoice_Project", "Project", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Task>("ApplicationModel.FK_Invoice_Task", "Task", value);
                 }
             }
         }
@@ -3770,28 +3718,6 @@ namespace Epiworx.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Sprint>("ApplicationModel.FK_Sprint_Project", "Sprint", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Invoice_Project", "Invoice")]
-        public EntityCollection<Invoice> Invoices
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Invoice>("ApplicationModel.FK_Invoice_Project", "Invoice");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Invoice>("ApplicationModel.FK_Invoice_Project", "Invoice", value);
                 }
             }
         }
@@ -5606,6 +5532,28 @@ namespace Epiworx.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TaskLabel>("ApplicationModel.TaskTaskLabel", "TaskLabel", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Invoice_Task", "Invoice")]
+        public EntityCollection<Invoice> Invoices
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Invoice>("ApplicationModel.FK_Invoice_Task", "Invoice");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Invoice>("ApplicationModel.FK_Invoice_Task", "Invoice", value);
                 }
             }
         }

@@ -11,11 +11,10 @@ namespace Epiworx.Business
         {
             this.LoadProperty(InvoiceIdProperty, data.InvoiceId);
             this.LoadProperty(NumberProperty, data.Number);
-            this.LoadProperty(ProjectIdProperty, data.ProjectId);
-            this.LoadProperty(ProjectNameProperty, data.Project.Name);
+            this.LoadProperty(ProjectIdProperty, data.Task.ProjectId);
+            this.LoadProperty(ProjectNameProperty, data.Task.Project.Name);
             this.LoadProperty(DescriptionProperty, data.Description);
-            this.LoadProperty(SourceTypeProperty, data.SourceType);
-            this.LoadProperty(SourceIdProperty, data.SourceId);
+            this.LoadProperty(TaskIdProperty, data.TaskId);
             this.LoadProperty(AmountProperty, data.Amount);
             this.LoadProperty(IsArchivedProperty, data.IsArchived);
             this.LoadProperty(NotesProperty, data.Notes);

@@ -29,6 +29,7 @@ namespace Epiworx.Business
         DateTime EstimatedCompletedDate { get; }
         decimal Duration { get; }
         decimal EstimatedDuration { get; }
+        int NumberOfInvoices { get; }
         int NumberOfNotes { get; }
         int NumberOfAttachments { get; }
         string Labels { get; }

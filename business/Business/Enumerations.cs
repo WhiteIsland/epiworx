@@ -11,6 +11,8 @@ namespace Epiworx.Business
         Task = 1,
         Project = 2,
         Sprint = 3,
-        User = 4
+        User = 4,
+        Hour = 5,
+        Invoice = 6
     }
 }

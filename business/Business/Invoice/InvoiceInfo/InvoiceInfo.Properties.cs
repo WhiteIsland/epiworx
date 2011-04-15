@@ -38,28 +38,20 @@ namespace Epiworx.Business
             set { this.LoadProperty(ProjectNameProperty, value); }
         }
 
+        private static Csla.PropertyInfo<int> TaskIdProperty =
+             RegisterProperty<int>(row => row.TaskId, "TaskId");
+        public int TaskId
+        {
+            get { return this.GetProperty(TaskIdProperty); }
+            set { this.LoadProperty(TaskIdProperty, value); }
+        }
+
         private static Csla.PropertyInfo<string> DescriptionProperty =
             RegisterProperty<string>(row => row.Description, "Description");
         public string Description
         {
             get { return this.GetProperty(DescriptionProperty); }
             set { this.LoadProperty(DescriptionProperty, value); }
-        }
-
-        private static Csla.PropertyInfo<SourceType> SourceTypeProperty =
-            RegisterProperty<SourceType>(row => row.SourceType, "SourceType");
-        public SourceType SourceType
-        {
-            get { return this.GetProperty(SourceTypeProperty); }
-            set { this.LoadProperty(SourceTypeProperty, value); }
-        }
-
-        private static Csla.PropertyInfo<int> SourceIdProperty =
-            RegisterProperty<int>(row => row.SourceId, "SourceId");
-        public int SourceId
-        {
-            get { return this.GetProperty(SourceIdProperty); }
-            set { this.LoadProperty(SourceIdProperty, value); }
         }
 
         private static Csla.PropertyInfo<decimal> AmountProperty =

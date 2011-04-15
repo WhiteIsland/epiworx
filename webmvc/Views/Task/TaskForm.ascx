@@ -84,3 +84,4 @@
         });
     }); 
 </script>
+<%: Html.HiddenFor(m => m.HourId) %>

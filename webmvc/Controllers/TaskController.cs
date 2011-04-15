@@ -102,13 +102,22 @@ namespace Epiworx.WebMvc.Controllers
         }
 
         [Authorize]
-        public ActionResult Create()
+        public ActionResult Create(int? hourId)
         {
             var model = new TaskFormModel();
 
             try
             {
-                var task = TaskService.TaskNew();
+                Task task;
+
+                if (hourId != null)
+                {
+                    task = TaskService.TaskNew(HourService.HourFetch((int)hourId));
+                }
+                else
+                {
+                    task = TaskService.TaskNew();
+                }
 
                 this.MapToModel(task, model, true);
             }
@@ -132,6 +141,15 @@ namespace Epiworx.WebMvc.Controllers
 
             if (task.IsValid)
             {
+                if (model.HourId != 0)
+                {
+                    var hour = HourService.HourFetch(model.HourId);
+
+                    hour.TaskId = task.TaskId;
+
+                    HourService.HourSave(hour);
+                }
+
                 return new JsonResult { Data = this.Url.Action("Edit", new { id = task.TaskId, message = Resources.SaveSuccessfulMessage }) };
             }
 
@@ -329,6 +347,10 @@ namespace Epiworx.WebMvc.Controllers
                 model.Hours = HourService.HourFetchInfoList(task)
                         .OrderBy(row => row.Date)
                         .AsQueryable();
+
+                model.Invoices = InvoiceService.InvoiceFetchInfoList(task)
+                         .OrderByDescending(row => row.Number)
+                         .AsQueryable();
 
                 model.NoteListModel =
                     new NoteListModel

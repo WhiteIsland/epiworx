@@ -78,6 +78,18 @@ namespace Epiworx.Service
             return Task.NewTask();
         }
 
+        public static Task TaskNew(Hour hour)
+        {
+            var result = Task.NewTask();
+
+            result.ProjectId = hour.ProjectId;
+            result.EstimatedDuration = hour.Duration;
+            result.Description = hour.Notes;
+            result.AssignedTo = hour.UserId;
+
+            return result;
+        }
+
         public static bool TaskDelete(Task task)
         {
             Task.DeleteTask(

@@ -316,9 +316,7 @@ namespace Epiworx.Tests.Helpers
             var task = BusinessHelper.CreateTask();
 
             invoice.Number = DataHelper.RandomString(20);
-            invoice.ProjectId = task.ProjectId;
-            invoice.SourceType = SourceType.Task;
-            invoice.SourceId = task.TaskId;
+            invoice.TaskId = task.TaskId;
             invoice.Description = task.Description;
 
             invoice = InvoiceService.InvoiceSave(invoice);
@@ -340,10 +338,7 @@ namespace Epiworx.Tests.Helpers
             var task = BusinessHelper.CreateTask();
 
             invoice.Number = DataHelper.RandomString(20);
-            invoice.ProjectId = task.ProjectId;
-            invoice.SourceType = SourceType.Task;
-            invoice.SourceId = task.TaskId;
-            invoice.Description = task.Description;
+            invoice.TaskId = task.TaskId;
 
             invoice = InvoiceService.InvoiceSave(invoice);
 

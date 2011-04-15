@@ -91,6 +91,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\AttachmentController.cs" />
+    <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Controllers\SprintController.cs" />
@@ -145,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.ico" />
+    <Content Include="Content\FlagInvoice.png" />
     <Content Include="Content\FlagCalendar.png" />
     <Content Include="Content\FlagEmoticonGrin.png" />
     <Content Include="Content\FlagBlue.png" />
@@ -191,15 +193,26 @@
     <Content Include="Views\Category\CategoryFormCommands.ascx" />
     <Content Include="Views\Category\Create.aspx" />
     <Content Include="Views\Category\Edit.aspx" />
+    <Content Include="Views\Invoice\Create.aspx" />
+    <Content Include="Views\Invoice\Delete.aspx" />
+    <Content Include="Views\Invoice\DeleteSuccess.aspx" />
+    <Content Include="Views\Invoice\Edit.aspx" />
+    <Content Include="Views\Invoice\Index.aspx" />
+    <Content Include="Views\Invoice\InvoiceFilter.ascx" />
+    <Content Include="Views\Invoice\InvoiceFilterByProject.ascx" />
+    <Content Include="Views\Invoice\InvoiceForm.ascx" />
+    <Content Include="Views\Invoice\InvoiceFormCommands.ascx" />
     <Content Include="Views\Feed\FeedFilter.ascx" />
     <Content Include="Views\Feed\Index.aspx" />
     <Content Include="Views\Feed\FeedListUserControl.ascx" />
+    <Content Include="Views\Invoice\InvoiceListUserControl.ascx" />
     <Content Include="Views\Note\NoteForm.ascx" />
     <Content Include="Views\Note\NoteFormCommands.ascx" />
     <Content Include="Views\Note\Create.aspx" />
     <Content Include="Views\Note\Edit.aspx" />
     <Content Include="Views\Shared\AttachmentsUserControl.ascx" />
     <Content Include="Views\Shared\AttachmentUserControl.ascx" />
+    <Content Include="Views\Shared\InvoicesUserControl.ascx" />
     <Content Include="Views\Shared\LabelsUserControl.ascx" />
     <Content Include="Views\Shared\FeedsUserControl.ascx" />
     <Content Include="Views\Shared\HourByDateListUserControl.ascx" />

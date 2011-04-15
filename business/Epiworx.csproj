@@ -132,7 +132,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Business\Category\CategoryDuplicateNameCheck.cs" />
-    <Compile Include="Business\Invoice\InvoiceSourceTypeRequired.cs" />
     <Compile Include="Business\Invoice\IInvoice.cs" />
     <Compile Include="Business\Invoice\InvoiceCriteria\InvoiceCriteria.cs" />
     <Compile Include="Business\Invoice\InvoiceCriteria\InvoiceCriteria.Properties.cs" />
@@ -153,6 +152,7 @@
     <Compile Include="Business\Invoice\Invoice\Invoice.Methods.cs" />
     <Compile Include="Business\Invoice\Invoice\Invoice.Properties.cs" />
     <Compile Include="Business\Invoice\Invoice\Invoice.Rules.cs" />
+    <Compile Include="Business\Invoice\Invoice\Invoice.ISource.cs" />
     <Compile Include="Business\ISource.cs" />
     <Compile Include="Business\Enumerations.cs" />
     <Compile Include="Business\Feed\FeedCriteria\FeedCriteria.cs" />
@@ -399,6 +399,7 @@
     <Compile Include="Business\Role\Role.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Business\Source\Source\Source.cs" />
     <Compile Include="Business\Sprint\ISprint.cs" />
     <Compile Include="Business\Sprint\SprintDuplicateNameCheck.cs" />
     <Compile Include="Business\Sprint\SprintCriteria\SprintCriteria.cs" />

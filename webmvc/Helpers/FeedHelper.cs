@@ -51,8 +51,14 @@ namespace Epiworx.WebMvc.Helpers
                             break;
                         case SourceType.Project:
                             sb = sb.AppendFormat(
-                               " for the story <a href=\"{0}\">{1}</a> ",
+                               " for the project <a href=\"{0}\">{1}</a> ",
                                urlHelper.Action("Edit", "Project", new { id = values["SourceId"] }),
+                               values["SourceName"]);
+                            break;
+                        case SourceType.Invoice:
+                            sb = sb.AppendFormat(
+                               " for the invoice <a href=\"{0}\">{1}</a> ",
+                               urlHelper.Action("Edit", "Invoice", new { id = values["SourceId"] }),
                                values["SourceName"]);
                             break;
                         default:
@@ -124,6 +130,20 @@ namespace Epiworx.WebMvc.Helpers
 
                     break;
 
+                case "Invoice":
+
+                    sb = sb.AppendFormat(
+                       " the invoice <a href=\"{0}\">{1}</a> ",
+                       urlHelper.Action("Edit", "Invoice", new { id = values["InvoiceId"] }),
+                       values["InvoiceNumber"]);
+
+                    sb = sb.AppendFormat(
+                           " for the project <a href=\"{0}\">{1}</a> ",
+                           urlHelper.Action("Edit", "Project", new { id = values["ProjectId"] }),
+                           values["ProjectName"]);
+
+                    break;
+
                 case "Task":
 
                     sb = sb.AppendFormat(
@@ -156,7 +176,13 @@ namespace Epiworx.WebMvc.Helpers
                         case SourceType.Project:
                             sb = sb.AppendFormat(
                                " for the project <a href=\"{0}\">{1}</a> ",
-                               urlHelper.Action("Edit", "Task", new { id = values["SourceId"] }),
+                               urlHelper.Action("Edit", "Project", new { id = values["SourceId"] }),
+                               values["SourceName"]);
+                            break;
+                        case SourceType.Invoice:
+                            sb = sb.AppendFormat(
+                               " for the invoice <a href=\"{0}\">{1}</a> ",
+                               urlHelper.Action("Edit", "Invoice", new { id = values["SourceId"] }),
                                values["SourceName"]);
                             break;
                         default:

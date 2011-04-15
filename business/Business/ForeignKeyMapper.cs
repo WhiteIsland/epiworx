@@ -43,6 +43,18 @@ namespace Epiworx.Business
             return result;
         }
 
+        public static ITask FetchTask(int taskId)
+        {
+            if (taskId == 0)
+            {
+                return null;
+            }
+
+            var task = Task.FetchTask(new TaskCriteria { TaskId = taskId });
+
+            return task;
+        }
+
         public static IUser FetchUser(int userId)
         {
             if (userId == 0)

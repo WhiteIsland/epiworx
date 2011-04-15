@@ -11,7 +11,8 @@ namespace Epiworx.Business
             Data.Task data,
             decimal? duration,
             int? numberOfNotes,
-            int? numberOfAttachments)
+            int? numberOfAttachments,
+            int? numberOfInvoices)
         {
             this.LoadProperty(TaskIdProperty, data.TaskId);
             this.LoadProperty(ProjectProperty, ProjectInfo.FetchProjectInfo(data.Project));
@@ -35,6 +36,7 @@ namespace Epiworx.Business
             this.LoadProperty(EstimatedCompletedDateProperty, data.EstimatedCompletedDate);
             this.LoadProperty(DurationProperty, duration ?? 0);
             this.LoadProperty(EstimatedDurationProperty, data.EstimatedDuration);
+            this.LoadProperty(NumberOfInvoicesProperty, numberOfInvoices ?? 0);
             this.LoadProperty(NumberOfNotesProperty, numberOfNotes ?? 0);
             this.LoadProperty(NumberOfAttachmentsProperty, numberOfAttachments ?? 0);
             this.LoadProperty(LabelsProperty, data.Labels);

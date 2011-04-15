@@ -18,8 +18,28 @@ namespace Epiworx.Business
 
             switch (property.Name)
             {
+                case "TaskId":
+                    this.OnTaskIdChanged();
+                    break;
                 default:
                     break;
+            }
+        }
+
+        private void OnTaskIdChanged()
+        {
+            if (this.TaskId == 0)
+            {
+                this.ProjectId = 0;
+                this.ProjectName = string.Empty;
+            }
+            else
+            {
+                var task = ForeignKeyMapper.FetchTask(this.TaskId);
+
+                this.ProjectId = task.ProjectId;
+                this.ProjectName = task.ProjectName;
+                this.Description = task.Description;
             }
         }
 

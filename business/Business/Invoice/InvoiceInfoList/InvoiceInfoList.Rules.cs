@@ -12,9 +12,6 @@ namespace Epiworx.Business
     {
         protected static void AddObjectAuthorizationRules()
         {
-            BusinessRules.AddRule(typeof(InvoiceInfoList),
-                new IsInRole(AuthorizationActions.GetObject,
-                    Role.FullControl.ToString()));
         }
     }
 }

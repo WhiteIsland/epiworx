@@ -14,17 +14,18 @@ namespace Epiworx.Business
 
         internal static TaskInfo FetchTaskInfo(Data.Task data)
         {
-            return TaskInfo.FetchTaskInfo(data, 0, 0, 0);
+            return TaskInfo.FetchTaskInfo(data, 0, 0, 0, 0);
         }
 
         internal static TaskInfo FetchTaskInfo(
             Data.Task data,
             decimal? duration,
             int? numberOfNotes,
-            int? numberOfAttachments)
+            int? numberOfAttachments,
+            int? numberOfInvoices)
         {
             var result = new TaskInfo();
-            result.Fetch(data, duration, numberOfNotes, numberOfAttachments);
+            result.Fetch(data, duration, numberOfNotes, numberOfAttachments, numberOfInvoices);
             return result;
         }
     }

@@ -23,7 +23,8 @@ namespace Epiworx.Business
                         .GetManager(Database.ApplicationConnection, false))
             {
                 var data = ctx.ObjectContext.Invoices
-                    .Include("Project")
+                    .Include("Task")
+                    .Include("Task.Project")
                     .Include("CreatedByUser")
                     .Include("ModifiedByUser")
                     .Single(row => row.InvoiceId == criteria.InvoiceId);
@@ -38,11 +39,10 @@ namespace Epiworx.Business
         {
             this.LoadProperty(InvoiceIdProperty, data.InvoiceId);
             this.LoadProperty(NumberProperty, data.Number);
-            this.LoadProperty(ProjectIdProperty, data.ProjectId);
-            this.LoadProperty(ProjectNameProperty, data.Project.Name);
+            this.LoadProperty(ProjectIdProperty, data.Task.ProjectId);
+            this.LoadProperty(ProjectNameProperty, data.Task.Project.Name);
             this.LoadProperty(DescriptionProperty, data.Description);
-            this.LoadProperty(SourceTypeProperty, data.SourceType);
-            this.LoadProperty(SourceIdProperty, data.SourceId);
+            this.LoadProperty(TaskIdProperty, data.TaskId);
             this.LoadProperty(AmountProperty, data.Amount);
             this.LoadProperty(IsArchivedProperty, data.IsArchived);
             this.LoadProperty(NotesProperty, data.Notes);
@@ -110,10 +110,8 @@ namespace Epiworx.Business
             if (this.IsSelfDirty)
             {
                 data.Number = this.ReadProperty(NumberProperty);
-                data.ProjectId = this.ReadProperty(ProjectIdProperty);
+                data.TaskId = this.ReadProperty(TaskIdProperty);
                 data.Description = this.ReadProperty(DescriptionProperty);
-                data.SourceType = (int)this.ReadProperty(SourceTypeProperty);
-                data.SourceId = this.ReadProperty(SourceIdProperty);
                 data.Amount = this.ReadProperty(AmountProperty);
                 data.IsArchived = this.ReadProperty(IsArchivedProperty);
                 data.Notes = this.ReadProperty(NotesProperty);

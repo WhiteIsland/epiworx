@@ -17,16 +17,18 @@
                 No.
             </th>
             <th class="flag">
-                <div class="flag status" title="Status"></div>
+                <div class="flag status" title="Status">
+                </div>
             </th>
             <th class="flag">
-                <div class="flag category" title="Category"></div>
-           </th>
-            <th class="flag">
-                <img src="<%=Url.Content("~/Content/FlagAttachment.png") %>" title="Attachments"/>
+                <div class="flag category" title="Category">
+                </div>
             </th>
             <th class="flag">
-                <img src="<%=Url.Content("~/Content/FlagNote.png") %>" title="Notes"/>
+                <img src="<%=Url.Content("~/Content/FlagAttachment.png") %>" title="Attachments" />
+            </th>
+            <th class="flag">
+                <img src="<%=Url.Content("~/Content/FlagNote.png") %>" title="Notes" />
             </th>
             <th style="width: 200px;">
                 Project
@@ -61,20 +63,31 @@
                     task.TaskId.ToString(), "Edit", "Task", new {id = task.TaskId, title = this.Html.ToTitle(task.Description), returnUrl = this.Server.UrlEncode(this.Request.Url.ToString())}, null)%>
             </td>
             <td class="flag">
-            <% if (task.IsArchived) {%> 
-                <div class="flag archived" title="Archived"></div>
-            <%} else {%>
-                <div class="flag <%: task.StatusName.ToLower().Replace(" ", "-")%>" title="<%: task.StatusName %>"></div>
-            <%}%>
+                <% if (task.IsArchived)
+                   {%>
+                <div class="flag archived" title="Archived">
+                </div>
+                <%}
+                   else
+                   {%>
+                <div class="flag <%: task.StatusName.ToLower().Replace(" ", "-")%>" title="<%: task.StatusName %>">
+                </div>
+                <%}%>
             </td>
             <td class="flag">
-                <div class="flag <%: task.CategoryName.ToLower().Replace(" ", "-")%>" title="<%: task.CategoryName %>"></div>
+                <div class="flag <%: task.CategoryName.ToLower().Replace(" ", "-")%>" title="<%: task.CategoryName %>">
+                </div>
             </td>
             <td class="flag">
-                <%if (task.NumberOfNotes != 0) {%><img src="<%=Url.Content("~/Content/FlagNote.png") %>" title="Has notes" class="flag"/> <%}%>
+                <%if (task.NumberOfNotes != 0)
+                  {%><img src="<%=Url.Content("~/Content/FlagNote.png") %>" title="Has notes" class="flag" />
+                <%}%>
             </td>
             <td class="flag">
-                <%if (task.NumberOfAttachments != 0) {%><img src="<%=Url.Content("~/Content/FlagAttachment.png") %>" title="Has attachments" class="flag"/> <%}%>
+                <%if (task.NumberOfAttachments != 0)
+                  {%><img src="<%=Url.Content("~/Content/FlagAttachment.png") %>" title="Has attachments"
+                      class="flag" />
+                <%}%>
             </td>
             <td>
                 <%: task.ProjectName %>

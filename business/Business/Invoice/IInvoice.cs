@@ -12,8 +12,7 @@ namespace Epiworx.Business
         int ProjectId { get; }
         string ProjectName { get; }
         string Description { get; }
-        SourceType SourceType { get; }
-        int SourceId { get; }
+        int TaskId { get; }
         decimal Amount { get; }
         bool IsArchived { get; }
         string Notes { get; }

@@ -81,6 +81,7 @@ namespace Epiworx.WebMvc.Models
     public class TaskFormModel : ModelBusinessBase
     {
         public int TaskId { get; set; }
+        public int HourId { get; set; }
 
         [DisplayName("Project:")]
         [IntegerRequired(ErrorMessage = "Project is required")]
@@ -137,6 +138,7 @@ namespace Epiworx.WebMvc.Models
         public IEnumerable<IUser> Users { get; set; }
         public IEnumerable<IHour> Hours { get; set; }
         public IEnumerable<ISprint> Sprints { get; set; }
+        public IEnumerable<IInvoice> Invoices { get; set; }
         public LabelListModel LabelListModel { get; set; }
         public NoteListModel NoteListModel { get; set; }
         public AttachmentListModel AttachmentListModel { get; set; }

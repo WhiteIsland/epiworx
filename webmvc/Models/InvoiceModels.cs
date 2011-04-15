@@ -10,37 +10,50 @@ namespace Epiworx.WebMvc.Models
 {
     public class InvoiceIndexModel : InvoiceListModel
     {
+        public int[] ProjectId { get; set; }
+        public string ProjectName { get; set; }
+        public string ProjectDisplayName { get; set; }
+        public int IsArchived { get; set; }
     }
 
     public class InvoiceListModel : ModelListBase
     {
-        public int IsArchived { get; set; }
-        public IQueryable<INote> Notes { get; set; }
-        public IQueryable<IInvoice> Invoices { get; set; }
+        public IEnumerable<IInvoice> Invoices { get; set; }
+        public IEnumerable<IProject> Projects { get; set; }
+        public IEnumerable<IFilter> Filters { get; set; }
     }
 
     public class InvoiceFormModel : ModelBusinessBase
     {
+        [DisplayName("InvoiceId:")]
         public int InvoiceId { get; set; }
 
-        [DisplayName("Name:")]
-        [Required(ErrorMessage = "Name is required")]
-        public string Name { get; set; }
+        [DisplayName("ProjectId:")]
+        public int ProjectId { get; set; }
+
+        [DisplayName("Project:")]
+        public string ProjectName { get; set; }
+
+        [DisplayName("TaskId:")]
+        public int TaskId { get; set; }
+
+        [DisplayName("No.:")]
+        [Required(ErrorMessage = "Number is required")]
+        public string Number { get; set; }
 
         [DisplayName("Description:")]
         [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
 
-        [DisplayName("Enter some notes about the project:")]
+        [DisplayName("Amount:")]
+        public decimal Amount { get; set; }
+
+        [DisplayName("Enter some notes about the invoice:")]
         public string Notes { get; set; }
 
-        [DisplayName("This project is active")]
-        public bool IsActive { get; set; }
-
-        [DisplayName("This project is archived")]
+        [DisplayName("This invoice is archived")]
         public bool IsArchived { get; set; }
 
-        public IEnumerable<ISprint> Sprints { get; set; }
         public NoteListModel NoteListModel { get; set; }
         public AttachmentListModel AttachmentListModel { get; set; }
     }

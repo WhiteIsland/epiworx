@@ -28,6 +28,25 @@ namespace Epiworx.Business
             return feed;
         }
 
+        public static Feed FeedAdd(string action, Invoice invoice)
+        {
+            var feed = FeedService.FeedNew();
+
+            feed.Type = "Invoice";
+            feed.Data = string.Format(
+                "Action={0}|InvoiceId={1}|InvoiceNumber={2}|ProjectId={3}|ProjectName={4}|Text={5}",
+                action,
+                invoice.InvoiceId,
+                invoice.Number,
+                invoice.ProjectId,
+                invoice.ProjectName,
+                invoice.Description);
+
+            feed = FeedService.FeedSave(feed);
+
+            return feed;
+        }
+
         public static Feed FeedAdd(string action, Hour hour)
         {
             var feed = FeedService.FeedNew();

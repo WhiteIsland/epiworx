@@ -65,12 +65,8 @@ namespace Epiworx.Tests
             Assert.IsFalse(invoice.IsSelfValid, "IsSelfValid should be false");
             Assert.IsFalse(invoice.IsArchived, "IsArchived should be false");
 
-            Assert.IsTrue(ValidationHelper.ContainsRule(invoice, DbType.Int32, "ProjectId"),
-                "ProjectId should be required");
-            Assert.IsTrue(ValidationHelper.ContainsRule(invoice, "rule://epiworx.business.invoicesourcetyperequired/SourceType"),
-                 "SourceType should be required");
-            Assert.IsTrue(ValidationHelper.ContainsRule(invoice, DbType.Int32, "SourceId"),
-                "SourceId should be required");
+            Assert.IsTrue(ValidationHelper.ContainsRule(invoice, DbType.Int32, "TaskId"),
+                "TaskId should be required");
             Assert.IsTrue(ValidationHelper.ContainsRule(invoice, DbType.String, "Number"),
                 "Number should be required");
             Assert.IsTrue(ValidationHelper.ContainsRule(invoice, DbType.String, "Description"),
@@ -85,9 +81,7 @@ namespace Epiworx.Tests
             var task = BusinessHelper.CreateTask();
 
             invoice.Number = DataHelper.RandomString(20);
-            invoice.ProjectId = task.ProjectId;
-            invoice.SourceType = SourceType.Task;
-            invoice.SourceId = task.TaskId;
+            invoice.TaskId = task.TaskId;
             invoice.Description = task.Description;
 
             Assert.IsTrue(invoice.IsValid, "IsValid should be true");
@@ -103,9 +97,7 @@ namespace Epiworx.Tests
             var task = BusinessHelper.CreateTask();
 
             invoice.Number = DataHelper.RandomString(20);
-            invoice.ProjectId = task.ProjectId;
-            invoice.SourceType = SourceType.Task;
-            invoice.SourceId = task.TaskId;
+            invoice.TaskId = task.TaskId;
             invoice.Description = task.Description;
 
             invoice = InvoiceService.InvoiceSave(invoice);
@@ -129,9 +121,7 @@ namespace Epiworx.Tests
             var task = BusinessHelper.CreateTask();
 
             invoice.Number = DataHelper.RandomString(20);
-            invoice.ProjectId = task.ProjectId;
-            invoice.SourceType = SourceType.Task;
-            invoice.SourceId = task.TaskId;
+            invoice.TaskId = task.TaskId;
             invoice.Description = task.Description;
 
             invoice = InvoiceService.InvoiceSave(invoice);
@@ -158,9 +148,7 @@ namespace Epiworx.Tests
             var task = BusinessHelper.CreateTask();
 
             invoice.Number = DataHelper.RandomString(20);
-            invoice.ProjectId = task.ProjectId;
-            invoice.SourceType = SourceType.Task;
-            invoice.SourceId = task.TaskId;
+            invoice.TaskId = task.TaskId;
             invoice.Description = task.Description;
 
             invoice = InvoiceService.InvoiceSave(invoice);
@@ -178,9 +166,7 @@ namespace Epiworx.Tests
             var task = BusinessHelper.CreateTask();
 
             invoice.Number = DataHelper.RandomString(20);
-            invoice.ProjectId = task.ProjectId;
-            invoice.SourceType = SourceType.Task;
-            invoice.SourceId = task.TaskId;
+            invoice.TaskId = task.TaskId;
             invoice.Description = task.Description;
 
             InvoiceService.InvoiceSave(invoice);
@@ -188,9 +174,7 @@ namespace Epiworx.Tests
             invoice = InvoiceService.InvoiceNew();
 
             invoice.Number = DataHelper.RandomString(20);
-            invoice.ProjectId = task.ProjectId;
-            invoice.SourceType = SourceType.Task;
-            invoice.SourceId = task.TaskId;
+            invoice.TaskId = task.TaskId;
             invoice.Description = task.Description;
 
             InvoiceService.InvoiceSave(invoice);

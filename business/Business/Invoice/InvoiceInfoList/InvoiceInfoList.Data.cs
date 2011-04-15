@@ -20,7 +20,8 @@ namespace Epiworx.Business
                 this.IsReadOnly = false;
 
                 IQueryable<Data.Invoice> query = ctx.ObjectContext.Invoices
-                    .Include("Project")
+                    .Include("Task")
+                    .Include("Task.Project")
                     .Include("CreatedByUser")
                     .Include("ModifiedByUser");
 
@@ -31,7 +32,7 @@ namespace Epiworx.Business
 
                 if (criteria.ProjectId != null)
                 {
-                    query = query.Where(row => row.ProjectId == criteria.ProjectId);
+                    query = query.Where(row => criteria.ProjectId.Contains(row.Task.ProjectId));
                 }
 
                 if (criteria.Number != null)
@@ -44,14 +45,9 @@ namespace Epiworx.Business
                     query = query.Where(row => row.Description == criteria.Description);
                 }
 
-                if (criteria.SourceType != null)
+                if (criteria.TaskId != null)
                 {
-                    query = query.Where(row => row.SourceType == criteria.SourceType);
-                }
-
-                if (criteria.SourceId != null)
-                {
-                    query = query.Where(row => row.SourceId == criteria.SourceId);
+                    query = query.Where(row => row.TaskId == criteria.TaskId);
                 }
 
                 if (criteria.Amount != null)
@@ -97,6 +93,13 @@ namespace Epiworx.Business
                 if (criteria.CreatedDate.DateTo.Date != DateTime.MaxValue.Date)
                 {
                     query = query.Where(row => row.CreatedDate <= criteria.CreatedDate.DateTo);
+                }
+
+                if (criteria.Text != null)
+                {
+                    query = query.Where(row => row.Description.Contains(criteria.Text)
+                        || row.Number.Contains(criteria.Text)
+                        || row.Task.Project.Name.Contains(criteria.Text));
                 }
 
                 if (criteria.SortBy != null)

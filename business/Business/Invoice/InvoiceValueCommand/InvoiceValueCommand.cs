@@ -52,11 +52,8 @@ namespace Epiworx.Business
                     case "Description":
                         this.Value = data.Description;
                         break;
-                    case "SourceType":
-                        this.Value = data.SourceType;
-                        break;
-                    case "SourceId":
-                        this.Value = data.SourceId;
+                    case "TaskId":
+                        this.Value = data.TaskId;
                         break;
                     case "Amount":
                         this.Value = data.Amount;
