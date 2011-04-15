@@ -36,6 +36,9 @@ namespace Epiworx.Business
                 case SourceType.Project:
                     result = ForeignKeyMapper.FetchProjectName(sourceId);
                     break;
+                case SourceType.Invoice:
+                    result = ForeignKeyMapper.FetchInvoiceNumber(sourceId);
+                    break;
                 default:
                     break;
             }
@@ -101,6 +104,18 @@ namespace Epiworx.Business
             var category = Category.FetchCategory(new CategoryCriteria { CategoryId = categoryId });
 
             return category.Name;
+        }
+
+        public static string FetchInvoiceNumber(int invoiceId)
+        {
+            if (invoiceId == 0)
+            {
+                return string.Empty;
+            }
+
+            var invoice = Invoice.FetchInvoice(new InvoiceCriteria { InvoiceId = invoiceId });
+
+            return invoice.Number;
         }
 
         public static IProject FetchProject(int projectId)

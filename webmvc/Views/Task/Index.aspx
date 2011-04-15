@@ -16,13 +16,13 @@
         <h4>
             Things To Do</h4>
         <ul class="list">
-            <li class="first">
+            <li>
                 <%: this.Html.ActionLink("Add a New Story", "Create", "Task", new { returnUrl = this.Server.UrlEncode(this.Request.Url.ToString())}, null) %></li>
             <li>
                 <%: this.Html.ActionLink("Add a New Project", "Create", "Project")%></li>
             <li>
                 <a href="<%: this.Url.Action("Export") %>?<%= this.Request.QueryString %>">Export Stories</a></li>
-            <li class="last">
+            <li>
                 <%: this.Html.ActionLink("Import Stories", "Import", "Task")%></li>
         </ul>
     </div>

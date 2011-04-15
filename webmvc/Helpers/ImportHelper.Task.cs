@@ -10,7 +10,7 @@ using Microsoft.VisualBasic.FileIO;
 
 namespace Epiworx.WebMvc.Helpers
 {
-    public class ImportHelper
+    public partial class ImportHelper
     {
         public const int TaskColumnCount = 20;
         public const int TaskTaskIdColumn = 0;
@@ -34,7 +34,7 @@ namespace Epiworx.WebMvc.Helpers
         public const int TaskCreatedByNameColumn = 18;
         public const int TaskCreatedByDateColumn = 19;
 
-        public static IEnumerable<ITask> ImportStories(TaskController controller, HttpPostedFileBase file)
+        public static IEnumerable<ITask> ImportTasks(TaskController controller, HttpPostedFileBase file)
         {
             if (file == null)
             {
@@ -129,8 +129,7 @@ namespace Epiworx.WebMvc.Helpers
                         task.EstimatedCompletedDate =
                             ImportHelper.TryParse(values[ImportHelper.TaskEstimatedCompletedDateColumn], DateTime.MaxValue.Date);
                         task.EstimatedDuration =
-                           ImportHelper.TryParse(values[ImportHelper.TaskEstimatedDurationColumn], 0);
-
+                            ImportHelper.TryParse(values[ImportHelper.TaskEstimatedDurationColumn], 0);
 
                         switch (ConfigurationHelper.LabelMode)
                         {

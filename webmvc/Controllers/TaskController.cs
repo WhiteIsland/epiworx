@@ -238,7 +238,7 @@ namespace Epiworx.WebMvc.Controllers
 
             model.Tab = "Task";
 
-            model.Tasks = ImportHelper.ImportStories(this, file);
+            model.Tasks = ImportHelper.ImportTasks(this, file);
 
             if (this.ModelState.IsValid)
             {

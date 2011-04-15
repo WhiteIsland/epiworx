@@ -106,11 +106,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ConfigurationHelper.cs" />
+    <Compile Include="Helpers\ImportHelper.Invoice.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Helpers\FeedHelper.cs" />
     <Compile Include="Helpers\HtmlHelperExtensions.cs" />
     <Compile Include="Helpers\HttpRequestBaseExtensions.cs" />
-    <Compile Include="Helpers\ImportHelper.cs" />
+    <Compile Include="Helpers\ImportHelper.Task.cs" />
     <Compile Include="Helpers\RequestExtension.cs" />
     <Compile Include="Helpers\RequestFormat.cs" />
     <Compile Include="Helpers\RequestFormatResponder.cs" />
@@ -197,6 +198,8 @@
     <Content Include="Views\Invoice\Delete.aspx" />
     <Content Include="Views\Invoice\DeleteSuccess.aspx" />
     <Content Include="Views\Invoice\Edit.aspx" />
+    <Content Include="Views\Invoice\Import.aspx" />
+    <Content Include="Views\Invoice\ImportSuccess.aspx" />
     <Content Include="Views\Invoice\Index.aspx" />
     <Content Include="Views\Invoice\InvoiceFilter.ascx" />
     <Content Include="Views\Invoice\InvoiceFilterByProject.ascx" />
@@ -289,8 +292,9 @@
     <Content Include="Views\User\Index.aspx" />
     <Content Include="Views\User\UserForm.ascx" />
     <Content Include="Views\User\UserFormCommands.ascx" />
-    <Content Include="Content\StoryImportTemplate.csv" />
+    <Content Include="Content\TaskImportTemplate.csv" />
     <Content Include="Packages.config" />
+    <Content Include="Content\InvoiceImportTemplate.csv" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>

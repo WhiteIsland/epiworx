@@ -59,7 +59,7 @@
                 <%: invoice.ProjectName %>
             </td>
             <td>
-                <%: Html.ActionLink(invoice.TaskId.ToString(), "Edit", "Task", new { taskId = invoice.TaskId }, null) %>
+                <%: Html.ActionLink(invoice.TaskId.ToString(), "Edit", "Task", new { id = invoice.TaskId }, null) %>
             </td>
             <td>
                 <p title="<%: invoice.Description %>">

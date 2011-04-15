@@ -16,8 +16,10 @@
         <h4>
             Things To Do</h4>
         <ul class="list">
-            <li class="first last">
-                <a href="<%: this.Url.Action("Export") %>?<%= this.Request.QueryString %>">Export Invoices</a></li>
-         </ul>
+            <li><a href="<%: this.Url.Action("Export") %>?<%= this.Request.QueryString %>">Export
+                Invoices</a></li>
+            <li>
+                <%: this.Html.ActionLink("Import Invoices", "Import", "Invoice")%></li>
+        </ul>
     </div>
 </asp:Content>

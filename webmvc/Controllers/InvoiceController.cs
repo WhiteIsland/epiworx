@@ -107,6 +107,35 @@ namespace Epiworx.WebMvc.Controllers
         }
 
         [Authorize]
+        public ActionResult Import()
+        {
+            var model = new InvoiceImportModel();
+
+            model.Tab = "Invoice";
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult Import(HttpPostedFileBase file)
+        {
+            var model = new InvoiceImportModel();
+
+            model.Tab = "Invoice";
+
+            model.Invoices = ImportHelper.ImportInvoices(this, file);
+
+            if (this.ModelState.IsValid)
+            {
+                return this.View("ImportSuccess", model);
+
+            }
+
+            return this.View(model);
+        }
+
+        [Authorize]
         public void Export(int[] projectId, int? taskId, string modifiedDate, string createdDate, int? isArchived, string text, string sortBy, string sortOrder)
         {
             var criteria = new InvoiceCriteria()
@@ -127,7 +156,7 @@ namespace Epiworx.WebMvc.Controllers
             var sw = new StringWriter();
 
             sw.WriteLine(
-                "InvoiceId,Number,TaskId,ProjectName,ItemId,ItemTypeName,Description,Amount,IsArchived,Notes,ModifiedByName,ModifiedDate,CreatedByName,CreatedByDate");
+                "InvoiceId,Number,TaskId,ProjectName,Description,Amount,IsArchived,Notes,ModifiedByName,ModifiedDate,CreatedByName,CreatedByDate");
 
             foreach (var invoice in invoices)
             {
@@ -149,7 +178,7 @@ namespace Epiworx.WebMvc.Controllers
                 sw.WriteLine(sb.ToString());
             }
 
-            this.Response.AddHeader("Content-Disposition", "attachment; filename=Stories.csv");
+            this.Response.AddHeader("Content-Disposition", "attachment; filename=Invoices.csv");
             this.Response.ContentType = "application/ms-excel";
             this.Response.ContentEncoding = Encoding.GetEncoding("utf-8");
             this.Response.Write(sw);

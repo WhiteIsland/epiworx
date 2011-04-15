@@ -16,6 +16,11 @@ namespace Epiworx.WebMvc.Models
         public int IsArchived { get; set; }
     }
 
+    public class InvoiceImportModel : ModelListBase
+    {
+        public IEnumerable<IInvoice> Invoices { get; set; }
+    }
+
     public class InvoiceListModel : ModelListBase
     {
         public IEnumerable<IInvoice> Invoices { get; set; }
