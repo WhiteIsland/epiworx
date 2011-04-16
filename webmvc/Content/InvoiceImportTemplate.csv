@@ -1,1 +1,1 @@
-InvoiceId,Number,TaskId,ProjectName,Description,Amount,IsArchived,Notes,ModifiedByName,ModifiedDate,CreatedByName,CreatedByDate
+InvoiceId,Number,TaskId,PreparedDate,ProjectName,Description,Amount,IsArchived,Notes,ModifiedByName,ModifiedDate,CreatedByName,CreatedByDate

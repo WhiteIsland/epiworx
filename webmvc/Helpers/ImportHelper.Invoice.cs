@@ -16,15 +16,16 @@ namespace Epiworx.WebMvc.Helpers
         public const int InvoiceInvoiceIdColumn = 0;
         public const int InvoiceNumberColumn = 1;
         public const int InvoiceTaskIdColumn = 2;
-        public const int InvoiceProjectNameColumn = 3;
-        public const int InvoiceDescriptionColumn = 4;
-        public const int InvoiceAmountColumn = 5;
-        public const int InvoiceIsArchivedColumn = 6;
-        public const int InvoiceNotesColumn = 7;
-        public const int InvoiceModifiedByNameColumn = 8;
-        public const int InvoiceModifiedDateColumn = 9;
-        public const int InvoiceCreatedByNameColumn = 10;
-        public const int InvoiceCreatedByDateColumn = 11;
+        public const int InvoicePreparedDateColumn = 3;
+        public const int InvoiceProjectNameColumn = 4;
+        public const int InvoiceDescriptionColumn = 5;
+        public const int InvoiceAmountColumn = 6;
+        public const int InvoiceIsArchivedColumn = 7;
+        public const int InvoiceNotesColumn = 8;
+        public const int InvoiceModifiedByNameColumn = 9;
+        public const int InvoiceModifiedDateColumn = 10;
+        public const int InvoiceCreatedByNameColumn = 11;
+        public const int InvoiceCreatedByDateColumn = 12;
 
         public static IEnumerable<IInvoice> ImportInvoices(InvoiceController controller, HttpPostedFileBase file)
         {
@@ -84,6 +85,7 @@ namespace Epiworx.WebMvc.Helpers
                         invoice.Number = values[ImportHelper.InvoiceNumberColumn];
                         invoice.Description = values[ImportHelper.InvoiceDescriptionColumn];
                         invoice.TaskId = (int)ImportHelper.TryParse(values[ImportHelper.InvoiceTaskIdColumn], 0);
+                        invoice.PreparedDate = ImportHelper.TryParse(values[ImportHelper.InvoicePreparedDateColumn], DateTime.MaxValue);
                         invoice.Amount = ImportHelper.TryParse(values[ImportHelper.InvoiceAmountColumn], 0);
 
                         if (invoice.CanWriteProperty("IsArchived"))

@@ -158,7 +158,7 @@ namespace Epiworx.WebMvc.Controllers
             var sw = new StringWriter();
 
             sw.WriteLine(
-                "InvoiceId,Number,TaskId,ProjectName,Description,Amount,IsArchived,Notes,ModifiedByName,ModifiedDate,CreatedByName,CreatedByDate");
+                "InvoiceId,Number,TaskId,PreparedDate,ProjectName,Description,Amount,IsArchived,Notes,ModifiedByName,ModifiedDate,CreatedByName,CreatedByDate");
 
             foreach (var invoice in invoices)
             {
@@ -167,6 +167,7 @@ namespace Epiworx.WebMvc.Controllers
                 sb.AppendFormat("{0},", invoice.InvoiceId);
                 sb.AppendFormat("\"{0}\",", invoice.Number);
                 sb.AppendFormat("{0},", invoice.TaskId);
+                sb.AppendFormat("{0},", invoice.PreparedDate);
                 sb.AppendFormat("\"{0}\",", invoice.ProjectName);
                 sb.AppendFormat("\"{0}\",", invoice.Description.Replace("\"", "'"));
                 sb.AppendFormat("{0},", invoice.Amount);
