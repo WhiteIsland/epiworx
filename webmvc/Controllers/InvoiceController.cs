@@ -20,7 +20,7 @@ namespace Epiworx.WebMvc.Controllers
     public class InvoiceController : BaseController
     {
         [Authorize]
-        public ActionResult Index(int[] projectId, int? taskId, string modifiedDate, string createdDate, int? isArchived, string label, string text, string sortBy, string sortOrder)
+        public ActionResult Index(int[] projectId, int? taskId, string date, string modifiedDate, string createdDate, int? isArchived, string label, string text, string sortBy, string sortOrder)
         {
             var model = new InvoiceIndexModel();
 
@@ -31,6 +31,7 @@ namespace Epiworx.WebMvc.Controllers
             model.ProjectName = DataHelper.ToString(model.Projects, model.ProjectId, "any project");
             model.ProjectDisplayName = DataHelper.Clip(model.ProjectName, 40);
 
+            model.Date = date ?? string.Empty;
             model.IsArchived = isArchived ?? 0;
 
             model.Filters = MyService.FilterFetchInfoList("Invoice");
@@ -47,7 +48,7 @@ namespace Epiworx.WebMvc.Controllers
                     ProjectId = projectId,
                     TaskId = taskId,
                     ModifiedDate = new DateRangeCriteria(modifiedDate ?? string.Empty),
-                    CreatedDate = new DateRangeCriteria(createdDate ?? string.Empty),
+                    CreatedDate = new DateRangeCriteria(model.Date),
                     IsArchived = DataHelper.ToBoolean(isArchived),
                     Text = text
                 };

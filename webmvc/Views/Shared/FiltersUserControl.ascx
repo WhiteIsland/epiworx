@@ -7,7 +7,11 @@
         if (this.Model.Filters.Count() == 0)
         {
     %>
-    <p class="no-records">No filters have been created.<br /><br />To <strong>Create</strong> a filter click the <strong>Save as New Filter</strong> link after you create and execute your filter.</p>
+    <p class="no-records">
+        No filters have been created.<br />
+        <br />
+        To <strong>Create</strong> a filter click the <strong>Save as New Filter</strong>
+        link after you create and execute your filter.</p>
     <%
         }
         else
@@ -19,6 +23,8 @@
             {
         %>
         <li>
+            <div class="flag filter">
+            </div>
             <%= this.Html.ActionLink("Edit", "Edit", "Filter", new { id = filter.FilterId, title = this.Html.ToTitle(filter.Name) }, new { @class = "action" })%>
             <a href="<%: filter.Target %>?<%: Server.UrlDecode(filter.Query) %>">
                 <%: filter.Name %></a></li>

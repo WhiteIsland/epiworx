@@ -102,6 +102,40 @@ namespace Epiworx.WebMvc.Controllers
         }
 
         [Authorize]
+        [HttpPost]
+        public ActionResult Index(int[] projectId, int[] categoryId, int[] statusId, int? sprintId, int[] assignedTo, string completedDate, string modifiedDate, string createdDate, int? isArchived, string label, string text, string sortBy, string sortOrder, FormCollection collection)
+        {
+            if (collection["TaskId"] != null)
+            {
+                var action = collection["Action"];
+                var taskIds = collection["TaskId"]
+                    .Split(',')
+                    .Select(taskId => int.Parse(taskId))
+                    .ToList();
+
+                switch (action)
+                {
+                    case "Archive":
+                        TaskService.TaskArchive(taskIds.ToArray());
+                        break;
+                    case "Unarchive":
+                        TaskService.TaskUnarchive(taskIds.ToArray());
+                        break;
+                    case "Update Status":
+                        TaskService.TaskUpdateStatus(taskIds.ToArray(), int.Parse(collection["StatusId"]));
+                        break;
+                    case "Update Assignment":
+                        TaskService.TaskUpdateAssignedTo(taskIds.ToArray(), int.Parse(collection["AssignedTo"]));
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return this.RedirectToAction("Index", new { isArchived = 1, sortBy, sortOrder });
+        }
+
+        [Authorize]
         public ActionResult Create(int? hourId)
         {
             var model = new TaskFormModel();

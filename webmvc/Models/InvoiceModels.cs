@@ -13,12 +13,8 @@ namespace Epiworx.WebMvc.Models
         public int[] ProjectId { get; set; }
         public string ProjectName { get; set; }
         public string ProjectDisplayName { get; set; }
+        public string Date { get; set; }
         public int IsArchived { get; set; }
-    }
-
-    public class InvoiceImportModel : ModelListBase
-    {
-        public IEnumerable<IInvoice> Invoices { get; set; }
     }
 
     public class InvoiceListModel : ModelListBase
@@ -26,6 +22,11 @@ namespace Epiworx.WebMvc.Models
         public IEnumerable<IInvoice> Invoices { get; set; }
         public IEnumerable<IProject> Projects { get; set; }
         public IEnumerable<IFilter> Filters { get; set; }
+    }
+
+    public class InvoiceImportModel : ModelListBase
+    {
+        public IEnumerable<IInvoice> Invoices { get; set; }
     }
 
     public class InvoiceFormModel : ModelBusinessBase

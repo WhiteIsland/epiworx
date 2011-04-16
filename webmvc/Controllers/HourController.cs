@@ -72,6 +72,34 @@ namespace Epiworx.WebMvc.Controllers
         }
 
         [Authorize]
+        [HttpPost]
+        public ActionResult Index(int[] projectId, int[] userId, int[] taskId, string date, int? isArchived, string label, string sortBy, string sortOrder, FormCollection collection)
+        {
+            if (collection["HourId"] != null)
+            {
+                var action = collection["Action"];
+                var hourIds = collection["HourId"]
+                    .Split(',')
+                    .Select(hourId => int.Parse(hourId))
+                    .ToList();
+
+                switch (action)
+                {
+                    case "Archive":
+                        HourService.HourArchive(hourIds.ToArray());
+                        break;
+                    case "Unarchive":
+                        HourService.HourUnarchive(hourIds.ToArray());
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return this.RedirectToAction("Index", new { isArchived = 1, sortBy, sortOrder });
+        }
+
+        [Authorize]
         public ActionResult Create(int? projectId, int? taskId)
         {
             var model = new HourFormModel();

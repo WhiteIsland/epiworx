@@ -147,6 +147,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.ico" />
+    <Content Include="Content\FlagFilter.png" />
+    <Content Include="Content\FlagExport.png" />
     <Content Include="Content\FlagInvoice.png" />
     <Content Include="Content\FlagCalendar.png" />
     <Content Include="Content\FlagEmoticonGrin.png" />
@@ -170,6 +172,7 @@
     <Content Include="Content\Icons\Home.ico" />
     <Content Include="Content\Icons\Project.ico" />
     <Content Include="Content\Icons\Task.ico" />
+    <Content Include="Content\FlagImport.png" />
     <Content Include="Content\Plain.css" />
     <Content Include="Content\Find.png" />
     <Content Include="Content\Plain.Jquery.css" />
@@ -194,6 +197,7 @@
     <Content Include="Views\Category\CategoryFormCommands.ascx" />
     <Content Include="Views\Category\Create.aspx" />
     <Content Include="Views\Category\Edit.aspx" />
+    <Content Include="Views\Hour\HourListUserControl.ascx" />
     <Content Include="Views\Invoice\Create.aspx" />
     <Content Include="Views\Invoice\Delete.aspx" />
     <Content Include="Views\Invoice\DeleteSuccess.aspx" />
@@ -287,6 +291,7 @@
     <Content Include="Views\Task\TaskForm.ascx" />
     <Content Include="Views\Task\TaskFormCommands.ascx" />
     <Content Include="Views\Shared\LabelsByCountUserControl.ascx" />
+    <Content Include="Views\Task\TaskListUserControl.ascx" />
     <Content Include="Views\User\Create.aspx" />
     <Content Include="Views\User\Edit.aspx" />
     <Content Include="Views\User\Index.aspx" />
@@ -329,6 +334,10 @@
       <Name>Epiworx</Name>
       <Private>True</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\16\" />
+    <Folder Include="Content\32\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

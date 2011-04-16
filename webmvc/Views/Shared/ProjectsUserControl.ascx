@@ -18,7 +18,9 @@
            {
         %>
         <li>
-             <%:this.Html.ActionLink(
+            <div class="flag project">
+            </div>
+            <%:this.Html.ActionLink(
                 project.Name, "Edit", "Project", new {id = project.ProjectId, title = this.Html.ToTitle(project.Name)}, null)%>
         </li>
         <%
@@ -26,7 +28,7 @@
     </ul>
     <%
        }%>
-   <div class="total">
+    <div class="total">
         Total Projects<span>
             <%: string.Format("{0:N0}", this.Model.Count())%></span>
     </div>

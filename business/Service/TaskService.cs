@@ -34,6 +34,52 @@ namespace Epiworx.Service
             return TaskInfoList.FetchTaskInfoList(criteria);
         }
 
+        public static Task TaskArchive(int taskId)
+        {
+            var task = TaskService.TaskFetch(taskId);
+
+            if (task.IsArchived)
+            {
+                return task;
+            }
+
+            task.IsArchived = true;
+
+            task = TaskService.TaskSave(task);
+
+            return task;
+        }
+
+        public static Task[] TaskArchive(int[] taskIds)
+        {
+            return taskIds
+                .Select(TaskService.TaskArchive)
+                .ToArray();
+        }
+
+        public static Task TaskUnarchive(int taskId)
+        {
+            var task = TaskService.TaskFetch(taskId);
+
+            if (!task.IsArchived)
+            {
+                return task;
+            }
+
+            task.IsArchived = false;
+
+            task = TaskService.TaskSave(task);
+
+            return task;
+        }
+
+        public static Task[] TaskUnarchive(int[] taskIds)
+        {
+            return taskIds
+               .Select(TaskService.TaskUnarchive)
+               .ToArray();
+        }
+
         public static Task TaskSave(Task task)
         {
             if (!task.IsValid)
@@ -71,6 +117,52 @@ namespace Epiworx.Service
             FeedService.FeedAdd("Updated", task);
 
             return task;
+        }
+
+        public static Task TaskUpdateAssignedTo(int taskId, int assignedTo)
+        {
+            var task = TaskService.TaskFetch(taskId);
+
+            if (task.AssignedTo == assignedTo)
+            {
+                return task;
+            }
+
+            task.AssignedTo = assignedTo;
+
+            task = TaskService.TaskSave(task);
+
+            return task;
+        }
+
+        public static Task[] TaskUpdateAssignedTo(int[] taskIds, int assignedTo)
+        {
+            return taskIds
+                .Select(taskId => TaskService.TaskUpdateAssignedTo(taskId, assignedTo))
+                .ToArray();
+        }
+
+        public static Task TaskUpdateStatus(int taskId, int statusId)
+        {
+            var task = TaskService.TaskFetch(taskId);
+
+            if (task.StatusId == statusId)
+            {
+                return task;
+            }
+
+            task.StatusId = statusId;
+
+            task = TaskService.TaskSave(task);
+
+            return task;
+        }
+
+        public static Task[] TaskUpdateStatus(int[] taskIds, int statusId)
+        {
+            return taskIds
+                .Select(taskId => TaskService.TaskUpdateStatus(taskId, statusId))
+                .ToArray();
         }
 
         public static Task TaskNew()

@@ -16,10 +16,15 @@
         <h4>
             Things To Do</h4>
         <ul class="list">
-            <li><a href="<%: this.Url.Action("Export") %>?<%= this.Request.QueryString %>">Export
-                Invoices</a></li>
             <li>
+                <div class="flag export">
+                </div>
+                <a href="<%: this.Url.Action("Export") %>?<%= this.Request.QueryString %>">Export Invoices</a></li>
+            <li>
+                <div class="flag import">
+                </div>
                 <%: this.Html.ActionLink("Import Invoices", "Import", "Invoice")%></li>
         </ul>
     </div>
+    <% this.Html.RenderPartial("FiltersUserControl", new FilterListModel { Target = "Invoice", Filters = this.Model.Filters });%>
 </asp:Content>

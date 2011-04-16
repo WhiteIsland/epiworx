@@ -14,6 +14,8 @@
     <div class="filter-criteria">
         <span>Show all invoices for</span>
         <% this.Html.RenderPartial("InvoiceFilterByProject"); %>
+       <span class="filter-value filter-value-single">and&nbsp;created&nbsp;<strong></strong>
+            <%: this.Html.DateRangeDropDownListFor(m => m.Date, "Date", this.Model.Date)%></span>
         <span class="filter-value filter-value-single">and&nbsp;<strong></strong>
             <%: this.Html.IsArchivedDropDownListFor(m => m.IsArchived, this.Model.IsArchived)%></span>
     </div>
@@ -31,6 +33,10 @@
 %>
 <script type="text/javascript">
     $(document).ready(function () {
+        $("#Date").change(function () {
+            $("form").submit();
+        });
+
         $("#IsArchived").change(function () {
             $("form").submit();
         });

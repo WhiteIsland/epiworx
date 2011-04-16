@@ -77,6 +77,52 @@ namespace Epiworx.Service
             return result;
         }
 
+        public static Hour HourArchive(int hourId)
+        {
+            var hour = HourService.HourFetch(hourId);
+
+            if (hour.IsArchived)
+            {
+                return hour;
+            }
+
+            hour.IsArchived = true;
+
+            hour = HourService.HourSave(hour);
+
+            return hour;
+        }
+
+        public static Hour[] HourArchive(int[] hourIds)
+        {
+            return hourIds
+                .Select(HourService.HourArchive)
+                .ToArray();
+        }
+
+        public static Hour HourUnarchive(int hourId)
+        {
+            var hour = HourService.HourFetch(hourId);
+
+            if (!hour.IsArchived)
+            {
+                return hour;
+            }
+
+            hour.IsArchived = false;
+
+            hour = HourService.HourSave(hour);
+
+            return hour;
+        }
+
+        public static Hour[] HourUnarchive(int[] hourIds)
+        {
+            return hourIds
+               .Select(HourService.HourUnarchive)
+               .ToArray();
+        }
+
         public static Hour HourSave(Hour hour, Task task)
         {
             if (!hour.IsValid)

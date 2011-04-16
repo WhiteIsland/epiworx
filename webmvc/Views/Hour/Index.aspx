@@ -16,7 +16,8 @@
         <h4>
             Things To Do</h4>
         <ul class="list">
-            <li class="first last">
+            <li>
+                <div class="flag hour"></div>
                 <%: this.Html.ActionLink("Add a New Hour", "Create", "Hour")%></li>
         </ul>
     </div>

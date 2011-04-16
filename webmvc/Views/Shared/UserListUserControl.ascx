@@ -16,7 +16,7 @@
             <th style="width: 400px;">
                 Name
             </th>
-             <th>
+            <th>
                 Email
             </th>
         </tr>
@@ -27,11 +27,13 @@
         %>
         <tr>
             <td>
-                <img src="<%: this.Url.Gravatar(user.Email, 64) %>" />
-                <%: this.Html.ActionLink(user.Name, "Edit", "User", new { id = user.UserId }, null) %>
-                <br />
-                <%: user.FirstName %>&nbsp;
-                <%: user.LastName %>
+                <div class="user">
+                    <img src="<%: this.Url.Gravatar(user.Email, 64) %>" />
+                    <%: this.Html.ActionLink(user.Name, "Edit", "User", new { id = user.UserId }, null) %>
+                    <br />
+                    <%: user.FirstName %>&nbsp;
+                    <%: user.LastName %>
+                </div>
             </td>
             <td>
                 <%: user.Email %>

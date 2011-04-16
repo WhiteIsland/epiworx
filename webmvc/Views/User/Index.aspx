@@ -14,7 +14,9 @@
         <h4>
             Things To Do</h4>
         <ul class="list">
-            <li class="first last">
+            <li>
+                <div class="flag user">
+                </div>
                 <%: this.Html.ActionLink("Add a New User", "Create", "User")%></li>
         </ul>
     </div>

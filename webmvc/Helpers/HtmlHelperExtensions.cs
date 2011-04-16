@@ -682,6 +682,32 @@ namespace Epiworx.WebMvc.Helpers
             return MvcHtmlString.Create(result.ToString());
         }
 
+        public static MvcHtmlString StatusDropDownList(
+            this HtmlHelper htmlHelper,
+            IEnumerable<IStatus> statuses)
+        {
+            statuses = statuses
+                .OrderBy(row => row.Name);
+
+            var result = new StringBuilder();
+
+            result.AppendFormat("<select id=\"{0}\" name=\"{0}\">", "StatusId");
+
+            result.Append("<option value=\"0\">Select a status...</option>");
+
+            foreach (var status in statuses)
+            {
+                result.AppendFormat(
+                   "<option value=\"{0}\">{1}</option>",
+                   status.StatusId,
+                   status.Name);
+            }
+
+            result.Append("</select>");
+
+            return MvcHtmlString.Create(result.ToString());
+        }
+
         public static MvcHtmlString StatusDropDownListFor<TModel, TProperty>(
             this HtmlHelper<TModel> htmlHelper,
             Expression<Func<TModel, TProperty>> expression,
@@ -836,6 +862,32 @@ namespace Epiworx.WebMvc.Helpers
                 result.Append(">");
                 result.Append(user.Name);
                 result.Append("</option>");
+            }
+
+            result.Append("</select>");
+
+            return MvcHtmlString.Create(result.ToString());
+        }
+
+        public static MvcHtmlString AssignedToDropDownList(
+            this HtmlHelper htmlHelper,
+            IEnumerable<IUser> users)
+        {
+            users = users
+                .OrderBy(row => row.Name);
+
+            var result = new StringBuilder();
+
+            result.AppendFormat("<select id=\"{0}\" name=\"{0}\">", "AssignedTo");
+
+            result.Append("<option value=\"0\">Select a user...</option>");
+
+            foreach (var user in users)
+            {
+                result.AppendFormat(
+                   "<option value=\"{0}\">{1}</option>",
+                   user.UserId,
+                   user.Name);
             }
 
             result.Append("</select>");

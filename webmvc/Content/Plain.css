@@ -164,7 +164,7 @@ input[type="text"].number
     width: 100px;
 }
 
-input[type="button"], input[type="submit"]
+input[type="button"], input[type="submit"], button
 {
     padding: 5px 10px 5px 10px;
     font-weight: bold;
@@ -439,7 +439,7 @@ table.list tfoot
 
 #header-container
 {
-    padding: 0px 80px 10px 80px;
+    padding: 0px 20px 10px 20px;
 }
 
 #header
@@ -528,19 +528,20 @@ table.list tfoot
 #find
 {
     float: right;
-    margin-right: 80px;
+    margin-right: 20px;
 }
 
 #find input[type="text"]
 {
     width: 288px;
+    margin-top: 10px;
 }
 
 #find img
 {
     position: absolute;
     margin-left: -22px;
-    margin-top: 8px;
+    margin-top: 15px;
 }
 
 #navigation
@@ -549,7 +550,7 @@ table.list tfoot
     clear: both;
     display: block;
     height: 50px;
-    margin-left: 60px;
+    margin-left: 0px;
 }
 
 #navigation a
@@ -599,7 +600,7 @@ table.list tfoot
 #main
 {
     background: #FFF;
-    margin: 0px 60px 10px 60px;
+    margin: 0px 0px 10px 0px;
     padding: 20px;
 }
 
@@ -731,7 +732,7 @@ table.list tfoot
 #footer
 {
     margin-top: 10px;
-    padding: 10px 80px 0px 80px;
+    padding: 10px 20px 0px 20px;
     color: #666666;
     text-align: left;
     height: 80px;
@@ -1092,6 +1093,21 @@ table.list tfoot
     height: 16px;
 }
 
+.flag.filter
+{
+    background-image: url('FlagFilter.png');
+}
+
+.flag.export
+{
+    background-image: url('FlagExport.png');
+}
+
+.flag.import
+{
+    background-image: url('FlagImport.png');
+}
+
 .flag.bug
 {
     background-image: url('FlagEmoticonSad.png');
@@ -1135,6 +1151,11 @@ table.list tfoot
 .flag.category
 {
     background-image: url('FlagEmoticonSmile.png');
+}
+
+.flag.user
+{
+    background-image: url('FlagUser.png');
 }
 
 .flag.hour
@@ -1234,4 +1255,32 @@ li .flag
 .list td.note .label.this-week
 {
     color: #3333FF;
+}
+
+.list td .user
+{
+    padding-top: 2px;
+}
+
+.list td .user a
+{
+}
+
+.list td .user img
+{
+    float: left;
+    height: 32px;
+    width: 32px;
+    margin-top: -2px;
+    margin-right: 5px;
+}
+
+.list-commands
+{
+    margin-bottom: 20px;
+}
+
+.list-commands select
+{
+    width: auto;
 }

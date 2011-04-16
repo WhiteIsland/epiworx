@@ -1,24 +1,24 @@
 ﻿$(function () {
-    $("#sidebar .part .list li").click(function () {
-        var link = $(this).find("a:not(.action)");
-        if (link != undefined) {
-            window.location = link.attr("href");
-        }
-    });
+//    $("#sidebar .part .list li").click(function () {
+//        var link = $(this).find("a:not(.action)");
+//        if (link != undefined) {
+//            window.location = link.attr("href");
+//        }
+//    });
 
-    $("#main .list tr").click(function () {
-        var link = $(this).find("a");
-        if (link != undefined) {
-            window.location = link.attr("href");
-        }
-    });
+//    $("#main .list tr").click(function () {
+//        var link = $(this).find("a");
+//        if (link != undefined) {
+//            window.location = link.attr("href");
+//        }
+//    });
 
-    $("#main .list li").click(function () {
-        var link = $(this).find("a");
-        if (link != undefined) {
-            window.location = link.attr("href");
-        }
-    });
+//    $("#main .list li").click(function () {
+//        var link = $(this).find("a");
+//        if (link != undefined) {
+//            window.location = link.attr("href");
+//        }
+//    });
 });
 
 $(function () {
@@ -29,8 +29,8 @@ $(function () {
     });
     $("ul li:first-child").addClass("first");
     $("ul li:last-child").addClass("last");
-    $("#main .list li a").parent("li").css("cursor", "pointer");
-    $("#main .list td a").parent("td").parent("tr").css("cursor", "pointer");
+//    $("#main .list li a").parent("li").css("cursor", "pointer");
+//    $("#main .list td a").parent("td").parent("tr").css("cursor", "pointer");
 });
 
 $(function () {
