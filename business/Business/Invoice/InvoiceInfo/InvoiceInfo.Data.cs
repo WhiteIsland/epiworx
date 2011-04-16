@@ -15,6 +15,7 @@ namespace Epiworx.Business
             this.LoadProperty(ProjectNameProperty, data.Task.Project.Name);
             this.LoadProperty(DescriptionProperty, data.Description);
             this.LoadProperty(TaskIdProperty, data.TaskId);
+            this.LoadProperty(PreparedDateProperty, data.PreparedDate);
             this.LoadProperty(AmountProperty, data.Amount);
             this.LoadProperty(IsArchivedProperty, data.IsArchived);
             this.LoadProperty(NotesProperty, data.Notes);

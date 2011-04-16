@@ -4,25 +4,29 @@
 <%: this.Html.ValidationSummary(true, "Whoops! Looks like some errors were encountered, please correct and try again.") %>
 <fieldset>
     <p class="span2">
-        <%: this.Html.LabelFor(m => m.Number) %>
-        <%: this.Html.TextBoxFor(m => m.Number)%>
-    </p>
-    <p class="span1">
         <label>
             Project:</label>
         <span>
             <%: Model.ProjectName %></span>
     </p>
-    <div class="clear">
-    </div>
-    <p class="span2">
-        <%: this.Html.LabelFor(m => m.Amount) %>
-        <%: this.Html.TextBoxFor(m => m.Amount)%>
-    </p>
     <p class="span1">
         <label>
             Task:</label>
         <%: Html.ActionLink(Model.TaskId.ToString(), "Edit", "Task", new { id = Model.TaskId }, null)%>
+    </p>
+    <div class="clear">
+    </div>
+    <p class="span1">
+        <%: this.Html.LabelFor(m => m.Number) %>
+        <%: this.Html.TextBoxFor(m => m.Number)%>
+    </p>
+    <p class="span1">
+        <%: this.Html.LabelFor(m => m.PreparedDate) %>
+        <%: this.Html.EditorFor(m => m.PreparedDate)%>
+    </p>
+    <p class="span1">
+        <%: this.Html.LabelFor(m => m.Amount) %>
+        <%: this.Html.TextBoxFor(m => m.Amount)%>
     </p>
     <div class="clear">
     </div>

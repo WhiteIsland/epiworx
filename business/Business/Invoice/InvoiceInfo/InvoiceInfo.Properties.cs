@@ -46,6 +46,14 @@ namespace Epiworx.Business
             set { this.LoadProperty(TaskIdProperty, value); }
         }
 
+        private static Csla.PropertyInfo<DateTime> PreparedDateProperty =
+            RegisterProperty<DateTime>(row => row.PreparedDate, "PreparedDate");
+        public DateTime PreparedDate
+        {
+            get { return this.GetProperty(PreparedDateProperty); }
+            set { this.LoadProperty(PreparedDateProperty, value); }
+        }
+
         private static Csla.PropertyInfo<string> DescriptionProperty =
             RegisterProperty<string>(row => row.Description, "Description");
         public string Description

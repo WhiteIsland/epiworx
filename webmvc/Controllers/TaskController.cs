@@ -408,7 +408,7 @@ namespace Epiworx.WebMvc.Controllers
                     };
             }
 
-            switch (ConfigurationHelper.LabelMode)
+            switch (SettingHelper.LabelMode)
             {
                 case ConfigurationMode.Simple:
                     model.Labels = task.Labels;
@@ -444,7 +444,7 @@ namespace Epiworx.WebMvc.Controllers
                 return;
             }
 
-            switch (ConfigurationHelper.LabelMode)
+            switch (SettingHelper.LabelMode)
             {
                 case ConfigurationMode.Simple:
                     task.Labels = model.Labels;

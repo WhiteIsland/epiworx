@@ -567,7 +567,7 @@ namespace Epiworx.WebMvc.Helpers
             decimal selectedValue)
         {
             var result = new StringBuilder();
-            var values = ConfigurationHelper.EstimatedDurations;
+            var values = SettingHelper.EstimatedDurations;
 
             result.AppendFormat("<select id=\"{0}\" name=\"{0}\">", "EstimatedDuration");
 
@@ -592,7 +592,7 @@ namespace Epiworx.WebMvc.Helpers
             this HtmlHelper htmlHelper)
         {
             var result = new StringBuilder();
-            var values = ConfigurationHelper.EstimatedDurations;
+            var values = SettingHelper.EstimatedDurations;
 
             result.AppendFormat("<select id=\"{0}\" name=\"{0}\" class=\"multiple\" multiple>", "EstimatedDuration");
 

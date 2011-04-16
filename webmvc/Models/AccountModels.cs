@@ -90,7 +90,19 @@ namespace Epiworx.WebMvc.Models
             if (String.IsNullOrEmpty(userName))
                 throw new ArgumentException("Value cannot be null or empty.", "userName");
 
-            FormsAuthentication.SetAuthCookie(userName, createPersistentCookie);
+            FormsAuthenticationTicket authenticatedUser;
+            string cookie;
+            HttpCookie httpCookie;
+
+            authenticatedUser = new FormsAuthenticationTicket(userName, createPersistentCookie, 50000);
+            cookie = FormsAuthentication.Encrypt(authenticatedUser);
+            httpCookie = new HttpCookie(FormsAuthentication.FormsCookieName, cookie);
+
+            httpCookie.Expires = DateTime.Today.AddYears(1);
+
+            HttpContext.Current.Response.Cookies.Add(httpCookie);
+
+            // FormsAuthentication.SetAuthCookie(userName, createPersistentCookie,);
         }
 
         public void SignOut()

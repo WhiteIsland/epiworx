@@ -2354,6 +2354,7 @@ namespace Epiworx.Data
         /// <param name="number">Initial value of the Number property.</param>
         /// <param name="description">Initial value of the Description property.</param>
         /// <param name="taskId">Initial value of the TaskId property.</param>
+        /// <param name="preparedDate">Initial value of the PreparedDate property.</param>
         /// <param name="amount">Initial value of the Amount property.</param>
         /// <param name="isArchived">Initial value of the IsArchived property.</param>
         /// <param name="notes">Initial value of the Notes property.</param>
@@ -2361,13 +2362,14 @@ namespace Epiworx.Data
         /// <param name="modifiedDate">Initial value of the ModifiedDate property.</param>
         /// <param name="createdBy">Initial value of the CreatedBy property.</param>
         /// <param name="createdDate">Initial value of the CreatedDate property.</param>
-        public static Invoice CreateInvoice(global::System.Int32 invoiceId, global::System.String number, global::System.String description, global::System.Int32 taskId, global::System.Decimal amount, global::System.Boolean isArchived, global::System.String notes, global::System.Int32 modifiedBy, global::System.DateTime modifiedDate, global::System.Int32 createdBy, global::System.DateTime createdDate)
+        public static Invoice CreateInvoice(global::System.Int32 invoiceId, global::System.String number, global::System.String description, global::System.Int32 taskId, global::System.DateTime preparedDate, global::System.Decimal amount, global::System.Boolean isArchived, global::System.String notes, global::System.Int32 modifiedBy, global::System.DateTime modifiedDate, global::System.Int32 createdBy, global::System.DateTime createdDate)
         {
             Invoice invoice = new Invoice();
             invoice.InvoiceId = invoiceId;
             invoice.Number = number;
             invoice.Description = description;
             invoice.TaskId = taskId;
+            invoice.PreparedDate = preparedDate;
             invoice.Amount = amount;
             invoice.IsArchived = isArchived;
             invoice.Notes = notes;
@@ -2479,6 +2481,30 @@ namespace Epiworx.Data
         private global::System.Int32 _TaskId;
         partial void OnTaskIdChanging(global::System.Int32 value);
         partial void OnTaskIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime PreparedDate
+        {
+            get
+            {
+                return _PreparedDate;
+            }
+            set
+            {
+                OnPreparedDateChanging(value);
+                ReportPropertyChanging("PreparedDate");
+                _PreparedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PreparedDate");
+                OnPreparedDateChanged();
+            }
+        }
+        private global::System.DateTime _PreparedDate;
+        partial void OnPreparedDateChanging(global::System.DateTime value);
+        partial void OnPreparedDateChanged();
     
         /// <summary>
         /// No Metadata Documentation available.

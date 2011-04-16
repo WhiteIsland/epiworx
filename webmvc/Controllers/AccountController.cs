@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using Epiworx.Business;
+using Epiworx.Core.Helpers;
 using Epiworx.Core.Messenger;
 using Epiworx.Security;
 using Epiworx.Service;
@@ -36,10 +37,6 @@ namespace Epiworx.WebMvc.Controllers
         {
             var model = new LogOnModel();
 
-            model.UserName = RequestHelper.GetCookie("EPIWORXUSERNAME", string.Empty);
-            model.Password = RequestHelper.GetCookie("EPIWORXPASSWORD", string.Empty);
-            model.RememberMe = RequestHelper.GetCookie("EPIWORXREMEMBERME", false);
-
             return this.View(model);
         }
 
@@ -51,18 +48,6 @@ namespace Epiworx.WebMvc.Controllers
                 if (this.ValidateUser(model.UserName, model.Password))
                 {
                     this.FormsService.SignIn(model.UserName, model.RememberMe);
-
-                    if (model.RememberMe)
-                    {
-                        RequestHelper.SetCookie("EPIWORXPASSWORD", model.Password, 7);
-                        RequestHelper.SetCookie("EPIWORXREMEMBERME", true, 7);
-                    }
-                    else
-                    {
-                        RequestHelper.ClearCookie("EPIWORXUSERNAME");
-                        RequestHelper.ClearCookie("EPIWORXPASSWORD");
-                        RequestHelper.ClearCookie("EPIWORXREMEMBERME");
-                    }
 
                     if (!string.IsNullOrEmpty(returnUrl))
                     {

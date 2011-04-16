@@ -589,6 +589,7 @@
     <Compile Include="Business\User\User\User.Rules.cs" />
     <Compile Include="Business\DateRangeCriteria.cs" />
     <Compile Include="Core\DateTimeExtensions.cs" />
+    <Compile Include="Security\Helpers\CryptoHelper.cs" />
     <Compile Include="Core\Helpers\FormatHelper.cs" />
     <Compile Include="Core\NameValueItem.cs" />
     <Compile Include="Core\NameValueItemCollection.cs" />

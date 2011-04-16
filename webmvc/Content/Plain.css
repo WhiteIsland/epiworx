@@ -60,6 +60,11 @@ fieldset
     margin-bottom: 20px;
 }
 
+fieldset a
+{
+    color: #CC0000;
+}
+
 fieldset label
 {
     display: block;

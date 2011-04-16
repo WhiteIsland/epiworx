@@ -15,6 +15,7 @@ namespace Epiworx.Business
             this.InvoiceId = null;
             this.Number = null;
             this.TaskId = null;
+            this.PreparedDate = new DateRangeCriteria();
             this.ProjectId = null;
             this.Description = null;
             this.Amount = null;

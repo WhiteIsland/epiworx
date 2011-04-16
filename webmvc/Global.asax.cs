@@ -7,7 +7,9 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using Epiworx.Core.Helpers;
 using Epiworx.Security;
+using Epiworx.WebMvc.Helpers;
 
 namespace Epiworx.WebMvc
 {
@@ -58,44 +60,46 @@ namespace Epiworx.WebMvc
 
         protected void Application_AcquireRequestState(object sender, EventArgs e)
         {
-            if (HttpContext.Current.Handler is IRequiresSessionState)
+            if (!(HttpContext.Current.Handler is IRequiresSessionState))
             {
-                if (Csla.ApplicationContext.AuthenticationType == "Windows")
+                return;
+            }
+
+            if (Csla.ApplicationContext.AuthenticationType == "Windows")
+            {
+                return;
+            }
+
+            IPrincipal principal = null;
+
+            try
+            {
+                principal = (IPrincipal)HttpContext.Current.Session["EPIWORXUSER"];
+            }
+            catch
+            {
+                principal = null;
+            }
+
+            if (principal == null)
+            {
+                if (this.User.Identity.IsAuthenticated
+                    && this.User.Identity is FormsIdentity)
                 {
-                    return;
+                    BusinessPrincipal.LoadPrincipal(this.User.Identity.Name);
+
+                    HttpContext.Current.Session["EPIWORXUSER"] = Csla.ApplicationContext.User;
+
+                    this.Response.Redirect(this.Request.Url.PathAndQuery);
                 }
 
-                IPrincipal principal = null;
+                FormsAuthentication.SignOut();
 
-                try
-                {
-                    principal = (IPrincipal)HttpContext.Current.Session["EPIWORXUSER"];
-                }
-                catch
-                {
-                    principal = null;
-                }
-
-                if (principal == null)
-                {
-                    if (this.User.Identity.IsAuthenticated
-                        && this.User.Identity is FormsIdentity)
-                    {
-                        BusinessPrincipal.LoadPrincipal(this.User.Identity.Name);
-
-                        HttpContext.Current.Session["EPIWORXUSER"] = Csla.ApplicationContext.User;
-
-                        this.Response.Redirect(this.Request.Url.PathAndQuery);
-                    }
-
-                    FormsAuthentication.SignOut();
-
-                    BusinessPrincipal.Logout();
-                }
-                else
-                {
-                    Csla.ApplicationContext.User = principal;
-                }
+                BusinessPrincipal.Logout();
+            }
+            else
+            {
+                Csla.ApplicationContext.User = principal;
             }
         }
     }

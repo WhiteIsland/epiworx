@@ -131,7 +131,7 @@ namespace Epiworx.WebMvc.Helpers
                         task.EstimatedDuration =
                             ImportHelper.TryParse(values[ImportHelper.TaskEstimatedDurationColumn], 0);
 
-                        switch (ConfigurationHelper.LabelMode)
+                        switch (SettingHelper.LabelMode)
                         {
                             case ConfigurationMode.Simple:
                                 task.Labels = values[ImportHelper.TaskLabelsColumn];

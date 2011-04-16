@@ -20,6 +20,9 @@
             <th style="width: 100px;">
                 No.
             </th>
+            <th style="width: 100px;">
+                Prepared
+            </th>
             <th style="width: 200px;">
                 Project
             </th>
@@ -56,6 +59,9 @@
                     invoice.Number, "Edit", "Invoice", new {id = invoice.InvoiceId, title = this.Html.ToTitle(invoice.Description), returnUrl = this.Server.UrlEncode(this.Request.Url.ToString())}, null)%>
             </td>
             <td>
+                <%: invoice.PreparedDate.ToShortDateString() %>
+            </td>
+            <td>
                 <%: invoice.ProjectName %>
             </td>
             <td>
@@ -75,7 +81,7 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="5">
+            <td colspan="6">
                 Total
             </td>
             <td style="text-align: right;">

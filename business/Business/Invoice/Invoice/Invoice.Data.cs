@@ -13,6 +13,7 @@ namespace Epiworx.Business
         [Csla.RunLocal]
         protected override void DataPortal_Create()
         {
+            this.LoadProperty(PreparedDateProperty, DateTime.Now.Date);
 
             this.BusinessRules.CheckRules();
         }
@@ -43,6 +44,7 @@ namespace Epiworx.Business
             this.LoadProperty(ProjectNameProperty, data.Task.Project.Name);
             this.LoadProperty(DescriptionProperty, data.Description);
             this.LoadProperty(TaskIdProperty, data.TaskId);
+            this.LoadProperty(PreparedDateProperty, data.PreparedDate);
             this.LoadProperty(AmountProperty, data.Amount);
             this.LoadProperty(IsArchivedProperty, data.IsArchived);
             this.LoadProperty(NotesProperty, data.Notes);
@@ -111,6 +113,7 @@ namespace Epiworx.Business
             {
                 data.Number = this.ReadProperty(NumberProperty);
                 data.TaskId = this.ReadProperty(TaskIdProperty);
+                data.PreparedDate = this.ReadProperty(PreparedDateProperty);
                 data.Description = this.ReadProperty(DescriptionProperty);
                 data.Amount = this.ReadProperty(AmountProperty);
                 data.IsArchived = this.ReadProperty(IsArchivedProperty);

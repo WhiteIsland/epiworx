@@ -12,6 +12,7 @@ namespace Epiworx.Business
         public int? InvoiceId { get; set; }
         public string Number { get; set; }
         public int? TaskId { get; set; }
+        public DateRangeCriteria PreparedDate { get; set; }
         public int[] ProjectId { get; set; }
         public string Description { get; set; }
         public decimal? Amount { get; set; }

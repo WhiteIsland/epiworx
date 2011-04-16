@@ -47,6 +47,9 @@ namespace Epiworx.WebMvc.Models
         [Required(ErrorMessage = "Number is required")]
         public string Number { get; set; }
 
+        [DisplayName("Prepared on:")]
+        public DateTime PreparedDate { get; set; }
+
         [DisplayName("Description:")]
         [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }

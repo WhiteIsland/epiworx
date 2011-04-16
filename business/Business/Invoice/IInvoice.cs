@@ -13,6 +13,7 @@ namespace Epiworx.Business
         string ProjectName { get; }
         string Description { get; }
         int TaskId { get; }
+        DateTime PreparedDate { get; }
         decimal Amount { get; }
         bool IsArchived { get; }
         string Notes { get; }

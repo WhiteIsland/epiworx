@@ -50,6 +50,16 @@ namespace Epiworx.Business
                     query = query.Where(row => row.TaskId == criteria.TaskId);
                 }
 
+                if (criteria.PreparedDate.DateFrom.Date != DateTime.MinValue.Date)
+                {
+                    query = query.Where(row => row.PreparedDate >= criteria.PreparedDate.DateFrom);
+                }
+
+                if (criteria.PreparedDate.DateTo.Date != DateTime.MaxValue.Date)
+                {
+                    query = query.Where(row => row.PreparedDate <= criteria.PreparedDate.DateTo);
+                }
+
                 if (criteria.Amount != null)
                 {
                     query = query.Where(row => row.Amount == criteria.Amount);

@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<dynamic>" %>
 <div id="find">
-    <input type="text" id="FindText" value="<%= this.Request.QueryString["text"] %>" /><img src="<%: this.Url.Content("~/Content/Find.png") %>" alt="Find" id="FindButton" />
+    <input type="text" id="FindText" placeholder="Search for..." value="<%= this.Request.QueryString["text"] %>" /><img src="<%: this.Url.Content("~/Content/Find.png") %>" alt="Find" id="FindButton" />
 </div>
 <script type="text/javascript">
     $('#FindButton').click(function () {

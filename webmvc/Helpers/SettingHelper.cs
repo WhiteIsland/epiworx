@@ -12,8 +12,13 @@ namespace Epiworx.WebMvc.Helpers
         Advanced = 1
     }
 
-    public class ConfigurationHelper
+    public class SettingHelper
     {
+        public static string EncryptionKey
+        {
+            get { return ConfigurationManager.AppSettings["EncryptionKey"]; }
+        }
+
         public static ConfigurationMode LabelMode
         {
             get

@@ -47,8 +47,9 @@ namespace Epiworx.WebMvc.Controllers
                 {
                     ProjectId = projectId,
                     TaskId = taskId,
+                    PreparedDate = new DateRangeCriteria(model.Date),
                     ModifiedDate = new DateRangeCriteria(modifiedDate ?? string.Empty),
-                    CreatedDate = new DateRangeCriteria(model.Date),
+                    CreatedDate = new DateRangeCriteria(createdDate ?? string.Empty),
                     IsArchived = DataHelper.ToBoolean(isArchived),
                     Text = text
                 };
@@ -308,7 +309,7 @@ namespace Epiworx.WebMvc.Controllers
         private void MapToObject(InvoiceFormModel model, Invoice invoice)
         {
             Csla.Data.DataMapper.Map(
-                model, invoice, true, "ProjectId", "ItemType", "ItemId");
+                model, invoice, true, "ProjectId", "ProjectName", "TaskId");
         }
     }
 }
