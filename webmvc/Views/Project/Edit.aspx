@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Epiworx.WebMvc.Models.ProjectFormModel>" %>
+<%@ Import Namespace="Epiworx.WebMvc.Models" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Epiworx - Edit Project
@@ -29,7 +30,7 @@
     <div class="clear">
     </div>
     <% this.Html.RenderPartial("SprintsUserControl", this.Model.Sprints); %>
-    <div class="clear">
-    </div>
+    <% this.Html.RenderPartial("ProjectTasksByStatusUserControl", new ProjectTasksByStatusListModel { Tasks = this.Model.Tasks, Statuses = this.Model.Statuses, ProjectId = Model.ProjectId}); %>
+    <% this.Html.RenderPartial("ProjectTasksByCategoryUserControl", new ProjectTasksByCategoryListModel { Tasks = this.Model.Tasks, Categories = this.Model.Categories, ProjectId = Model.ProjectId }); %>
     <% this.Html.RenderPartial("AttachmentsUserControl", this.Model.AttachmentListModel); %>
 </asp:Content>

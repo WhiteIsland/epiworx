@@ -217,6 +217,8 @@
     <Content Include="Views\Note\NoteFormCommands.ascx" />
     <Content Include="Views\Note\Create.aspx" />
     <Content Include="Views\Note\Edit.aspx" />
+    <Content Include="Views\Project\ProjectTasksByCategoryUserControl.ascx" />
+    <Content Include="Views\Project\ProjectTasksByStatusUserControl.ascx" />
     <Content Include="Views\Shared\AttachmentsUserControl.ascx" />
     <Content Include="Views\Shared\AttachmentUserControl.ascx" />
     <Content Include="Views\Shared\InvoicesUserControl.ascx" />

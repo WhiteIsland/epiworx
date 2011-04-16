@@ -257,7 +257,7 @@ namespace Epiworx.WebMvc.Helpers
 
         public static IQueryable<ISprint> GetSprintList(int projectId)
         {
-            return SprintService.SprintFetchInfoList(projectId)
+            return SprintService.SprintFetchInfoList(new SprintCriteria { ProjectId = projectId })
                  .Cast<ISprint>()
                  .OrderBy(row => row.ProjectName)
                  .ThenByDescending(row => row.EstimatedCompletedDate)
@@ -274,9 +274,17 @@ namespace Epiworx.WebMvc.Helpers
 
         public static IQueryable<IProject> GetProjectList()
         {
-            return ProjectService.ProjectFetchInfoList()
+            return DataHelper.GetProjectList(null);
+        }
+
+        public static IQueryable<IProject> GetProjectList(bool? isActive)
+        {
+            return ProjectService.ProjectFetchInfoList(
+                    new ProjectCriteria
+                        {
+                            IsActive = isActive
+                        })
                  .Cast<IProject>()
-                 .Where(row => row.IsActive)
                  .OrderBy(row => row.Name)
                  .AsQueryable();
         }

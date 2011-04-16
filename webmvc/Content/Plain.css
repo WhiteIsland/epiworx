@@ -724,6 +724,11 @@ table.list tfoot
     letter-spacing: 1px;
 }
 
+#sidebar .part .total a:hover
+{
+    color: #fff;
+}
+
 #sidebar .part .total span
 {
     float: right;

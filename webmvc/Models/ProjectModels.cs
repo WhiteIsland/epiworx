@@ -9,12 +9,27 @@ using Epiworx.Core;
 
 namespace Epiworx.WebMvc.Models
 {
+    public class ProjectTasksByCategoryListModel : ModelListBase
+    {
+        public int ProjectId { get; set; }
+        public IEnumerable<ITask> Tasks { get; set; }
+        public IEnumerable<ICategory> Categories { get; set; }
+    }
+
+    public class ProjectTasksByStatusListModel : ModelListBase
+    {
+        public int ProjectId { get; set; }
+        public IEnumerable<ITask> Tasks { get; set; }
+        public IEnumerable<IStatus> Statuses { get; set; }
+    }
+
     public class ProjectIndexModel : ProjectListModel
     {
     }
 
     public class ProjectListModel : ModelListBase
     {
+        public int IsActive { get; set; }
         public int IsArchived { get; set; }
         public IQueryable<INote> Notes { get; set; }
         public IQueryable<IProject> Projects { get; set; }
@@ -41,7 +56,10 @@ namespace Epiworx.WebMvc.Models
         [DisplayName("This project is archived")]
         public bool IsArchived { get; set; }
 
+        public IEnumerable<ITask> Tasks { get; set; }
         public IEnumerable<ISprint> Sprints { get; set; }
+        public IEnumerable<ICategory> Categories { get; set; }
+        public IEnumerable<IStatus> Statuses { get; set; }
         public NoteListModel NoteListModel { get; set; }
         public AttachmentListModel AttachmentListModel { get; set; }
     }

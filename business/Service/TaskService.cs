@@ -29,6 +29,15 @@ namespace Epiworx.Service
                 new TaskCriteria());
         }
 
+        public static TaskInfoList TaskFetchInfoList(IProject project)
+        {
+            return TaskService.TaskFetchInfoList(
+                new TaskCriteria
+                    {
+                        ProjectId = new[] { project.ProjectId }
+                    });
+        }
+
         public static TaskInfoList TaskFetchInfoList(TaskCriteria criteria)
         {
             return TaskInfoList.FetchTaskInfoList(criteria);

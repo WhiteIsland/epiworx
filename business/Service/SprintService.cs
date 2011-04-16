@@ -24,12 +24,12 @@ namespace Epiworx.Service
                 new SprintCriteria());
         }
 
-        public static SprintInfoList SprintFetchInfoList(int projectId)
+        public static SprintInfoList SprintFetchInfoList(IProject project)
         {
             return SprintService.SprintFetchInfoList(
                 new SprintCriteria
                     {
-                        ProjectId = projectId
+                        ProjectId = project.ProjectId
                     });
         }
 

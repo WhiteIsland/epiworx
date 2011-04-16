@@ -53,7 +53,7 @@
         {
         %>
         <tr>
-            <td>
+            <td style="white-space: nowrap;">
                 <input type="checkbox" id="HourId" name="HourId" value="<%: hour.HourId.ToString() %>" />
                 <%:this.Html.ActionLink(hour.Date.ToString("MM.dd.yyyy"), "Edit", "Hour",
                                                    new {id = hour.HourId}, null)%>

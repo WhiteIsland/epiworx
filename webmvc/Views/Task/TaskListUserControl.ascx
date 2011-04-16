@@ -35,7 +35,7 @@
 <table class="list task">
     <thead>
         <tr>
-            <th style="width: 50px;">
+            <th style="width: 60px;">
                 No.
             </th>
             <th class="flag">
@@ -80,7 +80,7 @@
            {
         %>
         <tr>
-            <td>
+            <td style="white-space: nowrap;">
                 <input type="checkbox" id="TaskId" name="TaskId" value="<%: task.TaskId.ToString() %>" />
                 <%:this.Html.ActionLink(
                     task.TaskId.ToString(), "Edit", "Task", new {id = task.TaskId, title = this.Html.ToTitle(task.Description), returnUrl = this.Server.UrlEncode(this.Request.Url.ToString())}, null)%>

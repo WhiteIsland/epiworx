@@ -15,13 +15,14 @@ namespace Epiworx.WebMvc.Controllers
     public class ProjectController : BaseController
     {
         [Authorize]
-        public ActionResult Index(int? isArchived, string sortBy, string sortOrder)
+        public ActionResult Index(int? isActive, int? isArchived, string sortBy, string sortOrder)
         {
             var model = new ProjectIndexModel();
 
             model.Tab = "Project";
 
-            model.IsArchived = isArchived ?? 1;
+            model.IsActive = isActive ?? -1;
+            model.IsArchived = isArchived ?? 0;
 
             model.SortBy = sortBy ?? "Name";
             model.SortOrder = sortOrder ?? "ASC";
@@ -29,6 +30,7 @@ namespace Epiworx.WebMvc.Controllers
 
             var criteria = new ProjectCriteria()
             {
+                IsActive = DataHelper.ToBoolean(isActive, true),
                 IsArchived = DataHelper.ToBoolean(isArchived, false)
             };
 
@@ -174,12 +176,16 @@ namespace Epiworx.WebMvc.Controllers
             Csla.Data.DataMapper.Map(project, model, true);
 
             model.Tab = "Project";
-            model.Sprints = SprintService.SprintFetchInfoList(project.ProjectId);
             model.IsNew = project.IsNew;
             model.IsValid = project.IsValid;
 
             if (!project.IsNew)
             {
+                model.Tasks = TaskService.TaskFetchInfoList(project);
+                model.Sprints = SprintService.SprintFetchInfoList(project);
+                model.Statuses = DataHelper.GetStatusList();
+                model.Categories = DataHelper.GetCategoryList();
+
                 model.NoteListModel =
                    new NoteListModel
                    {

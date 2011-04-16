@@ -9,7 +9,7 @@
         %>
         <li><div class="flag <%: status.Name.ToLower().Replace(" ", "-")%>" title="<%: status.Name %>"></div><em>
             <%: string.Format(
-                "{0} at {1:N0} points",
+                "{0} at {1:N0} hours",
                 this.Model.Tasks.Count(row => row.StatusId == status.StatusId),
                 this.Model.Tasks.Where(row => row.StatusId == status.StatusId).Sum(row => row.EstimatedDuration))%></em>
             <span>
@@ -18,7 +18,7 @@
             }%>
     </ul>
    <div class="total">
-        Total Points<span>
+        Total Hours<span>
             <%: string.Format("{0:N0}", this.Model.Tasks.Sum(row => row.EstimatedDuration))%></span>
     </div>
 </div>

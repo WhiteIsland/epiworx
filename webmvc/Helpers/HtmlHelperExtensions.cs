@@ -369,6 +369,38 @@ namespace Epiworx.WebMvc.Helpers
             return MvcHtmlString.Create(result.ToString());
         }
 
+        public static MvcHtmlString IsActiveDropDownListFor<TModel, TProperty>(
+            this HtmlHelper<TModel> htmlHelper,
+            Expression<Func<TModel, TProperty>> expression,
+            int selectedValue)
+        {
+            var result = new StringBuilder();
+
+            result.AppendFormat("<select id=\"{0}\" name=\"{0}\">", "IsActive");
+
+            result.AppendFormat(
+               "<option value=\"{0}\"{1}>{2}</option>",
+               0,
+               0 == selectedValue ? " selected=\"selected\"" : string.Empty,
+               "both active and not active");
+
+            result.AppendFormat(
+               "<option value=\"{0}\"{1}>{2}</option>",
+               1,
+               1 == selectedValue ? " selected=\"selected\"" : string.Empty,
+               "not active");
+
+            result.AppendFormat(
+               "<option value=\"{0}\"{1}>{2}</option>",
+               -1,
+               -1 == selectedValue ? " selected=\"selected\"" : string.Empty,
+               "active");
+
+            result.Append("</select>");
+
+            return MvcHtmlString.Create(result.ToString());
+        }
+
         public static MvcHtmlString IsArchivedDropDownListFor<TModel, TProperty>(
             this HtmlHelper<TModel> htmlHelper,
             Expression<Func<TModel, TProperty>> expression,

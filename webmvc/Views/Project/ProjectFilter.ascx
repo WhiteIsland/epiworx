@@ -9,6 +9,8 @@
         Filter</h5>
     <div class="filter-criteria">
         <span>Show all hours for</span> <span class="filter-value filter-value-single">and&nbsp;<strong></strong>
+            <%: this.Html.IsActiveDropDownListFor(m => m.IsActive, this.Model.IsActive)%></span>
+        <span class="filter-value filter-value-single">and&nbsp;<strong></strong>
             <%: this.Html.IsArchivedDropDownListFor(m => m.IsArchived, this.Model.IsArchived)%></span>
     </div>
     <div class="filter-sort">
@@ -25,6 +27,10 @@
 %>
 <script type="text/javascript">
     $(document).ready(function () {
+        $("#IsActive").change(function () {
+            $("form").submit();
+        });
+
         $("#IsArchived").change(function () {
             $("form").submit();
         });
