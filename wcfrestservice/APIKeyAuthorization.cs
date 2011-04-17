@@ -7,6 +7,7 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Web;
 using System.Xml.Linq;
+using Epiworx.WcfRestService.Properties;
 
 namespace Epiworx.WcfRestService
 {
@@ -70,7 +71,7 @@ namespace Epiworx.WcfRestService
         body
         {
             font-family: Verdana;
-            font-size: large;
+            font-size: x-large;
         }
     </style>
 </head>

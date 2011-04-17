@@ -23,7 +23,8 @@
         <h4>
             Things To Do</h4>
         <ul class="list">
-            <li class="first last">
+            <li>
+                <div class="flag sprint"></div>
                 <%: this.Html.ActionLink("Add a New Sprint", "Create", "Sprint", new { projectId = this.Model.ProjectId}, null)%></li>
         </ul>
     </div>

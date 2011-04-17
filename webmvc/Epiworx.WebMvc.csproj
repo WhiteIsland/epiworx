@@ -149,7 +149,6 @@
     <Content Include="App.ico" />
     <Content Include="Content\FlagFilter.png" />
     <Content Include="Content\FlagExport.png" />
-    <Content Include="Content\FlagInvoice.png" />
     <Content Include="Content\FlagCalendar.png" />
     <Content Include="Content\FlagEmoticonGrin.png" />
     <Content Include="Content\FlagBlue.png" />
@@ -173,6 +172,9 @@
     <Content Include="Content\Icons\Project.ico" />
     <Content Include="Content\Icons\Task.ico" />
     <Content Include="Content\FlagImport.png" />
+    <Content Include="Content\FlagInvoice.png" />
+    <Content Include="Content\FlagModule.png" />
+    <Content Include="Content\FlagSprint.png" />
     <Content Include="Content\Plain.css" />
     <Content Include="Content\Find.png" />
     <Content Include="Content\Plain.Jquery.css" />

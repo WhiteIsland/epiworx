@@ -38,5 +38,5 @@
     <% this.Html.RenderPartial("TaskByCategoryListUserControl", new TaskByCategoryListModel { Tasks = this.Model.Tasks, Categories = this.Model.Categories }); %>
     <% this.Html.RenderPartial("TaskByStatusListUserControl", new TaskByStatusListModel { Tasks = this.Model.Tasks, Statuses = this.Model.Statuses }); %>
     <% this.Html.RenderPartial("LabelsByCountUserControl", this.Model.LabelByCountListModel); %>
-    <% this.Html.RenderPartial("ProjectsUserControl", this.Model.Projects); %>
+    <% this.Html.RenderPartial("ProjectsUserControl", this.Model.Projects.Where(project => project.IsActive && !project.IsArchived).AsEnumerable()); %>
 </asp:Content>

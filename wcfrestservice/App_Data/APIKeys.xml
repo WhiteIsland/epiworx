@@ -24,4 +24,8 @@
       </xs:unique>
     </xs:element>
   </xs:schema>
+  <APIKey>
+    <Key>guest</Key>
+    <Value>8852324A-1062-42AB-88A9-B97958F66483-647D8547-BEA4-42A6-BCFA-F6729666442E</Value>
+  </APIKey>
 </APIKeys>

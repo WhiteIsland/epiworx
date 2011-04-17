@@ -19,7 +19,8 @@ namespace Epiworx.WcfRestService
         public static bool IsValidAPIKey(string key)
         {
             // TODO: Implement IsValidAPI Key using your repository
-            APIKeyRepository.CreateFile();
+            //APIKeyRepository.CreateFile();
+            //APIKeyRepository.AddKey();
 
             // Convert the string into a Guid and validate it
             if (!string.IsNullOrEmpty(key)
@@ -50,10 +51,10 @@ namespace Epiworx.WcfRestService
 
         private static IEnumerable<APIKey> PopulateAPIKeys()
         {
-            if (File.Exists(APIKeyRepository.APIKeyFile))
-            {
-                APIKeyRepository.CreateFile();
-            }
+            //if (!File.Exists(APIKeyRepository.APIKeyFile))
+            //{
+            //    APIKeyRepository.CreateFile();
+            //}
 
             var ds = new DataSet();
 
@@ -71,30 +72,30 @@ namespace Epiworx.WcfRestService
             return keyList;
         }
 
-        private static void CreateFile()
-        {
-            var ds = new DataSet();
+        //private static void CreateFile()
+        //{
+        //    var ds = new DataSet();
 
-            ds.DataSetName = "APIKeys";
+        //    ds.DataSetName = "APIKeys";
 
-            var dt = new DataTable();
+        //    var dt = new DataTable();
 
-            dt.TableName = "APIKey";
+        //    dt.TableName = "APIKey";
 
-            DataColumn col;
+        //    DataColumn col;
 
-            col = dt.Columns.Add("Key", typeof(string));
-            col.AllowDBNull = false;
-            col.Unique = true;
+        //    col = dt.Columns.Add("Key", typeof(string));
+        //    col.AllowDBNull = false;
+        //    col.Unique = true;
 
-            col = dt.Columns.Add("Value", typeof(string));
-            col.AllowDBNull = false;
-            col.Unique = true;
+        //    col = dt.Columns.Add("Value", typeof(string));
+        //    col.AllowDBNull = false;
+        //    col.Unique = true;
 
-            ds.Tables.Add(dt);
+        //    ds.Tables.Add(dt);
 
-            ds.WriteXml(APIKeyRepository.APIKeyFile, XmlWriteMode.WriteSchema);
-        }
+        //    ds.WriteXml(APIKeyRepository.APIKeyFile, XmlWriteMode.WriteSchema);
+        //}
 
         const string APIKeyList = "APIKeyList";
     }

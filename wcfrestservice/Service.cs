@@ -7,6 +7,7 @@ using System.ServiceModel;
 using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using System.Text;
+using Epiworx.Data;
 
 namespace Epiworx.WcfRestService
 {
@@ -18,7 +19,7 @@ namespace Epiworx.WcfRestService
         [WebGet(UriTemplate = "Projects")]
         public List<ProjectData> GetProjects()
         {
-            var ctx = new Data.ApplicationEntities(ConfigurationManager.ConnectionStrings["ApplicationConnection"].ToString());
+            var ctx = new ApplicationEntities(ConfigurationManager.ConnectionStrings["ApplicationConnection"].ToString());
             var result = new List<ProjectData>();
 
             var projects = ctx.Projects
@@ -47,12 +48,63 @@ namespace Epiworx.WcfRestService
                     projectData.Notes.Add(new NoteData(note));
                 }
 
-                foreach (var task in tasks.Where(task => task.ProjectId == project.ProjectId))
-                {
-                    projectData.Tasks.Add(new TaskData(task));
-                }
-
                 result.Add(projectData);
+            }
+
+            ctx.Dispose();
+
+            return result;
+        }
+
+        [WebGet(UriTemplate = "Tasks")]
+        public List<TaskData> GetTasks()
+        {
+            var ctx = new ApplicationEntities(ConfigurationManager.ConnectionStrings["ApplicationConnection"].ToString());
+            var result = new List<TaskData>();
+
+            var tasks = ctx.Tasks
+                .Include("Category")
+                .Include("Project")
+                .Include("Project.ModifiedByUser")
+                .Include("Project.CreatedByUser")
+                .Include("Status")
+                .Include("AssignedToUser")
+                .Include("ModifiedByUser")
+                .Include("CreatedByUser");
+
+            foreach (var task in tasks)
+            {
+                result.Add(new TaskData(task));
+            }
+
+            ctx.Dispose();
+
+            return result;
+        }
+
+        [WebGet(UriTemplate = "Hours")]
+        public List<HourData> GetHours()
+        {
+            var ctx = new ApplicationEntities(ConfigurationManager.ConnectionStrings["ApplicationConnection"].ToString());
+            var result = new List<HourData>();
+
+            var hours = ctx.Hours
+                .Include("User")
+                .Include("Task")
+                .Include("Task.Category")
+                .Include("Task.Project")
+                .Include("Task.Project.ModifiedByUser")
+                .Include("Task.Project.CreatedByUser")
+                .Include("Task.Status")
+                .Include("Task.AssignedToUser")
+                .Include("Task.ModifiedByUser")
+                .Include("Task.CreatedByUser")
+                .Include("ModifiedByUser")
+                .Include("CreatedByUser");
+
+            foreach (var hour in hours)
+            {
+                result.Add(new HourData(hour));
             }
 
             ctx.Dispose();

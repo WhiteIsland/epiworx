@@ -8,12 +8,12 @@ namespace Epiworx.WcfRestService
 {
     public class APIKey
     {
-        public string Name { get; set; }
+        public string Key { get; set; }
         public string Value { get; set; }
 
         public APIKey(DataRow row)
         {
-            this.Name = row["Name"].ToString();
+            this.Key = row["Key"].ToString();
             this.Value = row["Value"].ToString();
         }
     }

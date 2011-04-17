@@ -1143,6 +1143,16 @@ table.list tfoot
     background-image: url('FlagGreen.png');
 }
 
+.flag.invoice
+{
+    background-image: url('FlagInvoice.png');
+}
+
+.flag.sprint
+{
+    background-image: url('FlagSprint.png');
+}
+
 .flag.ready
 {
     background-image: url('FlagBlueLight.png');

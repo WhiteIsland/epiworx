@@ -23,6 +23,7 @@
             Things To Do</h4>
         <ul>
             <li>
+                <div class="flag story"></div>
                 <%: this.Html.ActionLink("Convert to Task", "Create", "Task", new { hourId = this.Model.HourId }, null)%></li>
         </ul>
     </div>

@@ -23,9 +23,9 @@
         <h4>
             Things To Do</h4>
         <ul>
-            <li>
+            <li><div class="flag hour"></div>
                 <%: this.Html.ActionLink("Add a New Hour", "Create", "Hour", new { projectId = this.Model.ProjectId, taskId = this.Model.TaskId }, null)%></li>
-            <li>
+            <li><div class="flag invoice"></div>
                 <%: this.Html.ActionLink("Add a New Invoice", "Create", "Invoice", new { taskId = this.Model.TaskId }, null)%></li>
         </ul>
     </div>

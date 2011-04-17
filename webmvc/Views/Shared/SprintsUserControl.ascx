@@ -16,6 +16,7 @@
            {
         %>
         <li>
+            <div class="flag sprint"></div>
             <%= this.Html.ActionLink("Edit", "Edit", "Sprint", new { id = sprint.SprintId, title = this.Html.ToTitle(sprint.Name) }, new { @class = "action" })%>
             <%= this.Html.ActionLink(sprint.Name, "Index", "Task", new {sprintId = sprint.SprintId}, null)%>
             <%= this.Html.CompletedBox(sprint.IsCompleted) %>
