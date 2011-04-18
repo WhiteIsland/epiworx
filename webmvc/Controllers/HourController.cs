@@ -15,11 +15,13 @@ namespace Epiworx.WebMvc.Controllers
     public class HourController : BaseController
     {
         [Authorize]
-        public ActionResult Index(int[] projectId, int[] userId, int[] taskId, string date, int? isArchived, string label, string sortBy, string sortOrder)
+        public ActionResult Index(int[] projectId, int[] userId, int[] taskId, string date, int? isArchived, string label, string text, string sortBy, string sortOrder)
         {
             var model = new HourIndexModel();
 
             model.Tab = "Hour";
+            model.FindText = text;
+            model.FindCategory = "Hour";
 
             model.Projects = DataHelper.GetProjectList();
             model.ProjectId = projectId ?? new int[0];
@@ -58,7 +60,8 @@ namespace Epiworx.WebMvc.Controllers
                 TaskId = taskId,
                 Date = new DateRangeCriteria(model.Date),
                 IsArchived = DataHelper.ToBoolean(isArchived, false),
-                TaskLabels = string.IsNullOrEmpty(label) ? null : new[] { label }
+                TaskLabels = string.IsNullOrEmpty(label) ? null : new[] { label },
+                Text = text
             };
 
             var hours = HourService.HourFetchInfoList(criteria)
@@ -247,6 +250,8 @@ namespace Epiworx.WebMvc.Controllers
             Csla.Data.DataMapper.Map(hour, model, true);
 
             model.Tab = "Hour";
+            model.FindText = string.Empty;
+            model.FindCategory = "Hour";
             model.Users = DataHelper.GetUserList();
             model.Projects = DataHelper.GetProjectList();
             model.IsNew = hour.IsNew;

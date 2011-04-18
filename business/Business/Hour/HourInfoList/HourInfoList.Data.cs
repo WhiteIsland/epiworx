@@ -111,6 +111,12 @@ namespace Epiworx.Business
                         .Where(tl => criteria.TaskLabels.Contains(tl.Name)), h => h.TaskId, tl => tl.TaskId, (h, tl) => h);
                 }
 
+                if (criteria.Text != null)
+                {
+                    query = query.Where(row => row.Project.Name.Contains(criteria.Text)
+                        || row.Notes.Contains(criteria.Text));
+                }
+
                 if (criteria.SortBy != null)
                 {
                     query = query.OrderBy(string.Format(

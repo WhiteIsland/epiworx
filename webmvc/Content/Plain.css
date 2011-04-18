@@ -538,8 +538,15 @@ table.list tfoot
 
 #find input[type="text"]
 {
+    height: 16px;
     width: 288px;
     margin-top: 10px;
+}
+
+#find select
+{
+    width: 100px;
+    height: 28px;
 }
 
 #find img

@@ -13,6 +13,14 @@ namespace Epiworx.WebMvc.Models
     {
         public string Tab { get; set; }
         public string Message { get; set; }
+        public string FindText { get; set; }
+        public string FindCategory { get; set; }
+
+        public ModelBase()
+        {
+            this.FindText = string.Empty;
+            this.FindCategory = "Task";
+        }
     }
 
     public class ModelListBase : ModelBase
