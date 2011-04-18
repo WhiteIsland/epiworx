@@ -18,4 +18,5 @@
     <% this.Html.RenderPartial("NotesUserControl", this.Model.NoteListModel); %>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="SideBarContent" runat="server">
+    <% this.Html.RenderPartial("AttachmentsUserControl", this.Model.AttachmentListModel); %>
 </asp:Content>

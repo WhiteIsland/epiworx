@@ -20,11 +20,13 @@ namespace Epiworx.WebMvc.Controllers
     public class InvoiceController : BaseController
     {
         [Authorize]
-        public ActionResult Index(int[] projectId, int? taskId, string date, string modifiedDate, string createdDate, int? isArchived, string label, string text, string sortBy, string sortOrder)
+        public ActionResult Index(int[] projectId, int? taskId, string date, string number, string modifiedDate, string createdDate, int? isArchived, string label, string text, string sortBy, string sortOrder)
         {
             var model = new InvoiceIndexModel();
 
             model.Tab = "Invoice";
+            model.FindCategory = "Invoice";
+            model.FindText = text;
 
             model.Projects = DataHelper.GetProjectList();
             model.ProjectId = projectId ?? new int[0];
@@ -47,6 +49,7 @@ namespace Epiworx.WebMvc.Controllers
                 {
                     ProjectId = projectId,
                     TaskId = taskId,
+                    Number = number,
                     PreparedDate = new DateRangeCriteria(model.Date),
                     ModifiedDate = new DateRangeCriteria(modifiedDate ?? string.Empty),
                     CreatedDate = new DateRangeCriteria(createdDate ?? string.Empty),
@@ -275,6 +278,7 @@ namespace Epiworx.WebMvc.Controllers
             Csla.Data.DataMapper.Map(invoice, model, true, "Labels");
 
             model.Tab = "Invoice";
+            model.FindCategory = "Invoice";
 
             if (!invoice.IsNew)
             {
@@ -310,7 +314,7 @@ namespace Epiworx.WebMvc.Controllers
         private void MapToObject(InvoiceFormModel model, Invoice invoice)
         {
             Csla.Data.DataMapper.Map(
-                model, invoice, true, "ProjectId", "ProjectName", "TaskId");
+                model, invoice, true, "ProjectId", "ProjectName");
         }
     }
 }

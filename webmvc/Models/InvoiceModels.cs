@@ -40,7 +40,8 @@ namespace Epiworx.WebMvc.Models
         [DisplayName("Project:")]
         public string ProjectName { get; set; }
 
-        [DisplayName("TaskId:")]
+        [DisplayName("Task:")]
+        [IntegerRequired(ErrorMessage = "Task is required")]
         public int TaskId { get; set; }
 
         [DisplayName("No.:")]

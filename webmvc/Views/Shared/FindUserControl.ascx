@@ -2,8 +2,9 @@
 <div id="find">
     <input type="text" id="FindText" placeholder="Search for..." value="<%= this.Request.QueryString["text"] %>" /><img src="<%: this.Url.Content("~/Content/Find.png") %>" alt="Find" id="FindButton" />
     <select id="FindCategory">
-        <option value="Hour"<% if (Model.FindCategory == "Hour") { %> selected="selected"<%} %>>Hours</"option>
-        <option value="Task"<% if (Model.FindCategory == "Task") { %> selected="selected"<%} %>>Tasks</"option>
+        <option value="Invoice"<% if (Model.FindCategory == "Invoice") { %> selected="selected"<%} %>>Invoices</option>
+        <option value="Hour"<% if (Model.FindCategory == "Hour") { %> selected="selected"<%} %>>Hours</option>
+        <option value="Task"<% if (Model.FindCategory == "Task") { %> selected="selected"<%} %>>Tasks</option>
     </select>
 </div>
 <script type="text/javascript">

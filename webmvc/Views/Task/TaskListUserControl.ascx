@@ -113,7 +113,7 @@
                 <%}%>
             </td>
             <td>
-                <%: task.ProjectName %>
+                 <%: task.ProjectName %>
             </td>
             <td>
                 <p title="<%: task.Description %>">

@@ -10,9 +10,9 @@
             <%: Model.ProjectName %></span>
     </p>
     <p class="span1">
-        <label>
-            Task:</label>
-        <%: Html.ActionLink(Model.TaskId.ToString(), "Edit", "Task", new { id = Model.TaskId }, null)%>
+        <%: this.Html.LabelFor(m => m.TaskId) %>
+        <%: this.Html.TextBoxFor(m => m.TaskId, new {@class = "number"})%>
+        <%: this.Html.ValidationMessageFor(m => m.TaskId)%>
     </p>
     <div class="clear">
     </div>

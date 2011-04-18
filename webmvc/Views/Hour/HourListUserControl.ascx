@@ -30,7 +30,7 @@
                 <div class="flag archived" title="Archived">
                 </div>
             </th>
-            <th style="width: 200px;">
+            <th>
                 User
             </th>
             <th style="width: 200px;">
@@ -55,8 +55,7 @@
         <tr>
             <td style="white-space: nowrap;">
                 <input type="checkbox" id="HourId" name="HourId" value="<%: hour.HourId.ToString() %>" />
-                <%:this.Html.ActionLink(hour.Date.ToString("MM.dd.yyyy"), "Edit", "Hour",
-                                                   new {id = hour.HourId}, null)%>
+                <%:this.Html.ActionLink(hour.Date.ToString("MM.dd.yyyy"), "Edit", "Hour", new {id = hour.HourId}, null)%>
             </td>
             <td class="flag">
                 <%
@@ -77,14 +76,14 @@
                 <%:hour.UserName%>
             </td>
             <td>
-                <%:hour.ProjectName%>
+                <%: hour.ProjectName%>
             </td>
             <td>
                 <%
             if (hour.TaskId != 0)
             {
                 %>
-                <%:hour.TaskId.ToString()%>
+                <%:this.Html.ActionLink(hour.TaskId.ToString(), "Edit", "Task", new { id = hour.TaskId, returnUrl = this.Server.UrlEncode(this.Request.Url.ToString()) }, null)%>
                 <%
             }
             else
