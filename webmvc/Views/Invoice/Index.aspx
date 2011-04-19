@@ -17,6 +17,10 @@
             Things To Do</h4>
         <ul class="list">
             <li>
+                <div class="flag invoice">
+                </div>
+                <%: this.Html.ActionLink("Add a New Invoice", "Create", "Invoice", null, null)%></li>
+            <li>
                 <div class="flag export">
                 </div>
                 <a href="<%: this.Url.Action("Export") %>?<%= this.Request.QueryString %>">Export Invoices</a></li>
@@ -27,4 +31,5 @@
         </ul>
     </div>
     <% this.Html.RenderPartial("FiltersUserControl", new FilterListModel { Target = "Invoice", Filters = this.Model.Filters });%>
+    <% this.Html.RenderPartial("InvoiceSummaryListUserControl", Model);%>
 </asp:Content>

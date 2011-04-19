@@ -3,16 +3,16 @@
 <%: this.Html.Message(this.Model.Message) %>
 <%: this.Html.ValidationSummary(true, "Whoops! Looks like some errors were encountered, please correct and try again.") %>
 <fieldset>
+    <p class="span1">
+        <%: this.Html.LabelFor(m => m.TaskId) %>
+        <%: this.Html.TextBoxFor(m => m.TaskId)%>
+        <%: this.Html.ValidationMessageFor(m => m.TaskId)%>
+    </p>
     <p class="span2">
         <label>
             Project:</label>
-        <span>
+        <span id="ProjectName">
             <%: Model.ProjectName %></span>
-    </p>
-    <p class="span1">
-        <%: this.Html.LabelFor(m => m.TaskId) %>
-        <%: this.Html.TextBoxFor(m => m.TaskId, new {@class = "number"})%>
-        <%: this.Html.ValidationMessageFor(m => m.TaskId)%>
     </p>
     <div class="clear">
     </div>
@@ -43,3 +43,17 @@
         <%: this.Html.ValidationMessageFor(m => m.IsArchived)%>
     </p>
 </fieldset>
+<script type="text/javascript">
+    $().ready(function () {
+        $("#TaskId").change(function () {
+            var taskId = $(this).val();
+ 
+            var url = "<%: this.Url.Action("Fetch", "Task") %>.json?taskId=" + taskId;
+ 
+            $.getJSON(url, null, function (data) {
+                $("#ProjectName").html(data.ProjectName);            
+                $("#Description").val(data.Description);            
+           });
+        });
+    }); 
+</script>

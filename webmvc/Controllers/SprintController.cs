@@ -24,7 +24,7 @@ namespace Epiworx.WebMvc.Controllers
 
                 sprint.ProjectId = projectId;
 
-                this.Map(sprint, model, true);
+                this.MapToModel(sprint, model, true);
             }
             catch (Exception ex)
             {
@@ -60,7 +60,7 @@ namespace Epiworx.WebMvc.Controllers
                 return new JsonResult { Data = this.Url.Action("Edit", new { id = sprint.SprintId, message = Resources.SaveSuccessfulMessage }) };
             }
 
-            this.Map(sprint, model, false);
+            this.MapToModel(sprint, model, false);
 
             return this.View(model);
         }
@@ -76,7 +76,7 @@ namespace Epiworx.WebMvc.Controllers
 
                 model.Message = message;
 
-                this.Map(sprint, model, true);
+                this.MapToModel(sprint, model, true);
             }
             catch (Exception ex)
             {
@@ -101,7 +101,7 @@ namespace Epiworx.WebMvc.Controllers
                 model.Message = Resources.SaveSuccessfulMessage;
             }
 
-            this.Map(sprint, model, true);
+            this.MapToModel(sprint, model, true);
 
             return this.View(model);
         }
@@ -116,7 +116,7 @@ namespace Epiworx.WebMvc.Controllers
             return this.RedirectToAction("Edit", "Project", new { id = sprint.ProjectId });
         }
 
-        public SprintFormModel Map(Sprint sprint, SprintFormModel model, bool ignoreBrokenRules)
+        public SprintFormModel MapToModel(Sprint sprint, SprintFormModel model, bool ignoreBrokenRules)
         {
             Csla.Data.DataMapper.Map(sprint, model, true);
 

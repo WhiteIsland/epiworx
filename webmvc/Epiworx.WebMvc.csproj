@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.ico" />
+    <Content Include="Content\Background.png" />
     <Content Include="Content\FlagFilter.png" />
     <Content Include="Content\FlagExport.png" />
     <Content Include="Content\FlagCalendar.png" />
@@ -204,6 +205,7 @@
     <Content Include="Views\Invoice\Delete.aspx" />
     <Content Include="Views\Invoice\DeleteSuccess.aspx" />
     <Content Include="Views\Invoice\Edit.aspx" />
+    <Content Include="Views\Invoice\InvoiceSummaryListUserControl.ascx" />
     <Content Include="Views\Invoice\Import.aspx" />
     <Content Include="Views\Invoice\ImportSuccess.aspx" />
     <Content Include="Views\Invoice\Index.aspx" />

@@ -325,6 +325,17 @@ namespace Epiworx.WebMvc.Controllers
         }
 
         [Authorize]
+        public ActionResult Fetch(int taskId)
+        {
+            var task = TaskService.TaskFetch(taskId);
+
+            return RespondTo(format =>
+            {
+                format[RequestExtension.Json] = () => new JsonResult { Data = new { task.ProjectName, task.Description }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            });
+        }
+
+        [Authorize]
         public ActionResult Delete(int id)
         {
             var model = new TaskFormModel();

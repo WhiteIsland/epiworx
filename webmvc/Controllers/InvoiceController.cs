@@ -73,13 +73,22 @@ namespace Epiworx.WebMvc.Controllers
         }
 
         [Authorize]
-        public ActionResult Create(int taskId)
+        public ActionResult Create(int? taskId)
         {
             var model = new InvoiceFormModel();
 
             try
             {
-                var invoice = InvoiceService.InvoiceNew(taskId);
+                Invoice invoice;
+
+                if (taskId.HasValue)
+                {
+                    invoice = InvoiceService.InvoiceNew(taskId.Value);
+                }
+                else
+                {
+                    invoice = InvoiceService.InvoiceNew();
+                }
 
                 this.MapToModel(invoice, model, true);
             }

@@ -68,7 +68,7 @@
     </p>
 </fieldset>
 <script type="text/javascript">
-    $(document).ready(function () {
+    $().ready(function () {
         $("#ProjectId").change(function () {
             var projectId = $(this)[0].value;
  
