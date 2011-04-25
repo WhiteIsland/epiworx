@@ -104,14 +104,15 @@ namespace Epiworx.Silverlight.Controls
 
             this.Chart.Series.Clear();
 
-            ColumnSeries series;
+            LineSeries series;
 
-            series = new ColumnSeries();
+            series = new LineSeries();
 
             series.Title = "Invoices";
             series.DependentValuePath = "Amount";
             series.IndependentValuePath = "Name";
             series.ItemsSource = itemsSource;
+            series.DataPointStyle = (Style)Application.Current.Resources["LineDataPointStyle"];
 
             this.Chart.Series.Add(series);
         }

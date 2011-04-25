@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{16E8943C-54E9-4559-A627-43E235208FAC}"
+	ProjectSection(SolutionItems) = preProject
+		Epiworx.vsmdi = Epiworx.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Snippets", "Snippets", "{FC8A35B6-E9A1-4299-83A8-2DC558DB2FF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epiworx.Silverlight", "silverlight\Epiworx.Silverlight.csproj", "{93F67930-7483-484C-9F2E-B563556B4DAF}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "silverlightweb", "silverlightweb\", "{9F818837-F0EA-4DFA-96D8-08C6813C3A93}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/silverlightweb"
+		Debug.AspNetCompiler.PhysicalPath = "silverlightweb\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\silverlightweb\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/silverlightweb"
+		Release.AspNetCompiler.PhysicalPath = "silverlightweb\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\silverlightweb\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "6557"
+		ProjOutputReferences = "{93F67930-7483-484C-9F2E-B563556B4DAF}|ClientBin|false;"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Epiworx.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{93F67930-7483-484C-9F2E-B563556B4DAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93F67930-7483-484C-9F2E-B563556B4DAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93F67930-7483-484C-9F2E-B563556B4DAF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{93F67930-7483-484C-9F2E-B563556B4DAF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{93F67930-7483-484C-9F2E-B563556B4DAF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{93F67930-7483-484C-9F2E-B563556B4DAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93F67930-7483-484C-9F2E-B563556B4DAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93F67930-7483-484C-9F2E-B563556B4DAF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{93F67930-7483-484C-9F2E-B563556B4DAF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{93F67930-7483-484C-9F2E-B563556B4DAF}.Release|x86.ActiveCfg = Release|Any CPU
+		{9F818837-F0EA-4DFA-96D8-08C6813C3A93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F818837-F0EA-4DFA-96D8-08C6813C3A93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F818837-F0EA-4DFA-96D8-08C6813C3A93}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9F818837-F0EA-4DFA-96D8-08C6813C3A93}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9F818837-F0EA-4DFA-96D8-08C6813C3A93}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9F818837-F0EA-4DFA-96D8-08C6813C3A93}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F818837-F0EA-4DFA-96D8-08C6813C3A93}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{9F818837-F0EA-4DFA-96D8-08C6813C3A93}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9F818837-F0EA-4DFA-96D8-08C6813C3A93}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9F818837-F0EA-4DFA-96D8-08C6813C3A93}.Release|x86.ActiveCfg = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

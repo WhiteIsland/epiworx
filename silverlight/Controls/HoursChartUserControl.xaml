@@ -8,21 +8,9 @@
     d:DesignHeight="300" 
     d:DesignWidth="400" >
 
-    <Grid >
+    <Grid>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <Border Grid.Row="0">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Hours" ></TextBlock>
-
-            </StackPanel>
-        </Border>
-
-        <toolkit:Chart x:Name="Chart" Grid.Row="1" HorizontalAlignment="Stretch" Title="Chart Title" VerticalAlignment="Stretch">
+        <toolkit:Chart x:Name="Chart" HorizontalAlignment="Stretch" Title="Hours" VerticalAlignment="Stretch" Style="{StaticResource ChartStyle}">
             <toolkit:LineSeries DependentValuePath="X" IndependentValuePath="Y">
                 <toolkit:LineSeries.ItemsSource>
                     <PointCollection>
@@ -33,7 +21,7 @@
                     </PointCollection>
                 </toolkit:LineSeries.ItemsSource>
             </toolkit:LineSeries>
-        </toolkit:Chart>
+         </toolkit:Chart>
 
     </Grid>
 

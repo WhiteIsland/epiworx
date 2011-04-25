@@ -30,9 +30,6 @@ namespace Epiworx.Silverlight
 
             this.Model.RefreshData();
 
-            //this.HoursChartUserControl.Model = this.Model;
-            //this.RevenuesChartUserControl.Model = this.Model;
-
             this.DataContext = this.Model;
         }
 
@@ -42,31 +39,11 @@ namespace Epiworx.Silverlight
 
             this.StartDate.SelectedDateChanged += StartDate_SelectedDateChanged;
             this.EndDate.SelectedDateChanged += EndDate_SelectedDateChanged;
+            this.GroupingComboBox.SelectionChanged += GroupingComboBox_SelectionChanged;
         }
 
         private void AppliedFiltersChanged(object sender, EventArgs e)
         {
-            this.HoursChartUserControl.Model = this.Model;
-            this.RevenuesChartUserControl.Model = this.Model;
-        }
-
-        private void WeekHyperlinkButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Model.Grouping = Grouping.Week;
-            this.HoursChartUserControl.Model = this.Model;
-            this.RevenuesChartUserControl.Model = this.Model;
-        }
-
-        private void MonthHyperlinkButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Model.Grouping = Grouping.Month;
-            this.HoursChartUserControl.Model = this.Model;
-            this.RevenuesChartUserControl.Model = this.Model;
-        }
-
-        private void YearHyperlinkButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Model.Grouping = Grouping.Year;
             this.HoursChartUserControl.Model = this.Model;
             this.RevenuesChartUserControl.Model = this.Model;
         }
@@ -83,6 +60,28 @@ namespace Epiworx.Silverlight
             this.Model.EndDate = (DateTime)this.EndDate.SelectedDate;
 
             this.Model.RefreshData();
+        }
+
+        private void GroupingComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (ComboBoxItem addedItem in e.AddedItems)
+            {
+                if ((string)addedItem.Content == "Week")
+                {
+                    this.Model.Grouping = Grouping.Week;
+                }
+                else if ((string)addedItem.Content == "Month")
+                {
+                    this.Model.Grouping = Grouping.Month;
+                }
+                else
+                {
+                    this.Model.Grouping = Grouping.Year;
+                }
+            }
+
+            this.HoursChartUserControl.Model = this.Model;
+            this.RevenuesChartUserControl.Model = this.Model;
         }
     }
 }

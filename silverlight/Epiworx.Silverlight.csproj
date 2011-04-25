@@ -71,15 +71,30 @@
     <Reference Include="System.Net" />
     <Reference Include="System.Windows.Controls" />
     <Reference Include="System.Windows.Controls.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Windows.Controls.Data.DataForm.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data.DataForm.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\SilverlightToolkit-Data.4.2010.4\lib\sl4\System.Windows.Controls.Data.DataForm.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Controls.Data.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Windows.Controls.Data.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\SilverlightToolkit-Data.4.2010.4\lib\sl4\System.Windows.Controls.Data.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\SilverlightToolkit-DataViz.4.2010.4\lib\sl4\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Controls.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\SilverlightToolkit-Input.4.2010.4\lib\sl4\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\SilverlightToolkit-Layout.4.2010.4\lib\sl4\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Controls.Navigation, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Windows.Controls.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Theming.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\SilverlightToolkit-Theming.4.2010.4\lib\sl4\System.Windows.Controls.Theming.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\SilverlightToolkit-Core.4.2010.4\lib\sl4\System.Windows.Controls.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Windows.Browser" />
@@ -125,6 +140,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="Assets\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\FilterUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -143,11 +162,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\OutOfBrowserSettings.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

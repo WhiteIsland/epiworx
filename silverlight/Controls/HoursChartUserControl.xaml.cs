@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.DataVisualization.Charting;
 using System.Xml.Linq;
@@ -95,17 +96,17 @@ namespace Epiworx.Silverlight.Controls
                 itemsSource.Add(data);
             }
 
-            this.Chart.Palette.Clear();
             this.Chart.Series.Clear();
 
-            ColumnSeries series;
+            LineSeries series;
 
-            series = new ColumnSeries();
+            series = new LineSeries();
 
             series.Title = "Hours";
             series.DependentValuePath = "Quantity";
             series.IndependentValuePath = "Name";
             series.ItemsSource = itemsSource;
+            series.DataPointStyle = (Style)Application.Current.Resources["LineDataPointStyle"];
 
             this.Chart.Series.Add(series);
         }

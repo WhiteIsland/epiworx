@@ -34,7 +34,7 @@
             Grid.Row="2"
             x:Name="FilterTreeView" 
             ItemTemplate="{StaticResource NodeTemplate}"
-            ItemContainerStyle="{StaticResource ItemContainerStyle}"/>
+            ItemContainerStyle="{StaticResource ItemContainerStyle}" Style="{StaticResource TreeViewStyle}"/>
     </Grid>
 
 </UserControl>
