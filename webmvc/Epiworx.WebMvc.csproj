@@ -277,7 +277,7 @@
     <Content Include="Views\Shared\ProjectsUserControl.ascx" />
     <Content Include="Views\Shared\StatusesUserControl.ascx" />
     <Content Include="Views\Shared\NavigationUserControl.ascx" />
-    <Content Include="Views\Shared\TaskListUserControl.ascx" />
+    <Content Include="Views\Home\TaskListUserControl.ascx" />
     <Content Include="Views\Status\StatusForm.ascx" />
     <Content Include="Views\Status\StatusFormCommands.ascx" />
     <Content Include="Views\Status\Create.aspx" />
@@ -297,6 +297,7 @@
     <Content Include="Views\Task\TaskForm.ascx" />
     <Content Include="Views\Task\TaskFormCommands.ascx" />
     <Content Include="Views\Shared\LabelsByCountUserControl.ascx" />
+    <Content Include="Views\Task\TaskListCommands.ascx" />
     <Content Include="Views\Task\TaskListUserControl.ascx" />
     <Content Include="Views\User\Create.aspx" />
     <Content Include="Views\User\Edit.aspx" />

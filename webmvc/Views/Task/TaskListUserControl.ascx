@@ -9,29 +9,11 @@
 <%
         return;
     }
-%>
-<%
+
     using (this.Html.BeginForm())
     {
 %>
-<div class="list-commands">
-    <button value="Archive">
-        Archive</button>
-    <button value="Unarchive">
-        Unarchive</button>
-    <button value="Update Status">
-        Change Status</button>
-    <%: Html.StatusDropDownList(this.Model.Statuses)%>
-    <button value="Update Assignment">
-        Change Assignment</button>
-    <%: Html.AssignedToDropDownList(this.Model.AssignedToUsers)%>
-    <%: Html.Hidden("Action") %>
-</div>
-<script type="text/javascript">
-    $(".list-commands button").click(function () {
-        $(".list-commands #Action").val($(this).val());
-    });
-</script>
+<%this.Html.RenderPartial("TaskListCommands", Model);%>
 <table class="list task">
     <thead>
         <tr>
@@ -79,7 +61,7 @@
         <% foreach (var task in this.Model.Tasks)
            {
         %>
-        <tr>
+        <tr<% if (task.Status.IsStarted) {%> class="started"<%}%>>
             <td style="white-space: nowrap;">
                 <input type="checkbox" id="TaskId" name="TaskId" value="<%: task.TaskId.ToString() %>" />
                 <%:this.Html.ActionLink(

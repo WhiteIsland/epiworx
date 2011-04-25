@@ -259,6 +259,11 @@ table.list th
     font-weight: bold;
 }
 
+table.list tr.started td
+{
+    font-weight: bold;
+}
+
 table.list p
 {
     height: 18px;

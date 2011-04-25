@@ -8,8 +8,7 @@
 <%
         return;
     }
-%>
-<%
+
     using (this.Html.BeginForm())
     {
 %>
@@ -20,6 +19,11 @@
         Unarchive</button>
     <%:Html.Hidden("Action")%>
 </div>
+<script type="text/javascript">
+    $(".list-commands button").click(function () {
+        $(".list-commands #Action").val($(this).val());
+    });
+</script>
 <table class="list">
     <thead>
         <tr>

@@ -7,33 +7,30 @@ using Epiworx.Data;
 
 namespace Epiworx.WcfRestService
 {
-    public class InvoiceData
+    public class ProjectData
     {
-        public int InvoiceId { get; set; }
-        public ProjectData Project { get; set; }
-        public TaskData Task { get; set; }
-        public string Number { get; set; }
+        public int ProjectId { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
-        public decimal Amount { get; set; }
+        public bool IsActive { get; set; }
         public UserData CreatedBy { get; set; }
-        public DateTime CreateDate { get; set; }
+        public DateTime CreatedDate { get; set; }
         public List<NoteData> Notes { get; set; }
 
-        public InvoiceData()
+        public ProjectData()
         {
             this.Notes = new List<NoteData>();
         }
 
-        public InvoiceData(Invoice invoice)
+        public ProjectData(Project project)
             : this()
         {
-            this.InvoiceId = invoice.InvoiceId;
-            this.Project = new ProjectData(invoice.Task.Project);
-            this.Task = new TaskData(invoice.Task);
-            this.Description = invoice.Description;
-            this.Amount = invoice.Amount;
-            this.CreatedBy = new UserData(invoice.CreatedByUser);
-            this.CreateDate = invoice.CreatedDate;
+            this.ProjectId = project.ProjectId;
+            this.Name = project.Name;
+            this.Description = project.Description;
+            this.IsActive = project.IsActive;
+            this.CreatedBy = new UserData(project.CreatedByUser);
+            this.CreatedDate = project.CreatedDate;
         }
     }
 }

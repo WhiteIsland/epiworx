@@ -12,6 +12,7 @@ namespace Epiworx.WcfRestService
         public string Name { get; set; }
         public string BackColor { get; set; }
         public string ForeColor { get; set; }
+        public bool IsActive { get; set; }
 
         public CategoryData()
         {
@@ -24,6 +25,7 @@ namespace Epiworx.WcfRestService
             this.Name = category.Name;
             this.BackColor = category.BackColor;
             this.ForeColor = category.ForeColor;
+            this.IsActive = category.IsActive;
         }
     }
 }

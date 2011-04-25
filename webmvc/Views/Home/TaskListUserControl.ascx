@@ -55,24 +55,16 @@
     </thead>
     <tbody>
         <% foreach (var task in this.Model.Tasks)
-           {
+           {               
         %>
-        <tr>
+        <tr<% if (task.Status.IsStarted) {%> class="started"<%}%>>
             <td>
                 <%:this.Html.ActionLink(
                     task.TaskId.ToString(), "Edit", "Task", new {id = task.TaskId, title = this.Html.ToTitle(task.Description), returnUrl = this.Server.UrlEncode(this.Request.Url.ToString())}, null)%>
             </td>
             <td class="flag">
-                <% if (task.IsArchived)
-                   {%>
-                <div class="flag archived" title="Archived">
-                </div>
-                <%}
-                   else
-                   {%>
                 <div class="flag <%: task.StatusName.ToLower().Replace(" ", "-")%>" title="<%: task.StatusName %>">
                 </div>
-                <%}%>
             </td>
             <td class="flag">
                 <div class="flag <%: task.CategoryName.ToLower().Replace(" ", "-")%>" title="<%: task.CategoryName %>">

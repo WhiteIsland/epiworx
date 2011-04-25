@@ -10,7 +10,10 @@ namespace Epiworx.WcfRestService
     {
         public int UserId { get; set; }
         public string Name { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Email { get; set; }
+        public bool IsActive { get; set; }
 
         public UserData()
         {
@@ -21,7 +24,10 @@ namespace Epiworx.WcfRestService
         {
             this.UserId = user.UserId;
             this.Name = user.Name;
+            this.FirstName = user.FirstName;
+            this.LastName = user.LastName;
             this.Email = user.Email;
+            this.IsActive = user.IsActive;
         }
     }
 }

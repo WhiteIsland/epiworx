@@ -15,13 +15,8 @@
         Dashboard</h2>
     <div class="part">
         <h3>
-            <%: Model.Dashboard %><span>Open Stories</span></h3>
+            <%: Model.Dashboard %><span>Stories</span></h3>
         <% this.Html.RenderPartial("TaskListUserControl", new TaskListModel { Tasks = this.Model.Tasks.Where(row => row.CompletedDate.Date == DateTime.MaxValue.Date), HideUserColumn = true });%>
-    </div>
-    <div class="part">
-        <h3>
-            <%: Model.Dashboard %><span>Completed Stories</span></h3>
-        <% this.Html.RenderPartial("TaskListUserControl", new TaskListModel { Tasks = this.Model.Tasks.Where(row => row.CompletedDate.Date != DateTime.MaxValue.Date), HideUserColumn = true });%>
     </div>
     <div class="part">
         <h3>

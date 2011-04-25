@@ -11,7 +11,7 @@ namespace Epiworx.WcfRestService
         public int NoteId { get; set; }
         public string Body { get; set; }
         public UserData CreatedBy { get; set; }
-        public DateTime CreateDate { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         public NoteData()
         {
@@ -23,7 +23,7 @@ namespace Epiworx.WcfRestService
             this.NoteId = note.NoteId;
             this.Body = note.Body;
             this.CreatedBy = new UserData(note.CreatedByUser);
-            this.CreateDate = note.CreatedDate;
+            this.CreatedDate = note.CreatedDate;
         }
     }
 }

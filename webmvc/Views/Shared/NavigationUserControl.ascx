@@ -10,7 +10,7 @@
         <li<% if (this.Model.Tab == "Home") {%> class="selected" <%}%>><%: this.Html.ActionLink("Home", "Index", "Home")%></li>
         <li<% if (this.Model.Tab == "Project") {%> class="selected"<%}%>><%: this.Html.ActionLink("Projects", "Index", "Project", null, null)%></li>
         <li<% if (this.Model.Tab == "Task") {%> class="selected"<%}%>><%: this.Html.ActionLink("Stories", "Index", "Task", new { isArchived = 1 }, null)%></li>
-        <li<% if (this.Model.Tab == "Hour") {%> class="selected"<%}%>><%: this.Html.ActionLink("Hours", "Index", "Hour", new { isArchived = 1 }, null)%></li>
+        <li<% if (this.Model.Tab == "Hour") {%> class="selected"<%}%>><%: this.Html.ActionLink("Hours", "Index", "Hour", new { isArchived = 0, date = "ThisWeek" }, null)%></li>
         <li<% if (this.Model.Tab == "Invoice") {%> class="selected"<%}%>><%: this.Html.ActionLink("Invoices", "Index", "Invoice")%></li>
         <li<% if (this.Model.Tab == "User") {%> class="selected"<%}%>><%: this.Html.ActionLink("Users", "Index", "User", new { isArchived = 1 }, null)%></li>
 </ul>

@@ -66,10 +66,10 @@
   <ItemGroup>
     <Compile Include="APIKey.cs" />
     <Compile Include="Data\CategoryData.cs" />
-    <Compile Include="Data\InvoiceData.cs" />
+    <Compile Include="Data\ProjectData.cs" />
     <Compile Include="Data\HourData.cs" />
     <Compile Include="Data\NoteData.cs" />
-    <Compile Include="Data\ProjectData.cs" />
+    <Compile Include="Data\InvoiceData.cs" />
     <Compile Include="Data\StatusData.cs" />
     <Compile Include="Data\TaskData.cs" />
     <Compile Include="Data\UserData.cs" />
@@ -105,12 +105,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>26376</DevelopmentServerPort>
           <DevelopmentServerVPath>/EpiworxService</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost/EpiworxWcfRestService</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
