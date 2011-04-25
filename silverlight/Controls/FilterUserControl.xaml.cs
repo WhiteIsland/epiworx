@@ -18,158 +18,36 @@ namespace Epiworx.Silverlight.Controls
 {
     public partial class FilterUserControl : UserControl
     {
-        public FilterCollection Filters { get; set; }
+        private HomeViewModel _model;
+        public HomeViewModel Model
+        {
+            get
+            {
+                return _model;
+            }
+            set
+            {
+                _model = value;
+                this.OnModelChanged();
+            }
+        }
 
         public FilterUserControl()
         {
             InitializeComponent();
-
-            this.LoadData();
         }
 
-        private void LoadData()
+        private void OnModelChanged()
         {
-            this.Filters = new FilterCollection();
-
-            this.Filters.Add(new Filter { Name = "Users", Caption = "Users" });
-            this.Filters.Add(new Filter { Name = "Projects", Caption = "Projects" });
-
-            this.LoadUsers();
-        }
-
-        private void LoadUsers()
-        {
-            var proxy = new WebClient();
-            var uri = string.Format("{0}Users?apikey={1}", DataHelper.ServiceUri, DataHelper.ServiceApiKey);
-
-            proxy.OpenReadCompleted += OnLoadUsersCompleted;
-
-            proxy.OpenReadAsync(new Uri(uri, UriKind.Absolute));
-        }
-
-        void OnLoadUsersCompleted(object sender, OpenReadCompletedEventArgs e)
-        {
-            if (e.Error != null)
-            {
-                return;
-            }
-
-            var xml = XElement.Load(e.Result);
-            var ns = xml.GetDefaultNamespace();
-            var users = xml.Elements(ns + "UserData")
-                .Select(user => new UserData(user))
-                .ToList();
-
-            foreach (var user in users)
-            {
-                this.Filters["Users"].Filters.Add(new Filter { Name = "Users-" + user.Name, Caption = user.Name, IsChecked = user.IsActive, Value = user.Name });
-            }
-
-            this.LoadProjects();
-        }
-
-        private void LoadProjects()
-        {
-            var proxy = new WebClient();
-            var uri = string.Format("{0}Projects?apikey={1}", DataHelper.ServiceUri, DataHelper.ServiceApiKey);
-
-            proxy.OpenReadCompleted += OnLoadProjectsCompleted;
-
-            proxy.OpenReadAsync(new Uri(uri, UriKind.Absolute));
-        }
-
-        void OnLoadProjectsCompleted(object sender, OpenReadCompletedEventArgs e)
-        {
-            if (e.Error != null)
-            {
-                return;
-            }
-
-            var xml = XElement.Load(e.Result);
-            var ns = xml.GetDefaultNamespace();
-            var projects = xml.Elements(ns + "ProjectData")
-                .Select(project => new ProjectData(project))
-                .ToList();
-
-            foreach (var project in projects)
-            {
-                this.Filters["Projects"].Filters.Add(new Filter { Name = "Projects-" + project.Name, Caption = project.Name, IsChecked = project.IsActive, Value = project.Name });
-            }
-
-            this.OnLoadDataCompleted();
-        }
-
-        //private void LoadStatuses()
-        //{
-        //    var proxy = new WebClient();
-        //    var uri = string.Format("{0}Statuses?apikey={1}", DataHelper.ServiceUri, DataHelper.ServiceApiKey);
-
-        //    proxy.OpenReadCompleted += OnLoadStatusesCompleted;
-
-        //    proxy.OpenReadAsync(new Uri(uri, UriKind.Absolute));
-        //}
-
-        //void OnLoadStatusesCompleted(object sender, OpenReadCompletedEventArgs e)
-        //{
-        //    if (e.Error != null)
-        //    {
-        //        return;
-        //    }
-
-        //    var xml = XElement.Load(e.Result);
-        //    var ns = xml.GetDefaultNamespace();
-        //    var statuses = xml.Elements(ns + "StatusData")
-        //        .Select(status => new StatusData(status))
-        //        .ToList();
-
-        //    foreach (var status in statuses)
-        //    {
-        //        this.Filters["Statuses"].Filters.Add(new Filter { Name = "Statuses-" + status.Name, Caption = status.Name, IsChecked = status.IsActive, Value = status.Name });
-        //    }
-
-        //    this.LoadCategories();
-        //}
-
-        //private void LoadCategories()
-        //{
-        //    var proxy = new WebClient();
-        //    var uri = string.Format("{0}Categories?apikey={1}", DataHelper.ServiceUri, DataHelper.ServiceApiKey);
-
-        //    proxy.OpenReadCompleted += OnLoadCategoriesCompleted;
-
-        //    proxy.OpenReadAsync(new Uri(uri, UriKind.Absolute));
-        //}
-
-        //void OnLoadCategoriesCompleted(object sender, OpenReadCompletedEventArgs e)
-        //{
-        //    if (e.Error != null)
-        //    {
-        //        return;
-        //    }
-
-        //    var xml = XElement.Load(e.Result);
-        //    var ns = xml.GetDefaultNamespace();
-        //    var categories = xml.Elements(ns + "CategoryData")
-        //        .Select(category => new CategoryData(category))
-        //        .ToList();
-
-        //    foreach (var category in categories)
-        //    {
-        //        this.Filters["Categories"].Filters.Add(new Filter { Name = "Categories-" + category.Name, Caption = category.Name, IsChecked = category.IsActive, Value = category.Name });
-        //    }
-
-        //    this.OnLoadDataCompleted();
-        //}
-
-        void OnLoadDataCompleted()
-        {
-            this.FilterTreeView.ItemsSource = this.Filters;
+            this.FilterTreeView.ItemsSource = this.Model.Filters;
         }
 
         public event RoutedEventHandler ItemCheckBoxClick;
 
         protected virtual void OnItemCheckBoxClicked(object sender, RoutedEventArgs e)
         {
+            this.Model.ApplyFilters();
+
             if (ItemCheckBoxClick != null)
             {
                 ItemCheckBoxClick(this, e);

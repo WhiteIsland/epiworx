@@ -44,5 +44,10 @@ namespace Epiworx.Silverlight.Models
                 return this.FirstOrDefault(child => child.Name == name);
             }
         }
+
+        public bool Contains(string name)
+        {
+            return this.Any(row => row.Name == name);
+        }
     }
 }

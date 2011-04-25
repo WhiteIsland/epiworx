@@ -98,7 +98,6 @@
     <Compile Include="Controls\RevenuesChartUserControl.xaml.cs">
       <DependentUpon>RevenuesChartUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Core\Enumerations.cs" />
     <Compile Include="Core\SortedObservableCollection.cs" />
     <Compile Include="Data\CategoryData.cs" />
     <Compile Include="Data\TaskData.cs" />
@@ -118,6 +117,7 @@
     <Compile Include="Data\UserData.cs" />
     <Compile Include="Models\Filter.cs" />
     <Compile Include="Models\FilterCollection.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

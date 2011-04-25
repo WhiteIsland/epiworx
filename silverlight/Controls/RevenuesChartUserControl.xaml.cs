@@ -21,36 +21,17 @@ namespace Epiworx.Silverlight.Controls
 {
     public partial class RevenuesChartUserControl : UserControl
     {
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
-        private IEnumerable<InvoiceData> Invoices { get; set; }
-        private IEnumerable<InvoiceData> FilteredInvoices { get; set; }
-
-        private FilterCollection _filters = new FilterCollection();
-        public FilterCollection Filters
+        private HomeViewModel _model;
+        public HomeViewModel Model
         {
             get
             {
-                return _filters;
+                return _model;
             }
             set
             {
-                _filters = value;
-                this.OnFiltersChanged();
-            }
-        }
-
-        private GroupBy _groupBy = GroupBy.Week;
-        public GroupBy GroupBy
-        {
-            get
-            {
-                return _groupBy;
-            }
-            set
-            {
-                _groupBy = value;
-                this.OnGroupByChanged();
+                _model = value;
+                this.OnModelChanged();
             }
         }
 
@@ -59,81 +40,24 @@ namespace Epiworx.Silverlight.Controls
             InitializeComponent();
         }
 
-        public void LoadData()
+        private void OnModelChanged()
         {
-            var proxy = new WebClient();
-            var uri = string.Format(
-                "{0}Invoices?apikey={1}&start={2:d}&end={3:d}",
-                DataHelper.ServiceUri,
-                DataHelper.ServiceApiKey,
-                this.Start,
-                this.End);
-
-            proxy.OpenReadCompleted += OnReadCompleted;
-
-            proxy.OpenReadAsync(new Uri(uri, UriKind.Absolute));
-        }
-
-        void OnReadCompleted(object sender, OpenReadCompletedEventArgs e)
-        {
-            if (e.Error != null)
-            {
-                return;
-            }
-
-            var xml = XElement.Load(e.Result);
-            var ns = xml.GetDefaultNamespace();
-            this.Invoices = xml.Elements(ns + "InvoiceData")
-                .Select(hour => new InvoiceData(hour))
-                .ToList();
-
-            this.DisplayData();
-        }
-
-        private void OnGroupByChanged()
-        {
-            this.DisplayData();
-        }
-
-        private void OnFiltersChanged()
-        {
-            this.DisplayData();
-        }
-
-        private void ApplyFilter()
-        {
-            var query = this.Invoices;
-
-            if (this.Filters != null
-                && this.Filters.Count() != 0)
-            {
-                query = query.Where(row => this.Filters["Users"].Filters.SelectedValues.Contains(row.Task.AssignedTo.Name));
-                query = query.Where(row => this.Filters["Projects"].Filters.SelectedValues.Contains(row.Project.Name));
-            }
-
-            this.FilteredInvoices = query.ToList();
-        }
-
-        private void DisplayData()
-        {
-            this.ApplyFilter();
-
             DateTime startDate;
             DateTime endDate;
 
-            switch (this.GroupBy)
+            switch (this.Model.Grouping)
             {
-                case GroupBy.Week:
-                    startDate = this.Start.ToStartOfWeek();
-                    endDate = this.End.ToEndOfWeek();
+                case Grouping.Week:
+                    startDate = this.Model.StartDate.ToStartOfWeek();
+                    endDate = this.Model.EndDate.ToEndOfWeek();
                     break;
-                case GroupBy.Month:
-                    startDate = this.Start.ToStartOfMonth();
-                    endDate = this.End.ToEndOfMonth();
+                case Grouping.Month:
+                    startDate = this.Model.StartDate.ToStartOfMonth();
+                    endDate = this.Model.EndDate.ToEndOfMonth();
                     break;
-                case GroupBy.Year:
-                    startDate = this.Start.ToStartOfYear();
-                    endDate = this.End.ToEndOfYear();
+                case Grouping.Year:
+                    startDate = this.Model.StartDate.ToStartOfYear();
+                    endDate = this.Model.EndDate.ToEndOfYear();
                     break;
                 default:
                     throw new NotImplementedException();
@@ -149,19 +73,19 @@ namespace Epiworx.Silverlight.Controls
 
                 data.Start = currentDate;
 
-                switch (this.GroupBy)
+                switch (this.Model.Grouping)
                 {
-                    case GroupBy.Week:
+                    case Grouping.Week:
                         data.Name = currentDate.Date.ToString("M/d");
                         data.End = currentDate.ToEndOfWeek();
                         currentDate = currentDate.ToStartOfNextWeek();
                         break;
-                    case GroupBy.Month:
+                    case Grouping.Month:
                         data.Name = currentDate.Date.ToString("M/yyyy");
                         data.End = currentDate.ToEndOfMonth();
                         currentDate = currentDate.ToStartOfNextMonth();
                         break;
-                    case GroupBy.Year:
+                    case Grouping.Year:
                         data.Name = currentDate.Date.ToString("yyyy");
                         data.End = currentDate.ToEndOfYear();
                         currentDate = currentDate.ToStartOfNextYear();
@@ -170,7 +94,7 @@ namespace Epiworx.Silverlight.Controls
                         break;
                 }
 
-                data.Amount = this.FilteredInvoices
+                data.Amount = this.Model.FilteredInvoices
                     .Where(row => row.PreparedDate >= data.Start
                                   && row.PreparedDate <= data.End)
                     .Sum(row => row.Amount);

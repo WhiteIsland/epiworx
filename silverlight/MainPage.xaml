@@ -29,6 +29,8 @@
                     <TextBlock Grid.Column="0" Text="epiworx"/>
 
                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <controls:DatePicker x:Name="StartDate" SelectedDate="{Binding StartDate}" />
+                        <controls:DatePicker x:Name="EndDate" SelectedDate="{Binding EndDate}"  />
                         <HyperlinkButton Content="Week" x:Name="WeekHyperlinkButton" Click="WeekHyperlinkButton_Click" />
                         <HyperlinkButton Content="Month" x:Name="MonthHyperlinkButton" Click="MonthHyperlinkButton_Click" />
                         <HyperlinkButton Content="Year" x:Name="YearHyperlinkButton" Click="YearHyperlinkButton_Click" />
@@ -45,28 +47,8 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Border x:Name="ContentExplorer" Grid.Column="0">
-
-                        <Grid>
-
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-
-                            <TextBlock Grid.Row="0" Text="Data" />
-                            <controls:DatePicker Grid.Row="1" x:Name="StartDate" />
-                            <controls:DatePicker Grid.Row="2" x:Name="EndDate" />
-                            <Button Grid.Row="3" Content="Refresh" Click="Button_Click" />
-                            <TextBlock Grid.Row="4" Text="Filters" />
-                            <localControls:FilterUserControl x:Name="ChartFilters" Grid.Row="5"/>
-
-                        </Grid>
-
+                    <Border Grid.Column="0">
+                        <localControls:FilterUserControl x:Name="FilterUserControl" Grid.Row="5" />
                     </Border>
 
                     <Grid Grid.Column="1">
@@ -76,8 +58,8 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <localControls:HoursChartUserControl x:Name="HoursChart" Grid.Row="0"/>
-                        <localControls:RevenuesChartUserControl x:Name="RevenuesChart" Grid.Row="1" />
+                        <localControls:HoursChartUserControl x:Name="HoursChartUserControl" Grid.Row="0" />
+                        <localControls:RevenuesChartUserControl x:Name="RevenuesChartUserControl" Grid.Row="1" />
 
                     </Grid>
 
