@@ -11,7 +11,7 @@
     <Grid>
 
         <toolkit:Chart x:Name="Chart" HorizontalAlignment="Stretch" Title="Hours" VerticalAlignment="Stretch" Style="{StaticResource ChartStyle}">
-            <toolkit:LineSeries DependentValuePath="X" IndependentValuePath="Y">
+            <toolkit:LineSeries DependentValuePath="X" IndependentValuePath="Y" DataPointStyle="{StaticResource LineDataPointStyle}">
                 <toolkit:LineSeries.ItemsSource>
                     <PointCollection>
                         <Point>1,10</Point>

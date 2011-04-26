@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Epiworx.Silverlight.Controls.HoursGridUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" 
+    xmlns:localHelpers="clr-namespace:Epiworx.Silverlight.Helpers"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+    
+    <UserControl.Resources>
+        <localHelpers:DecimalConverter x:Key="DecimalFormatter" />
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <sdk:DataGrid x:Name="DataGrid" AutoGenerateColumns="False" Margin="0,38,0,30">
+            <sdk:DataGrid.Columns>
+                <sdk:DataGridTemplateColumn Header="Period" SortMemberPath="Name" Width="*">
+                    <sdk:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </sdk:DataGridTemplateColumn.CellTemplate>
+                </sdk:DataGridTemplateColumn>
+                <sdk:DataGridTemplateColumn Header="Quantity" Width="100" SortMemberPath="Quantity">
+                    <sdk:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Quantity, Converter={StaticResource DecimalFormatter}, ConverterParameter=N2}"  />
+                        </DataTemplate>
+                    </sdk:DataGridTemplateColumn.CellTemplate>
+                </sdk:DataGridTemplateColumn>
+            </sdk:DataGrid.Columns>
+        </sdk:DataGrid>
+    </Grid>
+</UserControl>
