@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Windows;
 using System.Xml.Linq;
 using Epiworx.Silverlight.Data;
 
@@ -11,7 +12,7 @@ namespace Epiworx.Silverlight.Helpers
     {
         public static string ServiceUri
         {
-            get { return "http://epiworx.epitecgroup.com/api/"; }
+            get { return Application.Current.Resources["serviceUri"].ToString(); }
         }
 
         public static string ServiceApiKey
