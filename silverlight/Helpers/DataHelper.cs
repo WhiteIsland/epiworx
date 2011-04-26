@@ -17,7 +17,7 @@ namespace Epiworx.Silverlight.Helpers
 
         public static string ServiceApiKey
         {
-            get { return "8852324A-1062-42AB-88A9-B97958F66483-B2562557-0857-4023-B291-CF9AB6C29688"; }
+            get { return Application.Current.Resources["serviceApiKey"].ToString(); }
         }
 
         public static IEnumerable<HourData> GetHours(DateTime start, DateTime end)
