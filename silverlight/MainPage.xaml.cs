@@ -45,7 +45,6 @@ namespace Epiworx.Silverlight
         private void AppliedFiltersChanged(object sender, EventArgs e)
         {
             this.HoursChartUserControl.Model = this.Model;
-            this.HoursGridUserControl.Model = this.Model;
             this.RevenuesChartUserControl.Model = this.Model;
         }
 

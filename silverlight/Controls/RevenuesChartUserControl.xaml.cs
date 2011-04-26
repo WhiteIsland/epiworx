@@ -114,6 +114,8 @@ namespace Epiworx.Silverlight.Controls
             series.ItemsSource = itemsSource;
             series.DataPointStyle = (Style)Application.Current.Resources["LineDataPointStyle"];
 
+            this.Chart.Title = string.Format("Revenues ({0:N0})", itemsSource.Sum(row => row.Amount));
+
             this.Chart.Series.Add(series);
         }
     }
