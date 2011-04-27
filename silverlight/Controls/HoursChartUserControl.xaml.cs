@@ -42,6 +42,10 @@ namespace Epiworx.Silverlight.Controls
 
             switch (this.Model.Grouping)
             {
+                case Grouping.Day:
+                    startDate = this.Model.StartDate;
+                    endDate = this.Model.EndDate;
+                    break;
                 case Grouping.Week:
                     startDate = this.Model.StartDate.ToStartOfWeek();
                     endDate = this.Model.EndDate.ToEndOfWeek();
@@ -70,6 +74,11 @@ namespace Epiworx.Silverlight.Controls
 
                 switch (this.Model.Grouping)
                 {
+                    case Grouping.Day:
+                        data.Name = currentDate.Date.ToString("M/d");
+                        data.End = currentDate.Date;
+                        currentDate = currentDate.Date.AddDays(1);
+                        break;
                     case Grouping.Week:
                         data.Name = currentDate.Date.ToString("M/d");
                         data.End = currentDate.ToEndOfWeek();

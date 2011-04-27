@@ -107,9 +107,6 @@
     <Compile Include="Controls\FilterUserControl.xaml.cs">
       <DependentUpon>FilterUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\HoursGridUserControl.xaml.cs">
-      <DependentUpon>HoursGridUserControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\HoursChartUserControl.xaml.cs">
       <DependentUpon>HoursChartUserControl.xaml</DependentUpon>
     </Compile>
@@ -149,10 +146,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\FilterUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\HoursGridUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

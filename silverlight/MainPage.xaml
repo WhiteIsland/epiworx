@@ -35,6 +35,7 @@
                         <controls:DatePicker x:Name="StartDate" SelectedDate="{Binding StartDate}" VerticalAlignment="Center"  />
                         <controls:DatePicker x:Name="EndDate" SelectedDate="{Binding EndDate}" VerticalAlignment="Center" Margin="15,0,0,0" />
                         <ComboBox Height="23" Width="120" Margin="15,0,0,0" x:Name="GroupingComboBox" >
+                            <ComboBoxItem Content="Day" />
                             <ComboBoxItem Content="Week" IsSelected="True" />
                             <ComboBoxItem Content="Month" />
                             <ComboBoxItem Content="Year" />

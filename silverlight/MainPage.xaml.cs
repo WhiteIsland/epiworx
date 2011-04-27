@@ -25,6 +25,7 @@ namespace Epiworx.Silverlight
 
             this.Model = new HomeViewModel();
 
+            this.Model.Grouping = Grouping.Week;
             this.Model.FiltersChanged += FiltersChanged;
             this.Model.AppliedFiltersChanged += AppliedFiltersChanged;
 
@@ -66,17 +67,20 @@ namespace Epiworx.Silverlight
         {
             foreach (ComboBoxItem addedItem in e.AddedItems)
             {
-                if ((string)addedItem.Content == "Week")
+                switch ((string)addedItem.Content)
                 {
-                    this.Model.Grouping = Grouping.Week;
-                }
-                else if ((string)addedItem.Content == "Month")
-                {
-                    this.Model.Grouping = Grouping.Month;
-                }
-                else
-                {
-                    this.Model.Grouping = Grouping.Year;
+                    case "Day":
+                        this.Model.Grouping = Grouping.Day;
+                        break;
+                    case "Week":
+                        this.Model.Grouping = Grouping.Week;
+                        break;
+                    case "Month":
+                        this.Model.Grouping = Grouping.Month;
+                        break;
+                    default:
+                        this.Model.Grouping = Grouping.Year;
+                        break;
                 }
             }
 

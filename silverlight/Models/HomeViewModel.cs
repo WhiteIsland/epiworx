@@ -19,6 +19,7 @@ namespace Epiworx.Silverlight.Models
 {
     public enum Grouping
     {
+        Day,
         Week,
         Month,
         Year
