@@ -70,7 +70,7 @@
             <param name="background" value="white" />
             <param name="minRuntimeVersion" value="4.0.50826.0" />
             <param name="autoUpgrade" value="true" />
-          <param name="initParams" value="serviceUri=http://epiworx.epitecgroup.com/api/,serviceApiKey=8852324A-1062-42AB-88A9-B97958F66483-B2562557-0857-4023-B291-CF9AB6C29688" />
+          <param name="initParams" value="serviceUri=<%= this.Request.QueryString["serviceUri"] %>,serviceApiKey=<%= this.Request.QueryString["serviceApiKey"] %>" />
             <a href="http://go.microsoft.com/fwlink/?LinkID=149156&v=4.0.50826.0" style="text-decoration: none">
                 <img src="http://go.microsoft.com/fwlink/?LinkId=161376" alt="Get Microsoft Silverlight"
                     style="border-style: none" />
