@@ -1,15 +1,6 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<Epiworx.Business.IUser>>" %>
+﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<Epiworx.WebMvc.Models.UserListModel>" %>
+<%@ Import Namespace="Epiworx.Core" %>
 <%@ Import Namespace="Epiworx.WebMvc.Helpers" %>
-<%
-    if (this.Model.Count() == 0)
-    {
-%>
-<p class="no-records">
-    No records were found.</p>
-<%
-        return;
-    }
-%>
 <table class="list user">
     <thead>
         <tr>
@@ -19,10 +10,13 @@
             <th>
                 Email
             </th>
+            <th>
+                Status
+            </th>
         </tr>
     </thead>
     <tbody>
-        <% foreach (var user in this.Model)
+        <% foreach (var user in this.Model.Users.OrderBy(row => row.Name))
            {
         %>
         <tr>
@@ -37,6 +31,29 @@
             </td>
             <td>
                 <%: user.Email %>
+            </td>
+            <td class="note">
+                <%
+               if (Model.Notes.Count() != 0)
+               {
+                   var notes = Model.Notes
+                       .Where(note => note.SourceId == user.UserId)
+                       .OrderByDescending(note => note.CreatedDate);
+
+                   if (notes.Count() != 0)
+                   {
+                       var note = notes.First();
+                %>
+                <p title="<%: note.Body %>">
+                    <%: note.Body %></p>
+                   <%= note.CreatedDate.ToLabel() %>
+                <img src="<%: this.Url.Gravatar(note.CreatedByEmail, 64) %>" alt="<%: note.CreatedByName %>" />
+                <strong>
+                    <%: note.CreatedByName %></strong><em><%: note.CreatedDate.ToRelativeDate() %></em>
+                 <%
+                   }
+               }
+                %>
             </td>
         </tr>
         <%

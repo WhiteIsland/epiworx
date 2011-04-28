@@ -14,12 +14,23 @@ namespace Epiworx.WebMvc.Controllers
     public class UserController : BaseController
     {
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index(int? isActive, int? isArchived, string sortBy, string sortOrder)
         {
             var model = new UserIndexModel();
 
             model.Tab = "User";
             model.Users = DataHelper.GetUserList();
+            
+            var users = UserService.UserFetchInfoList()
+                .AsQueryable();
+
+            model.Users = users;
+
+            var notes = NoteService.NoteFetchInfoList(
+                SourceType.User,
+                users.Select(user => user.UserId).ToArray());
+
+            model.Notes = notes.AsQueryable();
 
             return this.View(model);
         }
