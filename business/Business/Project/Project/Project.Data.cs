@@ -35,8 +35,7 @@ namespace Epiworx.Business
                 }
 
                 var data = query.Single();
-
-
+                
                 this.Fetch(data);
 
                 this.BusinessRules.CheckRules();

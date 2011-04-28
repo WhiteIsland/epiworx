@@ -134,6 +134,16 @@ namespace Epiworx.WebMvc.Controllers
             model.Roles = DataHelper.GetRoleList();
             model.IsNew = user.IsNew;
             model.IsValid = user.IsValid;
+            
+            if (!user.IsNew)
+            {
+                model.NoteListModel =
+                   new NoteListModel
+                   {
+                       Source = user,
+                       Notes = NoteService.NoteFetchInfoList(user).AsQueryable()
+                   };
+            }
 
             if (!ignoreBrokenRules)
             {

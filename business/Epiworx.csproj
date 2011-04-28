@@ -584,6 +584,7 @@
     <Compile Include="Business\User\UserValueCommand\UserValueCommand.cs" />
     <Compile Include="Business\User\User\User.cs" />
     <Compile Include="Business\User\User\User.Data.cs" />
+    <Compile Include="Business\User\User\User.ISource.cs" />
     <Compile Include="Business\User\User\User.Methods.cs" />
     <Compile Include="Business\User\User\User.Properties.cs" />
     <Compile Include="Business\User\User\User.Rules.cs" />

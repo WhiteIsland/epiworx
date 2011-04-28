@@ -15,6 +15,7 @@ namespace Epiworx.WebMvc.Models
 
     public class UserListModel : ModelBase
     {
+        public IQueryable<INote> Notes { get; set; }
         public IQueryable<IUser> Users { get; set; }
     }
 
@@ -55,5 +56,6 @@ namespace Epiworx.WebMvc.Models
         public bool IsArchived { get; set; }
 
         public IEnumerable<NameValueItem> Roles { get; set; }
+        public NoteListModel NoteListModel { get; set; }
     }
 }
