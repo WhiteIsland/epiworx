@@ -21,6 +21,11 @@ namespace Epiworx.WcfRestService
         public CategoryData(Category category)
             : this()
         {
+            if (category == null)
+            {
+                return;
+            }
+
             this.CategoryId = category.CategoryId;
             this.Name = category.Name;
             this.BackColor = category.BackColor;

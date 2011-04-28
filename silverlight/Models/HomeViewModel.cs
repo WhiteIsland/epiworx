@@ -85,8 +85,8 @@ namespace Epiworx.Silverlight.Models
                 "{0}Hours?apikey={1}&start={2}&end={3}",
                 DataHelper.ServiceUri,
                 DataHelper.ServiceApiKey,
-                this.StartDate,
-                this.EndDate);
+                this.StartDate.ToShortDateString(),
+                this.EndDate.ToShortDateString());
 
             proxy.OpenReadCompleted += OnRefreshDataForHoursCompleted;
 
@@ -123,8 +123,8 @@ namespace Epiworx.Silverlight.Models
                 "{0}Invoices?apikey={1}&start={2:d}&end={3:d}",
                 DataHelper.ServiceUri,
                 DataHelper.ServiceApiKey,
-                this.StartDate,
-                this.EndDate);
+                this.StartDate.ToShortDateString(),
+                this.EndDate.ToShortDateString());
 
             proxy.OpenReadCompleted += OnRefreshDataForInvoicesCompleted;
 

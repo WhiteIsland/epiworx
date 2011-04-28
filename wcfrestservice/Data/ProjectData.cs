@@ -25,6 +25,11 @@ namespace Epiworx.WcfRestService
         public ProjectData(Project project)
             : this()
         {
+            if (project == null)
+            {
+                return;
+            }
+
             this.ProjectId = project.ProjectId;
             this.Name = project.Name;
             this.Description = project.Description;

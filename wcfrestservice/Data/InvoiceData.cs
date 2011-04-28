@@ -28,6 +28,11 @@ namespace Epiworx.WcfRestService
         public InvoiceData(Invoice invoice)
             : this()
         {
+            if (invoice == null)
+            {
+                return;
+            }
+
             this.InvoiceId = invoice.InvoiceId;
             this.Project = new ProjectData(invoice.Task.Project);
             this.Task = new TaskData(invoice.Task);

@@ -20,6 +20,11 @@ namespace Epiworx.WcfRestService
         public NoteData(Note note)
             : this()
         {
+            if (note == null)
+            {
+                return;
+            }
+
             this.NoteId = note.NoteId;
             this.Body = note.Body;
             this.CreatedBy = new UserData(note.CreatedByUser);

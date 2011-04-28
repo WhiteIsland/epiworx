@@ -21,6 +21,11 @@ namespace Epiworx.WcfRestService
         public StatusData(Status status)
             : this()
         {
+            if (status == null)
+            {
+                return;
+            }
+
             this.StatusId = status.StatusId;
             this.Name = status.Name;
             this.BackColor = status.BackColor;

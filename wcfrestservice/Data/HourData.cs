@@ -25,6 +25,11 @@ namespace Epiworx.WcfRestService
         public HourData(Hour hour)
             : this()
         {
+            if (hour == null)
+            {
+                return;
+            }
+
             this.HourId = hour.HourId;
             this.Date = hour.Date;
             this.Duration = hour.Duration;

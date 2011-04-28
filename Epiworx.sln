@@ -22,7 +22,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epiworx.WcfRestService", "w
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epiworx.Silverlight", "silverlight\Epiworx.Silverlight.csproj", "{93F67930-7483-484C-9F2E-B563556B4DAF}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "silverlightweb", "silverlightweb", "{9F818837-F0EA-4DFA-96D8-08C6813C3A93}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "silverlightweb", "silverlightweb\", "{9F818837-F0EA-4DFA-96D8-08C6813C3A93}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/silverlightweb"
@@ -39,7 +39,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "silverlightweb", "silverlig
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "4500"
+		VWDPort = "3353"
 		ProjOutputReferences = "{93F67930-7483-484C-9F2E-B563556B4DAF}|ClientBin|false;"
 	EndProjectSection
 EndProject

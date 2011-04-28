@@ -22,6 +22,11 @@ namespace Epiworx.WcfRestService
         public UserData(User user)
             : this()
         {
+            if (user == null)
+            {
+                return;
+            }
+
             this.UserId = user.UserId;
             this.Name = user.Name;
             this.FirstName = user.FirstName;
