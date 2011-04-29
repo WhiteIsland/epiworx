@@ -189,6 +189,12 @@ namespace Epiworx.WebMvc.Helpers
                                    urlHelper.Action("Edit", "Invoice", new { id = values["SourceId"] }),
                                    values["SourceName"]);
                                 break;
+                            case SourceType.User:
+                                sb = sb.AppendFormat(
+                                   " for the user <a href=\"{0}\">{1}</a> ",
+                                   urlHelper.Action("Edit", "User", new { id = values["SourceId"] }),
+                                   values["SourceName"]);
+                                break;
                             default:
                                 throw new NotImplementedException(string.Format("The source type '{0}' is not supported", values["SourceType"]));
                         }

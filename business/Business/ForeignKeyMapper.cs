@@ -39,6 +39,9 @@ namespace Epiworx.Business
                 case SourceType.Invoice:
                     result = ForeignKeyMapper.FetchInvoiceNumber(sourceId);
                     break;
+                case SourceType.User:
+                    result = ForeignKeyMapper.FetchUserName(sourceId);
+                    break;
                 default:
                     break;
             }

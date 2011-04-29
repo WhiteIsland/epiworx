@@ -158,6 +158,22 @@ namespace Epiworx.Business
             return feed;
         }
 
+        public static Feed FeedAdd(string action, User user)
+        {
+            var feed = FeedService.FeedNew();
+
+            feed.Type = "User";
+            feed.Data = string.Format(
+                "Action={0}|UserId={1}|UserName={2}",
+                action,
+                user.UserId,
+                user.Name);
+
+            feed = FeedService.FeedSave(feed);
+
+            return feed;
+        }
+
         public static Feed FeedAdd(string action, Category category)
         {
             var feed = FeedService.FeedNew();
@@ -191,7 +207,7 @@ namespace Epiworx.Business
 
             return feed;
         }
-
+        
         public static Feed FeedFetch(int feedId)
         {
             return Feed.FetchFeed(
