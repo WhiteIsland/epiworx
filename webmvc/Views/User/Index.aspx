@@ -18,11 +18,7 @@
             <li>
                 <div class="flag user">
                 </div>
-                <%: this.Html.ActionLink("Add a New User", "Create", "User")%></li>
-            <li>
-                <div class="flag invoice">
-                </div>
-                <%: this.Html.ActionLink("Add a Note", "Edit", "User")%></li>
+                <%: this.Html.ActionLink("Add a New User", "Create", "User")%></li>            
         </ul>
     </div>
 </asp:Content>
